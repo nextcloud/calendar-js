@@ -1,0 +1,5 @@
+.idea/
+calendar-js.iml
+
+coverage/
+node_modules/
