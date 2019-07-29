@@ -19,13 +19,13 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import AbstractComponent from '../abstractComponent.js';
-import EventComponent from './eventComponent.js';
-import FreeBusyComponent from './freeBusyComponent.js';
-import JournalComponent from './journalComponent.js';
-import TimezoneComponent from './timezoneComponent.js';
-import ToDoComponent from './toDoComponent.js';
-import { uc } from '../../helpers/stringHelper.js';
+import AbstractComponent from '../abstractComponent.js'
+import EventComponent from './eventComponent.js'
+import FreeBusyComponent from './freeBusyComponent.js'
+import JournalComponent from './journalComponent.js'
+import TimezoneComponent from './timezoneComponent.js'
+import ToDoComponent from './toDoComponent.js'
+import { uc } from '../../helpers/stringHelper.js'
 
 /**
  * Gets the constructor for a component name
@@ -37,22 +37,22 @@ import { uc } from '../../helpers/stringHelper.js';
  */
 export function getConstructorForComponentName(compName) {
 	switch (uc(compName)) {
-		case 'VEVENT':
-			return EventComponent
+	case 'VEVENT':
+		return EventComponent
 
-		case 'VFREEBUSY':
-			return FreeBusyComponent
+	case 'VFREEBUSY':
+		return FreeBusyComponent
 
-		case 'VJOURNAL':
-			return JournalComponent
+	case 'VJOURNAL':
+		return JournalComponent
 
-		case 'VTIMEZONE':
-			return TimezoneComponent
+	case 'VTIMEZONE':
+		return TimezoneComponent
 
-		case 'VTODO':
-			return ToDoComponent
+	case 'VTODO':
+		return ToDoComponent
 
-		default:
-			return AbstractComponent
+	default:
+		return AbstractComponent
 	}
 }

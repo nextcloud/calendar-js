@@ -19,8 +19,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import AttachmentProperty from './attachmentProperty.js';
-import BinaryValue from '../values/binaryValue.js';
+import AttachmentProperty from './attachmentProperty.js'
+import BinaryValue from '../values/binaryValue.js'
 
 /**
  * @class ImageProperty
@@ -53,7 +53,7 @@ export default class ImageProperty extends AttachmentProperty {
 	 * @param {String=} formatType
 	 * @returns {ImageProperty}
 	 */
-	static fromData(data, display=null, formatType=null) {
+	static fromData(data, display = null, formatType = null) {
 		const binaryValue = BinaryValue.fromDecodedValue(data)
 		const property = new ImageProperty('IMAGE', binaryValue)
 
@@ -76,7 +76,7 @@ export default class ImageProperty extends AttachmentProperty {
 	 * @param {String=} formatType
 	 * @returns {ImageProperty}
 	 */
-	static fromLink(uri, display=null, formatType=null) {
+	static fromLink(uri, display = null, formatType = null) {
 		const property = new ImageProperty('IMAGE', uri)
 
 		if (display) {
@@ -89,4 +89,5 @@ export default class ImageProperty extends AttachmentProperty {
 
 		return property
 	}
+
 }

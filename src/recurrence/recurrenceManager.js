@@ -19,11 +19,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import Property from '../properties/property.js';
-import { uc } from '../helpers/stringHelper.js';
-import DateTimeValue from '../values/dateTimeValue.js';
-import ModificationNotAllowedError from '../errors/modificationNotAllowedError.js';
-import PeriodValue from '../values/periodValue.js';
+import Property from '../properties/property.js'
+import { uc } from '../helpers/stringHelper.js'
+import DateTimeValue from '../values/dateTimeValue.js'
+import ModificationNotAllowedError from '../errors/modificationNotAllowedError.js'
+import PeriodValue from '../values/periodValue.js'
 
 /**
  * @class RecurrenceHelper
@@ -105,8 +105,8 @@ export default class RecurrenceManager {
 	 *
 	 * @returns {IterableIterator<AbstractRecurringComponent>}
 	 */
-	*getRecurrenceExceptionIterator() {
-		yield* this._recurrenceExceptionItems.values()
+	* getRecurrenceExceptionIterator() {
+		yield * this._recurrenceExceptionItems.values()
 	}
 
 	/**
@@ -246,7 +246,7 @@ export default class RecurrenceManager {
 				this._rangeRecurrenceExceptionItemsIndex,
 				key,
 				(a, b) => a - b
-			);
+			)
 
 			this._rangeRecurrenceExceptionItemsIndex.splice(index, 0, key)
 		}
@@ -298,7 +298,7 @@ export default class RecurrenceManager {
 	 *
 	 * @returns {IterableIterator<RecurValue>}
 	 */
-	*getRecurrenceRuleIterator() {
+	* getRecurrenceRuleIterator() {
 		for (const property of this._masterItem.getPropertyIterator('RRULE')) {
 			yield property.getFirstValue()
 		}
@@ -359,9 +359,9 @@ export default class RecurrenceManager {
 	 * @param {String} valueType
 	 * @returns {IterableIterator<DateTimeValue|PeriodValue>}
 	 */
-	*getRecurrenceDateIterator(isNegative=false, valueType=null) {
+	* getRecurrenceDateIterator(isNegative = false, valueType = null) {
 		for (const property of this._getPropertiesForRecurrenceDate(isNegative, valueType)) {
-			yield* property.getValueIterator()
+			yield * property.getValueIterator()
 		}
 	}
 
@@ -371,7 +371,7 @@ export default class RecurrenceManager {
 	 * @param {String} valueType
 	 * @returns {(DateTimeValue|PeriodValue)[]}
 	 */
-	listAllRecurrenceDates(isNegative=false, valueType=null) {
+	listAllRecurrenceDates(isNegative = false, valueType = null) {
 		return Array.from(this.getRecurrenceDateIterator(isNegative, valueType))
 	}
 
@@ -383,7 +383,7 @@ export default class RecurrenceManager {
 	 * @param {DateTimeValue|PeriodValue} value
 	 * @param {boolean} isNegative
 	 */
-	addRecurrenceDate(isNegative=false, value) {
+	addRecurrenceDate(isNegative = false, value) {
 		this._modify()
 		this.resetCache()
 
@@ -414,7 +414,7 @@ export default class RecurrenceManager {
 	 * @param isNegative
 	 * @param recurrenceId
 	 */
-	hasRecurrenceDate(isNegative=false, recurrenceId) {
+	hasRecurrenceDate(isNegative = false, recurrenceId) {
 		for (let value of this.getRecurrenceDateIterator(isNegative)) {
 			if (value instanceof PeriodValue) {
 				value = value.start
@@ -434,7 +434,7 @@ export default class RecurrenceManager {
 	 * @param recurrenceId
 	 * @returns {null|DateTimeValue|PeriodValue}
 	 */
-	getRecurrenceDate(isNegative=false, recurrenceId) {
+	getRecurrenceDate(isNegative = false, recurrenceId) {
 		for (let value of this.getRecurrenceDateIterator(isNegative)) {
 			let valueToCheck = value
 			if (valueToCheck instanceof PeriodValue) {
@@ -455,7 +455,7 @@ export default class RecurrenceManager {
 	 * @param {DateTimeValue|PeriodValue} value
 	 * @param {boolean} isNegative
 	 */
-	removeRecurrenceDate(isNegative=false, value) {
+	removeRecurrenceDate(isNegative = false, value) {
 		this._modify()
 		this.resetCache()
 
@@ -484,7 +484,7 @@ export default class RecurrenceManager {
 	 * @param {String} valueType
 	 * @param {boolean} isNegative
 	 */
-	clearAllRecurrenceDates(isNegative=false, valueType=null) {
+	clearAllRecurrenceDates(isNegative = false, valueType = null) {
 		this._modify()
 		this.resetCache()
 
@@ -531,17 +531,17 @@ export default class RecurrenceManager {
 	 * @returns {IterableIterator<PeriodValue|DateTimeValue>}
 	 * @private
 	 */
-	*_getPropertiesForRecurrenceDate(isNegative, valueType, timezoneId=null) {
+	* _getPropertiesForRecurrenceDate(isNegative, valueType, timezoneId = null) {
 		const propertyName = this._getPropertyNameByIsNegative(isNegative)
 
 		for (const property of this._masterItem.getPropertyIterator(propertyName)) {
 			if (valueType === null) {
 				yield property
-			} else if(uc(valueType) === 'PERIOD' && property.getFirstValue() instanceof PeriodValue) {
+			} else if (uc(valueType) === 'PERIOD' && property.getFirstValue() instanceof PeriodValue) {
 				yield property
-			} else if(uc(valueType) === 'DATE' && property.getFirstValue().isDate) {
+			} else if (uc(valueType) === 'DATE' && property.getFirstValue().isDate) {
 				yield property
-			} else if(uc(valueType) === 'DATETIME' && !property.getFirstValue().isDate) {
+			} else if (uc(valueType) === 'DATETIME' && !property.getFirstValue().isDate) {
 				if (timezoneId === null || property.getFirstValue().timezoneId === timezoneId) {
 					yield property
 				}
@@ -584,7 +584,7 @@ export default class RecurrenceManager {
 
 		let previous = null
 		let next
-		while((next = iterator.next())) {
+		while ((next = iterator.next())) {
 			if (next.compare(recurrenceId) === -1) {
 				previous = next
 			} else {
@@ -606,7 +606,7 @@ export default class RecurrenceManager {
 	 * @param {DateTimeValue} start
 	 * @param {DateTimeValue} end
 	 */
-	*getAllOccurrencesBetweenIterator(start, end) {
+	* getAllOccurrencesBetweenIterator(start, end) {
 		if (!this.masterItem.isRecurring()) {
 			if (typeof this.masterItem.isInTimeFrame !== 'function') {
 				yield this.masterItem
@@ -623,7 +623,7 @@ export default class RecurrenceManager {
 		end = end.toICALJs()
 
 		let next
-		while((next = iterator.next())) {
+		while ((next = iterator.next())) {
 			if (next.compare(start) === -1) {
 				continue
 			}
@@ -655,7 +655,7 @@ export default class RecurrenceManager {
 	updateUID(newUID) {
 		this._masterItem.updatePropertyWithValue('UID', newUID)
 
-		for(const recurrenceExceptionItem of this.getRecurrenceExceptionIterator()) {
+		for (const recurrenceExceptionItem of this.getRecurrenceExceptionIterator()) {
 			recurrenceExceptionItem.updatePropertyWithValue('UID', newUID)
 		}
 	}
@@ -799,7 +799,7 @@ export default class RecurrenceManager {
 				ruleDates,
 				dtstart,
 				(a, b) => a.compare(b)
-			);
+			)
 			ruleDate = exDates[ruleDateInc]
 		}
 
@@ -817,7 +817,7 @@ export default class RecurrenceManager {
 			exDates,
 			dtstart,
 			(a, b) => a.compare(b)
-		);
+		)
 		exDate = exDates[exDateInc]
 
 		return new ICAL.RecurExpansion({
@@ -843,4 +843,5 @@ export default class RecurrenceManager {
 			throw new ModificationNotAllowedError()
 		}
 	}
+
 }

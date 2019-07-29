@@ -19,9 +19,9 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import Property from "./property.js";
-import { createProperty } from '../factories/icalFactory.js';
-import { lc } from '../helpers/stringHelper.js';
+import Property from './property.js'
+import { createProperty } from '../factories/icalFactory.js'
+import { lc } from '../helpers/stringHelper.js'
 
 /**
  * @class GeoProperty
@@ -34,7 +34,7 @@ export default class GeoProperty extends Property {
 	/**
 	 * @inheritDoc
 	 */
-	constructor(name, value=[0, 0], parameters=[], root=null, parent=null) {
+	constructor(name, value = [0, 0], parameters = [], root = null, parent = null) {
 		super(name, value, parameters, root, parent)
 	}
 
@@ -113,4 +113,5 @@ export default class GeoProperty extends Property {
 	static fromPosition(lat, long) {
 		return new GeoProperty('GEO', [lat, long])
 	}
+
 }

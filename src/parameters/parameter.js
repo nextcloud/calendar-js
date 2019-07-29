@@ -20,10 +20,10 @@
  *
  */
 
-import ModificationNotAllowedError from "../errors/modificationNotAllowedError.js";
-import { uc } from '../helpers/stringHelper.js';
-import lockableTrait from '../traits/lockable.js';
-import observerTrait from '../traits/observer.js';
+import ModificationNotAllowedError from '../errors/modificationNotAllowedError.js'
+import { uc } from '../helpers/stringHelper.js'
+import lockableTrait from '../traits/lockable.js'
+import observerTrait from '../traits/observer.js'
 
 /**
  * @class Parameter
@@ -40,7 +40,7 @@ export default class Parameter extends observerTrait(lockableTrait(class {})) {
 	 * @param {string} name
 	 * @param {string|Array|null} value
 	 */
-	constructor(name, value=null) {
+	constructor(name, value = null) {
 		super()
 
 		/**
@@ -112,9 +112,9 @@ export default class Parameter extends observerTrait(lockableTrait(class {})) {
 	 *
 	 * @returns {IterableIterator<IterableIterator<string> | *|String|Array>}
 	 */
-	*getValueIterator() {
+	* getValueIterator() {
 		if (this.isMultiValue()) {
-			yield* this.value.slice()[Symbol.iterator]()
+			yield * this.value.slice()[Symbol.iterator]()
 		} else {
 			yield this.value
 		}
@@ -154,4 +154,5 @@ export default class Parameter extends observerTrait(lockableTrait(class {})) {
 		super._modifyContent()
 		this._notifySubscribers()
 	}
+
 }

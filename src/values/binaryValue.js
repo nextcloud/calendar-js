@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import AbstractValue from './abstractValue.js';
+import AbstractValue from './abstractValue.js'
 
 /**
  * @class BinaryValue
@@ -111,4 +111,5 @@ export default class BinaryValue extends AbstractValue {
 		icalBinary.setEncodedValue(decodedValue)
 		return BinaryValue.fromICALJs(icalBinary)
 	}
+
 }

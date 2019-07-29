@@ -19,8 +19,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import AbstractRepairStep from "../abstractRepairStep.js";
-import { uc } from '../../../helpers/stringHelper.js';
+import AbstractRepairStep from '../abstractRepairStep.js'
+import { uc } from '../../../helpers/stringHelper.js'
 
 /**
  * @class ICalendarMultipleVCalendarBlocksRepairStep
@@ -84,4 +84,5 @@ export default class ICalendarMultipleVCalendarBlocksRepairStep extends Abstract
 				return match
 			})
 	}
+
 }

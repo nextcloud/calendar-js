@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import Timezone from './timezone.js';
+import Timezone from './timezone.js'
 
 /**
  * @class TimezoneManager
@@ -95,7 +95,7 @@ export class TimezoneManager {
 	 * @param {Boolean} includeAliases
 	 * @returns {String[]}
 	 */
-	listAllTimezones(includeAliases=false) {
+	listAllTimezones(includeAliases = false) {
 		const timezones = Array.from(this._timezones.keys())
 
 		if (includeAliases) {
@@ -154,6 +154,7 @@ export class TimezoneManager {
 		timezoneManager.registerAlias('GMT', Timezone.utc.timezoneId)
 		timezoneManager.registerAlias('Z', Timezone.utc.timezoneId)
 	}
+
 }
 
 const timezoneManager = new TimezoneManager()

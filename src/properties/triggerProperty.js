@@ -19,9 +19,9 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import Property from './property.js';
-import DurationValue from '../values/durationValue.js';
-import DateTimeValue from '../values/dateTimeValue.js';
+import Property from './property.js'
+import DurationValue from '../values/durationValue.js'
+import DateTimeValue from '../values/dateTimeValue.js'
 
 /**
  * @class TriggerProperty
@@ -105,7 +105,8 @@ export default class TriggerProperty extends Property {
 	 * @param {Boolean=} relatedToStart Related to Start or end?
 	 * @returns {TriggerProperty}
 	 */
-	static fromRelativeAndRelated(alarmOffset, relatedToStart=true) {
+	static fromRelativeAndRelated(alarmOffset, relatedToStart = true) {
 		return new TriggerProperty('TRIGGER', alarmOffset, [['RELATED', relatedToStart ? 'START' : 'END']])
 	}
+
 }

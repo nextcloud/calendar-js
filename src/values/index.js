@@ -19,14 +19,14 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import BinaryValue from './binaryValue.js';
-import DurationValue from './durationValue.js';
-import PeriodValue from './periodValue.js';
-import RecurValue from './recurValue.js';
-import DateTimeValue from './dateTimeValue.js';
-import UTCOffsetValue from './utcOffsetValue.js';
-import UnknownICALTypeError from '../errors/unknownICALTypeError.js';
-import { lc } from '../helpers/stringHelper.js';
+import BinaryValue from './binaryValue.js'
+import DurationValue from './durationValue.js'
+import PeriodValue from './periodValue.js'
+import RecurValue from './recurValue.js'
+import DateTimeValue from './dateTimeValue.js'
+import UTCOffsetValue from './utcOffsetValue.js'
+import UnknownICALTypeError from '../errors/unknownICALTypeError.js'
+import { lc } from '../helpers/stringHelper.js'
 
 /**
  *
@@ -34,27 +34,27 @@ import { lc } from '../helpers/stringHelper.js';
  * @returns {RecurValue|PeriodValue|BinaryValue|DurationValue|UTCOffsetValue|DateTimeValue}
  */
 export function getConstructorForICALType(icaltype) {
-	switch(lc(icaltype)) {
-		case 'binary':
-			return BinaryValue
+	switch (lc(icaltype)) {
+	case 'binary':
+		return BinaryValue
 
-		case 'date':
-		case 'date-time':
-			return DateTimeValue
+	case 'date':
+	case 'date-time':
+		return DateTimeValue
 
-		case 'duration':
-			return DurationValue
+	case 'duration':
+		return DurationValue
 
-		case 'period':
-			return PeriodValue
+	case 'period':
+		return PeriodValue
 
-		case 'recur':
-			return RecurValue
+	case 'recur':
+		return RecurValue
 
-		case 'utc-offset':
-			return UTCOffsetValue
+	case 'utc-offset':
+		return UTCOffsetValue
 
-		default:
-			throw new UnknownICALTypeError()
+	default:
+		throw new UnknownICALTypeError()
 	}
 }

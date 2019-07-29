@@ -19,14 +19,14 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import lockableTrait from '../traits/lockable.js';
-import ExpectedICalJSError from "../errors/expectedICalJSError.js";
-import { lc, uc, ucFirst } from '../helpers/stringHelper.js';
-import { createComponent } from '../factories/icalFactory.js';
-import { getConstructorForPropertyName } from '../properties';
-import Property from '../properties/property.js';
-import Parameter from '../parameters/parameter.js';
-import observerTrait from '../traits/observer.js';
+import lockableTrait from '../traits/lockable.js'
+import ExpectedICalJSError from '../errors/expectedICalJSError.js'
+import { lc, uc, ucFirst } from '../helpers/stringHelper.js'
+import { createComponent } from '../factories/icalFactory.js'
+import { getConstructorForPropertyName } from '../properties'
+import Property from '../properties/property.js'
+import Parameter from '../parameters/parameter.js'
+import observerTrait from '../traits/observer.js'
 
 /**
  * @class AbstractComponent
@@ -42,7 +42,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * @param {CalendarComponent|null} root
 	 * @param {AbstractComponent|null} parent
 	 */
-	constructor(name, properties=[], components=[], root=null, parent=null) {
+	constructor(name, properties = [], components = [], root = null, parent = null) {
 		super()
 
 		/**
@@ -200,7 +200,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * @param {String=}propertyName
 	 * @returns {IterableIterator<*>}
 	 */
-	*getPropertyIterator(propertyName=null) {
+	* getPropertyIterator(propertyName = null) {
 		if (propertyName) {
 			if (!this.hasProperty(propertyName)) {
 				return
@@ -208,10 +208,10 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 
 			// this._properties.get() returns an array
 			// [Symbol.iterator]() creates an iterator from that array
-			yield* this._properties.get(uc(propertyName)).slice()[Symbol.iterator]()
+			yield * this._properties.get(uc(propertyName)).slice()[Symbol.iterator]()
 		} else {
 			for (const key of this._properties.keys()) {
-				yield* this.getPropertyIterator(key)
+				yield * this.getPropertyIterator(key)
 			}
 		}
 	}
@@ -224,7 +224,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * @returns {IterableIterator<Property>}
 	 * @private
 	 */
-	*_getAllOfPropertyByLang(propertyName, lang) {
+	* _getAllOfPropertyByLang(propertyName, lang) {
 		for (const property of this.getPropertyIterator(propertyName)) {
 			// getParameterFirstValue will return null if language not set, so no language parameter will match lang=null
 			if (property.getParameterFirstValue('LANGUAGE') === lang) {
@@ -292,7 +292,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 			return false
 		}
 
-		const arr = this._properties.get(property.name);
+		const arr = this._properties.get(property.name)
 		const index = arr.indexOf(property)
 		if (index === -1) {
 			return false
@@ -341,7 +341,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * @param {String=} componentName
 	 * @returns {IterableIterator<AbstractComponent>}
 	 */
-	*getComponentIterator(componentName) {
+	* getComponentIterator(componentName) {
 		if (componentName) {
 			if (!this.hasComponent(componentName)) {
 				return
@@ -349,14 +349,13 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 
 			// this._components.get() returns an array
 			// [Symbol.iterator]() creates an iterator from that array
-			yield* this._components.get(uc(componentName)).slice()[Symbol.iterator]()
+			yield * this._components.get(uc(componentName)).slice()[Symbol.iterator]()
 		} else {
 			for (const key of this._components.keys()) {
-				yield* this.getComponentIterator(key)
+				yield * this.getComponentIterator(key)
 			}
 		}
 	}
-
 
 	/**
 	 * Adds a new component to this component
@@ -404,7 +403,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 			return false
 		}
 
-		const arr = this._components.get(component.name);
+		const arr = this._components.get(component.name)
 		const index = arr.indexOf(component)
 		if (index === -1) {
 			return false
@@ -525,7 +524,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * @param {AbstractComponent=} parent
 	 * @returns {AbstractComponent}
 	 */
-	static fromICALJs(icalValue, root=null, parent=null) {
+	static fromICALJs(icalValue, root = null, parent = null) {
 		if (!(icalValue instanceof ICAL.Component)) {
 			throw new ExpectedICalJSError()
 		}
@@ -576,6 +575,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 
 		return component
 	}
+
 }
 
 /**
@@ -587,7 +587,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
  * @param {Object} options
  * @param {Boolean} advertiseValueOnly
  */
-export function advertiseSingleOccurrenceProperty(prototype, options, advertiseValueOnly=true) {
+export function advertiseSingleOccurrenceProperty(prototype, options, advertiseValueOnly = true) {
 	options = getDefaultOncePropConfig(options)
 
 	Object.defineProperty(prototype, options.name, {
@@ -628,8 +628,8 @@ export function advertiseSingleOccurrenceProperty(prototype, options, advertiseV
 export function advertiseMultipleOccurrenceProperty(prototype, options) {
 	options = getDefaultMultiplePropConfig(options)
 
-	prototype['get' + ucFirst(options.name) + 'Iterator'] = function*() {
-		yield* this.getPropertyIterator(options.iCalendarName)
+	prototype['get' + ucFirst(options.name) + 'Iterator'] = function * () {
+		yield * this.getPropertyIterator(options.iCalendarName)
 	}
 
 	prototype['get' + ucFirst(options.name) + 'List'] = function() {
@@ -645,7 +645,6 @@ export function advertiseMultipleOccurrenceProperty(prototype, options) {
 	}
 }
 
-
 /**
  * advertises a multi-value string property enabling simple access by language
  * This is used for:
@@ -658,17 +657,17 @@ export function advertiseMultipleOccurrenceProperty(prototype, options) {
 export function advertiseMultiValueStringPropertySeparatedByLang(prototype, options) {
 	options = getDefaultMultiplePropConfig(options)
 
-	prototype['get' + ucFirst(options.name) + 'Iterator'] = function*(lang=null) {
+	prototype['get' + ucFirst(options.name) + 'Iterator'] = function * (lang = null) {
 		for (const property of this._getAllOfPropertyByLang(options.iCalendarName, lang)) {
-			yield* property.getValueIterator()
+			yield * property.getValueIterator()
 		}
 	}
 
-	prototype['get' + ucFirst(options.name) + 'List'] = function(lang=null) {
+	prototype['get' + ucFirst(options.name) + 'List'] = function(lang = null) {
 		return Array.from(this['get' + ucFirst(options.name) + 'Iterator'](lang))
 	}
 
-	prototype['add' + ucFirst(options.name)] = function(value, lang=null) {
+	prototype['add' + ucFirst(options.name)] = function(value, lang = null) {
 		const property = this._getFirstOfPropertyByLang(options.iCalendarName, lang)
 		if (property) {
 			property.value.push(value)
@@ -683,7 +682,7 @@ export function advertiseMultiValueStringPropertySeparatedByLang(prototype, opti
 		}
 	}
 
-	prototype['remove' + ucFirst(options.name)] = function(value, lang=null) {
+	prototype['remove' + ucFirst(options.name)] = function(value, lang = null) {
 		for (const property of this._getAllOfPropertyByLang(options.iCalendarName, lang)) {
 			if (Array.isArray(property.value) && property.value.includes(value)) {
 				if (property.value.length === 1) {
@@ -701,7 +700,7 @@ export function advertiseMultiValueStringPropertySeparatedByLang(prototype, opti
 		return false
 	}
 
-	prototype['clearAll' + ucFirst(options.pluralName)] = function(lang=null) {
+	prototype['clearAll' + ucFirst(options.pluralName)] = function(lang = null) {
 		for (const property of this._getAllOfPropertyByLang(options.iCalendarName, lang)) {
 			this.deleteProperty(property)
 		}
@@ -717,8 +716,8 @@ export function advertiseMultiValueStringPropertySeparatedByLang(prototype, opti
 export function advertiseComponent(prototype, options) {
 	options = getDefaultMultipleCompConfig(options)
 
-	prototype['get' + ucFirst(options.name) + 'Iterator'] = function*() {
-		yield* this.getComponentIterator(options.iCalendarName)
+	prototype['get' + ucFirst(options.name) + 'Iterator'] = function * () {
+		yield * this.getComponentIterator(options.iCalendarName)
 	}
 
 	prototype['get' + ucFirst(options.name) + 'List'] = function() {

@@ -19,13 +19,13 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-export { setConfig } from './config.js'
 import { getParserManager } from './parsers/parserManager.js'
+
+import TimezoneAdapter from './timezones/timezoneAdapter.js'
+import { getTimezoneManager } from './timezones/timezoneManager.js'
+export { setConfig } from './config.js'
 export { getParserManager }
 export { getTimezoneManager } from './timezones/timezoneManager.js'
-
-import TimezoneAdapter from './timezones/timezoneAdapter.js';
-import { getTimezoneManager } from './timezones/timezoneManager.js'
 if (!(ICAL.TimezoneService instanceof TimezoneAdapter)) {
 	ICAL.TimezoneService = new TimezoneAdapter(getTimezoneManager())
 }
@@ -39,7 +39,7 @@ if (!(ICAL.TimezoneService instanceof TimezoneAdapter)) {
  * @param {DateTimeValue} end
  * @returns {IterableIterator<AbstractRecurringComponent>}
  */
-export function* parseICSAndGetAllOccurrencesBetween(ics, start, end) {
+export function * parseICSAndGetAllOccurrencesBetween(ics, start, end) {
 	const parserManager = getParserManager()
 	const icsParser = parserManager.getParserForFileType('text/calendar')
 	icsParser.parse(ics)
@@ -56,5 +56,5 @@ export function* parseICSAndGetAllOccurrencesBetween(ics, start, end) {
 		return
 	}
 
-	yield* firstVObject.recurrenceManager.getAllOccurrencesBetweenIterator(start, end)
+	yield * firstVObject.recurrenceManager.getAllOccurrencesBetweenIterator(start, end)
 }

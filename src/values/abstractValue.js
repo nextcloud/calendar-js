@@ -19,8 +19,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import lockableTrait from '../traits/lockable.js';
-import observerTrait from '../traits/observer.js';
+import lockableTrait from '../traits/lockable.js'
+import observerTrait from '../traits/observer.js'
 
 /**
  * @class AbstractValue
@@ -35,7 +35,7 @@ export default class AbstractValue extends observerTrait(lockableTrait(class {})
 	 */
 	constructor(icalValue) {
 		if (new.target === AbstractValue) {
-			throw new TypeError('Cannot instantiate abstract class AbstractValue');
+			throw new TypeError('Cannot instantiate abstract class AbstractValue')
 		}
 		super()
 
@@ -63,4 +63,5 @@ export default class AbstractValue extends observerTrait(lockableTrait(class {})
 		super._modifyContent()
 		this._notifySubscribers()
 	}
+
 }

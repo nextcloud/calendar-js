@@ -19,8 +19,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import AbstractValue from './abstractValue.js';
-import DurationValue from './durationValue.js';
+import AbstractValue from './abstractValue.js'
+import DurationValue from './durationValue.js'
 
 /**
  * @class DateTimeValue
@@ -375,7 +375,7 @@ export default class DateTimeValue extends AbstractValue {
 	 * @param {Boolean=} useUTC
 	 * @returns {DateTimeValue}
 	 */
-	static fromJSDate(jsDate, useUTC=false) {
+	static fromJSDate(jsDate, useUTC = false) {
 		const icalValue = ICAL.Time.fromJSDate(jsDate, useUTC)
 		return DateTimeValue.fromICALJs(icalValue)
 	}
@@ -400,6 +400,7 @@ export default class DateTimeValue extends AbstractValue {
 			: undefined)
 		return DateTimeValue.fromICALJs(icalValue)
 	}
+
 }
 
 DateTimeValue.SUNDAY = ICAL.Time.SUNDAY

@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import Property from './property.js';
+import Property from './property.js'
 
 /**
  * @class FreeBusyProperty
@@ -67,4 +67,5 @@ export default class FreeBusyProperty extends Property {
 	static fromPeriodAndType(period, type) {
 		return new FreeBusyProperty('FREEBUSY', period, [['fbtype', type]])
 	}
+
 }

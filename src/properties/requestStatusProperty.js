@@ -19,9 +19,9 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import Property from "./property.js";
-import { createProperty } from '../factories/icalFactory.js';
-import { lc } from '../helpers/stringHelper.js';
+import Property from './property.js'
+import { createProperty } from '../factories/icalFactory.js'
+import { lc } from '../helpers/stringHelper.js'
 
 /**
  * @class RequestStatusProperty
@@ -34,7 +34,7 @@ export default class RequestStatusProperty extends Property {
 	/**
 	 * @inheritDoc
 	 */
-	constructor(name, value=['1', 'Pending'], parameters=[], root=null, parent=null) {
+	constructor(name, value = ['1', 'Pending'], parameters = [], root = null, parent = null) {
 		super(name, value, parameters, root, parent)
 	}
 
@@ -172,6 +172,7 @@ export default class RequestStatusProperty extends Property {
 	static fromCodeAndMessage(code, message) {
 		return new RequestStatusProperty('REQUEST-STATUS', [code.toString(), message])
 	}
+
 }
 
 // All request statuses registered in RFC 5546

@@ -31,7 +31,7 @@ export default function observerTrait(baseClass) {
 		 * Constructor
 		 */
 		constructor(...args) {
-			super(...args);
+			super(...args)
 
 			/**
 			 * List of subscribers
@@ -75,5 +75,6 @@ export default function observerTrait(baseClass) {
 				handler(...args)
 			}
 		}
+
 	}
 }

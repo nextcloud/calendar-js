@@ -19,16 +19,16 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import ExpectedICalJSError from "../errors/expectedICalJSError.js";
-import ModificationNotAllowedError from "../errors/modificationNotAllowedError.js";
-import Parameter from "../parameters/parameter.js";
-import { createProperty } from "../factories/icalFactory.js";
-import { lc, uc } from '../helpers/stringHelper.js';
-import { getConstructorForICALType } from '../values';
-import AbstractValue from '../values/abstractValue.js';
-import DateTimeValue from '../values/dateTimeValue.js';
-import lockableTrait from '../traits/lockable.js';
-import observerTrait from '../traits/observer.js';
+import ExpectedICalJSError from '../errors/expectedICalJSError.js'
+import ModificationNotAllowedError from '../errors/modificationNotAllowedError.js'
+import Parameter from '../parameters/parameter.js'
+import { createProperty } from '../factories/icalFactory.js'
+import { lc, uc } from '../helpers/stringHelper.js'
+import { getConstructorForICALType } from '../values'
+import AbstractValue from '../values/abstractValue.js'
+import DateTimeValue from '../values/dateTimeValue.js'
+import lockableTrait from '../traits/lockable.js'
+import observerTrait from '../traits/observer.js'
 
 /**
  * @class Property
@@ -48,7 +48,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	 * @param {CalendarComponent|null} root
 	 * @param {AbstractComponent|null} parent
 	 */
-	constructor(name, value=null, parameters=[], root=null, parent=null) {
+	constructor(name, value = null, parameters = [], root = null, parent = null) {
 		super()
 
 		/**
@@ -90,7 +90,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 		 */
 		this._parent = parent
 
-		this._setParametersFromConstructor(parameters);
+		this._setParametersFromConstructor(parameters)
 		if (value instanceof AbstractValue) {
 			value.subscribe(() => this._notifySubscribers())
 		}
@@ -192,9 +192,9 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	 *
 	 * @returns {IterableIterator<String|AbstractValue>}
 	 */
-	*getValueIterator() {
+	* getValueIterator() {
 		if (this.isMultiValue()) {
-			yield* this.value.slice()[Symbol.iterator]()
+			yield * this.value.slice()[Symbol.iterator]()
 		} else {
 			yield this.value
 		}
@@ -227,8 +227,8 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	 *
 	 * @returns {IterableIterator<*>}
 	 */
-	*getParametersIterator() {
-		yield* this._parameters.values()
+	* getParametersIterator() {
+		yield * this._parameters.values()
 	}
 
 	/**
@@ -398,11 +398,11 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	_setParametersFromConstructor(parameters) {
 		parameters.forEach((parameter) => {
 			if (!(parameter instanceof Parameter)) {
-				parameter = new Parameter(parameter[0], parameter[1]);
+				parameter = new Parameter(parameter[0], parameter[1])
 			}
 
 			this.setParameter(parameter)
-		});
+		})
 	}
 
 	/**
@@ -413,7 +413,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	 * @param {AbstractComponent=} parent
 	 * @returns {Property}
 	 */
-	static fromICALJs(icalProperty, root=null, parent=null) {
+	static fromICALJs(icalProperty, root = null, parent = null) {
 		if (!(icalProperty instanceof ICAL.Property)) {
 			throw new ExpectedICalJSError()
 		}
@@ -476,9 +476,9 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 		}
 
 		const firstValue = this.getFirstValue()
-		if (firstValue instanceof DateTimeValue &&
-			firstValue.timezoneId !== 'floating' &&
-			firstValue.timezoneId !== 'UTC') {
+		if (firstValue instanceof DateTimeValue
+			&& firstValue.timezoneId !== 'floating'
+			&& firstValue.timezoneId !== 'UTC') {
 			icalProperty.setParameter('tzid', firstValue.timezoneId)
 		}
 
@@ -492,4 +492,5 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 		super._modifyContent()
 		this._notifySubscribers()
 	}
+
 }

@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import AbstractRepairStep from "../abstractRepairStep.js";
+import AbstractRepairStep from '../abstractRepairStep.js'
 
 /**
  * @class ICalendarEmptyTriggerRepairStep
@@ -37,4 +37,5 @@ export default class ICalendarEmptyTriggerRepairStep extends AbstractRepairStep 
 			.replace(/^TRIGGER:P$/gm, 'TRIGGER:P0D')
 			.replace(/^TRIGGER:-P$/gm, 'TRIGGER:P0D')
 	}
+
 }

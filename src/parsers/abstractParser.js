@@ -34,9 +34,9 @@ export default class AbstractParser {
 	 * @param {Boolean} options.removeRSVPForAttendees (defaults to false)
 	 * @param {Boolean} options.includeTimezones (defaults to false)
 	 */
-	constructor(options={}) {
+	constructor(options = {}) {
 		if (new.target === AbstractParser) {
-			throw new TypeError('Cannot instantiate abstract class AbstractParser');
+			throw new TypeError('Cannot instantiate abstract class AbstractParser')
 		}
 
 		/**
@@ -156,7 +156,7 @@ export default class AbstractParser {
 	 * @throws TODO
 	 */
 	parse(data) {
-		throw new TypeError('Abstract method not implemented by subclass');
+		throw new TypeError('Abstract method not implemented by subclass')
 	}
 
 	/**
@@ -164,8 +164,8 @@ export default class AbstractParser {
 	 *
 	 * @returns {IterableIterator<CalendarComponent>}
 	 */
-	*getItemIterator() {
-		throw new TypeError('Abstract method not implemented by subclass');
+	* getItemIterator() {
+		throw new TypeError('Abstract method not implemented by subclass')
 	}
 
 	/**
@@ -242,6 +242,7 @@ export default class AbstractParser {
 	 * @returns {string[]}
 	 */
 	static getMimeTypes() {
-		throw new TypeError('Abstract method not implemented by subclass');
+		throw new TypeError('Abstract method not implemented by subclass')
 	}
+
 }

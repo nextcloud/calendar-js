@@ -19,15 +19,15 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import AbstractParser from "./abstractParser.js";
-import CalendarComponent from '../components/calendarComponent.js';
-import { getRepairSteps } from './repairsteps/icalendar';
-import { uc } from '../helpers/stringHelper.js';
-import { getConstructorForComponentName } from '../components/root';
-import { getTimezoneManager } from '../timezones/timezoneManager.js';
-import Timezone from '../timezones/timezone.js';
-import RecurrenceManager from '../recurrence/recurrenceManager.js';
-import DateTimeValue from '../values/dateTimeValue.js';
+import AbstractParser from './abstractParser.js'
+import CalendarComponent from '../components/calendarComponent.js'
+import { getRepairSteps } from './repairsteps/icalendar'
+import { uc } from '../helpers/stringHelper.js'
+import { getConstructorForComponentName } from '../components/root'
+import { getTimezoneManager } from '../timezones/timezoneManager.js'
+import Timezone from '../timezones/timezone.js'
+import RecurrenceManager from '../recurrence/recurrenceManager.js'
+import DateTimeValue from '../values/dateTimeValue.js'
 
 /**
  * @class ICalendarParser
@@ -171,7 +171,7 @@ export default class ICalendarParser extends AbstractParser {
 	/**
 	 * @inheritDoc
 	 */
-	*getItemIterator() {
+	* getItemIterator() {
 		for (const itemList of this._items.values()) {
 			const calendarComp = CalendarComponent.fromEmpty()
 
@@ -509,18 +509,18 @@ export default class ICalendarParser extends AbstractParser {
 	 * @private
 	 */
 	_markCompTypeAsSeen(compName) {
-		switch(uc(compName)) {
-			case 'VEVENT':
-				this._containsVEvents = true
-				break
+		switch (uc(compName)) {
+		case 'VEVENT':
+			this._containsVEvents = true
+			break
 
-			case 'VJOURNAL':
-				this._containsVJournals = true
-				break
+		case 'VJOURNAL':
+			this._containsVJournals = true
+			break
 
-			case 'VTODO':
-				this._containsVTodos = true
-				break
+		case 'VTODO':
+			this._containsVTodos = true
+			break
 		}
 	}
 
@@ -530,4 +530,5 @@ export default class ICalendarParser extends AbstractParser {
 	static getMimeTypes() {
 		return ['text/calendar']
 	}
+
 }

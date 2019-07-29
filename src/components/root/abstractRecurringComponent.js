@@ -24,24 +24,24 @@ import AbstractComponent, {
 	advertiseMultipleOccurrenceProperty,
 	advertiseMultiValueStringPropertySeparatedByLang,
 	advertiseSingleOccurrenceProperty
-} from '../abstractComponent.js';
-import DateTimeValue from '../../values/dateTimeValue.js';
-import DurationValue from '../../values/durationValue.js';
-import PeriodValue from '../../values/periodValue.js';
+} from '../abstractComponent.js'
+import DateTimeValue from '../../values/dateTimeValue.js'
+import DurationValue from '../../values/durationValue.js'
+import PeriodValue from '../../values/periodValue.js'
 import { dateFactory } from '../../factories/dateFactory.js'
-import { uc } from '../../helpers/stringHelper.js';
+import { uc } from '../../helpers/stringHelper.js'
 import RecurrenceManager from '../../recurrence/recurrenceManager.js'
 import uuid from 'uuid'
-import RelationProperty from '../../properties/relationProperty.js';
-import AttendeeProperty from '../../properties/attendeeProperty.js';
-import Timezone from '../../timezones/timezone.js';
-import RequestStatusProperty from '../../properties/requestStatusProperty.js';
-import AttachmentProperty from '../../properties/attachmentProperty.js';
-import ImageProperty from '../../properties/imageProperty.js';
-import TextProperty from '../../properties/textProperty.js';
-import AlarmComponent from '../nested/alarmComponent.js';
-import TriggerProperty from '../../properties/triggerProperty.js';
-import { getConfig } from '../../config.js';
+import RelationProperty from '../../properties/relationProperty.js'
+import AttendeeProperty from '../../properties/attendeeProperty.js'
+import Timezone from '../../timezones/timezone.js'
+import RequestStatusProperty from '../../properties/requestStatusProperty.js'
+import AttachmentProperty from '../../properties/attachmentProperty.js'
+import ImageProperty from '../../properties/imageProperty.js'
+import TextProperty from '../../properties/textProperty.js'
+import AlarmComponent from '../nested/alarmComponent.js'
+import TriggerProperty from '../../properties/triggerProperty.js'
+import { getConfig } from '../../config.js'
 
 /**
  * @class AbstractRecurringComponent
@@ -337,7 +337,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * @param {DurationValue=} startDiff to be used when
 	 * @returns {AbstractRecurringComponent}
 	 */
-	forkItem(recurrenceId, startDiff=null) {
+	forkItem(recurrenceId, startDiff = null) {
 		const occurrence = this.clone()
 
 		occurrence.recurrenceManager = this.recurrenceManager
@@ -423,7 +423,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * In case you set `thisAndAllFuture` to true, this will be an
 	 * AbstractRecurringComponent inside a entirely new calendar component
 	 */
-	createRecurrenceException(thisAndAllFuture=false) {
+	createRecurrenceException(thisAndAllFuture = false) {
 		if (!this.canCreateRecurrenceExceptions()) {
 			throw new Error('Can\'t create recurrence-exceptions for non-recurring items')
 		}
@@ -528,7 +528,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * @throws EmptyRecurrenceSetError Thrown, when deleting an occurrence results in no more events
 	 * @returns {Boolean} true if this deleted the last occurrence in set, false if there are occurrences left
 	 */
-	removeThisOccurrence(thisAndAllFuture=false) {
+	removeThisOccurrence(thisAndAllFuture = false) {
 		if (!this.isPartOfRecurrenceSet()) {
 			// When deleting an object, that's not part of a recurring set,
 			// the calendar-document would be empty.
@@ -595,7 +595,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * @inheritDoc
 	 */
 	clone() {
-		const comp = super.clone();
+		const comp = super.clone()
 		comp.resetDirty()
 
 		return comp
@@ -664,7 +664,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * @param {String} data
 	 * @param {String} formatType
 	 */
-	addAttachmentFromData(data, formatType=null) {
+	addAttachmentFromData(data, formatType = null) {
 		this.addProperty(AttachmentProperty.fromData(data, formatType))
 	}
 
@@ -674,7 +674,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * @param {String} uri
 	 * @param {String} formatType
 	 */
-	addAttachmentFromLink(uri, formatType=null) {
+	addAttachmentFromLink(uri, formatType = null) {
 		this.addProperty(AttachmentProperty.fromLink(uri, formatType))
 	}
 
@@ -707,7 +707,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * @param {String=} display
 	 * @param {String=} formatType
 	 */
-	addImageFromData(data, display=null, formatType=null) {
+	addImageFromData(data, display = null, formatType = null) {
 		this.addProperty(ImageProperty.fromData(data, display, formatType))
 	}
 
@@ -718,7 +718,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * @param {String=} display
 	 * @param {String=} formatType
 	 */
-	addImageFromLink(uri, display=null, formatType=null) {
+	addImageFromLink(uri, display = null, formatType = null) {
 		this.addProperty(ImageProperty.fromLink(uri, display, formatType))
 	}
 
@@ -732,7 +732,6 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	addRelation(relType, relId) {
 		this.addProperty(RelationProperty.fromRelTypeAndId(relType, relId))
 	}
-
 
 	/**
 	 * Creates a new REQUEST-STATUS property based on code and message
@@ -767,7 +766,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * @param {DurationValue} alarmOffset
 	 * @param {Boolean=} relatedToStart
 	 */
-	addRelativeAlarm(action, alarmOffset, relatedToStart=true) {
+	addRelativeAlarm(action, alarmOffset, relatedToStart = true) {
 		const alarmComp = new AlarmComponent('VALARM', [
 			['action', action],
 			TriggerProperty.fromRelativeAndRelated(alarmOffset, relatedToStart)
@@ -906,7 +905,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 */
 	deleteAllProperties(propertyName) {
 		this.markPropertyAsDirty(propertyName)
-		return super.deleteAllProperties(propertyName);
+		return super.deleteAllProperties(propertyName)
 	}
 
 	/**
@@ -915,7 +914,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	addComponent(component) {
 		this.markSubComponentAsDirty(component.name)
 		component.subscribe(() => this.markSubComponentAsDirty(component.name))
-		return super.addComponent(component);
+		return super.addComponent(component)
 	}
 
 	/**
@@ -923,7 +922,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 */
 	deleteComponent(component) {
 		this.markSubComponentAsDirty(component.name)
-		return super.deleteComponent(component);
+		return super.deleteComponent(component)
 	}
 
 	/**
@@ -931,7 +930,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 */
 	deleteAllComponents(componentName) {
 		this.markSubComponentAsDirty(componentName)
-		return super.deleteAllComponents(componentName);
+		return super.deleteAllComponents(componentName)
 	}
 
 	/**
@@ -982,6 +981,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 
 		return comp
 	}
+
 }
 
 /**
@@ -1111,7 +1111,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  * @name EventComponent#accessClass
  * @type {String}
  */
-advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype,  {
+advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
 	name: 'accessClass',
 	iCalendarName: 'class',
 	allowedValues: ['PUBLIC', 'PRIVATE', 'CONFIDENTIAL'],

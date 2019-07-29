@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import AbstractValue from './abstractValue.js';
+import AbstractValue from './abstractValue.js'
 
 /**
  * @class DurationValue
@@ -276,4 +276,5 @@ export default class DurationValue extends AbstractValue {
 		const icalDuration = ICAL.Duration.fromData(data)
 		return new DurationValue(icalDuration)
 	}
+
 }

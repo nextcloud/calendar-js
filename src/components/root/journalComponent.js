@@ -19,9 +19,9 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import AbstractRecurringComponent from "./abstractRecurringComponent.js";
-import { advertiseMultipleOccurrenceProperty } from '../abstractComponent.js';
-import TextProperty from '../../properties/textProperty.js';
+import AbstractRecurringComponent from './abstractRecurringComponent.js'
+import { advertiseMultipleOccurrenceProperty } from '../abstractComponent.js'
+import TextProperty from '../../properties/textProperty.js'
 
 /**
  * @class JournalComponent
@@ -41,6 +41,7 @@ export default class JournalComponent extends AbstractRecurringComponent {
 	addDescription(description) {
 		this.addProperty(new TextProperty('DESCRIPTION', description))
 	}
+
 }
 
 /**

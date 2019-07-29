@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import ModificationNotAllowedError from '../errors/modificationNotAllowedError.js';
+import ModificationNotAllowedError from '../errors/modificationNotAllowedError.js'
 
 export default function lockableTrait(baseClass) {
 
@@ -32,7 +32,7 @@ export default function lockableTrait(baseClass) {
 		 * Constructor
 		 */
 		constructor(...args) {
-			super(...args);
+			super(...args)
 
 			/**
 			 * Indicator whether this value was locked for changes
@@ -95,5 +95,6 @@ export default function lockableTrait(baseClass) {
 		_modifyContent() {
 			this._modify()
 		}
+
 	}
 }

@@ -20,8 +20,8 @@
  *
  */
 
-import { lc } from '../helpers/stringHelper.js';
-import { getConfig } from '../config.js';
+import { lc } from '../helpers/stringHelper.js'
+import { getConfig } from '../config.js'
 
 /**
  * creates a new ICAL.Component object
@@ -48,7 +48,7 @@ export function createProperty(propertyName) {
  *
  * @param {String?} method
  */
-export function createCalendarComponent(method=null) {
+export function createCalendarComponent(method = null) {
 	const calendarComp = createComponent('VCALENDAR')
 
 	calendarComp.addPropertyWithValue('prodid', getConfig('PRODID', '-//IDN georgehrke.com//calendar-js//EN'))

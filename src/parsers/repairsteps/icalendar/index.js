@@ -19,19 +19,19 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import ICalendarAddMissingUIDRepairStep from './icalendarAddMissingUIDRepairStep.js';
-import ICalendarAddMissingValueDateDoubleColonRepairStep from './icalendarAddMissingValueDateDoubleColonRepairStep.js';
-import ICalendarAddMissingValueDateRepairStep from './icalendarAddMissingValueDateRepairStep.js';
-import ICalendarEmptyTriggerRepairStep from './icalendarEmptyTriggerRepairStep.js';
-import ICalendarMultipleVCalendarBlocksRepairStep from './icalendarMultipleVCalendarBlocksRepairStep.js';
-import ICalendarRemoveXNCGroupIdRepairStep from './icalendarRemoveXNCGroupIdRepairStep.js';
+import ICalendarAddMissingUIDRepairStep from './icalendarAddMissingUIDRepairStep.js'
+import ICalendarAddMissingValueDateDoubleColonRepairStep from './icalendarAddMissingValueDateDoubleColonRepairStep.js'
+import ICalendarAddMissingValueDateRepairStep from './icalendarAddMissingValueDateRepairStep.js'
+import ICalendarEmptyTriggerRepairStep from './icalendarEmptyTriggerRepairStep.js'
+import ICalendarMultipleVCalendarBlocksRepairStep from './icalendarMultipleVCalendarBlocksRepairStep.js'
+import ICalendarRemoveXNCGroupIdRepairStep from './icalendarRemoveXNCGroupIdRepairStep.js'
 
 /**
  * Get an iterator over all repair steps for iCalendar documents
  *
  * @returns {IterableIterator<AbstractRepairStep>}
  */
-export function* getRepairSteps() {
+export function * getRepairSteps() {
 	yield ICalendarAddMissingUIDRepairStep
 	yield ICalendarAddMissingValueDateDoubleColonRepairStep
 	yield ICalendarAddMissingValueDateRepairStep

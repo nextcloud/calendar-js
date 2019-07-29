@@ -19,9 +19,9 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import AbstractValue from './abstractValue.js';
-import DateTimeValue from './dateTimeValue.js';
-import DurationValue from './durationValue.js';
+import AbstractValue from './abstractValue.js'
+import DateTimeValue from './dateTimeValue.js'
+import DurationValue from './durationValue.js'
 
 /**
  * @class PeriodValue
@@ -240,4 +240,5 @@ export default class PeriodValue extends AbstractValue {
 		})
 		return PeriodValue.fromICALJs(icalPeriod)
 	}
+
 }

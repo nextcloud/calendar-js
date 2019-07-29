@@ -20,7 +20,7 @@
  *
  */
 
-import TimezoneComponent from '../components/root/timezoneComponent.js';
+import TimezoneComponent from '../components/root/timezoneComponent.js'
 
 /**
  * @class Timezone
@@ -189,6 +189,7 @@ export default class Timezone {
 			this._initialized = true
 		}
 	}
+
 }
 
 Timezone.utc = new Timezone(ICAL.Timezone.utcTimezone)

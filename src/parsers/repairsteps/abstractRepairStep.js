@@ -31,7 +31,7 @@ export default class AbstractRepairStep {
 	 */
 	constructor() {
 		if (new.target === AbstractRepairStep) {
-			throw new TypeError('Cannot instantiate abstract class AbstractRepairStep');
+			throw new TypeError('Cannot instantiate abstract class AbstractRepairStep')
 		}
 	}
 
@@ -40,7 +40,7 @@ export default class AbstractRepairStep {
 	 * @returns {String}
 	 */
 	repair(input) {
-		throw new TypeError('Abstract method not implemented by subclass');
+		throw new TypeError('Abstract method not implemented by subclass')
 	}
 
 	/**
@@ -49,4 +49,5 @@ export default class AbstractRepairStep {
 	static priority() {
 		return 0
 	}
+
 }

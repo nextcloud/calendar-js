@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import Property from "./property.js";
+import Property from './property.js'
 
 ICAL.design.icalendar.property['conference'] = {
 	defaultType: 'uri'
@@ -43,13 +43,13 @@ export default class ConferenceProperty extends Property {
 	 *
 	 * @returns {IterableIterator<String>}
 	 */
-	*getFeatureIterator() {
+	* getFeatureIterator() {
 		if (!this.hasParameter('FEATURE')) {
 			return
 		}
 
 		const parameter = this.getParameter('FEATURE')
-		yield* parameter.getValueIterator()
+		yield * parameter.getValueIterator()
 	}
 
 	/**
@@ -72,7 +72,7 @@ export default class ConferenceProperty extends Property {
 	 */
 	addFeature(featureToAdd) {
 		this._modify()
-		if(!this.hasParameter('FEATURE')) {
+		if (!this.hasParameter('FEATURE')) {
 			this.updateParameterIfExist('FEATURE', [featureToAdd])
 		} else {
 			if (this.hasFeature(featureToAdd)) {
@@ -164,7 +164,7 @@ export default class ConferenceProperty extends Property {
 	 * @inheritDoc
 	 */
 	toICALJs() {
-		const icalProperty = super.toICALJs();
+		const icalProperty = super.toICALJs()
 		icalProperty.setParameter('value', 'URI')
 
 		return icalProperty
@@ -178,7 +178,7 @@ export default class ConferenceProperty extends Property {
 	 * @param {String[]=} features
 	 * @returns {ConferenceProperty}
 	 */
-	static fromURILabelAndFeatures(uri, label=null, features=null) {
+	static fromURILabelAndFeatures(uri, label = null, features = null) {
 		const property = new ConferenceProperty('CONFERENCE', uri)
 
 		if (label) {
@@ -191,4 +191,5 @@ export default class ConferenceProperty extends Property {
 
 		return property
 	}
+
 }

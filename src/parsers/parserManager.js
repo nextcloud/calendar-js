@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import ICalendarParser from './icalendarParser.js';
+import ICalendarParser from './icalendarParser.js'
 
 /**
  * @class ParserManager
@@ -78,6 +78,7 @@ export default class ParserManager {
 	registerParser(parser) {
 		this._parsers.push(parser)
 	}
+
 }
 
 /**
@@ -86,7 +87,7 @@ export default class ParserManager {
  * @returns {ParserManager}
  */
 export function getParserManager() {
-	const parserManager = new ParserManager();
+	const parserManager = new ParserManager()
 
 	// We only support iCalendar for now.
 	// JSON calendar and CSV will be supported soon,

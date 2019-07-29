@@ -19,11 +19,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import AbstractValue from './abstractValue.js';
-import DateTimeValue from './dateTimeValue.js';
-import { uc } from '../helpers/stringHelper.js';
+import AbstractValue from './abstractValue.js'
+import DateTimeValue from './dateTimeValue.js'
+import { uc } from '../helpers/stringHelper.js'
 
-const ALLOWED_FREQ = ['SECONDLY', 'MINUTELY', 'HOURLY', 'DAILY', 'WEEKLY', 'MONTHLY', 'YEARLY'];
+const ALLOWED_FREQ = ['SECONDLY', 'MINUTELY', 'HOURLY', 'DAILY', 'WEEKLY', 'MONTHLY', 'YEARLY']
 
 /**
  * @class RecurValue
@@ -290,7 +290,7 @@ export default class RecurValue extends AbstractValue {
 	 * @param {DateTimeValue?} until
 	 * @returns {RecurValue}
 	 */
-	static fromICALJs(icalValue, until=null) {
+	static fromICALJs(icalValue, until = null) {
 		return new RecurValue(icalValue, until)
 	}
 
@@ -325,4 +325,5 @@ export default class RecurValue extends AbstractValue {
 		const icalRecur = ICAL.Recur.fromData(data)
 		return RecurValue.fromICALJs(icalRecur, until)
 	}
+
 }

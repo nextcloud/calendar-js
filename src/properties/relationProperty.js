@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import Property from "./property.js";
+import Property from './property.js'
 
 /**
  * @class RelationProperty
@@ -87,4 +87,5 @@ export default class RelationProperty extends Property {
 	static fromRelTypeAndId(relType, relId) {
 		return new RelationProperty('RELATED-TO', relId, [['RELTYPE', relType]])
 	}
+
 }

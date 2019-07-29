@@ -19,8 +19,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import Property from "./property.js";
-import BinaryValue from '../values/binaryValue.js';
+import Property from './property.js'
+import BinaryValue from '../values/binaryValue.js'
 
 /**
  * @class AttachmentProperty
@@ -113,7 +113,7 @@ export default class AttachmentProperty extends Property {
 	 * @inheritDoc
 	 */
 	toICALJs() {
-		const icalProperty = super.toICALJs();
+		const icalProperty = super.toICALJs()
 		if (this._value instanceof BinaryValue) {
 			icalProperty.setParameter('ENCODING', 'BASE64')
 		}
@@ -128,7 +128,7 @@ export default class AttachmentProperty extends Property {
 	 * @param {String=} formatType
 	 * @returns {AttachmentProperty}
 	 */
-	static fromData(data, formatType=null) {
+	static fromData(data, formatType = null) {
 		const binaryValue = BinaryValue.fromDecodedValue(data)
 		const property = new AttachmentProperty('ATTACH', binaryValue)
 
@@ -146,7 +146,7 @@ export default class AttachmentProperty extends Property {
 	 * @param {String=} formatType
 	 * @returns {AttachmentProperty}
 	 */
-	static fromLink(uri, formatType=null) {
+	static fromLink(uri, formatType = null) {
 		const property = new AttachmentProperty('ATTACH', uri)
 
 		if (formatType) {
@@ -155,4 +155,5 @@ export default class AttachmentProperty extends Property {
 
 		return property
 	}
+
 }

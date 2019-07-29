@@ -19,8 +19,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import Property from "./property.js";
-import { startStringWith, uc } from '../helpers/stringHelper.js';
+import Property from './property.js'
+import { startStringWith, uc } from '../helpers/stringHelper.js'
 
 /**
  * @class AttendeeProperty
@@ -224,7 +224,7 @@ export default class AttendeeProperty extends Property {
 	 * @param {Boolean=} isOrganizer
 	 * @returns {AttendeeProperty}
 	 */
-	static fromNameAndEMail(name, email, isOrganizer=false) {
+	static fromNameAndEMail(name, email, isOrganizer = false) {
 		const propertyName = isOrganizer
 			? 'ORGANIZER'
 			: 'ATTENDEE'
@@ -244,7 +244,7 @@ export default class AttendeeProperty extends Property {
 	 * @param {Boolean=} isOrganizer
 	 * @returns {AttendeeProperty}
 	 */
-	static fromNameEMailRoleUserTypeAndRSVP(name, email, role, userType, rsvp, isOrganizer=false) {
+	static fromNameEMailRoleUserTypeAndRSVP(name, email, role, userType, rsvp, isOrganizer = false) {
 		const propertyName = isOrganizer
 			? 'ORGANIZER'
 			: 'ATTENDEE'
@@ -257,4 +257,5 @@ export default class AttendeeProperty extends Property {
 			['RSVP', rsvp ? 'TRUE' : 'FALSE']
 		])
 	}
+
 }

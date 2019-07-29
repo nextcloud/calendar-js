@@ -21,9 +21,9 @@
  */
 import AbstractComponent, {
 	advertiseSingleOccurrenceProperty
-} from './abstractComponent.js';
-import { getConstructorForComponentName } from './root';
-import { getConfig } from '../config.js';
+} from './abstractComponent.js'
+import { getConstructorForComponentName } from './root'
+import { getConfig } from '../config.js'
 
 /**
  * This class represents one VCALENDAR block
@@ -39,7 +39,7 @@ export default class CalendarComponent extends AbstractComponent {
 	 * @param {Property[]} properties
 	 * @param {AbstractComponent[]} components
 	 */
-	constructor(name='VCALENDAR', properties=[], components=[]) {
+	constructor(name = 'VCALENDAR', properties = [], components = []) {
 		super(name, properties, components)
 		this.root = this
 		this.parent = null
@@ -50,8 +50,8 @@ export default class CalendarComponent extends AbstractComponent {
 	 *
 	 * @returns {IterableIterator<TimezoneComponent>}
 	 */
-	*getTimezoneIterator() {
-		yield* this.getComponentIterator('vtimezone')
+	* getTimezoneIterator() {
+		yield * this.getComponentIterator('vtimezone')
 	}
 
 	/**
@@ -59,10 +59,10 @@ export default class CalendarComponent extends AbstractComponent {
 	 *
 	 * @returns {IterableIterator<EventComponent|JournalComponent|ToDoComponent>}
 	 */
-	*getVObjectIterator() {
-		yield* this.getEventIterator()
-		yield* this.getJournalIterator()
-		yield* this.getTodoIterator()
+	* getVObjectIterator() {
+		yield * this.getEventIterator()
+		yield * this.getJournalIterator()
+		yield * this.getTodoIterator()
 	}
 
 	/**
@@ -70,8 +70,8 @@ export default class CalendarComponent extends AbstractComponent {
 	 *
 	 * @returns {IterableIterator<EventComponent>}
 	 */
-	*getEventIterator() {
-		yield* this.getComponentIterator('vevent')
+	* getEventIterator() {
+		yield * this.getComponentIterator('vevent')
 	}
 
 	/**
@@ -79,8 +79,8 @@ export default class CalendarComponent extends AbstractComponent {
 	 *
 	 * @returns {IterableIterator<FreeBusyComponent>}
 	 */
-	*getFreebusyIterator() {
-		yield* this.getComponentIterator('vfreebusy')
+	* getFreebusyIterator() {
+		yield * this.getComponentIterator('vfreebusy')
 	}
 
 	/**
@@ -88,8 +88,8 @@ export default class CalendarComponent extends AbstractComponent {
 	 *
 	 * @returns {IterableIterator<JournalComponent>}
 	 */
-	*getJournalIterator() {
-		yield* this.getComponentIterator('vjournal')
+	* getJournalIterator() {
+		yield * this.getComponentIterator('vjournal')
 	}
 
 	/**
@@ -97,8 +97,8 @@ export default class CalendarComponent extends AbstractComponent {
 	 *
 	 * @returns {IterableIterator<ToDoComponent>}
 	 */
-	*getTodoIterator() {
-		yield* this.getComponentIterator('vtodo')
+	* getTodoIterator() {
+		yield * this.getComponentIterator('vtodo')
 	}
 
 	/**
@@ -129,7 +129,7 @@ export default class CalendarComponent extends AbstractComponent {
 	 * @param {String[][]=} additionalProps
 	 * @returns {CalendarComponent}
 	 */
-	static fromEmpty(additionalProps=[]) {
+	static fromEmpty(additionalProps = []) {
 		return new this('VCALENDAR', [
 			['prodid', getConfig('PRODID', '-//IDN georgehrke.com//calendar-js//EN')],
 			['calscale', 'GREGORIAN'],
@@ -156,6 +156,7 @@ export default class CalendarComponent extends AbstractComponent {
 
 		return comp
 	}
+
 }
 
 /**

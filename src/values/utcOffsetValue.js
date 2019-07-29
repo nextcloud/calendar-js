@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import AbstractValue from './abstractValue.js';
+import AbstractValue from './abstractValue.js'
 
 /**
  * @class UTCOffsetValue
@@ -169,4 +169,5 @@ export default class UTCOffsetValue extends AbstractValue {
 		const icalUTCOffset = ICAL.UtcOffset.fromSeconds(seconds)
 		return UTCOffsetValue.fromICALJs(icalUTCOffset)
 	}
+
 }

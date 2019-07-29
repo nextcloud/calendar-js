@@ -83,4 +83,5 @@ export default class TimezoneAdapter {
 	reset() {
 		throw new TypeError('Not allowed to reset TimezoneService')
 	}
+
 }

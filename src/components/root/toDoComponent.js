@@ -19,14 +19,14 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import AbstractRecurringComponent from "./abstractRecurringComponent.js";
+import AbstractRecurringComponent from './abstractRecurringComponent.js'
 import {
 	advertiseMultipleOccurrenceProperty,
 	advertiseMultiValueStringPropertySeparatedByLang,
 	advertiseSingleOccurrenceProperty
-} from '../abstractComponent.js';
-import ConferenceProperty from '../../properties/conferenceProperty.js';
-import GeoProperty from '../../properties/geoProperty.js';
+} from '../abstractComponent.js'
+import ConferenceProperty from '../../properties/conferenceProperty.js'
+import GeoProperty from '../../properties/geoProperty.js'
 
 /**
  * @class ToDoComponent
@@ -67,9 +67,10 @@ export default class ToDoComponent extends AbstractRecurringComponent {
 	 * @param {String=} label
 	 * @param {String[]=} features
 	 */
-	addConference(uri, label=null, features=null) {
+	addConference(uri, label = null, features = null) {
 		this.addProperty(ConferenceProperty.fromURILabelAndFeatures(uri, label, features))
 	}
+
 }
 
 /**

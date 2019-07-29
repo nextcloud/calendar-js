@@ -21,8 +21,8 @@
  */
 import AbstractComponent, {
 	advertiseSingleOccurrenceProperty
-} from '../abstractComponent.js';
-import Timezone from '../../timezones/timezone.js';
+} from '../abstractComponent.js'
+import Timezone from '../../timezones/timezone.js'
 
 /**
  * @class TimezoneComponent
@@ -45,6 +45,7 @@ export default class TimezoneComponent extends AbstractComponent {
 	toTimezone() {
 		return new Timezone(this.toICALJs())
 	}
+
 }
 
 /**

@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import AbstractRepairStep from "../abstractRepairStep.js";
+import AbstractRepairStep from '../abstractRepairStep.js'
 import uuid from 'uuid'
 
 /**
@@ -35,10 +35,11 @@ export default class ICalendarAddMissingUIDRepairStep extends AbstractRepairStep
 	repair(ics) {
 		return ics
 			.replace(/^BEGIN:(VEVENT|VTODO|VJOURNAL)$(((?!^END:(VEVENT|VTODO|VJOURNAL)$)(?!^UID.*$)(.|\n))*)^END:(VEVENT|VTODO|VJOURNAL)$\n/gm, (match, vobjectName, vObjectBlock) => {
-				return 'BEGIN:' + vobjectName + '\r\n' +
-					'UID:' + uuid() +
-					vObjectBlock +
-					'END:' + vobjectName + '\r\n'
+				return 'BEGIN:' + vobjectName + '\r\n'
+					+ 'UID:' + uuid()
+					+ vObjectBlock
+					+ 'END:' + vobjectName + '\r\n'
 			})
 	}
+
 }

@@ -22,9 +22,9 @@
 import AbstractComponent, {
 	advertiseMultipleOccurrenceProperty,
 	advertiseSingleOccurrenceProperty
-} from '../abstractComponent.js';
-import Timezone from '../../timezones/timezone.js';
-import AttendeeProperty from '../../properties/attendeeProperty.js';
+} from '../abstractComponent.js'
+import Timezone from '../../timezones/timezone.js'
+import AttendeeProperty from '../../properties/attendeeProperty.js'
 
 /**
  * @class FreeBusyComponent
@@ -88,8 +88,8 @@ export default class FreeBusyComponent extends AbstractComponent {
 	 *
 	 * @returns {IterableIterator<FreeBusyProperty>}
 	 */
-	*getFreeBusyIterator() {
-		yield* this.getPropertyIterator('FREEBUSY')
+	* getFreeBusyIterator() {
+		yield * this.getPropertyIterator('FREEBUSY')
 	}
 
 	/**
@@ -119,6 +119,7 @@ export default class FreeBusyComponent extends AbstractComponent {
 		this.deleteAllProperties('ORGANIZER')
 		this.addProperty(AttendeeProperty.fromNameAndEMail(name, email, true))
 	}
+
 }
 
 /**

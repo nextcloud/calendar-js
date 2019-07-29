@@ -19,20 +19,20 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import AbstractRecurringComponent from "./abstractRecurringComponent.js";
+import AbstractRecurringComponent from './abstractRecurringComponent.js'
 import {
 	advertiseMultipleOccurrenceProperty,
 	advertiseMultiValueStringPropertySeparatedByLang,
 	advertiseSingleOccurrenceProperty
-} from '../abstractComponent.js';
+} from '../abstractComponent.js'
 import {
 	getAgeOfBirthday,
 	getIconForBirthday,
 	getTypeOfBirthdayEvent
-} from '../../helpers/birthdayHelper.js';
-import DurationValue from '../../values/durationValue.js';
-import GeoProperty from '../../properties/geoProperty.js';
-import ConferenceProperty from '../../properties/conferenceProperty.js';
+} from '../../helpers/birthdayHelper.js'
+import DurationValue from '../../values/durationValue.js'
+import GeoProperty from '../../properties/geoProperty.js'
+import ConferenceProperty from '../../properties/conferenceProperty.js'
 
 /**
  * @class EventComponent
@@ -87,7 +87,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 
 		if (this.hasProperty('duration')) {
 			dtend.addDuration(this.getFirstPropertyFirstValue('duration'))
-		} else if(this.isAllDay()) {
+		} else if (this.isAllDay()) {
 			dtend.addDuration(DurationValue.fromSeconds(60 * 60 * 24))
 		} // There is nothing to do when this event is not allday
 
@@ -149,7 +149,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 	 * @param {String=} label
 	 * @param {String[]=} features
 	 */
-	addConference(uri, label=null, features=null) {
+	addConference(uri, label = null, features = null) {
 		this._modify()
 		this.addProperty(ConferenceProperty.fromURILabelAndFeatures(uri, label, features))
 	}
@@ -265,6 +265,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 	isInTimeFrame(start, end) {
 		return start.compare(this.endDate) <= 0 && end.compare(this.startDate) >= 0
 	}
+
 }
 
 /**

@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import Property from './property.js';
+import Property from './property.js'
 
 /**
  * @class TextProperty
@@ -62,4 +62,5 @@ export default class TextProperty extends Property {
 	set language(language) {
 		this.updateParameterIfExist('LANGUAGE', language)
 	}
+
 }

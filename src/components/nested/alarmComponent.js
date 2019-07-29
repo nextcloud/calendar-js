@@ -22,9 +22,9 @@
 import AbstractComponent, {
 	advertiseMultipleOccurrenceProperty,
 	advertiseSingleOccurrenceProperty
-} from '../abstractComponent.js';
-import AttendeeProperty from '../../properties/attendeeProperty.js';
-import TriggerProperty from '../../properties/triggerProperty.js';
+} from '../abstractComponent.js'
+import AttendeeProperty from '../../properties/attendeeProperty.js'
+import TriggerProperty from '../../properties/triggerProperty.js'
 
 /**
  * @class AlarmComponent
@@ -74,11 +74,12 @@ export default class AlarmComponent extends AbstractComponent {
 	 * @param {DurationValue} alarmOffset
 	 * @param {Boolean=} relatedToStart Related to Start or end?
 	 */
-	setTriggerFromRelative(alarmOffset, relatedToStart=true) {
+	setTriggerFromRelative(alarmOffset, relatedToStart = true) {
 		const triggerProperty = TriggerProperty.fromRelativeAndRelated(alarmOffset, relatedToStart)
 		this.deleteAllProperties('TRIGGER')
 		this.addProperty(triggerProperty)
 	}
+
 }
 
 /**
