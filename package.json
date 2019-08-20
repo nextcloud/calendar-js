@@ -2,7 +2,7 @@
   "name": "calendar-js",
   "version": "1.0.0",
   "description": "Small library that wraps ICAL.js and provide more convenient means for editing",
-  "main": "dist/dist.js",
+  "main": "src/index.js",
   "scripts": {
     "build-doc": "./node_modules/.bin/esdoc",
     "lint": "eslint --ext .js src",
