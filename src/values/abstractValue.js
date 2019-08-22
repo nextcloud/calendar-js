@@ -31,7 +31,7 @@ export default class AbstractValue extends observerTrait(lockableTrait(class {})
 	/**
 	 * Constructor
 	 *
-	 * @param {ICAL.Binary|ICAL.Duration|ICAL.Period|ICAL.Recur|ICAL.Time|ICAL.UtcOffset} icalValue The ICAL.JS to wrap
+	 * @param {ICAL.Binary|ICAL.Duration|ICAL.Period|ICAL.Recur|ICAL.Time|ICAL.UtcOffset} icalValue The ICAL.JS object to wrap
 	 */
 	constructor(icalValue) {
 		if (new.target === AbstractValue) {

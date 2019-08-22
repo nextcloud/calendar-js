@@ -43,7 +43,7 @@ export default class BinaryValue extends AbstractValue {
 	 * Gets the raw b64 encoded value
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {String} value
+	 * @param {String} value - The new raw value
 	 */
 	set rawValue(value) {
 		this._modifyContent()
@@ -63,7 +63,7 @@ export default class BinaryValue extends AbstractValue {
 	 * Sets the decoded Value
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param  {String} decodedValue
+	 * @param  {String} decodedValue - The new encoded value
 	 */
 	set value(decodedValue) {
 		this._modifyContent()
@@ -82,7 +82,7 @@ export default class BinaryValue extends AbstractValue {
 	/**
 	 * Create a new BinaryValue object from an ICAL.Binary object
 	 *
-	 * @param {ICAL.Binary} icalValue
+	 * @param {ICAL.Binary} icalValue - The ICAL.Binary object
 	 * @returns {BinaryValue}
 	 */
 	static fromICALJs(icalValue) {
@@ -92,7 +92,7 @@ export default class BinaryValue extends AbstractValue {
 	/**
 	 * Create a new BinaryValue object from a raw b64 encoded value
 	 *
-	 * @param {String} rawValue
+	 * @param {String} rawValue - The raw value
 	 * @returns {BinaryValue}
 	 */
 	static fromRawValue(rawValue) {
@@ -103,7 +103,7 @@ export default class BinaryValue extends AbstractValue {
 	/**
 	 * Create a new BinaryValue object from decoded value
 	 *
-	 * @param {String} decodedValue
+	 * @param {String} decodedValue - The encoded value
 	 * @returns {BinaryValue}
 	 */
 	static fromDecodedValue(decodedValue) {

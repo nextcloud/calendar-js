@@ -37,8 +37,8 @@ export default class AlarmComponent extends AbstractComponent {
 	/**
 	 * Adds a new attendee based on their name and email-address
 	 *
-	 * @param {String} name
-	 * @param {String} email
+	 * @param {String} name - Name of the attendee
+	 * @param {String} email - E-Mail address of the attendee
 	 * @returns {boolean}
 	 */
 	addAttendeeFromNameAndEMail(name, email) {
@@ -60,7 +60,7 @@ export default class AlarmComponent extends AbstractComponent {
 	/**
 	 * Sets an absolute alarm
 	 *
-	 * @param {DateTimeValue} alarmTime
+	 * @param {DateTimeValue} alarmTime - Absolute time for the trigger
 	 */
 	setTriggerFromAbsolute(alarmTime) {
 		const triggerProperty = TriggerProperty.fromAbsolute(alarmTime)
@@ -71,8 +71,8 @@ export default class AlarmComponent extends AbstractComponent {
 	/**
 	 * Sets a relative trigger
 	 *
-	 * @param {DurationValue} alarmOffset
-	 * @param {Boolean=} relatedToStart Related to Start or end?
+	 * @param {DurationValue} alarmOffset - Relative time of the trigger, either related to start or end
+	 * @param {Boolean=} relatedToStart - Related to Start or end?
 	 */
 	setTriggerFromRelative(alarmOffset, relatedToStart = true) {
 		const triggerProperty = TriggerProperty.fromRelativeAndRelated(alarmOffset, relatedToStart)
@@ -182,7 +182,7 @@ advertiseSingleOccurrenceProperty(AlarmComponent.prototype, {
  *
  * @name AlarmComponent#addAttendee
  * @function
- * @param {AttendeeProperty} attendee
+ * @param {AttendeeProperty} attendee - The attendee object to add
  */
 
 /**
@@ -192,7 +192,7 @@ advertiseSingleOccurrenceProperty(AlarmComponent.prototype, {
  *
  * @name AlarmComponent#removeAttendee
  * @function
- * @param {AttendeeProperty} attendee
+ * @param {AttendeeProperty} attendee - The attendee object to remove
  */
 
 /**

@@ -45,7 +45,7 @@ export default function observerTrait(baseClass) {
 		/**
 		 * Adds a new subscriber
 		 *
-		 * @param {Function} handler
+		 * @param {Function} handler - Handler to be called when modification happens
 		 */
 		subscribe(handler) {
 			this._subscribers.push(handler)
@@ -54,7 +54,7 @@ export default function observerTrait(baseClass) {
 		/**
 		 * Removes a subscriber
 		 *
-		 * @param {Function} handler
+		 * @param {Function} handler - Handler to be no longer called when modification happens
 		 */
 		unsubscribe(handler) {
 			const index = this._subscribers.indexOf(handler)

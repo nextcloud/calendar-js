@@ -36,11 +36,11 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Constructor
 	 *
-	 * @param {String} name
-	 * @param {Property[]} properties
-	 * @param {AbstractComponent[]} components
-	 * @param {CalendarComponent|null} root
-	 * @param {AbstractComponent|null} parent
+	 * @param {String} name - Name of component
+	 * @param {Property[]} properties - Array of properties stored inside the component
+	 * @param {AbstractComponent[]} components - Array of subcomponents stored inside this component
+	 * @param {CalendarComponent|null} root - The root of this calendar document
+	 * @param {AbstractComponent|null} parent - The parent component of this element
 	 */
 	constructor(name, properties = [], components = [], root = null, parent = null) {
 		super()
