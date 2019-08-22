@@ -20,6 +20,7 @@
  *
  */
 import Property from './property.js'
+import ICAL from 'ical.js'
 
 ICAL.design.icalendar.property['conference'] = {
 	defaultType: 'uri'

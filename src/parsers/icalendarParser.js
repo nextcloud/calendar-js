@@ -28,6 +28,7 @@ import { getTimezoneManager } from '../timezones/timezoneManager.js'
 import Timezone from '../timezones/timezone.js'
 import RecurrenceManager from '../recurrence/recurrenceManager.js'
 import DateTimeValue from '../values/dateTimeValue.js'
+import ICAL from 'ical.js'
 
 /**
  * @class ICalendarParser

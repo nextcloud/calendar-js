@@ -20,6 +20,7 @@
  *
  */
 import AbstractValue from './abstractValue.js'
+import ICAL from 'ical.js'
 
 /**
  * @class BinaryValue

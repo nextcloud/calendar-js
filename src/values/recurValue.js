@@ -22,6 +22,7 @@
 import AbstractValue from './abstractValue.js'
 import DateTimeValue from './dateTimeValue.js'
 import { uc } from '../helpers/stringHelper.js'
+import ICAL from 'ical.js'
 
 const ALLOWED_FREQ = ['SECONDLY', 'MINUTELY', 'HOURLY', 'DAILY', 'WEEKLY', 'MONTHLY', 'YEARLY']
 

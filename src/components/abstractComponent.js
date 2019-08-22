@@ -27,6 +27,7 @@ import { getConstructorForPropertyName } from '../properties'
 import Property from '../properties/property.js'
 import Parameter from '../parameters/parameter.js'
 import observerTrait from '../traits/observer.js'
+import ICAL from 'ical.js'
 
 /**
  * @class AbstractComponent

@@ -24,6 +24,7 @@ import { uc } from '../helpers/stringHelper.js'
 import DateTimeValue from '../values/dateTimeValue.js'
 import ModificationNotAllowedError from '../errors/modificationNotAllowedError.js'
 import PeriodValue from '../values/periodValue.js'
+import ICAL from 'ical.js'
 
 /**
  * @class RecurrenceHelper

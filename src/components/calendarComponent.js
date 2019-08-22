@@ -24,6 +24,7 @@ import AbstractComponent, {
 } from './abstractComponent.js'
 import { getConstructorForComponentName } from './root'
 import { getConfig } from '../config.js'
+import ICAL from 'ical.js'
 
 /**
  * This class represents one VCALENDAR block

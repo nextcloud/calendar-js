@@ -22,6 +22,7 @@
 import AbstractValue from './abstractValue.js'
 import DateTimeValue from './dateTimeValue.js'
 import DurationValue from './durationValue.js'
+import ICAL from 'ical.js'
 
 /**
  * @class PeriodValue

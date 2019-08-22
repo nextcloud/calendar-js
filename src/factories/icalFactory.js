@@ -22,6 +22,7 @@
 
 import { lc } from '../helpers/stringHelper.js'
 import { getConfig } from '../config.js'
+import ICAL from 'ical.js'
 
 /**
  * creates a new ICAL.Component object

@@ -21,6 +21,7 @@
  */
 
 import TimezoneComponent from '../components/root/timezoneComponent.js'
+import ICAL from 'ical.js'
 
 /**
  * @class Timezone
