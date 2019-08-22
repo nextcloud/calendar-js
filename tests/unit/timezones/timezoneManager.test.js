@@ -177,6 +177,16 @@ it('TimezoneManager should provide a method to unregister an alias', () => {
 	expect(timezoneManager.hasTimezoneForId('foobar/Berlin')).toEqual(false)
 })
 
+it('TimezoneManager should provide a method to register timezone from is', () => {
+	const timezoneManager = new TimezoneManager()
+
+	timezoneManager.registerTimezoneFromICS('Europe/Berlin', getAsset('timezone-europe-berlin'))
+	timezoneManager.registerTimezoneFromICS('America/New_York', getAsset('timezone-america-nyc'))
+	timezoneManager.registerTimezoneFromICS('America/Los_Angeles', getAsset('timezone-america-la'))
+
+	expect(timezoneManager.hasTimezoneForId('Europe/Berlin')).toEqual(true)
+})
+
 it('TimezoneManager should provide a method to clear all timezones', () => {
 	const timezoneManager = new TimezoneManager()
 

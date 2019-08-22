@@ -25,7 +25,7 @@ import TimezoneAdapter from './timezones/timezoneAdapter.js'
 import { getTimezoneManager } from './timezones/timezoneManager.js'
 export { setConfig } from './config.js'
 export { getParserManager }
-export { getTimezoneManager } from './timezones/timezoneManager.js'
+export { getTimezoneManager, isOlsonTimezone } from './timezones/timezoneManager.js'
 if (!(ICAL.TimezoneService instanceof TimezoneAdapter)) {
 	ICAL.TimezoneService = new TimezoneAdapter(getTimezoneManager())
 }

@@ -115,6 +115,17 @@ export class TimezoneManager {
 	}
 
 	/**
+	 * Registers a timezone based on ics data
+	 *
+	 * @param {String} timezoneId
+	 * @param {String} ics
+	 */
+	registerTimezoneFromICS(timezoneId, ics) {
+		const timezone = new Timezone(timezoneId, ics)
+		this.registerTimezone(timezone)
+	}
+
+	/**
 	 * Registers a new timezone-alias
 	 *
 	 * @param aliasName
