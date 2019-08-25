@@ -237,7 +237,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 
 		this._cachedId = [
 			encodeURIComponent(this.uid),
-			encodeURIComponent(this._getReferenceRecurrenceId().unixTime.toString())
+			encodeURIComponent(this.getReferenceRecurrenceId().unixTime.toString())
 		].join('###')
 
 		return this.id
@@ -344,7 +344,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 		occurrence.primaryItem = this
 
 		// Exact match for master item or recurrence-exception
-		if (occurrence._getReferenceRecurrenceId().compare(recurrenceId) === 0) {
+		if (occurrence.getReferenceRecurrenceId().compare(recurrenceId) === 0) {
 			occurrence.isExactForkOfPrimary = true
 		}
 
@@ -491,7 +491,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 		} else {
 			// delete to make sure all parameters are gone
 			this.deleteAllProperties('RECURRENCE-ID')
-			this.recurrenceId = this._getReferenceRecurrenceId().clone()
+			this.recurrenceId = this.getReferenceRecurrenceId().clone()
 			this.root.addComponent(this)
 			this.recurrenceManager.relateRecurrenceException(this)
 			this.primaryItem = this
@@ -504,8 +504,8 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 			this.updatePropertyWithValue('LAST-MODIFIED', DateTimeValue.fromJSDate(dateFactory(), true))
 			this.updatePropertyWithValue('SEQUENCE', 0)
 
-			if (this.recurrenceManager.hasRecurrenceDate(false, this._getReferenceRecurrenceId())) {
-				const recurDate = this.recurrenceManager.getRecurrenceDate(false, this._getReferenceRecurrenceId())
+			if (this.recurrenceManager.hasRecurrenceDate(false, this.getReferenceRecurrenceId())) {
+				const recurDate = this.recurrenceManager.getRecurrenceDate(false, this.getReferenceRecurrenceId())
 				if (recurDate instanceof PeriodValue) {
 					const valueDateTimeRecurDate = recurDate.start
 					this.recurrenceManager.removeRecurrenceDate(false, recurDate)
@@ -539,7 +539,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 			// To get the UNTIL date, just deduct one second.
 			// That's also how macOS does it, so this should be fairly
 			// well supported among all clients
-			const recurrenceId = this._getReferenceRecurrenceId().clone()
+			const recurrenceId = this.getReferenceRecurrenceId().clone()
 
 			const until = recurrenceId.getInTimezone(Timezone.utc)
 			until.addDuration(DurationValue.fromSeconds(-1))
@@ -580,11 +580,11 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 
 			// If this is based on a recurrence-date, simply delete it
 			// otherwise add an exception-date
-			if (this.recurrenceManager.hasRecurrenceDate(false, this._getReferenceRecurrenceId())) {
-				const recurDate = this.recurrenceManager.getRecurrenceDate(false, this._getReferenceRecurrenceId())
+			if (this.recurrenceManager.hasRecurrenceDate(false, this.getReferenceRecurrenceId())) {
+				const recurDate = this.recurrenceManager.getRecurrenceDate(false, this.getReferenceRecurrenceId())
 				this.recurrenceManager.removeRecurrenceDate(false, recurDate)
 			} else {
-				this.recurrenceManager.addRecurrenceDate(true, this._getReferenceRecurrenceId().clone())
+				this.recurrenceManager.addRecurrenceDate(true, this.getReferenceRecurrenceId().clone())
 			}
 		}
 
@@ -938,9 +938,8 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * This is used for recurrence-management
 	 *
 	 * @returns {DateTimeValue}
-	 * @private
 	 */
-	_getReferenceRecurrenceId() {
+	getReferenceRecurrenceId() {
 		if (this.originalRecurrenceId) {
 			return this.originalRecurrenceId
 		} else if (this.recurrenceId) {
