@@ -560,12 +560,45 @@ export default class RecurrenceManager {
 	}
 
 	/**
-	 * TODO: Does this work?
-	 *
 	 * @returns {boolean}
 	 */
 	isEmptyRecurrenceSet() {
 		return this._getRecurExpansionObject().next() === undefined
+	}
+
+	/**
+	 * Gets the occurrence at the exact given recurrenceId
+	 *
+	 * @param {DateTimeValue} recurrenceId
+	 * @returns {AbstractRecurringComponent}
+	 */
+	getOccurrenceAtExactly(recurrenceId) {
+		if (!this.masterItem.isRecurring()) {
+			if (this.masterItem.getReferenceRecurrenceId().compare(recurrenceId) === 0) {
+				return this.masterItem
+			}
+
+			return null
+		}
+
+		const iterator = this._getRecurExpansionObject()
+		const icalRecurrenceId = recurrenceId.toICALJs()
+
+		let next
+		while ((next = iterator.next())) {
+			if (next.compare(icalRecurrenceId) === 0) {
+				// It's a match 🔥
+				return this._getOccurrenceAtRecurrenceId(recurrenceId)
+			}
+
+			if (next.compare(icalRecurrenceId) === 1) {
+				// We hit an occurrence in the future, return null
+				return null
+			}
+		}
+
+		const dateTimeValue = DateTimeValue.fromICALJs(previous)
+		return this._getOccurrenceAtRecurrenceId(dateTimeValue)
 	}
 
 	/**

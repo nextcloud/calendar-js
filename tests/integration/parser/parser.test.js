@@ -4058,3 +4058,95 @@ it('Edit simple recurrence (test do not copy RDATEs / EXDATES) - this and all fu
 		'END:VTIMEZONE\r\n' +
 		'END:VCALENDAR')
 })
+
+it('getOccurrenceAtExactly non-recurring matching start-date', () => {
+	const ics = getAsset('simple-date-time-europe-berlin-dtstart-dtend')
+	const parserManager = getParserManager()
+	const icsParser = parserManager.getParserForFileType('text/calendar')
+	icsParser.parse(ics)
+
+	const objectIterator = icsParser.getItemIterator()
+	const calendarComp = objectIterator.next().value
+	const vObjectIterator = calendarComp.getVObjectIterator()
+	const firstVObject = vObjectIterator.next().value
+
+	const recurrenceManager = firstVObject.recurrenceManager
+
+	const recurrenceId = DateTimeValue.fromJSDate(new Date(1471330800 * 1000), true)
+	expect(recurrenceManager.getOccurrenceAtExactly(recurrenceId)).toEqual(firstVObject)
+})
+
+it('getOccurrenceAtExactly non-recurring not matching start-date', () => {
+	const ics = getAsset('simple-date-time-europe-berlin-dtstart-dtend')
+	const parserManager = getParserManager()
+	const icsParser = parserManager.getParserForFileType('text/calendar')
+	icsParser.parse(ics)
+
+	const objectIterator = icsParser.getItemIterator()
+	const calendarComp = objectIterator.next().value
+	const vObjectIterator = calendarComp.getVObjectIterator()
+	const firstVObject = vObjectIterator.next().value
+
+	const recurrenceManager = firstVObject.recurrenceManager
+
+	const recurrenceId = DateTimeValue.fromJSDate(new Date(1471330801 * 1000), true)
+	expect(recurrenceManager.getOccurrenceAtExactly(recurrenceId)).toEqual(null)
+})
+
+it('getOccurrenceAtExactly recurring matching date', () => {
+	const ics = getAsset('recurring-infinitely-with-rdates')
+	const parserManager = getParserManager()
+	const icsParser = parserManager.getParserForFileType('text/calendar')
+	icsParser.parse(ics)
+
+	const objectIterator = icsParser.getItemIterator()
+	const calendarComp = objectIterator.next().value
+	const vObjectIterator = calendarComp.getVObjectIterator()
+	const firstVObject = vObjectIterator.next().value
+
+	const recurrenceManager = firstVObject.recurrenceManager
+	const recurrenceId = DateTimeValue.fromJSDate(new Date(1562569200 * 1000), true)
+	const event = recurrenceManager.getOccurrenceAtExactly(recurrenceId)
+
+	expect(event.id).toEqual('41CBE812-F77C-471A-A481-D6A18CCAAA99###1562569200')
+	expect(event.startDate.jsDate.toISOString()).toEqual('2019-07-08T07:00:00.000Z')
+	expect(event.endDate.jsDate.toISOString()).toEqual('2019-07-08T08:00:00.000Z')
+})
+
+it('getOccurrenceAtExactly recurring matching date with recurrence-exception', () => {
+	const ics = getAsset('recurring-infinitely-with-rdates')
+	const parserManager = getParserManager()
+	const icsParser = parserManager.getParserForFileType('text/calendar')
+	icsParser.parse(ics)
+
+	const objectIterator = icsParser.getItemIterator()
+	const calendarComp = objectIterator.next().value
+	const vObjectIterator = calendarComp.getVObjectIterator()
+	const firstVObject = vObjectIterator.next().value
+
+	const recurrenceManager = firstVObject.recurrenceManager
+	const recurrenceId = DateTimeValue.fromJSDate(new Date(1563174000 * 1000), true)
+	const event = recurrenceManager.getOccurrenceAtExactly(recurrenceId)
+
+	expect(event.id).toEqual('41CBE812-F77C-471A-A481-D6A18CCAAA99###1563174000')
+	expect(event.startDate.jsDate.toISOString()).toEqual('2019-07-17T07:00:00.000Z')
+	expect(event.endDate.jsDate.toISOString()).toEqual('2019-07-17T08:00:00.000Z')
+})
+
+it('getOccurrenceAtExactly recurring not matching date', () => {
+	const ics = getAsset('recurring-infinitely-with-rdates')
+	const parserManager = getParserManager()
+	const icsParser = parserManager.getParserForFileType('text/calendar')
+	icsParser.parse(ics)
+
+	const objectIterator = icsParser.getItemIterator()
+	const calendarComp = objectIterator.next().value
+	const vObjectIterator = calendarComp.getVObjectIterator()
+	const firstVObject = vObjectIterator.next().value
+
+	const recurrenceManager = firstVObject.recurrenceManager
+	const recurrenceId = DateTimeValue.fromJSDate(new Date(1563174123 * 1000), true)
+	const event = recurrenceManager.getOccurrenceAtExactly(recurrenceId)
+
+	expect(event).toEqual(null)
+})
