@@ -1,5 +1,7 @@
 # :date: calendar-js - Heart of the [Nextcloud calendar app](https://github.com/nextcloud/calendar)
 
+[![Build Status](https://travis-ci.org/georgehrke/calendar-js.svg?branch=master)](https://travis-ci.org/georgehrke/calendar-js)
+
 This library is a wrapper for [ICAL.js]() that provides more convenient ways for editing.
 Together with [cdav-library](), it's the heart of the Nextcloud calendar app.
 
