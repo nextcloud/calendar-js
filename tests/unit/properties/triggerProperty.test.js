@@ -84,13 +84,13 @@ it('TriggerProperty should clean up the RELATED parameter when setting a new val
 
 	expect(property.related).toEqual('END')
 
-	const absoluteValue = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 1, 0, 0, 0)))
+	const absoluteValue = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 1, 0, 0, 0)), true)
 
 	expect(property.toICALJs().toICALString()).toEqual('TRIGGER;RELATED=END:PT5M')
 
 	property.value = absoluteValue
 
-	expect(property.toICALJs().toICALString()).toEqual('TRIGGER;VALUE=DATE-TIME:20190901T020000Z')
+	expect(property.toICALJs().toICALString()).toEqual('TRIGGER;VALUE=DATE-TIME:20190901T000000Z')
 
 	property.value = DurationValue.fromSeconds(0)
 
@@ -109,10 +109,10 @@ it('TriggerProperty should provide a method to check whether the alarm is relati
 })
 
 it('TriggerProperty should provide a constructor from absolute', () => {
-	const absoluteValue = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 1, 0, 0, 0)))
+	const absoluteValue = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 1, 0, 0, 0)), true)
 	const property = TriggerProperty.fromAbsolute(absoluteValue)
 
-	expect(property.toICALJs().toICALString()).toEqual('TRIGGER;VALUE=DATE-TIME:20190901T020000Z')
+	expect(property.toICALJs().toICALString()).toEqual('TRIGGER;VALUE=DATE-TIME:20190901T000000Z')
 })
 
 it('TriggerProperty should provide a constructor from relative', () => {

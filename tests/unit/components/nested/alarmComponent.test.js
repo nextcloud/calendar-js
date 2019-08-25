@@ -62,7 +62,7 @@ it('AlarmComponent should expose easy getter/setter for action', () => {
 
 it('AlarmComponent should provide easy getter/setter for trigger', () => {
 	const property1 = TriggerProperty.fromRelativeAndRelated(DurationValue.fromSeconds(-60))
-	const property2 = TriggerProperty.fromAbsolute(DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 1, 0, 0, 0))))
+	const property2 = TriggerProperty.fromAbsolute(DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 1, 0, 0, 0)), true))
 	const property3 = TriggerProperty.fromRelativeAndRelated(DurationValue.fromSeconds(-60 * 60))
 	const component = new AlarmComponent('VALARM', [property1])
 
@@ -87,10 +87,10 @@ it('AlarmComponent should provide easy getter/setter for trigger', () => {
 
 it('AlarmComponent should provide an easy setter for trigger with absolute alarm', () => {
 	const component = new AlarmComponent('VALARM')
-	component.setTriggerFromAbsolute(DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 1, 0, 0, 0))))
+	component.setTriggerFromAbsolute(DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 1, 0, 0, 0)), true))
 
 	expect(component.toICALJs().toString()).toEqual('BEGIN:VALARM\r\n' +
-		'TRIGGER;VALUE=DATE-TIME:20190901T020000Z\r\n' +
+		'TRIGGER;VALUE=DATE-TIME:20190901T000000Z\r\n' +
 		'END:VALARM')
 })
 
