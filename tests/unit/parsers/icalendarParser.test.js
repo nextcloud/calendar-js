@@ -78,6 +78,8 @@ it('ICalendarParser should return different objects in different calendar-object
 	const parser = new ICalendarParser()
 	parser.parse(asset)
 
+	expect(parser.getItemCount()).toEqual(4)
+
 	const itemIterator = parser.getItemIterator()
 	const item1 = itemIterator.next().value
 	const item2 = itemIterator.next().value

@@ -210,6 +210,13 @@ export default class ICalendarParser extends AbstractParser {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	getItemCount() {
+		return Array.from(this._items.keys()).length
+	}
+
+	/**
 	 * Applies all registered repair steps
 	 *
 	 * @private

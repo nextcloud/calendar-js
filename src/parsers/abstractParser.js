@@ -223,6 +223,15 @@ export default class AbstractParser {
 	}
 
 	/**
+	 * Returns the number of calendar-objects in parser
+	 *
+	 * @returns {number}
+	 */
+	getItemCount() {
+		return 0
+	}
+
+	/**
 	 * Gets an option provided
 	 *
 	 * @param {String} name

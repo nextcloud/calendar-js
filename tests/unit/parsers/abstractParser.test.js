@@ -172,3 +172,10 @@ it('AbstractParser should implement a static method to get supported mimetypes',
 		AbstractParser.getMimeTypes()
 	}).toThrow(TypeError, 'Abstract method not implemented by subclass')
 })
+
+it('AbstractParser should return 0 for item count', () => {
+	class Foo extends AbstractParser {}
+	const parser = new Foo()
+
+	expect(parser.getItemCount()).toEqual(0)
+})
