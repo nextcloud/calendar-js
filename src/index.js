@@ -20,12 +20,18 @@
  *
  */
 import { getParserManager } from './parsers/parserManager.js'
-
 import TimezoneAdapter from './timezones/timezoneAdapter.js'
 import { getTimezoneManager } from './timezones/timezoneManager.js'
 export { setConfig } from './config.js'
 export { getParserManager }
 export { getTimezoneManager, isOlsonTimezone } from './timezones/timezoneManager.js'
+import uuid from 'uuid'
+import DateTimeValue from './values/dateTimeValue.js';
+import { dateFactory } from './factories/dateFactory.js';
+import CalendarComponent from './components/calendarComponent.js';
+import EventComponent from './components/root/eventComponent.js';
+import RecurrenceManager from './recurrence/recurrenceManager.js';
+
 if (!(ICAL.TimezoneService instanceof TimezoneAdapter)) {
 	ICAL.TimezoneService = new TimezoneAdapter(getTimezoneManager())
 }
@@ -57,4 +63,29 @@ export function * parseICSAndGetAllOccurrencesBetween(ics, start, end) {
 	}
 
 	yield * firstVObject.recurrenceManager.getAllOccurrencesBetweenIterator(start, end)
+}
+
+/**
+ * Creates a new event
+ *
+ * @param {DateTimeValue} start
+ * @param {DateTimeValue} end
+ * @returns {CalendarComponent}
+ */
+export function createEvent(start, end) {
+	const calendar = CalendarComponent.fromEmpty()
+	const eventComponent = new EventComponent('VEVENT')
+
+	eventComponent.updatePropertyWithValue('CREATED', DateTimeValue.fromJSDate(dateFactory(), true))
+	eventComponent.updatePropertyWithValue('DTSTAMP', DateTimeValue.fromJSDate(dateFactory(), true))
+	eventComponent.updatePropertyWithValue('LAST-MODIFIED', DateTimeValue.fromJSDate(dateFactory(), true))
+	eventComponent.updatePropertyWithValue('SEQUENCE', 0)
+	eventComponent.updatePropertyWithValue('UID', uuid())
+	eventComponent.updatePropertyWithValue('DTSTART', start)
+	eventComponent.updatePropertyWithValue('DTEND', end)
+
+	calendar.addComponent(eventComponent)
+	eventComponent.recurrenceManager = new RecurrenceManager(eventComponent)
+
+	return calendar
 }
