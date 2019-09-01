@@ -252,7 +252,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 		clone.parent = clone.root
 		clone.root.addComponent(clone)
 
-		return root.toICS()
+		return clone.root.toICS()
 	}
 
 	/**

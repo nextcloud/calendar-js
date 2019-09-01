@@ -303,6 +303,27 @@ export default class DateTimeValue extends AbstractValue {
 	}
 
 	/**
+	 * Get the inner ICAL.Timezone
+	 *
+	 * @returns {ICAL.Timezone}
+	 * @package
+	 */
+	getICALTimezone() {
+		return this._innerValue.zone
+	}
+
+	/**
+	 * Returns a clone of this object which was converted to a different timezone
+	 *
+	 * @param {ICAL.Timezone} timezone
+	 * @package
+	 */
+	getInICALTimezone(timezone) {
+		const clonedICALTime = this._innerValue.convertToZone(timezone)
+		return DateTimeValue.fromICALJs(clonedICALTime)
+	}
+
+	/**
 	 * Returns a clone of this object which was converted to UTC
 	 *
 	 * @returns {DateTimeValue}

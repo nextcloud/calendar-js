@@ -348,11 +348,16 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 			occurrence.isExactForkOfPrimary = true
 		}
 
-		occurrence.originalRecurrenceId = recurrenceId.clone()
-
 		if (!occurrence.hasProperty('DTSTART')) {
 			throw new TypeError('Can\'t fork item without a DTSTART')
 		}
+
+		if (occurrence.getFirstPropertyFirstValue('DTSTART').timezoneId !== recurrenceId.timezoneId) {
+			const originalTimezone = occurrence.getFirstPropertyFirstValue('DTSTART').getICALTimezone()
+			recurrenceId = recurrenceId.getInICALTimezone(originalTimezone)
+		}
+
+		occurrence.originalRecurrenceId = recurrenceId.clone()
 
 		const dtStartValue = occurrence.getFirstPropertyFirstValue('DTSTART')
 

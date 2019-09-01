@@ -1307,7 +1307,7 @@ it('Delete range recurrence-exception this (non-first match)', () => {
 		'X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:AUTOMATIC\r\n' +
 		'UID:41CBE812-F77C-471A-A481-D6A18CCAAA99\r\n' +
 		'EXDATE;TZID=Europe/Berlin:20190819T090000\r\n' +
-		'EXDATE;TZID=Europe/Berlin:20190909T090000\r\n' +
+		'EXDATE:20190909T070000Z\r\n' +
 		'DTSTAMP:20300101T000000Z\r\n' +
 		'SEQUENCE:1\r\n' +
 		'SUMMARY:weekly recurring event\r\n' +
@@ -3127,15 +3127,15 @@ it('Edit range recurrence-exception this (non-first-match)', () => {
 		'BEGIN:VEVENT\r\n' +
 		'CREATED:20300101T000000Z\r\n' +
 		'UID:41CBE812-F77C-471A-A481-D6A18CCAAA99\r\n' +
-		'DTEND;TZID=Europe/Berlin:20190915T230000\r\n' +
+		'DTEND:20190915T210000Z\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:AUTOMATIC\r\n' +
 		'SUMMARY:This is a recurrence-exception created with calendar-js\r\n' +
 		'LAST-MODIFIED:20300101T000000Z\r\n' +
 		'DTSTAMP:20300101T000000Z\r\n' +
-		'DTSTART;TZID=Europe/Berlin:20190909T140000\r\n' +
+		'DTSTART:20190909T120000Z\r\n' +
 		'SEQUENCE:1\r\n' +
-		'RECURRENCE-ID;TZID=Europe/Berlin:20190909T090000\r\n' +
+		'RECURRENCE-ID:20190909T070000Z\r\n' +
 		'END:VEVENT\r\n' +
 		'BEGIN:VTIMEZONE\r\n' +
 		'TZID:Europe/Berlin\r\n' +
@@ -3327,33 +3327,16 @@ it('Edit range recurrence-exception this and all future (non-first-match)', () =
 		'BEGIN:VEVENT\r\n' +
 		'CREATED:20300101T000000Z\r\n' +
 		'UID:RANDOM UUID 123\r\n' +
-		'DTEND;TZID=Europe/Berlin:20190915T230000\r\n' +
+		'DTEND:20190915T210000Z\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:AUTOMATIC\r\n' +
 		'SUMMARY:This is a recurrence-exception created with calendar-js\r\n' +
 		'LAST-MODIFIED:20300101T000000Z\r\n' +
 		'DTSTAMP:20300101T000000Z\r\n' +
-		'DTSTART;TZID=Europe/Berlin:20190909T140000\r\n' +
+		'DTSTART:20190909T120000Z\r\n' +
 		'SEQUENCE:0\r\n' +
 		'RELATED-TO;RELTYPE=SIBLING:41CBE812-F77C-471A-A481-D6A18CCAAA99\r\n' +
 		'END:VEVENT\r\n' +
-		'BEGIN:VTIMEZONE\r\n' +
-		'TZID:Europe/Berlin\r\n' +
-		'BEGIN:DAYLIGHT\r\n' +
-		'TZOFFSETFROM:+0100\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
-		'DTSTART:19810329T020000\r\n' +
-		'TZNAME:CEST\r\n' +
-		'TZOFFSETTO:+0200\r\n' +
-		'END:DAYLIGHT\r\n' +
-		'BEGIN:STANDARD\r\n' +
-		'TZOFFSETFROM:+0200\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
-		'DTSTART:19961027T030000\r\n' +
-		'TZNAME:CET\r\n' +
-		'TZOFFSETTO:+0100\r\n' +
-		'END:STANDARD\r\n' +
-		'END:VTIMEZONE\r\n' +
 		'END:VCALENDAR')
 })
 
@@ -3510,10 +3493,10 @@ it('Edit RDATE - this', () => {
 		'SEQUENCE:1\r\n' +
 		'SUMMARY:This is a recurrence-exception created with calendar-js\r\n' +
 		'LAST-MODIFIED:20300101T000000Z\r\n' +
-		'DTSTART:20190801T080000Z\r\n' +
+		'DTSTART;TZID=Europe/Berlin:20190801T100000\r\n' +
 		'CREATED:20300101T000000Z\r\n' +
 		'DTEND:20190801T100000Z\r\n' +
-		'RECURRENCE-ID:20190801T070000Z\r\n' +
+		'RECURRENCE-ID;TZID=Europe/Berlin:20190801T090000\r\n' +
 		'END:VEVENT\r\n' +
 		'BEGIN:VTIMEZONE\r\n' +
 		'TZID:Europe/Berlin\r\n' +
@@ -3694,12 +3677,29 @@ it('Edit RDATE - this and all future', () => {
 		'SEQUENCE:0\r\n' +
 		'SUMMARY:This is a recurrence-exception created with calendar-js\r\n' +
 		'LAST-MODIFIED:20300101T000000Z\r\n' +
-		'DTSTART:20190801T080000Z\r\n' +
+		'DTSTART;TZID=Europe/Berlin:20190801T100000\r\n' +
 		'CREATED:20300101T000000Z\r\n' +
 		'RRULE:FREQ=WEEKLY\r\n' +
 		'DTEND:20190801T100000Z\r\n' +
 		'RELATED-TO;RELTYPE=SIBLING:41CBE812-F77C-471A-A481-D6A18CCAAA99\r\n' +
 		'END:VEVENT\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:Europe/Berlin\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:+0100\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
+		'DTSTART:19810329T020000\r\n' +
+		'TZNAME:CEST\r\n' +
+		'TZOFFSETTO:+0200\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:+0200\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
+		'DTSTART:19961027T030000\r\n' +
+		'TZNAME:CET\r\n' +
+		'TZOFFSETTO:+0100\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
 		'END:VCALENDAR')
 })
 
@@ -3924,6 +3924,40 @@ it('getOccurrenceAtExactly recurring matching date', () => {
 	expect(event.id).toEqual('41CBE812-F77C-471A-A481-D6A18CCAAA99###1562569200')
 	expect(event.startDate.jsDate.toISOString()).toEqual('2019-07-08T07:00:00.000Z')
 	expect(event.endDate.jsDate.toISOString()).toEqual('2019-07-08T08:00:00.000Z')
+	expect(event.toICSThisOccurrence()).toEqual('BEGIN:VCALENDAR\r\n' +
+		'PRODID:-//IDN georgehrke.com//calendar-js//EN\r\n' +
+		'CALSCALE:GREGORIAN\r\n' +
+		'VERSION:2.0\r\n' +
+		'BEGIN:VEVENT\r\n' +
+		'TRANSP:OPAQUE\r\n' +
+		'DTEND;TZID=Europe/Berlin:20190708T100000\r\n' +
+		'X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:AUTOMATIC\r\n' +
+		'UID:41CBE812-F77C-471A-A481-D6A18CCAAA99\r\n' +
+		'DTSTAMP:20300101T000000Z\r\n' +
+		'SEQUENCE:1\r\n' +
+		'SUMMARY:weekly recurring event\r\n' +
+		'LAST-MODIFIED:20300101T000000Z\r\n' +
+		'DTSTART;TZID=Europe/Berlin:20190708T090000\r\n' +
+		'CREATED:20190703T172822Z\r\n' +
+		'END:VEVENT\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:Europe/Berlin\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:+0100\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
+		'DTSTART:19810329T020000\r\n' +
+		'TZNAME:CEST\r\n' +
+		'TZOFFSETTO:+0200\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:+0200\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
+		'DTSTART:19961027T030000\r\n' +
+		'TZNAME:CET\r\n' +
+		'TZOFFSETTO:+0100\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
+		'END:VCALENDAR')
 })
 
 it('getOccurrenceAtExactly recurring matching date with recurrence-exception', () => {
