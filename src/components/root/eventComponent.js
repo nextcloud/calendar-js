@@ -57,7 +57,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 	 * @returns {boolean}
 	 */
 	canModifyAllDay() {
-		return !this.isRecurring()
+		return !this.recurrenceManager.masterItem.isRecurring()
 	}
 
 	/**

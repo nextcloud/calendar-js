@@ -56,6 +56,7 @@ it('Parser + Expansion + RDATE + RDATE-Period + Recurrence-Exceptions', () => {
 	expect(event1.canCreateRecurrenceExceptions()).toEqual(true)
 	expect(event1.isRecurrenceException()).toEqual(false)
 	expect(event1.modifiesFuture()).toEqual(false)
+	expect(event1.canModifyAllDay()).toEqual(false)
 
 	/** @type {EventComponent} */
 	const event2 = iterator.next().value
@@ -67,6 +68,7 @@ it('Parser + Expansion + RDATE + RDATE-Period + Recurrence-Exceptions', () => {
 	expect(event2.canCreateRecurrenceExceptions()).toEqual(true)
 	expect(event2.isRecurrenceException()).toEqual(false)
 	expect(event2.modifiesFuture()).toEqual(false)
+	expect(event2.canModifyAllDay()).toEqual(false)
 
 	/** @type {EventComponent} */
 	const event3 = iterator.next().value
@@ -78,6 +80,7 @@ it('Parser + Expansion + RDATE + RDATE-Period + Recurrence-Exceptions', () => {
 	expect(event3.canCreateRecurrenceExceptions()).toEqual(false)
 	expect(event3.isRecurrenceException()).toEqual(true)
 	expect(event3.modifiesFuture()).toEqual(false)
+	expect(event3.canModifyAllDay()).toEqual(false)
 
 	// RDATE;TZID=Europe/Berlin:20190719T080000
 	/** @type {EventComponent} */
@@ -90,6 +93,7 @@ it('Parser + Expansion + RDATE + RDATE-Period + Recurrence-Exceptions', () => {
 	expect(event4.canCreateRecurrenceExceptions()).toEqual(true)
 	expect(event4.isRecurrenceException()).toEqual(false)
 	expect(event4.modifiesFuture()).toEqual(false)
+	expect(event4.canModifyAllDay()).toEqual(false)
 
 	// RDATE;TZID=America/New_York:20190719T090000 and RECURRENCE-ID;TZID=Europe/Berlin:20190719T150000
 	/** @type {EventComponent} */
@@ -102,6 +106,7 @@ it('Parser + Expansion + RDATE + RDATE-Period + Recurrence-Exceptions', () => {
 	expect(event5.canCreateRecurrenceExceptions()).toEqual(false)
 	expect(event5.isRecurrenceException()).toEqual(true)
 	expect(event5.modifiesFuture()).toEqual(false)
+	expect(event5.canModifyAllDay()).toEqual(false)
 
 	/** @type {EventComponent} */
 	const event6 = iterator.next().value
@@ -113,6 +118,7 @@ it('Parser + Expansion + RDATE + RDATE-Period + Recurrence-Exceptions', () => {
 	expect(event6.canCreateRecurrenceExceptions()).toEqual(true)
 	expect(event6.isRecurrenceException()).toEqual(false)
 	expect(event6.modifiesFuture()).toEqual(false)
+	expect(event6.canModifyAllDay()).toEqual(false)
 
 	/** @type {EventComponent} */
 	const event7 = iterator.next().value
@@ -124,6 +130,7 @@ it('Parser + Expansion + RDATE + RDATE-Period + Recurrence-Exceptions', () => {
 	expect(event7.canCreateRecurrenceExceptions()).toEqual(false)
 	expect(event7.isRecurrenceException()).toEqual(true)
 	expect(event7.modifiesFuture()).toEqual(false)
+	expect(event7.canModifyAllDay()).toEqual(false)
 
 	// RDATE;VALUE=PERIOD:20190801T070000Z/PT3H
 	/** @type {EventComponent} */
@@ -136,6 +143,7 @@ it('Parser + Expansion + RDATE + RDATE-Period + Recurrence-Exceptions', () => {
 	expect(event8.canCreateRecurrenceExceptions()).toEqual(true)
 	expect(event8.isRecurrenceException()).toEqual(false)
 	expect(event8.modifiesFuture()).toEqual(false)
+	expect(event8.canModifyAllDay()).toEqual(false)
 
 	// RDATE;VALUE=PERIOD:20190802T070000Z/20190802T083000Z
 	/** @type {EventComponent} */
@@ -148,6 +156,7 @@ it('Parser + Expansion + RDATE + RDATE-Period + Recurrence-Exceptions', () => {
 	expect(event9.canCreateRecurrenceExceptions()).toEqual(true)
 	expect(event9.isRecurrenceException()).toEqual(false)
 	expect(event9.modifiesFuture()).toEqual(false)
+	expect(event9.canModifyAllDay()).toEqual(false)
 
 	/** @type {EventComponent} */
 	const event10 = iterator.next().value
@@ -159,6 +168,7 @@ it('Parser + Expansion + RDATE + RDATE-Period + Recurrence-Exceptions', () => {
 	expect(event10.canCreateRecurrenceExceptions()).toEqual(true)
 	expect(event10.isRecurrenceException()).toEqual(false)
 	expect(event10.modifiesFuture()).toEqual(false)
+	expect(event10.canModifyAllDay()).toEqual(false)
 
 	/** @type {EventComponent} */
 	const event11 = iterator.next().value
@@ -170,6 +180,7 @@ it('Parser + Expansion + RDATE + RDATE-Period + Recurrence-Exceptions', () => {
 	expect(event11.canCreateRecurrenceExceptions()).toEqual(true)
 	expect(event11.isRecurrenceException()).toEqual(false)
 	expect(event11.modifiesFuture()).toEqual(false)
+	expect(event11.canModifyAllDay()).toEqual(false)
 
 	// EXDATE;TZID=Europe/Berlin:20190819T090000
 
@@ -184,6 +195,7 @@ it('Parser + Expansion + RDATE + RDATE-Period + Recurrence-Exceptions', () => {
 	expect(event12.canCreateRecurrenceExceptions()).toEqual(false)
 	expect(event12.isRecurrenceException()).toEqual(true)
 	expect(event12.modifiesFuture()).toEqual(false)
+	expect(event12.canModifyAllDay()).toEqual(false)
 
 	/** @type {EventComponent} */
 	const event13 = iterator.next().value
@@ -195,6 +207,7 @@ it('Parser + Expansion + RDATE + RDATE-Period + Recurrence-Exceptions', () => {
 	expect(event13.canCreateRecurrenceExceptions()).toEqual(true)
 	expect(event13.isRecurrenceException()).toEqual(false)
 	expect(event13.modifiesFuture()).toEqual(false)
+	expect(event13.canModifyAllDay()).toEqual(false)
 
 	// Verify there are no more events
 	expect(iterator.next().value).toEqual(undefined)
@@ -1999,6 +2012,17 @@ it('Delete RDATE - this and all future', () => {
 		'END:STANDARD\r\n' +
 		'END:VTIMEZONE\r\n' +
 		'END:VCALENDAR')
+})
+
+it('should be able to modify all-day of a non-recurring event', () => {
+	const ics = getAsset('simple-date-dtstart-dtend')
+	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2016, 6, 1, 0, 0, 0)))
+	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
+
+	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
+	const event = iterator.next().value
+
+	expect(event.canModifyAllDay()).toEqual(true)
 })
 
 it('should delete a non-recurring event - this', () => {
