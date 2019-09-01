@@ -398,47 +398,9 @@ it('Delete simple recurrence - this', () => {
 	expect(event15.removeThisOccurrence()).toEqual(false)
 
 	expect(event15.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
 		'CALSCALE:GREGORIAN\r\n' +
-		'BEGIN:VTIMEZONE\r\n' +
-		'TZID:Europe/Berlin\r\n' +
-		'BEGIN:DAYLIGHT\r\n' +
-		'TZOFFSETFROM:+0100\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
-		'DTSTART:19810329T020000\r\n' +
-		'TZNAME:CEST\r\n' +
-		'TZOFFSETTO:+0200\r\n' +
-		'END:DAYLIGHT\r\n' +
-		'BEGIN:STANDARD\r\n' +
-		'TZOFFSETFROM:+0200\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
-		'DTSTART:19961027T030000\r\n' +
-		'TZNAME:CET\r\n' +
-		'TZOFFSETTO:+0100\r\n' +
-		'END:STANDARD\r\n' +
-		'END:VTIMEZONE\r\n' +
-		'BEGIN:VTIMEZONE\r\n' +
-		'TZID:America/New_York\r\n' +
-		'BEGIN:DAYLIGHT\r\n' +
-		'TZOFFSETFROM:-0500\r\n' +
-		'TZOFFSETTO:-0400\r\n' +
-		'TZNAME:EDT\r\n' +
-		'DTSTART:19700308T020000\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU\r\n' +
-		'END:DAYLIGHT\r\n' +
-		'BEGIN:STANDARD\r\n' +
-		'TZOFFSETFROM:-0400\r\n' +
-		'TZOFFSETTO:-0500\r\n' +
-		'TZNAME:EST\r\n' +
-		'DTSTART:19701101T020000\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
-		'END:STANDARD\r\n' +
-		'END:VTIMEZONE\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -525,31 +487,6 @@ it('Delete simple recurrence - this', () => {
 		'SEQUENCE:0\r\n' +
 		'RECURRENCE-ID:20190824T070000Z\r\n' +
 		'END:VEVENT\r\n' +
-		'END:VCALENDAR')
-})
-
-it('Delete simple recurrence - this and all future', () => {
-	const ics = getAsset('recurring-infinitely-with-rdates')
-	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
-	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
-
-	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
-
-	for (let i = 0; i < 14; i++) {
-		iterator.next()
-	}
-
-	const event15 = iterator.next().value
-	expect(event15.removeThisOccurrence(true)).toEqual(false)
-
-	expect(event15.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
-		'CALSCALE:GREGORIAN\r\n' +
 		'BEGIN:VTIMEZONE\r\n' +
 		'TZID:Europe/Berlin\r\n' +
 		'BEGIN:DAYLIGHT\r\n' +
@@ -584,6 +521,27 @@ it('Delete simple recurrence - this and all future', () => {
 		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
 		'END:STANDARD\r\n' +
 		'END:VTIMEZONE\r\n' +
+		'END:VCALENDAR')
+})
+
+it('Delete simple recurrence - this and all future', () => {
+	const ics = getAsset('recurring-infinitely-with-rdates')
+	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
+	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
+
+	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
+
+	for (let i = 0; i < 14; i++) {
+		iterator.next()
+	}
+
+	const event15 = iterator.next().value
+	expect(event15.removeThisOccurrence(true)).toEqual(false)
+
+	expect(event15.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
+		'CALSCALE:GREGORIAN\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -669,26 +627,6 @@ it('Delete simple recurrence - this and all future', () => {
 		'SEQUENCE:0\r\n' +
 		'RECURRENCE-ID:20190824T070000Z\r\n' +
 		'END:VEVENT\r\n' +
-		'END:VCALENDAR')
-})
-
-it('Delete first item this', () => {
-	const ics = getAsset('recurring-infinitely-with-rdates')
-	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
-	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
-
-	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
-	const event1 = iterator.next().value
-	expect(event1.removeThisOccurrence()).toEqual(false)
-
-	expect(event1.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
-		'CALSCALE:GREGORIAN\r\n' +
 		'BEGIN:VTIMEZONE\r\n' +
 		'TZID:Europe/Berlin\r\n' +
 		'BEGIN:DAYLIGHT\r\n' +
@@ -723,6 +661,22 @@ it('Delete first item this', () => {
 		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
 		'END:STANDARD\r\n' +
 		'END:VTIMEZONE\r\n' +
+		'END:VCALENDAR')
+})
+
+it('Delete first item this', () => {
+	const ics = getAsset('recurring-infinitely-with-rdates')
+	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
+	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
+
+	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
+	const event1 = iterator.next().value
+	expect(event1.removeThisOccurrence()).toEqual(false)
+
+	expect(event1.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
+		'CALSCALE:GREGORIAN\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -809,41 +763,6 @@ it('Delete first item this', () => {
 		'SEQUENCE:0\r\n' +
 		'RECURRENCE-ID:20190824T070000Z\r\n' +
 		'END:VEVENT\r\n' +
-		'END:VCALENDAR')
-})
-
-it('Delete first item this and future', () => {
-	const ics = getAsset('recurring-infinitely-with-rdates')
-	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
-	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
-
-	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
-	const event1 = iterator.next().value
-	expect(event1.removeThisOccurrence(true)).toEqual(true)
-})
-
-it('Delete no-range recurrence-exception this', () => {
-	const ics = getAsset('recurring-infinitely-with-rdates')
-	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
-	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
-
-	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
-
-	for (let i = 0; i < 2; i++) {
-		iterator.next()
-	}
-
-	const event3 = iterator.next().value
-	expect(event3.removeThisOccurrence()).toEqual(false)
-
-	expect(event3.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
-		'CALSCALE:GREGORIAN\r\n' +
 		'BEGIN:VTIMEZONE\r\n' +
 		'TZID:Europe/Berlin\r\n' +
 		'BEGIN:DAYLIGHT\r\n' +
@@ -878,6 +797,37 @@ it('Delete no-range recurrence-exception this', () => {
 		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
 		'END:STANDARD\r\n' +
 		'END:VTIMEZONE\r\n' +
+		'END:VCALENDAR')
+})
+
+it('Delete first item this and future', () => {
+	const ics = getAsset('recurring-infinitely-with-rdates')
+	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
+	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
+
+	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
+	const event1 = iterator.next().value
+	expect(event1.removeThisOccurrence(true)).toEqual(true)
+})
+
+it('Delete no-range recurrence-exception this', () => {
+	const ics = getAsset('recurring-infinitely-with-rdates')
+	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
+	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
+
+	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
+
+	for (let i = 0; i < 2; i++) {
+		iterator.next()
+	}
+
+	const event3 = iterator.next().value
+	expect(event3.removeThisOccurrence()).toEqual(false)
+
+	expect(event3.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
+		'CALSCALE:GREGORIAN\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -951,100 +901,6 @@ it('Delete no-range recurrence-exception this', () => {
 		'SEQUENCE:0\r\n' +
 		'RECURRENCE-ID:20190824T070000Z\r\n' +
 		'END:VEVENT\r\n' +
-		'END:VCALENDAR')
-})
-
-it('Delete no-range recurrence-exception this and all future', () => {
-	const ics = getAsset('recurring-infinitely-with-rdates')
-	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
-	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
-
-	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
-
-	for (let i = 0; i < 2; i++) {
-		iterator.next()
-	}
-
-	const event3 = iterator.next().value
-	expect(event3.removeThisOccurrence(true)).toEqual(false)
-
-	expect(event3.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
-		'CALSCALE:GREGORIAN\r\n' +
-		'BEGIN:VTIMEZONE\r\n' +
-		'TZID:Europe/Berlin\r\n' +
-		'BEGIN:DAYLIGHT\r\n' +
-		'TZOFFSETFROM:+0100\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
-		'DTSTART:19810329T020000\r\n' +
-		'TZNAME:CEST\r\n' +
-		'TZOFFSETTO:+0200\r\n' +
-		'END:DAYLIGHT\r\n' +
-		'BEGIN:STANDARD\r\n' +
-		'TZOFFSETFROM:+0200\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
-		'DTSTART:19961027T030000\r\n' +
-		'TZNAME:CET\r\n' +
-		'TZOFFSETTO:+0100\r\n' +
-		'END:STANDARD\r\n' +
-		'END:VTIMEZONE\r\n' +
-		'BEGIN:VEVENT\r\n' +
-		'TRANSP:OPAQUE\r\n' +
-		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
-		'X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:AUTOMATIC\r\n' +
-		'UID:41CBE812-F77C-471A-A481-D6A18CCAAA99\r\n' +
-		'DTSTAMP:20300101T000000Z\r\n' +
-		'SEQUENCE:1\r\n' +
-		'SUMMARY:weekly recurring event\r\n' +
-		'LAST-MODIFIED:20300101T000000Z\r\n' +
-		'DTSTART;TZID=Europe/Berlin:20190701T090000\r\n' +
-		'CREATED:20190703T172822Z\r\n' +
-		'RRULE:FREQ=WEEKLY;UNTIL=20190715T065959Z\r\n' +
-		'END:VEVENT\r\n' +
-		'BEGIN:VEVENT\r\n' +
-		'CREATED:20190703T172822Z\r\n' +
-		'UID:41CBE812-F77C-471A-A481-D6A18CCAAA99\r\n' +
-		'DTEND;TZID=Europe/Berlin:20190714T100000\r\n' +
-		'TRANSP:OPAQUE\r\n' +
-		'X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:AUTOMATIC\r\n' +
-		'SUMMARY:weekly recurring event exception bogus - recurrence-id doesn\'t matc\r\n' +
-		' h\r\n' +
-		'LAST-MODIFIED:20190703T172914Z\r\n' +
-		'DTSTAMP:20190703T172836Z\r\n' +
-		'DTSTART;TZID=Europe/Berlin:20190714T090000\r\n' +
-		'SEQUENCE:0\r\n' +
-		'RECURRENCE-ID;TZID=Europe/Berlin:20190703T090000\r\n' +
-		'END:VEVENT\r\n' +
-		'END:VCALENDAR')
-})
-
-it('Delete range recurrence-exception this (exact match)', () => {
-	const ics = getAsset('recurring-with-recurrence-id-range')
-	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
-	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 15, 23, 59, 59)))
-
-	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
-
-	for (let i = 0; i < 11; i++) {
-		iterator.next()
-	}
-
-	const event12 = iterator.next().value
-	expect(event12.removeThisOccurrence()).toEqual(false)
-
-	expect(event12.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
-		'CALSCALE:GREGORIAN\r\n' +
 		'BEGIN:VTIMEZONE\r\n' +
 		'TZID:Europe/Berlin\r\n' +
 		'BEGIN:DAYLIGHT\r\n' +
@@ -1079,6 +935,92 @@ it('Delete range recurrence-exception this (exact match)', () => {
 		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
 		'END:STANDARD\r\n' +
 		'END:VTIMEZONE\r\n' +
+		'END:VCALENDAR')
+})
+
+it('Delete no-range recurrence-exception this and all future', () => {
+	const ics = getAsset('recurring-infinitely-with-rdates')
+	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
+	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
+
+	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
+
+	for (let i = 0; i < 2; i++) {
+		iterator.next()
+	}
+
+	const event3 = iterator.next().value
+	expect(event3.removeThisOccurrence(true)).toEqual(false)
+
+	expect(event3.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
+		'CALSCALE:GREGORIAN\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
+		'BEGIN:VEVENT\r\n' +
+		'TRANSP:OPAQUE\r\n' +
+		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
+		'X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:AUTOMATIC\r\n' +
+		'UID:41CBE812-F77C-471A-A481-D6A18CCAAA99\r\n' +
+		'DTSTAMP:20300101T000000Z\r\n' +
+		'SEQUENCE:1\r\n' +
+		'SUMMARY:weekly recurring event\r\n' +
+		'LAST-MODIFIED:20300101T000000Z\r\n' +
+		'DTSTART;TZID=Europe/Berlin:20190701T090000\r\n' +
+		'CREATED:20190703T172822Z\r\n' +
+		'RRULE:FREQ=WEEKLY;UNTIL=20190715T065959Z\r\n' +
+		'END:VEVENT\r\n' +
+		'BEGIN:VEVENT\r\n' +
+		'CREATED:20190703T172822Z\r\n' +
+		'UID:41CBE812-F77C-471A-A481-D6A18CCAAA99\r\n' +
+		'DTEND;TZID=Europe/Berlin:20190714T100000\r\n' +
+		'TRANSP:OPAQUE\r\n' +
+		'X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:AUTOMATIC\r\n' +
+		'SUMMARY:weekly recurring event exception bogus - recurrence-id doesn\'t matc\r\n' +
+		' h\r\n' +
+		'LAST-MODIFIED:20190703T172914Z\r\n' +
+		'DTSTAMP:20190703T172836Z\r\n' +
+		'DTSTART;TZID=Europe/Berlin:20190714T090000\r\n' +
+		'SEQUENCE:0\r\n' +
+		'RECURRENCE-ID;TZID=Europe/Berlin:20190703T090000\r\n' +
+		'END:VEVENT\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:Europe/Berlin\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:+0100\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
+		'DTSTART:19810329T020000\r\n' +
+		'TZNAME:CEST\r\n' +
+		'TZOFFSETTO:+0200\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:+0200\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
+		'DTSTART:19961027T030000\r\n' +
+		'TZNAME:CET\r\n' +
+		'TZOFFSETTO:+0100\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
+		'END:VCALENDAR')
+})
+
+it('Delete range recurrence-exception this (exact match)', () => {
+	const ics = getAsset('recurring-with-recurrence-id-range')
+	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
+	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 15, 23, 59, 59)))
+
+	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
+
+	for (let i = 0; i < 11; i++) {
+		iterator.next()
+	}
+
+	const event12 = iterator.next().value
+	expect(event12.removeThisOccurrence()).toEqual(false)
+
+	expect(event12.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
+		'CALSCALE:GREGORIAN\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -1164,31 +1106,6 @@ it('Delete range recurrence-exception this (exact match)', () => {
 		'SEQUENCE:0\r\n' +
 		'RECURRENCE-ID;RANGE=THISANDFUTURE:20190824T070000Z\r\n' +
 		'END:VEVENT\r\n' +
-		'END:VCALENDAR')
-})
-
-it('Delete range recurrence-exception this and all future (exact match)', () => {
-	const ics = getAsset('recurring-with-recurrence-id-range')
-	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
-	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 15, 23, 59, 59)))
-
-	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
-
-	for (let i = 0; i < 11; i++) {
-		iterator.next()
-	}
-
-	const event12 = iterator.next().value
-	expect(event12.removeThisOccurrence(true)).toEqual(false)
-
-	expect(event12.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
-		'CALSCALE:GREGORIAN\r\n' +
 		'BEGIN:VTIMEZONE\r\n' +
 		'TZID:Europe/Berlin\r\n' +
 		'BEGIN:DAYLIGHT\r\n' +
@@ -1223,6 +1140,27 @@ it('Delete range recurrence-exception this and all future (exact match)', () => 
 		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
 		'END:STANDARD\r\n' +
 		'END:VTIMEZONE\r\n' +
+		'END:VCALENDAR')
+})
+
+it('Delete range recurrence-exception this and all future (exact match)', () => {
+	const ics = getAsset('recurring-with-recurrence-id-range')
+	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
+	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 15, 23, 59, 59)))
+
+	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
+
+	for (let i = 0; i < 11; i++) {
+		iterator.next()
+	}
+
+	const event12 = iterator.next().value
+	expect(event12.removeThisOccurrence(true)).toEqual(false)
+
+	expect(event12.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
+		'CALSCALE:GREGORIAN\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -1295,31 +1233,6 @@ it('Delete range recurrence-exception this and all future (exact match)', () => 
 		'SEQUENCE:0\r\n' +
 		'RECURRENCE-ID;TZID=Europe/Berlin:20190719T150000\r\n' +
 		'END:VEVENT\r\n' +
-		'END:VCALENDAR')
-})
-
-it('Delete range recurrence-exception this (non-first match)', () => {
-	const ics = getAsset('recurring-with-recurrence-id-range')
-	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
-	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 15, 23, 59, 59)))
-
-	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
-
-	for (let i = 0; i < 14; i++) {
-		iterator.next()
-	}
-
-	const event15 = iterator.next().value
-	expect(event15.removeThisOccurrence()).toEqual(false)
-
-	expect(event15.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
-		'CALSCALE:GREGORIAN\r\n' +
 		'BEGIN:VTIMEZONE\r\n' +
 		'TZID:Europe/Berlin\r\n' +
 		'BEGIN:DAYLIGHT\r\n' +
@@ -1354,6 +1267,27 @@ it('Delete range recurrence-exception this (non-first match)', () => {
 		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
 		'END:STANDARD\r\n' +
 		'END:VTIMEZONE\r\n' +
+		'END:VCALENDAR')
+})
+
+it('Delete range recurrence-exception this (non-first match)', () => {
+	const ics = getAsset('recurring-with-recurrence-id-range')
+	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
+	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 15, 23, 59, 59)))
+
+	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
+
+	for (let i = 0; i < 14; i++) {
+		iterator.next()
+	}
+
+	const event15 = iterator.next().value
+	expect(event15.removeThisOccurrence()).toEqual(false)
+
+	expect(event15.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
+		'CALSCALE:GREGORIAN\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -1440,31 +1374,6 @@ it('Delete range recurrence-exception this (non-first match)', () => {
 		'SEQUENCE:0\r\n' +
 		'RECURRENCE-ID;RANGE=THISANDFUTURE:20190824T070000Z\r\n' +
 		'END:VEVENT\r\n' +
-		'END:VCALENDAR')
-})
-
-it('Delete range recurrence-exception this and all future (non-first match)', () => {
-	const ics = getAsset('recurring-with-recurrence-id-range')
-	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
-	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 15, 23, 59, 59)))
-
-	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
-
-	for (let i = 0; i < 14; i++) {
-		iterator.next()
-	}
-
-	const event15 = iterator.next().value
-	expect(event15.removeThisOccurrence(true)).toEqual(false)
-
-	expect(event15.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
-		'CALSCALE:GREGORIAN\r\n' +
 		'BEGIN:VTIMEZONE\r\n' +
 		'TZID:Europe/Berlin\r\n' +
 		'BEGIN:DAYLIGHT\r\n' +
@@ -1499,6 +1408,27 @@ it('Delete range recurrence-exception this and all future (non-first match)', ()
 		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
 		'END:STANDARD\r\n' +
 		'END:VTIMEZONE\r\n' +
+		'END:VCALENDAR')
+})
+
+it('Delete range recurrence-exception this and all future (non-first match)', () => {
+	const ics = getAsset('recurring-with-recurrence-id-range')
+	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
+	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 15, 23, 59, 59)))
+
+	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
+
+	for (let i = 0; i < 14; i++) {
+		iterator.next()
+	}
+
+	const event15 = iterator.next().value
+	expect(event15.removeThisOccurrence(true)).toEqual(false)
+
+	expect(event15.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
+		'CALSCALE:GREGORIAN\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -1584,6 +1514,40 @@ it('Delete range recurrence-exception this and all future (non-first match)', ()
 		'SEQUENCE:0\r\n' +
 		'RECURRENCE-ID;RANGE=THISANDFUTURE:20190824T070000Z\r\n' +
 		'END:VEVENT\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:Europe/Berlin\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:+0100\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
+		'DTSTART:19810329T020000\r\n' +
+		'TZNAME:CEST\r\n' +
+		'TZOFFSETTO:+0200\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:+0200\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
+		'DTSTART:19961027T030000\r\n' +
+		'TZNAME:CET\r\n' +
+		'TZOFFSETTO:+0100\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:America/New_York\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:-0500\r\n' +
+		'TZOFFSETTO:-0400\r\n' +
+		'TZNAME:EDT\r\n' +
+		'DTSTART:19700308T020000\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:-0400\r\n' +
+		'TZOFFSETTO:-0500\r\n' +
+		'TZNAME:EST\r\n' +
+		'DTSTART:19701101T020000\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
 		'END:VCALENDAR')
 })
 
@@ -1602,30 +1566,9 @@ it('Delete rdate-based recurrence-exception this', () => {
 	expect(event5.removeThisOccurrence()).toEqual(false)
 
  	expect(event5.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
 		'CALSCALE:GREGORIAN\r\n' +
-		'BEGIN:VTIMEZONE\r\n' +
-		'TZID:Europe/Berlin\r\n' +
-		'BEGIN:DAYLIGHT\r\n' +
-		'TZOFFSETFROM:+0100\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
-		'DTSTART:19810329T020000\r\n' +
-		'TZNAME:CEST\r\n' +
-		'TZOFFSETTO:+0200\r\n' +
-		'END:DAYLIGHT\r\n' +
-		'BEGIN:STANDARD\r\n' +
-		'TZOFFSETFROM:+0200\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
-		'DTSTART:19961027T030000\r\n' +
-		'TZNAME:CET\r\n' +
-		'TZOFFSETTO:+0100\r\n' +
-		'END:STANDARD\r\n' +
-		'END:VTIMEZONE\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -1696,6 +1639,23 @@ it('Delete rdate-based recurrence-exception this', () => {
 		'SEQUENCE:0\r\n' +
 		'RECURRENCE-ID:20190824T070000Z\r\n' +
 		'END:VEVENT\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:Europe/Berlin\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:+0100\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
+		'DTSTART:19810329T020000\r\n' +
+		'TZNAME:CEST\r\n' +
+		'TZOFFSETTO:+0200\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:+0200\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
+		'DTSTART:19961027T030000\r\n' +
+		'TZNAME:CET\r\n' +
+		'TZOFFSETTO:+0100\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
 		'END:VCALENDAR')
 })
 
@@ -1714,30 +1674,9 @@ it('Delete rdate-based recurrence-exception this and all future', () => {
 	expect(event5.removeThisOccurrence(true)).toEqual(false)
 
  	expect(event5.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
 		'CALSCALE:GREGORIAN\r\n' +
-		'BEGIN:VTIMEZONE\r\n' +
-		'TZID:Europe/Berlin\r\n' +
-		'BEGIN:DAYLIGHT\r\n' +
-		'TZOFFSETFROM:+0100\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
-		'DTSTART:19810329T020000\r\n' +
-		'TZNAME:CEST\r\n' +
-		'TZOFFSETTO:+0200\r\n' +
-		'END:DAYLIGHT\r\n' +
-		'BEGIN:STANDARD\r\n' +
-		'TZOFFSETFROM:+0200\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
-		'DTSTART:19961027T030000\r\n' +
-		'TZNAME:CET\r\n' +
-		'TZOFFSETTO:+0100\r\n' +
-		'END:STANDARD\r\n' +
-		'END:VTIMEZONE\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -1779,6 +1718,23 @@ it('Delete rdate-based recurrence-exception this and all future', () => {
 		'SEQUENCE:0\r\n' +
 		'RECURRENCE-ID;TZID=Europe/Berlin:20190703T090000\r\n' +
 		'END:VEVENT\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:Europe/Berlin\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:+0100\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
+		'DTSTART:19810329T020000\r\n' +
+		'TZNAME:CEST\r\n' +
+		'TZOFFSETTO:+0200\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:+0200\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
+		'DTSTART:19961027T030000\r\n' +
+		'TZNAME:CET\r\n' +
+		'TZOFFSETTO:+0100\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
 		'END:VCALENDAR')
 })
 
@@ -1797,47 +1753,9 @@ it('Delete RDATE only - this', () => {
 	expect(event8.removeThisOccurrence()).toEqual(false)
 
  	expect(event8.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
 		'CALSCALE:GREGORIAN\r\n' +
-		'BEGIN:VTIMEZONE\r\n' +
-		'TZID:Europe/Berlin\r\n' +
-		'BEGIN:DAYLIGHT\r\n' +
-		'TZOFFSETFROM:+0100\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
-		'DTSTART:19810329T020000\r\n' +
-		'TZNAME:CEST\r\n' +
-		'TZOFFSETTO:+0200\r\n' +
-		'END:DAYLIGHT\r\n' +
-		'BEGIN:STANDARD\r\n' +
-		'TZOFFSETFROM:+0200\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
-		'DTSTART:19961027T030000\r\n' +
-		'TZNAME:CET\r\n' +
-		'TZOFFSETTO:+0100\r\n' +
-		'END:STANDARD\r\n' +
-		'END:VTIMEZONE\r\n' +
-		'BEGIN:VTIMEZONE\r\n' +
-		'TZID:America/New_York\r\n' +
-		'BEGIN:DAYLIGHT\r\n' +
-		'TZOFFSETFROM:-0500\r\n' +
-		'TZOFFSETTO:-0400\r\n' +
-		'TZNAME:EDT\r\n' +
-		'DTSTART:19700308T020000\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU\r\n' +
-		'END:DAYLIGHT\r\n' +
-		'BEGIN:STANDARD\r\n' +
-		'TZOFFSETFROM:-0400\r\n' +
-		'TZOFFSETTO:-0500\r\n' +
-		'TZNAME:EST\r\n' +
-		'DTSTART:19701101T020000\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
-		'END:STANDARD\r\n' +
-		'END:VTIMEZONE\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -1922,31 +1840,6 @@ it('Delete RDATE only - this', () => {
 		'SEQUENCE:0\r\n' +
 		'RECURRENCE-ID:20190824T070000Z\r\n' +
 		'END:VEVENT\r\n' +
-		'END:VCALENDAR')
-})
-
-it('Delete RDATE - this and all future', () => {
-	const ics = getAsset('recurring-infinitely-with-rdates')
-	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
-	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
-
-	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
-
-	for (let i = 0; i < 7; i++) {
-		iterator.next()
-	}
-
-	const event8 = iterator.next().value
-	expect(event8.removeThisOccurrence(true)).toEqual(false)
-
- 	expect(event8.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
-		'CALSCALE:GREGORIAN\r\n' +
 		'BEGIN:VTIMEZONE\r\n' +
 		'TZID:Europe/Berlin\r\n' +
 		'BEGIN:DAYLIGHT\r\n' +
@@ -1981,6 +1874,27 @@ it('Delete RDATE - this and all future', () => {
 		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
 		'END:STANDARD\r\n' +
 		'END:VTIMEZONE\r\n' +
+		'END:VCALENDAR')
+})
+
+it('Delete RDATE - this and all future', () => {
+	const ics = getAsset('recurring-infinitely-with-rdates')
+	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
+	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
+
+	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
+
+	for (let i = 0; i < 7; i++) {
+		iterator.next()
+	}
+
+	const event8 = iterator.next().value
+	expect(event8.removeThisOccurrence(true)).toEqual(false)
+
+ 	expect(event8.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
+		'CALSCALE:GREGORIAN\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -2050,6 +1964,40 @@ it('Delete RDATE - this and all future', () => {
 		'SEQUENCE:0\r\n' +
 		'RECURRENCE-ID;TZID=Europe/Berlin:20190719T150000\r\n' +
 		'END:VEVENT\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:Europe/Berlin\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:+0100\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
+		'DTSTART:19810329T020000\r\n' +
+		'TZNAME:CEST\r\n' +
+		'TZOFFSETTO:+0200\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:+0200\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
+		'DTSTART:19961027T030000\r\n' +
+		'TZNAME:CET\r\n' +
+		'TZOFFSETTO:+0100\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:America/New_York\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:-0500\r\n' +
+		'TZOFFSETTO:-0400\r\n' +
+		'TZNAME:EDT\r\n' +
+		'DTSTART:19700308T020000\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:-0400\r\n' +
+		'TZOFFSETTO:-0500\r\n' +
+		'TZNAME:EST\r\n' +
+		'DTSTART:19701101T020000\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
 		'END:VCALENDAR')
 })
 
@@ -2092,47 +2040,9 @@ it ('edit first occurrence - this', () => {
 	expect(exception).toEqual(event1)
 
 	expect(original.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
 		'CALSCALE:GREGORIAN\r\n' +
-		'BEGIN:VTIMEZONE\r\n' +
-		'TZID:Europe/Berlin\r\n' +
-		'BEGIN:DAYLIGHT\r\n' +
-		'TZOFFSETFROM:+0100\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
-		'DTSTART:19810329T020000\r\n' +
-		'TZNAME:CEST\r\n' +
-		'TZOFFSETTO:+0200\r\n' +
-		'END:DAYLIGHT\r\n' +
-		'BEGIN:STANDARD\r\n' +
-		'TZOFFSETFROM:+0200\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
-		'DTSTART:19961027T030000\r\n' +
-		'TZNAME:CET\r\n' +
-		'TZOFFSETTO:+0100\r\n' +
-		'END:STANDARD\r\n' +
-		'END:VTIMEZONE\r\n' +
-		'BEGIN:VTIMEZONE\r\n' +
-		'TZID:America/New_York\r\n' +
-		'BEGIN:DAYLIGHT\r\n' +
-		'TZOFFSETFROM:-0500\r\n' +
-		'TZOFFSETTO:-0400\r\n' +
-		'TZNAME:EDT\r\n' +
-		'DTSTART:19700308T020000\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU\r\n' +
-		'END:DAYLIGHT\r\n' +
-		'BEGIN:STANDARD\r\n' +
-		'TZOFFSETFROM:-0400\r\n' +
-		'TZOFFSETTO:-0500\r\n' +
-		'TZNAME:EST\r\n' +
-		'DTSTART:19701101T020000\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
-		'END:STANDARD\r\n' +
-		'END:VTIMEZONE\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -2231,33 +2141,6 @@ it ('edit first occurrence - this', () => {
 		'CREATED:20300101T000000Z\r\n' +
 		'RECURRENCE-ID;TZID=Europe/Berlin:20190701T090000\r\n' +
 		'END:VEVENT\r\n' +
-		'END:VCALENDAR')
-})
-
-it ('edit first occurrence - this and future', () => {
-	const ics = getAsset('recurring-infinitely-with-rdates')
-	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
-	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
-
-	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
-
-	const event1 = iterator.next().value
-
-	event1.title = 'This is a recurrence-exception created with calendar-js'
-	event1.startDate.addDuration(DurationValue.fromSeconds(60 * 60))
-
-	const [original, exception] = event1.createRecurrenceException(true)
-	expect(original.root).toEqual(exception.root)
-	expect(exception).toEqual(event1)
-
-	expect(original.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
-		'CALSCALE:GREGORIAN\r\n' +
 		'BEGIN:VTIMEZONE\r\n' +
 		'TZID:Europe/Berlin\r\n' +
 		'BEGIN:DAYLIGHT\r\n' +
@@ -2292,6 +2175,29 @@ it ('edit first occurrence - this and future', () => {
 		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
 		'END:STANDARD\r\n' +
 		'END:VTIMEZONE\r\n' +
+		'END:VCALENDAR')
+})
+
+it ('edit first occurrence - this and future', () => {
+	const ics = getAsset('recurring-infinitely-with-rdates')
+	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
+	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
+
+	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
+
+	const event1 = iterator.next().value
+
+	event1.title = 'This is a recurrence-exception created with calendar-js'
+	event1.startDate.addDuration(DurationValue.fromSeconds(60 * 60))
+
+	const [original, exception] = event1.createRecurrenceException(true)
+	expect(original.root).toEqual(exception.root)
+	expect(exception).toEqual(event1)
+
+	expect(original.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
+		'CALSCALE:GREGORIAN\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -2377,37 +2283,6 @@ it ('edit first occurrence - this and future', () => {
 		'SEQUENCE:0\r\n' +
 		'RECURRENCE-ID:20190824T070000Z\r\n' +
 		'END:VEVENT\r\n' +
-		'END:VCALENDAR')
-})
-
-it('edit simple recurrence - this', () => {
-	const ics = getAsset('recurring-infinitely-with-rdates')
-	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
-	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
-
-	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
-
-	for (let i = 0; i < 14; i++) {
-		iterator.next()
-	}
-
-	const event15 = iterator.next().value
-
-	event15.title = 'This is a recurrence-exception created with calendar-js'
-	event15.startDate.addDuration(DurationValue.fromSeconds(60 * 60))
-
-	const [original, exception] = event15.createRecurrenceException()
-
-	expect(original.root).toEqual(exception.root)
-	expect(exception).toEqual(event15)
-	expect(original.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
-		'CALSCALE:GREGORIAN\r\n' +
 		'BEGIN:VTIMEZONE\r\n' +
 		'TZID:Europe/Berlin\r\n' +
 		'BEGIN:DAYLIGHT\r\n' +
@@ -2442,6 +2317,33 @@ it('edit simple recurrence - this', () => {
 		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
 		'END:STANDARD\r\n' +
 		'END:VTIMEZONE\r\n' +
+		'END:VCALENDAR')
+})
+
+it('edit simple recurrence - this', () => {
+	const ics = getAsset('recurring-infinitely-with-rdates')
+	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
+	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
+
+	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
+
+	for (let i = 0; i < 14; i++) {
+		iterator.next()
+	}
+
+	const event15 = iterator.next().value
+
+	event15.title = 'This is a recurrence-exception created with calendar-js'
+	event15.startDate.addDuration(DurationValue.fromSeconds(60 * 60))
+
+	const [original, exception] = event15.createRecurrenceException()
+
+	expect(original.root).toEqual(exception.root)
+	expect(exception).toEqual(event15)
+	expect(original.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
+		'CALSCALE:GREGORIAN\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -2540,36 +2442,6 @@ it('edit simple recurrence - this', () => {
 		'CREATED:20300101T000000Z\r\n' +
 		'RECURRENCE-ID;TZID=Europe/Berlin:20190909T090000\r\n' +
 		'END:VEVENT\r\n' +
-		'END:VCALENDAR')
-})
-
-it('Edit simple recurrence - this and all future', () => {
-	const ics = getAsset('recurring-infinitely-with-rdates')
-	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
-	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
-
-	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
-
-	for (let i = 0; i < 14; i++) {
-		iterator.next()
-	}
-
-	const event15 = iterator.next().value
-
-	event15.title = 'This is a recurrence-exception created with calendar-js'
-	event15.startDate.addDuration(DurationValue.fromSeconds(60 * 60))
-
-	const [original, exception] = event15.createRecurrenceException(true)
-
-	expect(original.root).not.toEqual(exception.root)
-	expect(original.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
-		'CALSCALE:GREGORIAN\r\n' +
 		'BEGIN:VTIMEZONE\r\n' +
 		'TZID:Europe/Berlin\r\n' +
 		'BEGIN:DAYLIGHT\r\n' +
@@ -2604,6 +2476,32 @@ it('Edit simple recurrence - this and all future', () => {
 		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
 		'END:STANDARD\r\n' +
 		'END:VTIMEZONE\r\n' +
+		'END:VCALENDAR')
+})
+
+it('Edit simple recurrence - this and all future', () => {
+	const ics = getAsset('recurring-infinitely-with-rdates')
+	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
+	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
+
+	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
+
+	for (let i = 0; i < 14; i++) {
+		iterator.next()
+	}
+
+	const event15 = iterator.next().value
+
+	event15.title = 'This is a recurrence-exception created with calendar-js'
+	event15.startDate.addDuration(DurationValue.fromSeconds(60 * 60))
+
+	const [original, exception] = event15.createRecurrenceException(true)
+
+	expect(original.root).not.toEqual(exception.root)
+	expect(original.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
+		'CALSCALE:GREGORIAN\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -2690,6 +2588,40 @@ it('Edit simple recurrence - this and all future', () => {
 		'SEQUENCE:0\r\n' +
 		'RECURRENCE-ID:20190824T070000Z\r\n' +
 		'END:VEVENT\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:Europe/Berlin\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:+0100\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
+		'DTSTART:19810329T020000\r\n' +
+		'TZNAME:CEST\r\n' +
+		'TZOFFSETTO:+0200\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:+0200\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
+		'DTSTART:19961027T030000\r\n' +
+		'TZNAME:CET\r\n' +
+		'TZOFFSETTO:+0100\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:America/New_York\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:-0500\r\n' +
+		'TZOFFSETTO:-0400\r\n' +
+		'TZNAME:EDT\r\n' +
+		'DTSTART:19700308T020000\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:-0400\r\n' +
+		'TZOFFSETTO:-0500\r\n' +
+		'TZNAME:EST\r\n' +
+		'DTSTART:19701101T020000\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
 		'END:VCALENDAR')
 
 	expect(exception.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
@@ -2751,47 +2683,9 @@ it('Edit range recurrence-exception this (exact-match)', () => {
 	expect(exception).toEqual(event12)
 
 	expect(original.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
 		'CALSCALE:GREGORIAN\r\n' +
-		'BEGIN:VTIMEZONE\r\n' +
-		'TZID:Europe/Berlin\r\n' +
-		'BEGIN:DAYLIGHT\r\n' +
-		'TZOFFSETFROM:+0100\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
-		'DTSTART:19810329T020000\r\n' +
-		'TZNAME:CEST\r\n' +
-		'TZOFFSETTO:+0200\r\n' +
-		'END:DAYLIGHT\r\n' +
-		'BEGIN:STANDARD\r\n' +
-		'TZOFFSETFROM:+0200\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
-		'DTSTART:19961027T030000\r\n' +
-		'TZNAME:CET\r\n' +
-		'TZOFFSETTO:+0100\r\n' +
-		'END:STANDARD\r\n' +
-		'END:VTIMEZONE\r\n' +
-		'BEGIN:VTIMEZONE\r\n' +
-		'TZID:America/New_York\r\n' +
-		'BEGIN:DAYLIGHT\r\n' +
-		'TZOFFSETFROM:-0500\r\n' +
-		'TZOFFSETTO:-0400\r\n' +
-		'TZNAME:EDT\r\n' +
-		'DTSTART:19700308T020000\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU\r\n' +
-		'END:DAYLIGHT\r\n' +
-		'BEGIN:STANDARD\r\n' +
-		'TZOFFSETFROM:-0400\r\n' +
-		'TZOFFSETTO:-0500\r\n' +
-		'TZNAME:EST\r\n' +
-		'DTSTART:19701101T020000\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
-		'END:STANDARD\r\n' +
-		'END:VTIMEZONE\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -2891,37 +2785,6 @@ it('Edit range recurrence-exception this (exact-match)', () => {
 		'SEQUENCE:1\r\n' +
 		'RECURRENCE-ID:20190824T070000Z\r\n' +
 		'END:VEVENT\r\n' +
-		'END:VCALENDAR')
-})
-
-it('Edit range recurrence-exception this and all future (exact-match)', () => {
-	const ics = getAsset('recurring-with-recurrence-id-range')
-	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
-	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
-
-	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
-
-	for (let i = 0; i < 11; i++) {
-		iterator.next()
-	}
-
-	const event12 = iterator.next().value
-
-	event12.title = 'This is a recurrence-exception created with calendar-js'
-	event12.startDate.addDuration(DurationValue.fromSeconds(60 * 60))
-
-	const [original, exception] = event12.createRecurrenceException(true)
-	expect(original.root).not.toEqual(exception.root)
-	expect(exception).toEqual(event12)
-
-	expect(original.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
-		'CALSCALE:GREGORIAN\r\n' +
 		'BEGIN:VTIMEZONE\r\n' +
 		'TZID:Europe/Berlin\r\n' +
 		'BEGIN:DAYLIGHT\r\n' +
@@ -2956,6 +2819,33 @@ it('Edit range recurrence-exception this and all future (exact-match)', () => {
 		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
 		'END:STANDARD\r\n' +
 		'END:VTIMEZONE\r\n' +
+		'END:VCALENDAR')
+})
+
+it('Edit range recurrence-exception this and all future (exact-match)', () => {
+	const ics = getAsset('recurring-with-recurrence-id-range')
+	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
+	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
+
+	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
+
+	for (let i = 0; i < 11; i++) {
+		iterator.next()
+	}
+
+	const event12 = iterator.next().value
+
+	event12.title = 'This is a recurrence-exception created with calendar-js'
+	event12.startDate.addDuration(DurationValue.fromSeconds(60 * 60))
+
+	const [original, exception] = event12.createRecurrenceException(true)
+	expect(original.root).not.toEqual(exception.root)
+	expect(exception).toEqual(event12)
+
+	expect(original.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
+		'CALSCALE:GREGORIAN\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -3028,6 +2918,40 @@ it('Edit range recurrence-exception this and all future (exact-match)', () => {
 		'SEQUENCE:0\r\n' +
 		'RECURRENCE-ID;TZID=Europe/Berlin:20190719T150000\r\n' +
 		'END:VEVENT\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:Europe/Berlin\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:+0100\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
+		'DTSTART:19810329T020000\r\n' +
+		'TZNAME:CEST\r\n' +
+		'TZOFFSETTO:+0200\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:+0200\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
+		'DTSTART:19961027T030000\r\n' +
+		'TZNAME:CET\r\n' +
+		'TZOFFSETTO:+0100\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:America/New_York\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:-0500\r\n' +
+		'TZOFFSETTO:-0400\r\n' +
+		'TZNAME:EDT\r\n' +
+		'DTSTART:19700308T020000\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:-0400\r\n' +
+		'TZOFFSETTO:-0500\r\n' +
+		'TZNAME:EST\r\n' +
+		'DTSTART:19701101T020000\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
 		'END:VCALENDAR')
 
 	expect(exception.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
@@ -3088,47 +3012,9 @@ it('Edit range recurrence-exception this (non-first-match)', () => {
 	expect(exception).toEqual(event15)
 
 	expect(original.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
 		'CALSCALE:GREGORIAN\r\n' +
-		'BEGIN:VTIMEZONE\r\n' +
-		'TZID:Europe/Berlin\r\n' +
-		'BEGIN:DAYLIGHT\r\n' +
-		'TZOFFSETFROM:+0100\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
-		'DTSTART:19810329T020000\r\n' +
-		'TZNAME:CEST\r\n' +
-		'TZOFFSETTO:+0200\r\n' +
-		'END:DAYLIGHT\r\n' +
-		'BEGIN:STANDARD\r\n' +
-		'TZOFFSETFROM:+0200\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
-		'DTSTART:19961027T030000\r\n' +
-		'TZNAME:CET\r\n' +
-		'TZOFFSETTO:+0100\r\n' +
-		'END:STANDARD\r\n' +
-		'END:VTIMEZONE\r\n' +
-		'BEGIN:VTIMEZONE\r\n' +
-		'TZID:America/New_York\r\n' +
-		'BEGIN:DAYLIGHT\r\n' +
-		'TZOFFSETFROM:-0500\r\n' +
-		'TZOFFSETTO:-0400\r\n' +
-		'TZNAME:EDT\r\n' +
-		'DTSTART:19700308T020000\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU\r\n' +
-		'END:DAYLIGHT\r\n' +
-		'BEGIN:STANDARD\r\n' +
-		'TZOFFSETFROM:-0400\r\n' +
-		'TZOFFSETTO:-0500\r\n' +
-		'TZNAME:EST\r\n' +
-		'DTSTART:19701101T020000\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
-		'END:STANDARD\r\n' +
-		'END:VTIMEZONE\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -3227,37 +3113,6 @@ it('Edit range recurrence-exception this (non-first-match)', () => {
 		'SEQUENCE:1\r\n' +
 		'RECURRENCE-ID;TZID=Europe/Berlin:20190909T090000\r\n' +
 		'END:VEVENT\r\n' +
-		'END:VCALENDAR')
-})
-
-it('Edit range recurrence-exception this and all future (non-first-match)', () => {
-	const ics = getAsset('recurring-with-recurrence-id-range')
-	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
-	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
-
-	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
-
-	for (let i = 0; i < 14; i++) {
-		iterator.next()
-	}
-
-	const event15 = iterator.next().value
-
-	event15.title = 'This is a recurrence-exception created with calendar-js'
-	event15.startDate.addDuration(DurationValue.fromSeconds(60 * 60))
-
-	const [original, exception] = event15.createRecurrenceException(true)
-	expect(original.root).not.toEqual(exception.root)
-	expect(exception).toEqual(event15)
-
-	expect(original.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
-		'CALSCALE:GREGORIAN\r\n' +
 		'BEGIN:VTIMEZONE\r\n' +
 		'TZID:Europe/Berlin\r\n' +
 		'BEGIN:DAYLIGHT\r\n' +
@@ -3292,6 +3147,33 @@ it('Edit range recurrence-exception this and all future (non-first-match)', () =
 		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
 		'END:STANDARD\r\n' +
 		'END:VTIMEZONE\r\n' +
+		'END:VCALENDAR')
+})
+
+it('Edit range recurrence-exception this and all future (non-first-match)', () => {
+	const ics = getAsset('recurring-with-recurrence-id-range')
+	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
+	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
+
+	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
+
+	for (let i = 0; i < 14; i++) {
+		iterator.next()
+	}
+
+	const event15 = iterator.next().value
+
+	event15.title = 'This is a recurrence-exception created with calendar-js'
+	event15.startDate.addDuration(DurationValue.fromSeconds(60 * 60))
+
+	const [original, exception] = event15.createRecurrenceException(true)
+	expect(original.root).not.toEqual(exception.root)
+	expect(exception).toEqual(event15)
+
+	expect(original.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
+		'CALSCALE:GREGORIAN\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -3378,6 +3260,40 @@ it('Edit range recurrence-exception this and all future (non-first-match)', () =
 		'RECURRENCE-ID;RANGE=THISANDFUTURE:20190824T070000Z\r\n' +
 		'RELATED-TO;RELTYPE=SIBLING:RANDOM UUID 123\r\n' +
 		'END:VEVENT\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:Europe/Berlin\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:+0100\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
+		'DTSTART:19810329T020000\r\n' +
+		'TZNAME:CEST\r\n' +
+		'TZOFFSETTO:+0200\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:+0200\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
+		'DTSTART:19961027T030000\r\n' +
+		'TZNAME:CET\r\n' +
+		'TZOFFSETTO:+0100\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:America/New_York\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:-0500\r\n' +
+		'TZOFFSETTO:-0400\r\n' +
+		'TZNAME:EDT\r\n' +
+		'DTSTART:19700308T020000\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:-0400\r\n' +
+		'TZOFFSETTO:-0500\r\n' +
+		'TZNAME:EST\r\n' +
+		'DTSTART:19701101T020000\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
 		'END:VCALENDAR')
 
 	expect(exception.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
@@ -3416,121 +3332,6 @@ it('Edit range recurrence-exception this and all future (non-first-match)', () =
 		'END:VTIMEZONE\r\n' +
 		'END:VCALENDAR')
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 it('Edit rdate-based recurrence-exception this', () => {
 	const ics = getAsset('recurring-infinitely-with-rdates')
@@ -3589,47 +3390,9 @@ it('Edit RDATE - this', () => {
 	expect(original.root).toEqual(exception.root)
 	expect(exception).toEqual(event8)
 	expect(original.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
 		'CALSCALE:GREGORIAN\r\n' +
-		'BEGIN:VTIMEZONE\r\n' +
-		'TZID:Europe/Berlin\r\n' +
-		'BEGIN:DAYLIGHT\r\n' +
-		'TZOFFSETFROM:+0100\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
-		'DTSTART:19810329T020000\r\n' +
-		'TZNAME:CEST\r\n' +
-		'TZOFFSETTO:+0200\r\n' +
-		'END:DAYLIGHT\r\n' +
-		'BEGIN:STANDARD\r\n' +
-		'TZOFFSETFROM:+0200\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
-		'DTSTART:19961027T030000\r\n' +
-		'TZNAME:CET\r\n' +
-		'TZOFFSETTO:+0100\r\n' +
-		'END:STANDARD\r\n' +
-		'END:VTIMEZONE\r\n' +
-		'BEGIN:VTIMEZONE\r\n' +
-		'TZID:America/New_York\r\n' +
-		'BEGIN:DAYLIGHT\r\n' +
-		'TZOFFSETFROM:-0500\r\n' +
-		'TZOFFSETTO:-0400\r\n' +
-		'TZNAME:EDT\r\n' +
-		'DTSTART:19700308T020000\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU\r\n' +
-		'END:DAYLIGHT\r\n' +
-		'BEGIN:STANDARD\r\n' +
-		'TZOFFSETFROM:-0400\r\n' +
-		'TZOFFSETTO:-0500\r\n' +
-		'TZNAME:EST\r\n' +
-		'DTSTART:19701101T020000\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
-		'END:STANDARD\r\n' +
-		'END:VTIMEZONE\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -3728,36 +3491,6 @@ it('Edit RDATE - this', () => {
 		'DTEND:20190801T100000Z\r\n' +
 		'RECURRENCE-ID:20190801T070000Z\r\n' +
 		'END:VEVENT\r\n' +
-		'END:VCALENDAR')
-})
-
-it('Edit RDATE - this and all future', () => {
-	const ics = getAsset('recurring-infinitely-with-rdates')
-	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
-	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
-
-	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
-
-	for (let i = 0; i < 7; i++) {
-		iterator.next()
-	}
-
-	const event8 = iterator.next().value
-
-	event8.title = 'This is a recurrence-exception created with calendar-js'
-	event8.startDate.addDuration(DurationValue.fromSeconds(60 * 60))
-
-	const [original, exception] = event8.createRecurrenceException(true)
-
-	expect(original.root).not.toEqual(exception.root)
-	expect(original.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
-		'CALSCALE:GREGORIAN\r\n' +
 		'BEGIN:VTIMEZONE\r\n' +
 		'TZID:Europe/Berlin\r\n' +
 		'BEGIN:DAYLIGHT\r\n' +
@@ -3792,6 +3525,32 @@ it('Edit RDATE - this and all future', () => {
 		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
 		'END:STANDARD\r\n' +
 		'END:VTIMEZONE\r\n' +
+		'END:VCALENDAR')
+})
+
+it('Edit RDATE - this and all future', () => {
+	const ics = getAsset('recurring-infinitely-with-rdates')
+	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 6, 1, 0, 0, 0)))
+	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 30, 23, 59, 59)))
+
+	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
+
+	for (let i = 0; i < 7; i++) {
+		iterator.next()
+	}
+
+	const event8 = iterator.next().value
+
+	event8.title = 'This is a recurrence-exception created with calendar-js'
+	event8.startDate.addDuration(DurationValue.fromSeconds(60 * 60))
+
+	const [original, exception] = event8.createRecurrenceException(true)
+
+	expect(original.root).not.toEqual(exception.root)
+	expect(original.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
+		'CALSCALE:GREGORIAN\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -3862,6 +3621,40 @@ it('Edit RDATE - this and all future', () => {
 		'SEQUENCE:0\r\n' +
 		'RECURRENCE-ID;TZID=Europe/Berlin:20190719T150000\r\n' +
 		'END:VEVENT\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:Europe/Berlin\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:+0100\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
+		'DTSTART:19810329T020000\r\n' +
+		'TZNAME:CEST\r\n' +
+		'TZOFFSETTO:+0200\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:+0200\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
+		'DTSTART:19961027T030000\r\n' +
+		'TZNAME:CET\r\n' +
+		'TZOFFSETTO:+0100\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:America/New_York\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:-0500\r\n' +
+		'TZOFFSETTO:-0400\r\n' +
+		'TZNAME:EDT\r\n' +
+		'DTSTART:19700308T020000\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:-0400\r\n' +
+		'TZOFFSETTO:-0500\r\n' +
+		'TZNAME:EST\r\n' +
+		'DTSTART:19701101T020000\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
 		'END:VCALENDAR')
 
 
@@ -3906,47 +3699,9 @@ it('Edit simple recurrence (test do not copy RDATEs / EXDATES) - this and all fu
 
 	expect(original.root).not.toEqual(exception.root)
 	expect(original.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'METHOD:PUBLISH\r\n' +
-		'VERSION:2.0\r\n' +
-		'X-WR-CALNAME:test 123\r\n' +
-		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
-		'X-APPLE-CALENDAR-COLOR:#BF57DA\r\n' +
-		'X-WR-TIMEZONE:Europe/Berlin\r\n' +
 		'CALSCALE:GREGORIAN\r\n' +
-		'BEGIN:VTIMEZONE\r\n' +
-		'TZID:Europe/Berlin\r\n' +
-		'BEGIN:DAYLIGHT\r\n' +
-		'TZOFFSETFROM:+0100\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
-		'DTSTART:19810329T020000\r\n' +
-		'TZNAME:CEST\r\n' +
-		'TZOFFSETTO:+0200\r\n' +
-		'END:DAYLIGHT\r\n' +
-		'BEGIN:STANDARD\r\n' +
-		'TZOFFSETFROM:+0200\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
-		'DTSTART:19961027T030000\r\n' +
-		'TZNAME:CET\r\n' +
-		'TZOFFSETTO:+0100\r\n' +
-		'END:STANDARD\r\n' +
-		'END:VTIMEZONE\r\n' +
-		'BEGIN:VTIMEZONE\r\n' +
-		'TZID:America/New_York\r\n' +
-		'BEGIN:DAYLIGHT\r\n' +
-		'TZOFFSETFROM:-0500\r\n' +
-		'TZOFFSETTO:-0400\r\n' +
-		'TZNAME:EDT\r\n' +
-		'DTSTART:19700308T020000\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU\r\n' +
-		'END:DAYLIGHT\r\n' +
-		'BEGIN:STANDARD\r\n' +
-		'TZOFFSETFROM:-0400\r\n' +
-		'TZOFFSETTO:-0500\r\n' +
-		'TZNAME:EST\r\n' +
-		'DTSTART:19701101T020000\r\n' +
-		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
-		'END:STANDARD\r\n' +
-		'END:VTIMEZONE\r\n' +
+		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'TRANSP:OPAQUE\r\n' +
 		'DTEND;TZID=Europe/Berlin:20190701T100000\r\n' +
@@ -4019,6 +3774,40 @@ it('Edit simple recurrence (test do not copy RDATEs / EXDATES) - this and all fu
 		'SEQUENCE:0\r\n' +
 		'RECURRENCE-ID;TZID=Europe/Berlin:20190719T150000\r\n' +
 		'END:VEVENT\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:Europe/Berlin\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:+0100\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU\r\n' +
+		'DTSTART:19810329T020000\r\n' +
+		'TZNAME:CEST\r\n' +
+		'TZOFFSETTO:+0200\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:+0200\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r\n' +
+		'DTSTART:19961027T030000\r\n' +
+		'TZNAME:CET\r\n' +
+		'TZOFFSETTO:+0100\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
+		'BEGIN:VTIMEZONE\r\n' +
+		'TZID:America/New_York\r\n' +
+		'BEGIN:DAYLIGHT\r\n' +
+		'TZOFFSETFROM:-0500\r\n' +
+		'TZOFFSETTO:-0400\r\n' +
+		'TZNAME:EDT\r\n' +
+		'DTSTART:19700308T020000\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU\r\n' +
+		'END:DAYLIGHT\r\n' +
+		'BEGIN:STANDARD\r\n' +
+		'TZOFFSETFROM:-0400\r\n' +
+		'TZOFFSETTO:-0500\r\n' +
+		'TZNAME:EST\r\n' +
+		'DTSTART:19701101T020000\r\n' +
+		'RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU\r\n' +
+		'END:STANDARD\r\n' +
+		'END:VTIMEZONE\r\n' +
 		'END:VCALENDAR')
 
 	expect(exception.toICSEntireSeries()).toEqual('BEGIN:VCALENDAR\r\n' +
@@ -4131,6 +3920,8 @@ it('getOccurrenceAtExactly recurring matching date with recurrence-exception', (
 	expect(event.id).toEqual('41CBE812-F77C-471A-A481-D6A18CCAAA99###1563174000')
 	expect(event.startDate.jsDate.toISOString()).toEqual('2019-07-17T07:00:00.000Z')
 	expect(event.endDate.jsDate.toISOString()).toEqual('2019-07-17T08:00:00.000Z')
+
+	expect(event.root).toEqual(calendarComp)
 })
 
 it('getOccurrenceAtExactly recurring not matching date', () => {

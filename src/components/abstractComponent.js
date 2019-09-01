@@ -255,6 +255,10 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 */
 	addProperty(property) {
 		this._modify()
+
+		property.root = this.root
+		property.parent = this
+
 		if (this._properties.has(property.name)) {
 			const arr = this._properties.get(property.name)
 			if (arr.indexOf(property) !== -1) {
@@ -365,6 +369,9 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 */
 	addComponent(component) {
 		this._modify()
+
+		component.root = this.root
+		component.parent = this
 
 		if (this._components.has(component.name)) {
 			const arr = this._components.get(component.name)

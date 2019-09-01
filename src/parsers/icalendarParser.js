@@ -180,6 +180,12 @@ export default class ICalendarParser extends AbstractParser {
 				this._addRequiredTimezonesToCalendarComp(calendarComp, itemList[0].uid)
 			}
 
+			// Preserve the original product id, just in case we need special handling for certain clients later on ...
+			if (this._calendarComponent.hasProperty('PRODID')) {
+				calendarComp.deleteAllProperties('PRODID')
+				calendarComp.addProperty(this._calendarComponent.getFirstProperty('PRODID').clone())
+			}
+
 			for (const item of itemList) {
 				calendarComp.addComponent(item)
 			}

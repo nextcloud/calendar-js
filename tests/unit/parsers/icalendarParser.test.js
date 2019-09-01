@@ -182,9 +182,9 @@ it('ICalendarParser should create forged master items when parsed object only co
 	expect(iterator.next().value).toEqual(undefined)
 
 	expect(item1.toICS()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'PRODID:-//IDN georgehrke.com//calendar-js//EN\r\n' +
 		'CALSCALE:GREGORIAN\r\n' +
 		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'CREATED:20190701T131123Z\r\n' +
 		'UID:24C45485-7943-4A1A-9551-12AD83DF1F6D\r\n' +
@@ -225,9 +225,9 @@ it('ICalendarParser should create forged master items when parsed object only co
 		'END:VTIMEZONE\r\n' +
 		'END:VCALENDAR')
 	expect(item2.toICS()).toEqual('BEGIN:VCALENDAR\r\n' +
-		'PRODID:-//IDN georgehrke.com//calendar-js//EN\r\n' +
 		'CALSCALE:GREGORIAN\r\n' +
 		'VERSION:2.0\r\n' +
+		'PRODID:-//Apple Inc.//Mac OS X 10.14.5//EN\r\n' +
 		'BEGIN:VEVENT\r\n' +
 		'CREATED:20190703T172822Z\r\n' +
 		'UID:41CBE812-F77C-471A-A481-D6A18CCAAA99\r\n' +
