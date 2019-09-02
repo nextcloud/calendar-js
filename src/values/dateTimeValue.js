@@ -336,12 +336,12 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * This silently replaces the inner timezone without converting the actual time
 	 *
-	 * @param timezone
+	 * @param {ICAL.Timezone} timezone
 	 * @package
 	 */
 	silentlyReplaceTimezone(timezone) {
 		this._modify()
-		this._innerValue.fromData({
+		this._innerValue = new ICAL.Time({
 			year: this.year,
 			month: this.month,
 			day: this.day,
@@ -349,8 +349,26 @@ export default class DateTimeValue extends AbstractValue {
 			minute: this.minute,
 			second: this.second,
 			isDate: this.isDate,
-			timezone: timezone
+			timezone
 		})
+	}
+
+	/**
+	 * Replaces the inner timezone without converting the actual time
+	 *
+	 * @param {Timezone} timezone
+	 */
+	replaceTimezone(timezone) {
+		this._modifyContent()
+		this._innerValue = ICAL.Time.fromData({
+			year: this.year,
+			month: this.month,
+			day: this.day,
+			hour: this.hour,
+			minute: this.minute,
+			second: this.second,
+			isDate: this.isDate,
+		}, timezone.toICALTimezone())
 	}
 
 	/**
