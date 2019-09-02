@@ -219,6 +219,12 @@ export default class DateTimeValue extends AbstractValue {
 	set isDate(isDate) {
 		this._modifyContent()
 		this._innerValue.isDate = !!isDate
+
+		if (isDate) {
+			this._innerValue.hour = 0
+			this._innerValue.minute = 0
+			this._innerValue.second = 0
+		}
 	}
 
 	/**

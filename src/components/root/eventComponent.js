@@ -114,7 +114,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 			return this.getFirstPropertyFirstValue('duration')
 		}
 
-		return this.startDate.subtractDateTz(this.endDate)
+		return this.startDate.subtractDateWithTimezone(this.endDate)
 	}
 
 	/**
@@ -154,48 +154,70 @@ export default class EventComponent extends AbstractRecurringComponent {
 		this.addProperty(ConferenceProperty.fromURILabelAndFeatures(uri, label, features))
 	}
 
-	// /**
-	//  * Adds a given duration to the length of the event
-	//  *
-	//  * @param {DurationValue} duration
-	//  */
-	// addDuration(duration) {
-	// 	if (this.hasProperty('DTEND')) {
-	// 		this.endDate.addDuration(duration)
-	// 	} else if (this.hasProperty('DURATION')) {
-	// 		this.duration.addDuration(duration)
-	// 	} else {
-	// 		const calculatedEnd = this.endDate
-	// 		calculatedEnd.addDuration(duration)
-	//
-	// 		this.endDate = calculatedEnd
-	// 	}
-	// }
+	/**
+	 * Adds a duration to the start of the event
+	 *
+	 * @param {DurationValue} duration The duration to add
+	 */
+	addDurationToStart(duration) {
+		this.startDate.addDuration(duration)
+	}
 
-	// /**
-	//  * Shifts the entire event by the given duration
-	//  *
-	//  * @param {DurationValue} duration
-	//  * @param {Boolean} allDay
-	//  */
-	// shiftByDuration(duration, allDay=false, timezone, ) {
-	// 	this.startDate.addDuration(duration)
-	//
-	// 	if (this.hasProperty('DTEND')) {
-	// 		this.endDate.addDuration(duration)
-	// 	}
-	//
-	// 	if (allDay !== this.allDay) {
-	//
-	// 	} else {
-	//
-	// 	}
-	// 	if (!this.canModifyAllDay()) {
-	// 		throw new TypeError('Can\'t modify allDay of this event')
-	// 	}
-	//
-	// 	// TODO - include allday
-	// }
+	/**
+	 * Adds a duration to the end of the event
+	 *
+	 * @param {DurationValue} duration The duration to add
+	 */
+	addDurationToEnd(duration) {
+		const endDate = this.endDate
+		endDate.addDuration(duration)
+
+		this.endDate = endDate
+	}
+
+	/**
+	 * Shifts the entire event by the given duration
+	 *
+	 * @param {DurationValue} delta
+	 * @param {Boolean} allDay
+	 * @param {Timezone} defaultTimezone
+	 * @param {DurationValue} defaultAllDayDuration
+	 * @param {DurationValue} defaultTimedDuration
+	 */
+	shiftByDuration(delta, allDay, defaultTimezone, defaultAllDayDuration, defaultTimedDuration) {
+		const currentAllDay = this.isAllDay()
+
+		if (currentAllDay !== allDay && !this.canModifyAllDay()) {
+			throw new TypeError('Can\'t modify all-day of this event')
+		}
+
+		this.startDate.isDate = allDay
+		this.startDate.addDuration(delta)
+
+		// If this event was moved from the all-day area into the time-grid,
+		// then we have to add a timezone and the default duration
+		if (currentAllDay && !allDay) {
+			this.startDate.replaceTimezone(defaultTimezone)
+
+			this.endDate = this.startDate.clone()
+			this.endDate.addDuration(defaultTimedDuration)
+		}
+
+		// If this event was moved from the time-grid into the all-day area,
+		// then we have to change the default duration
+		if (!currentAllDay && allDay) {
+			this.endDate = this.startDate.clone()
+			this.endDate.addDuration(defaultAllDayDuration)
+		}
+
+		// If this event was only moved inside the time-grid or only inside
+		// the all-day area, then we only have to adjust the end-date
+		if (currentAllDay === allDay) {
+			const endDate = this.endDate
+			endDate.addDuration(delta)
+			this.endDate = endDate
+		}
+	}
 
 	/**
 	 * Checks if this is a birthday event
