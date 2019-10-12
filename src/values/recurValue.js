@@ -184,6 +184,21 @@ export default class RecurValue extends AbstractValue {
 	}
 
 	/**
+	 * Modifies this recurrence-value to unset count and until
+	 */
+	setToInfinite() {
+		this._modifyContent()
+
+		if (this._until) {
+			this._until.lock()
+			this._until = null
+		}
+
+		this._innerValue.until = null
+		this._innerValue.count = null
+	}
+
+	/**
 	 * Checks whether the stored rule is finite
 	 *
 	 * @returns {Boolean}
@@ -222,7 +237,12 @@ export default class RecurValue extends AbstractValue {
 	 */
 	setComponent(componentName, value) {
 		this._modifyContent()
-		this._innerValue.setComponent(componentName, value)
+
+		if (value.length === 0) {
+			delete this._innerValue.parts[componentName.toUpperCase()]
+		} else {
+			this._innerValue.setComponent(componentName, value)
+		}
 	}
 
 	/**

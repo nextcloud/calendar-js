@@ -479,6 +479,42 @@ it('RecurValue should be able to return the inner ICAL.JS object', () => {
 	expect(value.toICALJs() instanceof ICAL.Recur).toEqual(true)
 })
 
+it('RecurValue should provide an setToInfinite method', () => {
+	const value = RecurValue.fromData({
+		interval: 2,
+		wkst: 3,
+		count: 5,
+		freq: 'YEARLY',
+		parts: {
+			'BYDAY': ['TU'],
+			'BYMONTH': ['1']
+		}
+	})
+
+	expect(value.toICALJs().toString()).toEqual('FREQ=YEARLY;COUNT=5;INTERVAL=2;BYDAY=TU;BYMONTH=1;WKST=TU')
+
+	value.setToInfinite()
+
+	expect(value.toICALJs().toString()).toEqual('FREQ=YEARLY;INTERVAL=2;BYDAY=TU;BYMONTH=1;WKST=TU')
+})
+
+it('RecurValue should automatically delete empty BYPARTS', () => {
+	const value = RecurValue.fromData({
+		interval: 2,
+		freq: 'YEARLY',
+		parts: {
+			'BYDAY': ['TU']
+		}
+	})
+
+	value.setComponent('BYSETPOS', [1, 2, 3])
+	value.setComponent('BYMONTHDAY', [])
+	value.setComponent('BYYEARDAY', [])
+	value.setComponent('BYWEEKNO', [])
+
+	expect(value.toICALJs().toString()).toEqual('FREQ=YEARLY;INTERVAL=2;BYDAY=TU;BYSETPOS=1,2,3')
+})
+
 it('RecurValue should allow to clone the value', () => {
 	const value = RecurValue.fromData({
 		interval: 2,
