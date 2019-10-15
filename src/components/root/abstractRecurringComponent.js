@@ -754,6 +754,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 *
 	 * @param {String} action
 	 * @param {DateTimeValue} alarmTime
+	 * @returns {AlarmComponent}
 	 */
 	addAbsoluteAlarm(action, alarmTime) {
 		const alarmComp = new AlarmComponent('VALARM', [
@@ -762,6 +763,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 		])
 
 		this.addComponent(alarmComp)
+		return alarmComp
 	}
 
 	/**
@@ -770,6 +772,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * @param {String} action
 	 * @param {DurationValue} alarmOffset
 	 * @param {Boolean=} relatedToStart
+	 * @returns {AlarmComponent}
 	 */
 	addRelativeAlarm(action, alarmOffset, relatedToStart = true) {
 		const alarmComp = new AlarmComponent('VALARM', [
@@ -778,6 +781,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 		])
 
 		this.addComponent(alarmComp)
+		return alarmComp
 	}
 
 	/**
