@@ -42,6 +42,7 @@ import TextProperty from '../../properties/textProperty.js'
 import AlarmComponent from '../nested/alarmComponent.js'
 import TriggerProperty from '../../properties/triggerProperty.js'
 import { getConfig } from '../../config.js'
+import { getConstructorForComponentName } from '../nested';
 
 /**
  * @class AbstractRecurringComponent
@@ -978,6 +979,13 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 		if (this.startDate.compare(oldStartDate) !== 0) {
 			this.recurrenceManager.updateStartDateOfMasterItem(this.startDate, oldStartDate)
 		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	static _getConstructorForComponentName(componentName) {
+		return getConstructorForComponentName(componentName)
 	}
 
 	/**
