@@ -615,6 +615,11 @@ export function advertiseSingleOccurrenceProperty(prototype, options, advertiseV
 		set: function(value) {
 			this._modify()
 
+			if (value === null) {
+				this.deleteAllProperties(options.iCalendarName)
+				return
+			}
+
 			if (Array.isArray(options.allowedValues) && !options.allowedValues.includes(value)) {
 				throw new TypeError('Illegal value')
 			}
