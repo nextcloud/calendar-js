@@ -479,7 +479,8 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 		const firstValue = this.getFirstValue()
 		if (firstValue instanceof DateTimeValue
 			&& firstValue.timezoneId !== 'floating'
-			&& firstValue.timezoneId !== 'UTC') {
+			&& firstValue.timezoneId !== 'UTC'
+			&& !firstValue.isDate) {
 			icalProperty.setParameter('tzid', firstValue.timezoneId)
 		}
 
