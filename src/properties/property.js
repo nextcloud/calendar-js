@@ -202,6 +202,48 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	}
 
 	/**
+	 * Adds a value to the multi-value property
+	 *
+	 * @param {String|AbstractValue} value Value to add
+	 */
+	addValue(value) {
+		if (!this.isMultiValue()) {
+			throw new TypeError('This is not a multivalue property')
+		}
+
+		this._modifyContent()
+		this.value.push(value)
+	}
+
+	/**
+	 * Checks if a value is inside this multi-value property
+	 *
+	 * @param {String|AbstractValue} value Value to check for
+	 */
+	hasValue(value) {
+		if (!this.isMultiValue()) {
+			throw new TypeError('This is not a multivalue property')
+		}
+
+		return this.value.includes(value)
+	}
+
+	/**
+	 * Removes a value from this multi-value property
+	 *
+	 * @param {String|AbstractValue} value Value to remove
+	 */
+	removeValue(value) {
+		if (!this.hasValue(value)) {
+			return
+		}
+
+		this._modifyContent()
+		const index = this.value.indexOf(value)
+		this.value.splice(index, 1)
+	}
+
+	/**
 	 * Sets a parameter on this property
 	 *
 	 * @param {Parameter} parameter
