@@ -683,7 +683,7 @@ export function advertiseMultiValueStringPropertySeparatedByLang(prototype, opti
 	prototype['add' + ucFirst(options.name)] = function(value, lang = null) {
 		const property = this._getFirstOfPropertyByLang(options.iCalendarName, lang)
 		if (property) {
-			property.value.push(value)
+			property.addValue(value)
 		} else {
 			const newProperty = new Property(options.iCalendarName, [value])
 			if (lang) {
@@ -697,15 +697,13 @@ export function advertiseMultiValueStringPropertySeparatedByLang(prototype, opti
 
 	prototype['remove' + ucFirst(options.name)] = function(value, lang = null) {
 		for (const property of this._getAllOfPropertyByLang(options.iCalendarName, lang)) {
-			if (Array.isArray(property.value) && property.value.includes(value)) {
+			if (property.isMultiValue() && property.hasValue(value)) {
 				if (property.value.length === 1) {
 					this.deleteProperty(property)
 					return true
 				}
 
-				const index = property.value.indexOf(value)
-				property.value.splice(index, 1)
-
+				property.removeValue(value)
 				return true
 			}
 		}

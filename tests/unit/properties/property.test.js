@@ -538,3 +538,73 @@ it('Property should throw an exception when calling fromICALJs with wrong parame
 		Property.fromICALJs({})
 	}).toThrow(ExpectedICalJSError);
 })
+
+it('Property should expose an addValue method', () => {
+	const property = new Property('CATEGORIES', ['ANNIVERSARY', 'PERSONAL', 'SPECIAL OCCASION'])
+	const listener = jest.fn()
+	property.subscribe(listener)
+	property.addValue('FOO')
+
+	expect(listener.mock.calls.length).toEqual(1)
+	expect(listener).toHaveBeenCalledWith()
+})
+
+it('Property should expose an addValue method - no multivalue', () => {
+	const property = new Property('X-FOO', 'BAR')
+	const listener = jest.fn()
+	property.subscribe(listener)
+
+	expect(() => {
+		property.addValue('FOO')
+	}).toThrow(TypeError)
+
+	expect(listener.mock.calls.length).toEqual(0)
+})
+
+it('Property should expose an hasValue method', () => {
+	const property = new Property('CATEGORIES', ['ANNIVERSARY', 'PERSONAL', 'SPECIAL OCCASION'])
+	const listener = jest.fn()
+	property.subscribe(listener)
+
+	expect(property.hasValue('FOO')).toEqual(false)
+	expect(property.hasValue('ANNIVERSARY')).toEqual(true)
+
+	expect(listener.mock.calls.length).toEqual(0)
+})
+
+it('Property should expose an hasValue method - no multivalue', () => {
+	const property = new Property('X-FOO', 'BAR')
+	const listener = jest.fn()
+	property.subscribe(listener)
+
+	expect(() => {
+		property.hasValue('FOO')
+	}).toThrow(TypeError)
+
+	expect(listener.mock.calls.length).toEqual(0)
+})
+
+it('Property should expose an removeValue method', () => {
+	const property = new Property('CATEGORIES', ['ANNIVERSARY', 'PERSONAL', 'SPECIAL OCCASION'])
+	const listener = jest.fn()
+	property.subscribe(listener)
+
+	property.removeValue('FOO')
+	expect(listener.mock.calls.length).toEqual(0)
+
+	property.removeValue('ANNIVERSARY')
+	expect(listener.mock.calls.length).toEqual(1)
+	expect(listener).toHaveBeenCalledWith()
+})
+
+it('Property should expose an removeValue method - no multivalue', () => {
+	const property = new Property('X-FOO', 'BAR')
+	const listener = jest.fn()
+	property.subscribe(listener)
+
+	expect(() => {
+		property.removeValue('FOO')
+	}).toThrow(TypeError)
+
+	expect(listener.mock.calls.length).toEqual(0)
+})
