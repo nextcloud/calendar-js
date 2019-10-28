@@ -112,15 +112,18 @@ export default class CalendarComponent extends AbstractComponent {
 	/**
 	 * Converts this calendar component into text/calendar
 	 *
+	 * @param {boolean} cleanUpTimezones Whether or not to clean up timezone data
 	 * @returns {string}
 	 */
-	toICS() {
+	toICS(cleanUpTimezones = true) {
 		for (const vObject of this.getVObjectIterator()) {
 			vObject.undirtify()
 		}
 
 		const icalRoot = this.toICALJs()
-		ICAL.helpers.updateTimezones(icalRoot)
+		if (cleanUpTimezones) {
+			ICAL.helpers.updateTimezones(icalRoot)
+		}
 		return icalRoot.toString()
 	}
 
