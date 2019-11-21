@@ -83,7 +83,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 			return this.getFirstPropertyFirstValue('dtend')
 		}
 
-		const dtend = this.startDate().clone()
+		const dtend = this.startDate.clone()
 
 		if (this.hasProperty('duration')) {
 			dtend.addDuration(this.getFirstPropertyFirstValue('duration'))
