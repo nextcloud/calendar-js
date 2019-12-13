@@ -31,6 +31,7 @@ import { dateFactory } from './factories/dateFactory.js';
 import CalendarComponent from './components/calendarComponent.js';
 import EventComponent from './components/root/eventComponent.js';
 import RecurrenceManager from './recurrence/recurrenceManager.js';
+import FreeBusyComponent from './components/root/freeBusyComponent.js';
 
 if (!(ICAL.TimezoneService instanceof TimezoneAdapter)) {
 	ICAL.TimezoneService = new TimezoneAdapter(getTimezoneManager())
@@ -87,5 +88,39 @@ export function createEvent(start, end) {
 	calendar.addComponent(eventComponent)
 	eventComponent.recurrenceManager = new RecurrenceManager(eventComponent)
 
+	return calendar
+}
+
+/**
+ * Creates a FreeBusy Request to be used on the scheduling outbox
+ *
+ * @param {DateTimeValue} start
+ * @param {DateTimeValue} end
+ * @param {AttendeeProperty} organizer
+ * @param {AttendeeProperty[]}attendees
+ * @returns {CalendarComponent}
+ */
+export function createFreeBusyRequest(start, end, organizer, attendees) {
+	const calendar = CalendarComponent.fromMethod('REQUEST')
+	const freeBusyComponent = new FreeBusyComponent('VFREEBUSY')
+
+	freeBusyComponent.updatePropertyWithValue('DTSTAMP', DateTimeValue.fromJSDate(dateFactory(), true))
+	freeBusyComponent.updatePropertyWithValue('UID', uuid())
+	freeBusyComponent.updatePropertyWithValue('DTSTART', start.clone().getInUTC())
+	freeBusyComponent.updatePropertyWithValue('DTEND', end.clone().getInUTC())
+	freeBusyComponent.addProperty(organizer.clone())
+
+	for (const attendee of attendees) {
+		const clonedAttendee = attendee.clone()
+		clonedAttendee.deleteParameter('ROLE')
+		clonedAttendee.deleteParameter('CUTYPE')
+		clonedAttendee.deleteParameter('RSVP')
+		clonedAttendee.deleteParameter('PARTSTAT')
+		clonedAttendee.deleteParameter('LANGUAGE')
+
+		freeBusyComponent.addProperty(clonedAttendee)
+	}
+
+	calendar.addComponent(freeBusyComponent)
 	return calendar
 }
