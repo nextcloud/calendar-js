@@ -116,6 +116,7 @@ export function createFreeBusyRequest(start, end, organizer, attendees) {
 		clonedAttendee.deleteParameter('CUTYPE')
 		clonedAttendee.deleteParameter('RSVP')
 		clonedAttendee.deleteParameter('PARTSTAT')
+		clonedAttendee.deleteParameter('REQUEST-STATUS')
 		clonedAttendee.deleteParameter('LANGUAGE')
 
 		freeBusyComponent.addProperty(clonedAttendee)
