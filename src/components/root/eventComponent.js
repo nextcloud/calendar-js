@@ -87,7 +87,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 
 		if (this.hasProperty('duration')) {
 			dtend.addDuration(this.getFirstPropertyFirstValue('duration'))
-		} else if (this.isAllDay()) {
+		} else if (this.startDate.isDate) {
 			dtend.addDuration(DurationValue.fromSeconds(60 * 60 * 24))
 		} // There is nothing to do when this event is not allday
 
