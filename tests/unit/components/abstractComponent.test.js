@@ -36,11 +36,13 @@ it('AbstractComponent should be instantiable with one argument', () => {
 it('AbstractComponent should be instantiable with two arguments', () => {
 	const property1 = {
 		name: 'PROP1',
-		getFirstValue: jest.fn()
+		getFirstValue: jest.fn(),
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP2',
-		getFirstValue: jest.fn()
+		getFirstValue: jest.fn(),
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456', [property1, property2])
 	expect(component.name).toEqual('NAME456')
@@ -48,22 +50,28 @@ it('AbstractComponent should be instantiable with two arguments', () => {
 	expect(component.hasProperty('PROP2')).toEqual(true)
 	expect(component.getFirstProperty('PROP1')).toEqual(property1)
 	expect(component.getFirstProperty('PROP2')).toEqual(property2)
+	expect(property1.subscribe).toHaveBeenCalledTimes(1)
+	expect(property2.subscribe).toHaveBeenCalledTimes(1)
 })
 
 it('AbstractComponent should be instantiable with three arguments', () => {
 	const property1 = {
 		name: 'PROP1',
-		getFirstValue: jest.fn()
+		getFirstValue: jest.fn(),
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP2',
-		getFirstValue: jest.fn()
+		getFirstValue: jest.fn(),
+		subscribe: jest.fn()
 	}
 	const subComp1 = {
-		name: 'COMP1'
+		name: 'COMP1',
+		subscribe: jest.fn()
 	}
 	const subComp2 = {
-		name: 'COMP2'
+		name: 'COMP2',
+		subscribe: jest.fn()
 	}
 
 	const component = new AbstractComponent('Name456', [property1, property2], [subComp1, subComp2])
@@ -76,22 +84,30 @@ it('AbstractComponent should be instantiable with three arguments', () => {
 	expect(component.hasComponent('COMP2')).toEqual(true)
 	expect(component.getFirstComponent('COMP1')).toEqual(subComp1)
 	expect(component.getFirstComponent('COMP2')).toEqual(subComp2)
+	expect(property1.subscribe).toHaveBeenCalledTimes(1)
+	expect(property2.subscribe).toHaveBeenCalledTimes(1)
+	expect(subComp1.subscribe).toHaveBeenCalledTimes(1)
+	expect(subComp2.subscribe).toHaveBeenCalledTimes(1)
 })
 
 it('AbstractComponent should be instantiable with four arguments', () => {
 	const property1 = {
 		name: 'PROP1',
-		getFirstValue: jest.fn()
+		getFirstValue: jest.fn(),
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP2',
-		getFirstValue: jest.fn()
+		getFirstValue: jest.fn(),
+		subscribe: jest.fn()
 	}
 	const subComp1 = {
-		name: 'COMP1'
+		name: 'COMP1',
+		subscribe: jest.fn()
 	}
 	const subComp2 = {
-		name: 'COMP2'
+		name: 'COMP2',
+		subscribe: jest.fn()
 	}
 	const root = {}
 
@@ -111,17 +127,21 @@ it('AbstractComponent should be instantiable with four arguments', () => {
 it('AbstractComponent should be instantiable with five arguments', () => {
 	const property1 = {
 		name: 'PROP1',
-		getFirstValue: jest.fn()
+		getFirstValue: jest.fn(),
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP2',
-		getFirstValue: jest.fn()
+		getFirstValue: jest.fn(),
+		subscribe: jest.fn()
 	}
 	const subComp1 = {
-		name: 'COMP1'
+		name: 'COMP1',
+		subscribe: jest.fn()
 	}
 	const subComp2 = {
-		name: 'COMP2'
+		name: 'COMP2',
+		subscribe: jest.fn()
 	}
 	const root = {}
 	const parent = {}
@@ -142,13 +162,16 @@ it('AbstractComponent should be instantiable with five arguments', () => {
 
 it('AbstractComponent should provide a setter for root', () => {
 	const root1 = {
-		name: 'Root1'
+		name: 'Root1',
+		subscribe: jest.fn()
 	}
 	const root2 = {
-		name: 'Root2'
+		name: 'Root2',
+		subscribe: jest.fn()
 	}
 	const root3 = {
-		name: 'Root3'
+		name: 'Root3',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('COMP')
 
@@ -206,12 +229,14 @@ it('AbstractComponent should get the first property - existent', () => {
 	const property1 = {
 		name: 'PROP1',
 		key: '_prop1_1',
-		getFirstValue: jest.fn(() => 'Return value 1')
+		getFirstValue: jest.fn(() => 'Return value 1'),
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP1',
 		key: '_prop1_2',
-		getFirstValue: jest.fn(() => 'Return value 2')
+		getFirstValue: jest.fn(() => 'Return value 2'),
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456', [property1, property2])
 	expect(component.getFirstProperty('PROP1')).toEqual(property1)
@@ -221,12 +246,14 @@ it('AbstractComponent should get the first property - non-existent', () => {
 	const property1 = {
 		name: 'PROP1',
 		key: '_prop1_1',
-		getFirstValue: jest.fn()
+		getFirstValue: jest.fn(),
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP1',
 		key: '_prop1_2',
-		getFirstValue: jest.fn()
+		getFirstValue: jest.fn(),
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456', [property1, property2])
 	expect(component.getFirstProperty('PROP2')).toEqual(null)
@@ -236,12 +263,14 @@ it('AbstractComponent should get the first property\'s first value - existent', 
 	const property1 = {
 		name: 'PROP1',
 		key: '_prop1_1',
-		getFirstValue: jest.fn(() => 'Return value 1')
+		getFirstValue: jest.fn(() => 'Return value 1'),
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP1',
 		key: '_prop1_2',
-		getFirstValue: jest.fn(() => 'Return value 2')
+		getFirstValue: jest.fn(() => 'Return value 2'),
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456', [property1, property2])
 	expect(component.getFirstPropertyFirstValue('PROP1')).toEqual('Return value 1')
@@ -251,12 +280,14 @@ it('AbstractComponent should get the first property\'s first value - non-existen
 	const property1 = {
 		name: 'PROP1',
 		key: '_prop1_1',
-		getFirstValue: jest.fn(() => 'Return value 1')
+		getFirstValue: jest.fn(() => 'Return value 1'),
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP1',
 		key: '_prop1_2',
-		getFirstValue: jest.fn(() => 'Return value 2')
+		getFirstValue: jest.fn(() => 'Return value 2'),
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456', [property1, property2])
 	expect(component.getFirstPropertyFirstValue('PROP2')).toEqual(null)
@@ -266,12 +297,14 @@ it('AbstractComponent should update a property with value - existent', () => {
 	const property1 = {
 		name: 'PROP1',
 		key: '_prop1_1',
-		value: 'Return value 1'
+		value: 'Return value 1',
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP1',
 		key: '_prop1_2',
-		value: 'Return value 2'
+		value: 'Return value 2',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456', [property1, property2])
 
@@ -288,12 +321,14 @@ it('AbstractComponent should update a property with value - non-existent', () =>
 	const property1 = {
 		name: 'PROP1',
 		key: '_prop1_1',
-		value: 'Return value 1'
+		value: 'Return value 1',
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP1',
 		key: '_prop1_2',
-		value: 'Return value 2'
+		value: 'Return value 2',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456', [property1, property2])
 
@@ -314,17 +349,20 @@ it('AbstractComponent should return a property iterator - by property name - exi
 	const property1 = {
 		name: 'PROP1',
 		key: '_prop1_1',
-		value: 'Return value 1'
+		value: 'Return value 1',
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP1',
 		key: '_prop1_2',
-		value: 'Return value 2'
+		value: 'Return value 2',
+		subscribe: jest.fn()
 	}
 	const property3 = {
 		name: 'PROP2',
 		key: '_prop2_1',
-		value: 'Return value 3'
+		value: 'Return value 3',
+		subscribe: jest.fn()
 	}
 
 	const component = new AbstractComponent('Name456', [property1, property2, property3])
@@ -340,17 +378,20 @@ it('AbstractComponent should return a property iterator - by property name - non
 	const property1 = {
 		name: 'PROP1',
 		key: '_prop1_1',
-		value: 'Return value 1'
+		value: 'Return value 1',
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP1',
 		key: '_prop1_2',
-		value: 'Return value 2'
+		value: 'Return value 2',
+		subscribe: jest.fn()
 	}
 	const property3 = {
 		name: 'PROP2',
 		key: '_prop2_1',
-		value: 'Return value 3'
+		value: 'Return value 3',
+		subscribe: jest.fn()
 	}
 
 	const component = new AbstractComponent('Name456', [property1, property2, property3])
@@ -364,17 +405,20 @@ it('AbstractComponent should return a property iterator - without name', () => {
 	const property1 = {
 		name: 'PROP1',
 		key: '_prop1_1',
-		value: 'Return value 1'
+		value: 'Return value 1',
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP1',
 		key: '_prop1_2',
-		value: 'Return value 2'
+		value: 'Return value 2',
+		subscribe: jest.fn()
 	}
 	const property3 = {
 		name: 'PROP2',
 		key: '_prop2_1',
-		value: 'Return value 3'
+		value: 'Return value 3',
+		subscribe: jest.fn()
 	}
 
 	const component = new AbstractComponent('Name456', [property1, property2, property3])
@@ -391,7 +435,8 @@ it('AbstractComponent should add a property - first of name', () => {
 	const property1 = {
 		name: 'PROP1',
 		key: '_prop1_1',
-		value: 'Return value 1'
+		value: 'Return value 1',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456')
 
@@ -406,12 +451,14 @@ it('AbstractComponent should add a property - not first of name', () => {
 	const property1 = {
 		name: 'PROP1',
 		key: '_prop1_1',
-		value: 'Return value 1'
+		value: 'Return value 1',
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP1',
 		key: '_prop1_2',
-		value: 'Return value 2'
+		value: 'Return value 2',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456')
 
@@ -427,7 +474,8 @@ it('AbstractComponent should add the same property twice', () => {
 	const property1 = {
 		name: 'PROP1',
 		key: '_prop1_1',
-		value: 'Return value 1'
+		value: 'Return value 1',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456')
 
@@ -443,7 +491,8 @@ it('AbstractComponent should provide a method to check if it has a property', ()
 	const property1 = {
 		name: 'PROP1',
 		key: '_prop1_1',
-		value: 'Return value 1'
+		value: 'Return value 1',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456')
 
@@ -458,7 +507,8 @@ it('AbstractComponent should provide a method to delete a property - non-existen
 	const property1 = {
 		name: 'PROP1',
 		key: '_prop1_1',
-		value: 'Return value 1'
+		value: 'Return value 1',
+		subscribe: jest.fn()
 	}
 
 	const component = new AbstractComponent('Name456')
@@ -470,12 +520,14 @@ it('AbstractComponent should provide a method to delete a property - non-existen
 	const property1 = {
 		name: 'PROP1',
 		key: '_prop1_1',
-		value: 'Return value 1'
+		value: 'Return value 1',
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP1',
 		key: '_prop1_2',
-		value: 'Return value 2'
+		value: 'Return value 2',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456')
 
@@ -494,12 +546,14 @@ it('AbstractComponent should provide a method to delete a property - existent', 
 	const property1 = {
 		name: 'PROP1',
 		key: '_prop1_1',
-		value: 'Return value 1'
+		value: 'Return value 1',
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP1',
 		key: '_prop1_2',
-		value: 'Return value 2'
+		value: 'Return value 2',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456')
 
@@ -519,12 +573,14 @@ it('AbstractComponent should provide a method to delete a property - existent - 
 	const property1 = {
 		name: 'PROP1',
 		key: '_prop1_1',
-		value: 'Return value 1'
+		value: 'Return value 1',
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP1',
 		key: '_prop1_2',
-		value: 'Return value 2'
+		value: 'Return value 2',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456')
 
@@ -548,12 +604,14 @@ it('AbstractComponent should provide a method to delete all properties of a name
 	const property1 = {
 		name: 'PROP1',
 		key: '_prop1_1',
-		value: 'Return value 1'
+		value: 'Return value 1',
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP1',
 		key: '_prop1_2',
-		value: 'Return value 2'
+		value: 'Return value 2',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456')
 
@@ -572,11 +630,13 @@ it('AbstractComponent should provide a method to delete all properties of a name
 it('AbstractComponent should get the first component - existent', () => {
 	const component1 = {
 		name: 'COMP1',
-		key: '_comp1_1'
+		key: '_comp1_1',
+		subscribe: jest.fn()
 	}
 	const component2 = {
 		name: 'COMP1',
-		key: '_comp1_2'
+		key: '_comp1_2',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456', [], [component1, component2])
 	expect(component.getFirstComponent('COMP1')).toEqual(component1)
@@ -585,11 +645,13 @@ it('AbstractComponent should get the first component - existent', () => {
 it('AbstractComponent should get the first component - non-existent', () => {
 	const component1 = {
 		name: 'COMP1',
-		key: '_comp1_1'
+		key: '_comp1_1',
+		subscribe: jest.fn()
 	}
 	const component2 = {
 		name: 'COMP1',
-		key: '_comp1_2'
+		key: '_comp1_2',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456', [], [component1, component2])
 	expect(component.getFirstComponent('COMP2')).toEqual(null)
@@ -599,15 +661,18 @@ it('AbstractComponent should get the first component - non-existent', () => {
 it('AbstractComponent should return a component iterator - by component name - existent', () => {
 	const component1 = {
 		name: 'COMP1',
-		key: '_comp1_1'
+		key: '_comp1_1',
+		subscribe: jest.fn()
 	}
 	const component2 = {
 		name: 'COMP1',
-		key: '_comp1_2'
+		key: '_comp1_2',
+		subscribe: jest.fn()
 	}
 	const component3 = {
 		name: 'COMP2',
-		key: '_comp2_1'
+		key: '_comp2_1',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456', [], [component1, component2, component3])
 
@@ -621,15 +686,18 @@ it('AbstractComponent should return a component iterator - by component name - e
 it('AbstractComponent should return a component iterator - by component name - non-existent', () => {
 	const component1 = {
 		name: 'COMP1',
-		key: '_comp1_1'
+		key: '_comp1_1',
+		subscribe: jest.fn()
 	}
 	const component2 = {
 		name: 'COMP1',
-		key: '_comp1_2'
+		key: '_comp1_2',
+		subscribe: jest.fn()
 	}
 	const component3 = {
 		name: 'COMP2',
-		key: '_comp2_1'
+		key: '_comp2_1',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456', [], [component1, component2, component3])
 
@@ -641,15 +709,18 @@ it('AbstractComponent should return a component iterator - by component name - n
 it('AbstractComponent should return a component iterator - without name', () => {
 	const component1 = {
 		name: 'COMP1',
-		key: '_comp1_1'
+		key: '_comp1_1',
+		subscribe: jest.fn()
 	}
 	const component2 = {
 		name: 'COMP1',
-		key: '_comp1_2'
+		key: '_comp1_2',
+		subscribe: jest.fn()
 	}
 	const component3 = {
 		name: 'COMP2',
-		key: '_comp2_1'
+		key: '_comp2_1',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456', [], [component1, component2, component3])
 
@@ -664,7 +735,8 @@ it('AbstractComponent should return a component iterator - without name', () => 
 it('AbstractComponent should add a component - first of name', () => {
 	const component1 = {
 		name: 'COMP1',
-		key: '_comp1_1'
+		key: '_comp1_1',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456')
 
@@ -678,11 +750,13 @@ it('AbstractComponent should add a component - first of name', () => {
 it('AbstractComponent should add a component - not first of name', () => {
 	const component1 = {
 		name: 'COMP1',
-		key: '_comp1_1'
+		key: '_comp1_1',
+		subscribe: jest.fn()
 	}
 	const component2 = {
 		name: 'COMP1',
-		key: '_comp1_2'
+		key: '_comp1_2',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456')
 
@@ -697,7 +771,8 @@ it('AbstractComponent should add a component - not first of name', () => {
 it('AbstractComponent should add the same component twice', () => {
 	const component1 = {
 		name: 'COMP1',
-		key: '_comp1_1'
+		key: '_comp1_1',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456')
 
@@ -712,7 +787,8 @@ it('AbstractComponent should add the same component twice', () => {
 it('AbstractComponent should provide a method to check if it has a component', () => {
 	const component1 = {
 		name: 'COMP1',
-		key: '_comp1_1'
+		key: '_comp1_1',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456')
 
@@ -726,7 +802,8 @@ it('AbstractComponent should provide a method to check if it has a component', (
 it('AbstractComponent should provide a method to delete a component - non-existent key', () => {
 	const component1 = {
 		name: 'COMP1',
-		key: '_comp1_1'
+		key: '_comp1_1',
+		subscribe: jest.fn()
 	}
 
 	const component = new AbstractComponent('Name456')
@@ -737,11 +814,13 @@ it('AbstractComponent should provide a method to delete a component - non-existe
 it('AbstractComponent should provide a method to delete a component - non-existent', () => {
 	const component1 = {
 		name: 'COMP1',
-		key: '_comp1_1'
+		key: '_comp1_1',
+		subscribe: jest.fn()
 	}
 	const component2 = {
 		name: 'COMP1',
-		key: '_comp1_2'
+		key: '_comp1_2',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456')
 
@@ -761,11 +840,13 @@ it('AbstractComponent should provide a method to delete a component - non-existe
 it('AbstractComponent should provide a method to delete a component - existent', () => {
 	const component1 = {
 		name: 'COMP1',
-		key: '_comp1_1'
+		key: '_comp1_1',
+		subscribe: jest.fn()
 	}
 	const component2 = {
 		name: 'COMP1',
-		key: '_comp1_2'
+		key: '_comp1_2',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456')
 
@@ -784,11 +865,13 @@ it('AbstractComponent should provide a method to delete a component - existent',
 it('AbstractComponent should provide a method to delete a component - existent - last one', () => {
 	const component1 = {
 		name: 'COMP1',
-		key: '_comp1_1'
+		key: '_comp1_1',
+		subscribe: jest.fn()
 	}
 	const component2 = {
 		name: 'COMP1',
-		key: '_comp1_2'
+		key: '_comp1_2',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456')
 
@@ -811,11 +894,13 @@ it('AbstractComponent should provide a method to delete a component - existent -
 it('AbstractComponent should provide a method to delete all components of a name', () => {
 	const component1 = {
 		name: 'COMP1',
-		key: '_comp1_1'
+		key: '_comp1_1',
+		subscribe: jest.fn()
 	}
 	const component2 = {
 		name: 'COMP1',
-		key: '_comp1_2'
+		key: '_comp1_2',
+		subscribe: jest.fn()
 	}
 	const component = new AbstractComponent('Name456')
 
@@ -835,22 +920,26 @@ it('AbstractComponent should be lockable - including all properties and componen
 	const property1 = {
 		name: 'PROP1',
 		lock: jest.fn(),
-		unlock: jest.fn()
+		unlock: jest.fn(),
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP2',
 		lock: jest.fn(),
-		unlock: jest.fn()
+		unlock: jest.fn(),
+		subscribe: jest.fn()
 	}
 	const subComp1 = {
 		name: 'COMP1',
 		lock: jest.fn(),
-		unlock: jest.fn()
+		unlock: jest.fn(),
+		subscribe: jest.fn()
 	}
 	const subComp2 = {
 		name: 'COMP2',
 		lock: jest.fn(),
-		unlock: jest.fn()
+		unlock: jest.fn(),
+		subscribe: jest.fn()
 	}
 
 	const component = new AbstractComponent('Name456', [property1, property2], [subComp1, subComp2])
@@ -869,22 +958,26 @@ it('AbstractComponent should be unlockable - including all properties and compon
 	const property1 = {
 		name: 'PROP1',
 		lock: jest.fn(),
-		unlock: jest.fn()
+		unlock: jest.fn(),
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP2',
 		lock: jest.fn(),
-		unlock: jest.fn()
+		unlock: jest.fn(),
+		subscribe: jest.fn()
 	}
 	const subComp1 = {
 		name: 'COMP1',
 		lock: jest.fn(),
-		unlock: jest.fn()
+		unlock: jest.fn(),
+		subscribe: jest.fn()
 	}
 	const subComp2 = {
 		name: 'COMP2',
 		lock: jest.fn(),
-		unlock: jest.fn()
+		unlock: jest.fn(),
+		subscribe: jest.fn()
 	}
 
 	const component = new AbstractComponent('Name456', [property1, property2], [subComp1, subComp2])
@@ -913,29 +1006,37 @@ it('AbstractComponent should be cloneable', () => {
 		name: 'PROP1',
 		clone: jest.fn(() => ({
 			name: 'PROP1',
-			isCopy: true
-		}))
+			isCopy: true,
+			subscribe: jest.fn()
+		})),
+		subscribe: jest.fn()
 	}
 	const property2 = {
 		name: 'PROP2',
 		clone: jest.fn(() => ({
 			name: 'PROP2',
-			isCopy: true
-		}))
+			isCopy: true,
+			subscribe: jest.fn()
+		})),
+		subscribe: jest.fn()
 	}
 	const subComp1 = {
 		name: 'COMP1',
 		clone: jest.fn(() => ({
 			name: 'COMP1',
-			isCopy: true
-		}))
+			isCopy: true,
+			subscribe: jest.fn()
+		})),
+		subscribe: jest.fn()
 	}
 	const subComp2 = {
 		name: 'COMP2',
 		clone: jest.fn(() => ({
 			name: 'COMP2',
-			isCopy: true
-		}))
+			isCopy: true,
+			subscribe: jest.fn()
+		})),
+		subscribe: jest.fn()
 	}
 
 	const component = new AbstractComponent('Name456', [property1, property2], [subComp1, subComp2])
