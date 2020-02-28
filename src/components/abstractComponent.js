@@ -272,6 +272,8 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 			this._properties.set(property.name, [property])
 		}
 
+		property.subscribe(() => this._notifySubscribers())
+
 		return true
 	}
 
@@ -385,6 +387,8 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 		} else {
 			this._components.set(component.name, [component])
 		}
+
+		component.subscribe(() => this._notifySubscribers())
 
 		return true
 	}
