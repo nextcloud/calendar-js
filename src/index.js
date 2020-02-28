@@ -25,7 +25,7 @@ import { getTimezoneManager } from './timezones/timezoneManager.js'
 export { setConfig } from './config.js'
 export { getParserManager }
 export { getTimezoneManager, isOlsonTimezone } from './timezones/timezoneManager.js'
-import uuid from 'uuid'
+import { v4 as uuid } from 'uuid'
 import DateTimeValue from './values/dateTimeValue.js';
 import { dateFactory } from './factories/dateFactory.js';
 import CalendarComponent from './components/calendarComponent.js';

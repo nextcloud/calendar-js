@@ -1,1 +1,3 @@
-module.exports = jest.fn(() => 'RANDOM UUID 123')
+module.exports = {
+	v4: jest.fn(() => 'RANDOM UUID 123'),
+}
