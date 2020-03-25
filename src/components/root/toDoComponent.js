@@ -63,9 +63,9 @@ export default class ToDoComponent extends AbstractRecurringComponent {
 	 *
 	 * @url https://tools.ietf.org/html/rfc7986#section-5.11
 	 *
-	 * @param {String} uri
-	 * @param {String=} label
-	 * @param {String[]=} features
+	 * @param {String} uri The URI of the conference
+	 * @param {String=} label The label of the conference
+	 * @param {String[]=} features Supported features of conference-system
 	 */
 	addConference(uri, label = null, features = null) {
 		this.addProperty(ConferenceProperty.fromURILabelAndFeatures(uri, label, features))

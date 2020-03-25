@@ -35,7 +35,7 @@ export default class ParserManager {
 		/**
 		 * List of supported parsers
 		 *
-		 * @type {{new: AbstractParser, getMimeTypes():String[]}[]}
+		 * @type {Function[]}
 		 */
 		this._parsers = []
 	}
@@ -54,26 +54,29 @@ export default class ParserManager {
 	/**
 	 * Get an instance of a parser for one specific file-type
 	 *
-	 * @param {String} fileType
-	 * @param {Object} options
-	 * @param {Boolean} options.removeRSVPForAttendees
+	 * @param {String} fileType The mime-type to get a parser for
+	 * @param {Object} options Options destructuring object
+	 * @param {Boolean=} options.extractGlobalProperties Whether or not to preserve properties from the VCALENDAR component (defaults to false)
+	 * @param {Boolean=} options.removeRSVPForAttendees Whether or not to remove RSVP from attendees (defaults to false)
+	 * @param {Boolean=} options.includeTimezones Whether or not to include timezones (defaults to false)
+	 *
 	 * @returns {AbstractParser}
 	 */
 	getParserForFileType(fileType, options) {
-		const parser = this._parsers.find(
+		const Parser = this._parsers.find(
 			(parser) => parser.getMimeTypes().includes(fileType))
 
-		if (!parser) {
+		if (!Parser) {
 			throw new TypeError('Unknown file-type.')
 		}
 
-		return new parser(options)
+		return new Parser(options)
 	}
 
 	/**
 	 * Registers a parser
 	 *
-	 * @param {{new: AbstractParser, getMimeTypes():String[]}} parser
+	 * @param {Function} parser The parser to register
 	 */
 	registerParser(parser) {
 		this._parsers.push(parser)

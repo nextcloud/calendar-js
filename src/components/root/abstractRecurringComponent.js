@@ -142,7 +142,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Sets the primary-item of this recurring item
 	 *
-	 * @param {AbstractRecurringComponent} primaryItem
+	 * @param {AbstractRecurringComponent} primaryItem The new primary-item
 	 */
 	set primaryItem(primaryItem) {
 		this._modify()
@@ -162,7 +162,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Sets the isExactForkOfPrimary indicator, see getter for description
 	 *
-	 * @param {boolean} isExactForkOfPrimary
+	 * @param {boolean} isExactForkOfPrimary Whether or not this is an exact fork
 	 */
 	set isExactForkOfPrimary(isExactForkOfPrimary) {
 		this._isExactForkOfPrimary = isExactForkOfPrimary
@@ -180,7 +180,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Sets the original recurrence-id
 	 *
-	 * @param {DateTimeValue} originalRecurrenceId
+	 * @param {DateTimeValue} originalRecurrenceId The new original recurrence-id
 	 */
 	set originalRecurrenceId(originalRecurrenceId) {
 		this._originalRecurrenceId = originalRecurrenceId
@@ -198,7 +198,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Sets the recurrence-manager of this recurrence-set
 	 *
-	 * @param {RecurrenceManager} recurrenceManager
+	 * @param {RecurrenceManager} recurrenceManager The new recurrence-manager
 	 */
 	set recurrenceManager(recurrenceManager) {
 		this._recurrenceManager = recurrenceManager
@@ -256,7 +256,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Sets the UID property and the UID property of all related exceptions
 	 *
-	 * @param uid
+	 * @param {String} uid The new UID
 	 */
 	set uid(uid) {
 		this._recurrenceManager.updateUID(uid)
@@ -274,7 +274,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Sets the start date of the event
 	 *
-	 * @param {DateTimeValue} start
+	 * @param {DateTimeValue} start The new start-date to set
 	 */
 	set startDate(start) {
 		const oldStartDate = this.startDate
@@ -333,9 +333,8 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * This is an internal function for calendar-js, used by the recurrence-manager
 	 * Do not call from outside
 	 *
-	 * @access package
-	 * @param {DateTimeValue} recurrenceId
-	 * @param {DurationValue=} startDiff to be used when
+	 * @param {DateTimeValue} recurrenceId The recurrence-Id of the forked item
+	 * @param {DurationValue=} startDiff to be used when The start-diff (used for RECURRENCE-ID;RANGE=THISANDFUTURE)
 	 * @returns {AbstractRecurringComponent}
 	 */
 	forkItem(recurrenceId, startDiff = null) {
@@ -424,7 +423,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * If the parameter thisAndAllFuture is set to true,
 	 * it will apply changes to this and all future occurrences
 	 *
-	 * @param {boolean} thisAndAllFuture
+	 * @param {boolean} thisAndAllFuture Whether to create an exception for this and all future
 	 * @returns {AbstractRecurringComponent[]} the AbstractRecurringComponent of the future events.
 	 * In case you set `thisAndAllFuture` to true, this will be an
 	 * AbstractRecurringComponent inside a entirely new calendar component
@@ -530,7 +529,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * If the parameter thisAndAllFuture is set to true,
 	 * it will remove this and all future occurrences
 	 *
-	 * @param {Boolean} thisAndAllFuture
+	 * @param {Boolean} thisAndAllFuture Whether to create an exception for this and all future
 	 * @throws EmptyRecurrenceSetError Thrown, when deleting an occurrence results in no more events
 	 * @returns {Boolean} true if this deleted the last occurrence in set, false if there are occurrences left
 	 */
@@ -610,7 +609,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Adds a new attendee
 	 *
-	 * @param {AttendeeProperty} attendee
+	 * @param {AttendeeProperty} attendee The attendee property to add
 	 * @private
 	 * @returns {boolean}
 	 */
@@ -629,8 +628,8 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Adds a new attendee based on their name and email-address
 	 *
-	 * @param {String} name
-	 * @param {String} email
+	 * @param {String} name The name of the attendee to add
+	 * @param {String} email The email-address of the attendee to add
 	 * @returns {boolean}
 	 */
 	addAttendeeFromNameAndEMail(name, email) {
@@ -641,11 +640,11 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Adds a new attendee based on their properties
 	 *
-	 * @param {String} name
-	 * @param {String} email
-	 * @param {String} role
-	 * @param {String} userType
-	 * @param {Boolean} rsvp
+	 * @param {String} name The name of the attendee to add
+	 * @param {String} email The email-address of the attendee to add
+	 * @param {String} role The role of the attendee to add
+	 * @param {String} userType The type of attendee to add
+	 * @param {Boolean} rsvp Whether or not to request a response from the attendee
 	 * @returns {boolean}
 	 */
 	addAttendeeFromNameEMailRoleUserTypeAndRSVP(name, email, role, userType, rsvp) {
@@ -656,8 +655,8 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Sets the organiser property from common-name and email address
 	 *
-	 * @param {String} name
-	 * @param {String} email
+	 * @param {String} name The name of the organizer
+	 * @param {String} email The email-address of the organizer
 	 */
 	setOrganizerFromNameAndEMail(name, email) {
 		this.deleteAllProperties('ORGANIZER')
@@ -667,8 +666,8 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Adds a new attachment from raw data
 	 *
-	 * @param {String} data
-	 * @param {String} formatType
+	 * @param {String} data The data of the attachment
+	 * @param {String} formatType The mime-type of the attachment
 	 */
 	addAttachmentFromData(data, formatType = null) {
 		this.addProperty(AttachmentProperty.fromData(data, formatType))
@@ -677,8 +676,8 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Adds a new attachment from a link
 	 *
-	 * @param {String} uri
-	 * @param {String} formatType
+	 * @param {String} uri The URI of the attachment
+	 * @param {String} formatType The mime-type of the attachment
 	 */
 	addAttachmentFromLink(uri, formatType = null) {
 		this.addProperty(AttachmentProperty.fromLink(uri, formatType))
@@ -689,7 +688,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 *
 	 * @url https://tools.ietf.org/html/rfc5545#section-3.8.4.2
 	 *
-	 * @param {String} contact
+	 * @param {String} contact The textual contact description to add
 	 */
 	addContact(contact) {
 		this.addProperty(new TextProperty('CONTACT', contact))
@@ -700,7 +699,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 *
 	 * @url https://tools.ietf.org/html/rfc5545#section-3.8.1.4
 	 *
-	 * @param {String} comment
+	 * @param {String} comment The comment to add
 	 */
 	addComment(comment) {
 		this.addProperty(new TextProperty('COMMENT', comment))
@@ -709,9 +708,9 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Adds a new image from raw data
 	 *
-	 * @param {String} data
-	 * @param {String=} display
-	 * @param {String=} formatType
+	 * @param {String} data Data of the image to add
+	 * @param {String=} display What display-type the image is optimized for
+	 * @param {String=} formatType The mime-type of the image
 	 */
 	addImageFromData(data, display = null, formatType = null) {
 		this.addProperty(ImageProperty.fromData(data, display, formatType))
@@ -720,9 +719,9 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Adds a new image from a link
 	 *
-	 * @param {String} uri
-	 * @param {String=} display
-	 * @param {String=} formatType
+	 * @param {String} uri The URI of the image to add
+	 * @param {String=} display What display-type the image is optimized for
+	 * @param {String=} formatType The mime-type of the image
 	 */
 	addImageFromLink(uri, display = null, formatType = null) {
 		this.addProperty(ImageProperty.fromLink(uri, display, formatType))
@@ -732,8 +731,8 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * Creates a new RELATED-TO property based on a relation-type and id
 	 * and adds it to this object
 	 *
-	 * @param {String} relType
-	 * @param {String} relId
+	 * @param {String} relType The type of relation to add
+	 * @param {String} relId The id of the related calendar-document
 	 */
 	addRelation(relType, relId) {
 		this.addProperty(RelationProperty.fromRelTypeAndId(relType, relId))
@@ -743,8 +742,8 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * Creates a new REQUEST-STATUS property based on code and message
 	 * and adds it to this object
 	 *
-	 * @param {Number} code
-	 * @param {String} message
+	 * @param {Number} code The status-code of the request status
+	 * @param {String} message The message of the request status
 	 */
 	addRequestStatus(code, message) {
 		this.addProperty(RequestStatusProperty.fromCodeAndMessage(code, message))
@@ -753,8 +752,8 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Adds a new absolute alarm based on action and trigger time
 	 *
-	 * @param {String} action
-	 * @param {DateTimeValue} alarmTime
+	 * @param {String} action The type of alarm Action
+	 * @param {DateTimeValue} alarmTime The trigger time of the alarm
 	 * @returns {AlarmComponent}
 	 */
 	addAbsoluteAlarm(action, alarmTime) {
@@ -770,9 +769,9 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Adds a new relative alarm based on action, trigger time and relativeTo parameter
 	 *
-	 * @param {String} action
-	 * @param {DurationValue} alarmOffset
-	 * @param {Boolean=} relatedToStart
+	 * @param {String} action The type of alarm Action
+	 * @param {DurationValue} alarmOffset The trigger time of the alarm
+	 * @param {Boolean=} relatedToStart Whether or not the alarm is related to the event's start
 	 * @returns {AlarmComponent}
 	 */
 	addRelativeAlarm(action, alarmOffset, relatedToStart = true) {
@@ -788,7 +787,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Marks a certain property as edited
 	 *
-	 * @param {String} propertyName
+	 * @param {String} propertyName The name of the property
 	 */
 	markPropertyAsDirty(propertyName) {
 		this.markDirty()
@@ -814,7 +813,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Marks a certain component as edited
 	 *
-	 * @param {String} componentName
+	 * @param {String} componentName The name of the component
 	 */
 	markSubComponentAsDirty(componentName) {
 		this.markDirty()

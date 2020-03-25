@@ -31,8 +31,8 @@ export default class Timezone {
 	/**
 	 * Constructor
 	 *
-	 * @param {String|ICAL.Timezone|ICAL.Component} timezoneId
-	 * @param {String?} ics
+	 * @param {String|ICAL.Timezone|ICAL.Component} timezoneId Id of the timezone
+	 * @param {String?} ics The iCalendar timezone definition
 	 */
 	constructor(timezoneId, ics) {
 
@@ -95,12 +95,12 @@ export default class Timezone {
 	/**
 	 * Gets the UTC Offset for a given date in this timezone
 	 *
-	 * @param {Number} year
-	 * @param {Number} month (1-based)
-	 * @param {Number} day
-	 * @param {Number} hour
-	 * @param {Number} minute
-	 * @param {Number} second
+	 * @param {Number} year Year of the date
+	 * @param {Number} month Month of the date (1-based)
+	 * @param {Number} day Day of the date
+	 * @param {Number} hour Hour of the date
+	 * @param {Number} minute Minute of the date
+	 * @param {Number} second Second of the date
 	 * @returns {Number}
 	 */
 	offsetForArray(year, month, day, hour, minute, second) {

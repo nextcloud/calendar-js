@@ -37,7 +37,7 @@ export default class RecurrenceManager {
 	/**
 	 * Constructor
 	 *
-	 * @param {AbstractRecurringComponent} masterItem
+	 * @param {AbstractRecurringComponent} masterItem The master-item of the recurrence-set
 	 */
 	constructor(masterItem) {
 
@@ -95,7 +95,7 @@ export default class RecurrenceManager {
 
 	/**
 	 *
-	 * @param {AbstractRecurringComponent} masterItem
+	 * @param {AbstractRecurringComponent} masterItem The master-item of the recurrence-set
 	 */
 	set masterItem(masterItem) {
 		this._masterItem = masterItem
@@ -103,8 +103,6 @@ export default class RecurrenceManager {
 
 	/**
 	 * Gets an iterator over all registered recurrence exceptions of this calendar-document
-	 *
-	 * @returns {IterableIterator<AbstractRecurringComponent>}
 	 */
 	* getRecurrenceExceptionIterator() {
 		yield * this._recurrenceExceptionItems.values()
@@ -122,7 +120,7 @@ export default class RecurrenceManager {
 	/**
 	 * Checks if there is a recurrence Exception for a given recurrenceId
 	 *
-	 * @param {DateTimeValue|Number} recurrenceId
+	 * @param {DateTimeValue|Number} recurrenceId The recurrenceId to check
 	 * @returns {boolean}
 	 */
 	hasRecurrenceExceptionForId(recurrenceId) {
@@ -138,7 +136,7 @@ export default class RecurrenceManager {
 	/**
 	 * Gets the recurrence exception for a given recurrence Id
 	 *
-	 * @param {DateTimeValue|Number} recurrenceId
+	 * @param {DateTimeValue|Number} recurrenceId The recurrenceId to get
 	 * @returns {AbstractRecurringComponent|null}
 	 */
 	getRecurrenceException(recurrenceId) {
@@ -154,7 +152,7 @@ export default class RecurrenceManager {
 	/**
 	 * Check if there is a recurrence-exception with a range for a given recurrence-id
 	 *
-	 * @param {DateTimeValue|Number} recurrenceId
+	 * @param {DateTimeValue|Number} recurrenceId The recurrenceId to check
 	 * @returns {boolean}
 	 */
 	hasRangeRecurrenceExceptionForId(recurrenceId) {
@@ -174,7 +172,7 @@ export default class RecurrenceManager {
 	/**
 	 * Get recurrence-exception with range that's affecting the given recurrence-id
 	 *
-	 * @param {DateTimeValue|Number} recurrenceId
+	 * @param {DateTimeValue|Number} recurrenceId The recurrenceId to get
 	 * @returns {AbstractRecurringComponent|null}
 	 */
 	getRangeRecurrenceExceptionForId(recurrenceId) {
@@ -202,7 +200,7 @@ export default class RecurrenceManager {
 	 * Gets the difference between recurrence-id and start
 	 * Mostly needed to handle recurrence-exceptions with range
 	 *
-	 * @param {DateTimeValue|Number} recurrenceId
+	 * @param {DateTimeValue|Number} recurrenceId The recurrenceId to get
 	 * @returns {DurationValue|null}
 	 */
 	getRangeRecurrenceExceptionDiff(recurrenceId) {
@@ -234,7 +232,7 @@ export default class RecurrenceManager {
 	/**
 	 * Adds a new recurrence-exception to this calendar-document
 	 *
-	 * @param {AbstractRecurringComponent} recurrenceExceptionItem
+	 * @param {AbstractRecurringComponent} recurrenceExceptionItem The recurrence-exception-item to relate to recurrence-set
 	 */
 	relateRecurrenceException(recurrenceExceptionItem) {
 		this._modify()
@@ -258,7 +256,7 @@ export default class RecurrenceManager {
 	/**
 	 * Removes a recurrence exception by the item itself
 	 *
-	 * @param {AbstractRecurringComponent} recurrenceExceptionItem
+	 * @param {AbstractRecurringComponent} recurrenceExceptionItem The recurrence-exception remove
 	 */
 	removeRecurrenceException(recurrenceExceptionItem) {
 		const key = this._getRecurrenceIdKey(recurrenceExceptionItem)
@@ -268,7 +266,7 @@ export default class RecurrenceManager {
 	/**
 	 * Removes a recurrence exception by it's unix-time
 	 *
-	 * @param {Number} recurrenceId
+	 * @param {Number} recurrenceId The recurrence-exception to remove
 	 */
 	removeRecurrenceExceptionByRecurrenceId(recurrenceId) {
 		this._modify()
@@ -284,7 +282,7 @@ export default class RecurrenceManager {
 
 	/**
 	 *
-	 * @param {AbstractRecurringComponent} recurrenceExceptionItem
+	 * @param {AbstractRecurringComponent} recurrenceExceptionItem Object to get key from
 	 * @returns {Number}
 	 * @private
 	 */
@@ -296,8 +294,6 @@ export default class RecurrenceManager {
 
 	/**
 	 * Gets an iterator over all recurrence rules
-	 *
-	 * @returns {IterableIterator<RecurValue>}
 	 */
 	* getRecurrenceRuleIterator() {
 		for (const property of this._masterItem.getPropertyIterator('RRULE')) {
@@ -317,7 +313,7 @@ export default class RecurrenceManager {
 	/**
 	 * Adds a new recurrence rule
 	 *
-	 * @param {RecurValue} recurrenceRule
+	 * @param {RecurValue} recurrenceRule The RRULE to add
 	 */
 	addRecurrenceRule(recurrenceRule) {
 		this._modify()
@@ -330,7 +326,7 @@ export default class RecurrenceManager {
 	/**
 	 * Removes a recurrence rule
 	 *
-	 * @param {RecurValue} recurrenceRule
+	 * @param {RecurValue} recurrenceRule The RRULE to remove
 	 */
 	removeRecurrenceRule(recurrenceRule) {
 		this._modify()
@@ -356,9 +352,8 @@ export default class RecurrenceManager {
 	/**
 	 * Gets an iterator over all recurrence
 	 *
-	 * @param {boolean} isNegative
-	 * @param {String} valueType
-	 * @returns {IterableIterator<DateTimeValue|PeriodValue>}
+	 * @param {boolean} isNegative Whether or not to get EXDATES
+	 * @param {String} valueType Limit type of EXDATES
 	 */
 	* getRecurrenceDateIterator(isNegative = false, valueType = null) {
 		for (const property of this._getPropertiesForRecurrenceDate(isNegative, valueType)) {
@@ -368,8 +363,8 @@ export default class RecurrenceManager {
 
 	/**
 	 *
-	 * @param {boolean} isNegative
-	 * @param {String} valueType
+	 * @param {boolean} isNegative Whether or not to get EXDATES
+	 * @param {String} valueType Limit type of EXDATES
 	 * @returns {(DateTimeValue|PeriodValue)[]}
 	 */
 	listAllRecurrenceDates(isNegative = false, valueType = null) {
@@ -381,8 +376,8 @@ export default class RecurrenceManager {
 	 * It automatically adds it to the first property of the same value-type
 	 * or creates a new one if necessary
 	 *
-	 * @param {DateTimeValue|PeriodValue} value
-	 * @param {boolean} isNegative
+	 * @param {boolean} isNegative Whether we are dealing with an EXDATE or RDATE
+	 * @param {DateTimeValue|PeriodValue} value EXDATE to add
 	 */
 	addRecurrenceDate(isNegative = false, value) {
 		this._modify()
@@ -412,8 +407,9 @@ export default class RecurrenceManager {
 	/**
 	 * Checks if a recurrenceID is an RDATE or EXDATE
 	 *
-	 * @param isNegative
-	 * @param recurrenceId
+	 * @param {Boolean} isNegative Whether we are dealing with an EXDATE or RDATE
+	 * @param {DateTimeValue} recurrenceId Recurrence-Id to check
+	 * @returns {boolean}
 	 */
 	hasRecurrenceDate(isNegative = false, recurrenceId) {
 		for (let value of this.getRecurrenceDateIterator(isNegative)) {
@@ -431,8 +427,8 @@ export default class RecurrenceManager {
 
 	/**
 	 *
-	 * @param isNegative
-	 * @param recurrenceId
+	 * @param {Boolean} isNegative Whether we are dealing with an EXDATE or RDATE
+	 * @param {DateTimeValue} recurrenceId Recurrence-Id to get
 	 * @returns {null|DateTimeValue|PeriodValue}
 	 */
 	getRecurrenceDate(isNegative = false, recurrenceId) {
@@ -453,8 +449,8 @@ export default class RecurrenceManager {
 	/**
 	 * This deletes a recurrence-date value from this recurrence-set
 	 *
-	 * @param {DateTimeValue|PeriodValue} value
-	 * @param {boolean} isNegative
+	 * @param {boolean} isNegative Whether we are dealing with an EXDATE or RDATE
+	 * @param {DateTimeValue|PeriodValue} value The EXDATE/RDATE to remove
 	 */
 	removeRecurrenceDate(isNegative = false, value) {
 		this._modify()
@@ -482,8 +478,8 @@ export default class RecurrenceManager {
 	/**
 	 * Clears all recurrence-date information
 	 *
-	 * @param {String} valueType
-	 * @param {boolean} isNegative
+	 * @param {boolean} isNegative Whether we are dealing with an EXDATE or RDATE
+	 * @param {String} valueType The type of RDATEs/EXDATEs to remove
 	 */
 	clearAllRecurrenceDates(isNegative = false, valueType = null) {
 		this._modify()
@@ -497,7 +493,7 @@ export default class RecurrenceManager {
 	/**
 	 * Gets the property name for recurrence dates based on the isNegative boolean
 	 *
-	 * @param {boolean} isNegative
+	 * @param {boolean} isNegative Whether we are dealing with an EXDATE or RDATE
 	 * @returns {string}
 	 * @private
 	 */
@@ -510,7 +506,7 @@ export default class RecurrenceManager {
 	/**
 	 * Gets the value type based on the provided value
 	 *
-	 * @param {PeriodValue|DateTimeValue} value
+	 * @param {PeriodValue|DateTimeValue} value The value to get type of property from
 	 * @returns {string}
 	 * @private
 	 */
@@ -526,10 +522,9 @@ export default class RecurrenceManager {
 
 	/**
 	 *
-	 * @param {boolean} isNegative
-	 * @param {String|null} valueType
-	 * @param {ICAL.Timezone=} timezoneId
-	 * @returns {IterableIterator<PeriodValue|DateTimeValue>}
+	 * @param {boolean} isNegative Whether we are dealing with an EXDATE or RDATE
+	 * @param {String|null} valueType The type of values to get
+	 * @param {ICAL.Timezone=} timezoneId Filter by timezone
 	 * @private
 	 */
 	* _getPropertiesForRecurrenceDate(isNegative, valueType, timezoneId = null) {
@@ -569,8 +564,8 @@ export default class RecurrenceManager {
 	/**
 	 * Gets the occurrence at the exact given recurrenceId
 	 *
-	 * @param {DateTimeValue} recurrenceId
-	 * @returns {AbstractRecurringComponent}
+	 * @param {DateTimeValue} recurrenceId RecurrenceId to get
+	 * @returns {AbstractRecurringComponent|null}
 	 */
 	getOccurrenceAtExactly(recurrenceId) {
 		if (!this.masterItem.isRecurring()) {
@@ -611,7 +606,8 @@ export default class RecurrenceManager {
 	 * like getAllOccurrencesBetweenIterator, but for now it's the
 	 * accepted behavior.
 	 *
-	 * @param {DateTimeValue} recurrenceId
+	 * @param {DateTimeValue} recurrenceId RecurrenceId to get
+	 * @returns {AbstractRecurringComponent}
 	 */
 	getClosestOccurrence(recurrenceId) {
 		if (!this.masterItem.isRecurring()) {
@@ -641,8 +637,8 @@ export default class RecurrenceManager {
 	 * Get all occurrences between start and end
 	 * Start and End are inclusive
 	 *
-	 * @param {DateTimeValue} queriedTimeRangeStart
-	 * @param {DateTimeValue} queriedTimeRangeEnd
+	 * @param {DateTimeValue} queriedTimeRangeStart Start of time-range
+	 * @param {DateTimeValue} queriedTimeRangeEnd End of time-range
 	 */
 	* getAllOccurrencesBetweenIterator(queriedTimeRangeStart, queriedTimeRangeEnd) {
 		if (!this.masterItem.isRecurring()) {
@@ -729,8 +725,8 @@ export default class RecurrenceManager {
 	/**
 	 * Get all occurrences between start and end
 	 *
-	 * @param {DateTimeValue} start
-	 * @param {DateTimeValue} end
+	 * @param {DateTimeValue} start Start of time-range
+	 * @param {DateTimeValue} end End of time-range
 	 * @returns {(*|null)[]}
 	 */
 	getAllOccurrencesBetween(start, end) {
@@ -740,7 +736,7 @@ export default class RecurrenceManager {
 	/**
 	 * Update the UID of all components in the recurrence set
 	 *
-	 * @param {String} newUID
+	 * @param {String} newUID The new UID of the calendar-document
 	 */
 	updateUID(newUID) {
 		this._masterItem.updatePropertyWithValue('UID', newUID)
@@ -754,8 +750,8 @@ export default class RecurrenceManager {
 	 * Updates the recurrence-information accordingly,
 	 * whenever the start-date of the master-item changes
 	 *
-	 * @param {DateTimeValue} newStartDate
-	 * @param {DateTimeValue} oldStartDate
+	 * @param {DateTimeValue} newStartDate The new start-date
+	 * @param {DateTimeValue} oldStartDate The old start-date
 	 */
 	updateStartDateOfMasterItem(newStartDate, oldStartDate) {
 		const difference = newStartDate.subtractDateWithTimezone(oldStartDate)
@@ -797,7 +793,7 @@ export default class RecurrenceManager {
 	 * It does not verify that the given recurrenceId
 	 * is actually a valid recurrence of this calendar-document
 	 *
-	 * @param {DateTimeValue} recurrenceId
+	 * @param {DateTimeValue} recurrenceId Recurrence-Id to get
 	 * @returns {AbstractRecurringComponent}
 	 * @private
 	 */
@@ -853,11 +849,9 @@ export default class RecurrenceManager {
 		let last = dtstart.clone()
 		const ruleIterators = []
 		let ruleDateInc
-		let exDateInc
 		const ruleDates = []
 		let ruleDate = null
 		const exDates = []
-		let exDate
 		const complete = false
 
 		for (const ruleValue of this.getRecurrenceRuleIterator()) {
@@ -903,12 +897,12 @@ export default class RecurrenceManager {
 			exDates.splice(index, 0, exDateValue)
 		}
 
-		exDateInc = ICAL.helpers.binsearchInsert(
+		const exDateInc = ICAL.helpers.binsearchInsert(
 			exDates,
 			dtstart,
 			(a, b) => a.compare(b)
 		)
-		exDate = exDates[exDateInc]
+		const exDate = exDates[exDateInc]
 
 		return new ICAL.RecurExpansion({
 			dtstart,
@@ -925,7 +919,6 @@ export default class RecurrenceManager {
 	}
 
 	/**
-	 *
 	 * @private
 	 */
 	_modify() {

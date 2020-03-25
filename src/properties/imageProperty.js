@@ -39,7 +39,7 @@ export default class ImageProperty extends AttachmentProperty {
 	/**
 	 * Gets the image-type
 	 *
-	 * @param {String} display
+	 * @param {String} display The display-type image is optimized for
 	 */
 	set display(display) {
 		this.updateParameterIfExist('DISPLAY', display)
@@ -48,9 +48,9 @@ export default class ImageProperty extends AttachmentProperty {
 	/**
 	 * Creates a new ImageProperty based on data
 	 *
-	 * @param {String} data
-	 * @param {String=} display
-	 * @param {String=} formatType
+	 * @param {String} data The data of the image
+	 * @param {String=} display The display-type it's optimized for
+	 * @param {String=} formatType The mime-type of the image
 	 * @returns {ImageProperty}
 	 */
 	static fromData(data, display = null, formatType = null) {
@@ -71,9 +71,9 @@ export default class ImageProperty extends AttachmentProperty {
 	/**
 	 * Creates a new ImageProperty based on a link
 	 *
-	 * @param {String} uri
-	 * @param {String=} display
-	 * @param {String=} formatType
+	 * @param {String} uri The uri of the image
+	 * @param {String=} display The display-type it's optimized for
+	 * @param {String=} formatType The mime-type of the image
 	 * @returns {ImageProperty}
 	 */
 	static fromLink(uri, display = null, formatType = null) {

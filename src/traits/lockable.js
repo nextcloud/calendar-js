@@ -55,8 +55,6 @@ export default function lockableTrait(baseClass) {
 		/**
 		 * Marks this object is immutable
 		 * locks it against further modification
-		 *
-		 * @returns void
 		 */
 		lock() {
 			this._mutable = false
@@ -65,8 +63,6 @@ export default function lockableTrait(baseClass) {
 		/**
 		 * Marks this object as mutable
 		 * allowing further modification
-		 *
-		 * @returns void
 		 */
 		unlock() {
 			this._mutable = true
@@ -77,7 +73,6 @@ export default function lockableTrait(baseClass) {
 		 *
 		 * @throws {ModificationNotAllowedError} if this object is locked for modification
 		 * @protected
-		 * @returns void
 		 */
 		_modify() {
 			if (!this._mutable) {
@@ -90,7 +85,6 @@ export default function lockableTrait(baseClass) {
 		 *
 		 * @throws {ModificationNotAllowedError} if this object is locked for modification
 		 * @protected
-		 * @returns void
 		 */
 		_modifyContent() {
 			this._modify()

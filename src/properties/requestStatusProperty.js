@@ -50,7 +50,7 @@ export default class RequestStatusProperty extends Property {
 	/**
 	 * Sets the status code of the request status
 	 *
-	 * @param {Number} statusCode
+	 * @param {Number} statusCode The statusCode of the request
 	 */
 	set statusCode(statusCode) {
 		this._modifyContent()
@@ -75,7 +75,7 @@ export default class RequestStatusProperty extends Property {
 	/**
 	 * Sets the status message of the request status
 	 *
-	 * @param {String} statusMessage
+	 * @param {String} statusMessage The message of the request
 	 */
 	set statusMessage(statusMessage) {
 		this._modifyContent()
@@ -98,7 +98,7 @@ export default class RequestStatusProperty extends Property {
 	/**
 	 * Sets the exception dtat of the request status
 	 *
-	 * @param {String} exceptionData
+	 * @param {String} exceptionData The additional exception-data
 	 */
 	set exceptionData(exceptionData) {
 		this._modifyContent()
@@ -165,8 +165,8 @@ export default class RequestStatusProperty extends Property {
 	/**
 	 * Creates a new RequestStatusProperty from a code and a status message
 	 *
-	 * @param {Number} code
-	 * @param {String} message
+	 * @param {Number} code The status-code of the request
+	 * @param {String} message The message of the request
 	 * @returns {RequestStatusProperty}
 	 */
 	static fromCodeAndMessage(code, message) {

@@ -53,7 +53,7 @@ export default class RelationProperty extends Property {
 	/**
 	 * Sets a new relation type
 	 *
-	 * @param {String} relationType
+	 * @param {String} relationType The type of relation (e.g. SIBLING, PARENT, etc.)
 	 */
 	set relationType(relationType) {
 		this.updateParameterIfExist('RELTYPE', relationType)
@@ -71,7 +71,7 @@ export default class RelationProperty extends Property {
 	/**
 	 * Sets a new related id
 	 *
-	 * @param {String} relatedId
+	 * @param {String} relatedId The Id of the related document
 	 */
 	set relatedId(relatedId) {
 		this.value = relatedId
@@ -80,8 +80,8 @@ export default class RelationProperty extends Property {
 	/**
 	 * Creates a new RELATED-TO property based on a relation-type and id
 	 *
-	 * @param {String} relType
-	 * @param {String} relId
+	 * @param {String} relType The type of the relation (e.g. SIBLING, CHILD)
+	 * @param {String} relId The Id of the related document
 	 * @returns {RelationProperty}
 	 */
 	static fromRelTypeAndId(relType, relId) {

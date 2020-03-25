@@ -38,8 +38,8 @@ export default class RecurValue extends AbstractValue {
 	/**
 	 * Constructor
 	 *
-	 * @param {ICAL.Recur} icalValue
-	 * @param {DateTimeValue?} until
+	 * @param {ICAL.Recur} icalValue The ical.js rrule value
+	 * @param {DateTimeValue?} until The Until date
 	 */
 	constructor(icalValue, until) {
 		super(icalValue)
@@ -66,7 +66,7 @@ export default class RecurValue extends AbstractValue {
 	 * Sets the stored interval of this recurrence rule
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {Number} interval
+	 * @param {Number} interval New Interval to set
 	 */
 	set interval(interval) {
 		this._modifyContent()
@@ -87,7 +87,7 @@ export default class RecurValue extends AbstractValue {
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
 	 * @throws {TypeError} if weekstart out of range
-	 * @param {Number} weekStart
+	 * @param {Number} weekStart New start of week to set
 	 */
 	set weekStart(weekStart) {
 		this._modifyContent()
@@ -117,7 +117,7 @@ export default class RecurValue extends AbstractValue {
 	 * Sets the until value, automatically removes count
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {DateTimeValue} until
+	 * @param {DateTimeValue} until New until date to set
 	 */
 	set until(until) {
 		this._modifyContent()
@@ -144,7 +144,7 @@ export default class RecurValue extends AbstractValue {
 	 * Sets the count value, automatically removes until
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {Number} count
+	 * @param {Number} count New occurrence limit to set
 	 */
 	set count(count) {
 		this._modifyContent()
@@ -172,7 +172,7 @@ export default class RecurValue extends AbstractValue {
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
 	 * @throws {TypeError} if frequency is unknown
-	 * @param freq
+	 * @param {String} freq New frequency to set
 	 */
 	set frequency(freq) {
 		this._modifyContent()
@@ -220,8 +220,8 @@ export default class RecurValue extends AbstractValue {
 	 * Adds a part to a component to the recurrence-rule
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {String} componentName
-	 * @param {String|Number}value
+	 * @param {String} componentName The name of the recurrence-component to add
+	 * @param {String|Number} value The value to add
 	 */
 	addComponent(componentName, value) {
 		this._modifyContent()
@@ -232,8 +232,8 @@ export default class RecurValue extends AbstractValue {
 	 * Sets / overwrites a component to the recurrence-rule
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {String} componentName
-	 * @param {Number[]|String[]}value
+	 * @param {String} componentName The name of the component to set
+	 * @param {Number[]|String[]} value The value to set
 	 */
 	setComponent(componentName, value) {
 		this._modifyContent()
@@ -249,7 +249,7 @@ export default class RecurValue extends AbstractValue {
 	 * Removes all parts of a component
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {String} componentName
+	 * @param {String} componentName The name of the component to remove
 	 */
 	removeComponent(componentName) {
 		delete this._innerValue.parts[uc(componentName)]
@@ -258,7 +258,8 @@ export default class RecurValue extends AbstractValue {
 	/**
 	 * Gets all parts of a component
 	 *
-	 * @param {String} componentName
+	 * @param {String} componentName The name of the component to get
+	 * @returns {Array}
 	 */
 	getComponent(componentName) {
 		return this._innerValue.getComponent(componentName)
@@ -307,8 +308,8 @@ export default class RecurValue extends AbstractValue {
 	/**
 	 * Create a new RecurValue object from a ICAL.Recur object
 	 *
-	 * @param {ICAL.Recur} icalValue
-	 * @param {DateTimeValue?} until
+	 * @param {ICAL.Recur} icalValue The ICAL.JS Recur value
+	 * @param {DateTimeValue?} until The Until date
 	 * @returns {RecurValue}
 	 */
 	static fromICALJs(icalValue, until = null) {
@@ -318,21 +319,21 @@ export default class RecurValue extends AbstractValue {
 	/**
 	 * Create a new RecurValue object from a data object
 	 *
-	 * @param {Object} data
-	 * @param {String=} data.freq
-	 * @param {Number=} data.interval
-	 * @param {Number=} data.wkst
-	 * @param {DateTimeValue=} data.until
-	 * @param {Number=} data.count
-	 * @param {Number[]=} data.bysecond
-	 * @param {Number[]=} data.byminute
-	 * @param {Number[]=} data.byhour
-	 * @param {String[]=} data.byday
-	 * @param {Number[]=} data.bymonthday
-	 * @param {Number[]=} data.byyearday
-	 * @param {Number[]=} data.byweekno
-	 * @param {Number[]=} data.bymonth
-	 * @param {Number[]=} data.bysetpos
+	 * @param {Object} data The destructuring object
+	 * @param {String=} data.freq FREQ part of RRULE
+	 * @param {Number=} data.interval INTERVAL part of RRULE
+	 * @param {Number=} data.wkst WEEKSTART part of RRULE
+	 * @param {DateTimeValue=} data.until UNTIL part of RRULE
+	 * @param {Number=} data.count COUNT part of RRULE
+	 * @param {Number[]=} data.bysecond BYSECOND part of RRULE
+	 * @param {Number[]=} data.byminute BYMINUTE part of RRULE
+	 * @param {Number[]=} data.byhour BYHOUR part of RRULE
+	 * @param {String[]=} data.byday BYDAY part of RRULE
+	 * @param {Number[]=} data.bymonthday BYMONTHDAY part of RRULE
+	 * @param {Number[]=} data.byyearday BYYEARDAY part of RRULE
+	 * @param {Number[]=} data.byweekno BYWEEKNO part of RRULE
+	 * @param {Number[]=} data.bymonth BYMONTH part of RRULE
+	 * @param {Number[]=} data.bysetpos BYSETPOS part of RRULE
 	 * @returns {RecurValue}
 	 */
 	static fromData(data) {

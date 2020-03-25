@@ -77,7 +77,7 @@ export default class PeriodValue extends AbstractValue {
 	 * Sets the start of the period-value
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {DateTimeValue} start
+	 * @param {DateTimeValue} start The start of the period
 	 */
 	set start(start) {
 		this._modifyContent()
@@ -113,7 +113,7 @@ export default class PeriodValue extends AbstractValue {
 	 * Sets the end of the period-value
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {DateTimeValue} end
+	 * @param {DateTimeValue} end The end of the period
 	 */
 	set end(end) {
 		this._modifyContent()
@@ -152,7 +152,7 @@ export default class PeriodValue extends AbstractValue {
 	 * Sets the duration of the period-value
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {DurationValue} duration
+	 * @param {DurationValue} duration The duration to set
 	 */
 	set duration(duration) {
 		this._modifyContent()
@@ -203,7 +203,7 @@ export default class PeriodValue extends AbstractValue {
 	/**
 	 * Create a new PeriodValue object from a ICAL.Period object
 	 *
-	 * @param {ICAL.Period} icalValue
+	 * @param {ICAL.Period} icalValue The ical.js period value to initialise from
 	 * @returns {PeriodValue}
 	 */
 	static fromICALJs(icalValue) {
@@ -213,9 +213,9 @@ export default class PeriodValue extends AbstractValue {
 	/**
 	 * Create a new PeriodValue object from start and end
 	 *
-	 * @param {Object} data
-	 * @param {DateTimeValue} data.start
-	 * @param {DateTimeValue} data.end
+	 * @param {Object} data The destructuring object
+	 * @param {DateTimeValue} data.start The start of the period
+	 * @param {DateTimeValue} data.end The end of the period
 	 * @returns {PeriodValue}
 	 */
 	static fromDataWithEnd(data) {
@@ -229,9 +229,9 @@ export default class PeriodValue extends AbstractValue {
 	/**
 	 * Create a new PeriodValue object from start and duration
 	 *
-	 * @param {Object} data
-	 * @param {DateTimeValue} data.start
-	 * @param {DurationValue} data.duration
+	 * @param {Object} data The destructuring object
+	 * @param {DateTimeValue} data.start The start of the period
+	 * @param {DurationValue} data.duration The duration of the period
 	 * @returns {PeriodValue}
 	 */
 	static fromDataWithDuration(data) {

@@ -29,7 +29,7 @@ export default class TimezoneAdapter {
 	/**
 	 * Constructor
 	 *
-	 * @param {TimezoneManager} timezoneManager
+	 * @param {TimezoneManager} timezoneManager The timezone-manager to wrap
 	 */
 	constructor(timezoneManager) {
 
@@ -43,7 +43,7 @@ export default class TimezoneAdapter {
 	}
 
 	/**
-	 * @param {string} timezoneId
+	 * @param {string} timezoneId The id of the timezone
 	 * @returns {boolean}
 	 */
 	has(timezoneId) {
@@ -51,7 +51,7 @@ export default class TimezoneAdapter {
 	}
 
 	/**
-	 * @param {String} timezoneId
+	 * @param {String} timezoneId The id of the timezone
 	 * @returns {ICAL.Timezone|undefined}
 	 */
 	get(timezoneId) {

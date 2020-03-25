@@ -39,7 +39,7 @@ export default class TextProperty extends Property {
 	/**
 	 * Sets the alternate text
 	 *
-	 * @param {String} altRep
+	 * @param {String} altRep The alternative text
 	 */
 	set alternateText(altRep) {
 		this.updateParameterIfExist('ALTREP', altRep)
@@ -57,7 +57,7 @@ export default class TextProperty extends Property {
 	/**
 	 * Sets language of this property
 	 *
-	 * @param language
+	 * @param {String} language The language of the text
 	 */
 	set language(language) {
 		this.updateParameterIfExist('LANGUAGE', language)

@@ -29,10 +29,10 @@ export default class AbstractParser {
 	/**
 	 * @constructor
 	 *
-	 * @param {Object} options
-	 * @param {Boolean} options.extractGlobalProperties (defaults to false)
-	 * @param {Boolean} options.removeRSVPForAttendees (defaults to false)
-	 * @param {Boolean} options.includeTimezones (defaults to false)
+	 * @param {Object} options Object of options
+	 * @param {Boolean=} options.extractGlobalProperties Whether or not to preserve properties from the VCALENDAR component (defaults to false)
+	 * @param {Boolean=} options.removeRSVPForAttendees Whether or not to remove RSVP from attendees (defaults to false)
+	 * @param {Boolean=} options.includeTimezones Whether or not to include timezones (defaults to false)
 	 */
 	constructor(options = {}) {
 		if (new.target === AbstractParser) {
@@ -153,7 +153,8 @@ export default class AbstractParser {
 	/**
 	 * {String|Object} data
 	 *
-	 * @throws TODO
+	 * @param {any} data The data to parse
+	 * @throws TypeError
 	 */
 	parse(data) {
 		throw new TypeError('Abstract method not implemented by subclass')
@@ -161,10 +162,8 @@ export default class AbstractParser {
 
 	/**
 	 * Returns one CalendarComponent at a time
-	 *
-	 * @returns {IterableIterator<CalendarComponent>}
 	 */
-	* getItemIterator() {
+	* getItemIterator() { // eslint-disable-line require-yield
 		throw new TypeError('Abstract method not implemented by subclass')
 	}
 
@@ -234,12 +233,13 @@ export default class AbstractParser {
 	/**
 	 * Gets an option provided
 	 *
-	 * @param {String} name
-	 * @param {*} defaultValue
+	 * @param {String} name The name of the option to get
+	 * @param {*} defaultValue The default value to return if option not provided
+	 * @returns {any}
 	 * @protected
 	 */
 	_getOption(name, defaultValue) {
-		return this._options.hasOwnProperty(name)
+		return Object.prototype.hasOwnProperty.call(this._options, name)
 			? this._options[name]
 			: defaultValue
 	}
@@ -248,7 +248,6 @@ export default class AbstractParser {
 	 * Return list of supported mime types
 	 *
 	 * @static
-	 * @returns {string[]}
 	 */
 	static getMimeTypes() {
 		throw new TypeError('Abstract method not implemented by subclass')

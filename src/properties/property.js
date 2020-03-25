@@ -20,7 +20,6 @@
  *
  */
 import ExpectedICalJSError from '../errors/expectedICalJSError.js'
-import ModificationNotAllowedError from '../errors/modificationNotAllowedError.js'
 import Parameter from '../parameters/parameter.js'
 import { createProperty } from '../factories/icalFactory.js'
 import { lc, uc } from '../helpers/stringHelper.js'
@@ -43,11 +42,11 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Constructor
 	 *
-	 * @param {String} name
-	 * @param {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null} value
-	 * @param {Parameter[]|[String, String|Array][]} parameters
-	 * @param {CalendarComponent|null} root
-	 * @param {AbstractComponent|null} parent
+	 * @param {String} name The name of the property
+	 * @param {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null} value The value of the property
+	 * @param {Parameter[]|[String][]} parameters Array of parameters
+	 * @param {CalendarComponent|null} root The root of the calendar-document
+	 * @param {AbstractComponent|null} parent The parent-element of this property
 	 */
 	constructor(name, value = null, parameters = [], root = null, parent = null) {
 		super()
@@ -119,7 +118,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Set new parameter value
 	 *
-	 * @param {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null} value
+	 * @param {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null} value The value of the property
 	 * @throws {ModificationNotAllowedError} if property is locked for modification
 	 */
 	set value(value) {
@@ -143,7 +142,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Sets the root of this property
 	 *
-	 * @param {CalendarComponent|null} root
+	 * @param {CalendarComponent|null} root The root of the calendar-document
 	 * @throws {ModificationNotAllowedError} if property is locked for modification
 	 */
 	set root(root) {
@@ -163,7 +162,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Sets the direct parent element of this property
 	 *
-	 * @param {AbstractComponent|null} parent
+	 * @param {AbstractComponent|null} parent The parent element of this property
 	 * @throws {ModificationNotAllowedError} if property is locked for modification
 	 */
 	set parent(parent) {
@@ -190,8 +189,6 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 
 	/**
 	 * Gets an iterator over all values
-	 *
-	 * @returns {IterableIterator<String|AbstractValue>}
 	 */
 	* getValueIterator() {
 		if (this.isMultiValue()) {
@@ -219,6 +216,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	 * Checks if a value is inside this multi-value property
 	 *
 	 * @param {String|AbstractValue} value Value to check for
+	 * @returns {Boolean}
 	 */
 	hasValue(value) {
 		if (!this.isMultiValue()) {
@@ -246,7 +244,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Sets a parameter on this property
 	 *
-	 * @param {Parameter} parameter
+	 * @param {Parameter} parameter The parameter to set
 	 * @throws {ModificationNotAllowedError} if property is locked for modification
 	 */
 	setParameter(parameter) {
@@ -258,7 +256,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Gets a parameter on this property by its name
 	 *
-	 * @param {String} parameterName
+	 * @param {String} parameterName Name of the parameter to get
 	 * @returns {Parameter}
 	 */
 	getParameter(parameterName) {
@@ -267,8 +265,6 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 
 	/**
 	 * Gets an iterator over all available parameters
-	 *
-	 * @returns {IterableIterator<*>}
 	 */
 	* getParametersIterator() {
 		yield * this._parameters.values()
@@ -277,7 +273,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Get first value of a parameter
 	 *
-	 * @param parameterName
+	 * @param {String} parameterName Name of the parameter
 	 * @returns {null|String}
 	 */
 	getParameterFirstValue(parameterName) {
@@ -296,7 +292,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Returns whether a parameter exists on this property
 	 *
-	 * @param {String} parameterName
+	 * @param {String} parameterName Name of the parameter
 	 * @returns {boolean}
 	 */
 	hasParameter(parameterName) {
@@ -306,7 +302,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Deletes a parameter on this property
 	 *
-	 * @param {String} parameterName
+	 * @param {String} parameterName Name of the parameter
 	 * @throws {ModificationNotAllowedError} if property is locked for modification
 	 */
 	deleteParameter(parameterName) {
@@ -318,9 +314,9 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	 * update a parameter if it exists,
 	 * create a new one if it doesn't
 	 *
-	 * @param {String} parameterName
+	 * @param {String} parameterName Name of the parameter
+	 * @param {string|Array|null} value Value to set
 	 * @throws {ModificationNotAllowedError} if property is locked for modification
-	 * @param {string|Array|null} value
 	 */
 	updateParameterIfExist(parameterName, value) {
 		this._modify()
@@ -358,8 +354,6 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Marks this parameter is immutable
 	 * locks it against further modification
-	 *
-	 * @returns void
 	 */
 	lock() {
 		super.lock()
@@ -378,8 +372,6 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Marks this parameter as mutable
 	 * allowing further modification
-	 *
-	 * @returns void
 	 */
 	unlock() {
 		super.unlock()
@@ -435,7 +427,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Sets parameters from the constructor
 	 *
-	 * @param {Parameter[]|[String, String|Array][]} parameters
+	 * @param {Parameter[]|[String][]} parameters Array of parameters to set
 	 * @private
 	 */
 	_setParametersFromConstructor(parameters) {
@@ -451,9 +443,9 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Creates a new Component based on an ical object
 	 *
-	 * @param {ICAL.Property} icalProperty
-	 * @param {CalendarComponent=} root
-	 * @param {AbstractComponent=} parent
+	 * @param {ICAL.Property} icalProperty The ical.js property to initialise from
+	 * @param {CalendarComponent=} root The root of the calendar-document
+	 * @param {AbstractComponent=} parent The parent element of this property
 	 * @returns {Property}
 	 */
 	static fromICALJs(icalProperty, root = null, parent = null) {

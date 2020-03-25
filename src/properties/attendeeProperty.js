@@ -52,7 +52,7 @@ export default class AttendeeProperty extends Property {
 	/**
 	 * Sets new role of the attendee
 	 *
-	 * @param {String} role
+	 * @param {String} role The role of the attendee (e.g. CHAIR, REQ-PARTICIPANT)
 	 */
 	set role(role) {
 		this.updateParameterIfExist('ROLE', role)
@@ -81,7 +81,7 @@ export default class AttendeeProperty extends Property {
 	/**
 	 * Sets new calendar-user-type of attendee
 	 *
-	 * @param {String} userType
+	 * @param {String} userType The type of user (e.g. INDIVIDUAL, GROUP)
 	 */
 	set userType(userType) {
 		this.updateParameterIfExist('CUTYPE', userType)
@@ -104,7 +104,7 @@ export default class AttendeeProperty extends Property {
 	/**
 	 * Updates the "Répondez s'il vous plaît" value for attendee
 	 *
-	 * @param {boolean} rsvp
+	 * @param {boolean} rsvp Whether or not to send out an invitation
 	 */
 	set rsvp(rsvp) {
 		this.updateParameterIfExist('RSVP', rsvp ? 'TRUE' : 'FALSE')
@@ -122,7 +122,7 @@ export default class AttendeeProperty extends Property {
 	/**
 	 * Sets a new common-name of the attendee
 	 *
-	 * @param {string} commonName
+	 * @param {string} commonName The display name of the attendee
 	 */
 	set commonName(commonName) {
 		this.updateParameterIfExist('CN', commonName)
@@ -164,7 +164,7 @@ export default class AttendeeProperty extends Property {
 	/**
 	 * Sets a new participation-status of the attendee
 	 *
-	 * @param {String} participationStatus
+	 * @param {String} participationStatus The participation status (e.g. ACCEPTED, DECLINED)
 	 */
 	set participationStatus(participationStatus) {
 		this.updateParameterIfExist('PARTSTAT', participationStatus)
@@ -183,7 +183,7 @@ export default class AttendeeProperty extends Property {
 	 * Sets this attendee's language
 	 * This can be used to influence the language of the invitation email
 	 *
-	 * @param language
+	 * @param {String} language The preferred language of the attendee
 	 */
 	set language(language) {
 		this.updateParameterIfExist('LANGUAGE', language)
@@ -201,7 +201,7 @@ export default class AttendeeProperty extends Property {
 	/**
 	 * Sets the email address of the attendee
 	 *
-	 * @param {String} email
+	 * @param {String} email The e-email address of the attendee
 	 */
 	set email(email) {
 		this.value = startStringWith(email, 'mailto:')
@@ -219,9 +219,9 @@ export default class AttendeeProperty extends Property {
 	/**
 	 * Creates a new AttendeeProperty from name and email
 	 *
-	 * @param {String} name
-	 * @param {String} email
-	 * @param {Boolean=} isOrganizer
+	 * @param {String} name The display name
+	 * @param {String} email The email address
+	 * @param {Boolean=} isOrganizer Whether this is the organizer or an attendee
 	 * @returns {AttendeeProperty}
 	 */
 	static fromNameAndEMail(name, email, isOrganizer = false) {
@@ -236,12 +236,12 @@ export default class AttendeeProperty extends Property {
 	/**
 	 * Creates a new AttendeeProperty from name, email, role, userType and rsvp
 	 *
-	 * @param {String} name
-	 * @param {String} email
-	 * @param {String} role
-	 * @param {String} userType
-	 * @param {Boolean} rsvp
-	 * @param {Boolean=} isOrganizer
+	 * @param {String} name The display name
+	 * @param {String} email The email address
+	 * @param {String} role The role
+	 * @param {String} userType The type of user
+	 * @param {Boolean} rsvp Whether to send out an invitation
+	 * @param {Boolean=} isOrganizer Whether this is the organizer or an attendee
 	 * @returns {AttendeeProperty}
 	 */
 	static fromNameEMailRoleUserTypeAndRSVP(name, email, role, userType, rsvp, isOrganizer = false) {

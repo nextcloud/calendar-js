@@ -47,7 +47,7 @@ export default class DateTimeValue extends AbstractValue {
 	 * Sets the year of the stored date-time-value
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {Number} year
+	 * @param {Number} year Number of years to set
 	 */
 	set year(year) {
 		this._modifyContent()
@@ -67,7 +67,7 @@ export default class DateTimeValue extends AbstractValue {
 	 * Sets the month of the stored date-time-value
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {Number} month
+	 * @param {Number} month Number of months to set
 	 */
 	set month(month) {
 		this._modifyContent()
@@ -92,7 +92,7 @@ export default class DateTimeValue extends AbstractValue {
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
 	 * @throws {TypeError} if out of range
-	 * @param {Number} day
+	 * @param {Number} day Number of days to set
 	 */
 	set day(day) {
 		this._modifyContent()
@@ -117,7 +117,7 @@ export default class DateTimeValue extends AbstractValue {
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
 	 * @throws {TypeError} if out of range
-	 * @param {Number} hour
+	 * @param {Number} hour Number of hours to set
 	 */
 	set hour(hour) {
 		this._modifyContent()
@@ -142,7 +142,7 @@ export default class DateTimeValue extends AbstractValue {
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
 	 * @throws {TypeError} if out of range
-	 * @param {Number} minute
+	 * @param {Number} minute Number of minutes to set
 	 */
 	set minute(minute) {
 		this._modifyContent()
@@ -167,7 +167,7 @@ export default class DateTimeValue extends AbstractValue {
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
 	 * @throws {TypeError} if out of range
-	 * @param {Number} second
+	 * @param {Number} second Number of seconds to set
 	 */
 	set second(second) {
 		this._modifyContent()
@@ -214,7 +214,7 @@ export default class DateTimeValue extends AbstractValue {
 	 * Sets whether this date-time-value is a date or date-time
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {boolean} isDate
+	 * @param {boolean} isDate Whether this is a date or date-time value
 	 */
 	set isDate(isDate) {
 		this._modifyContent()
@@ -248,7 +248,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Adds a duration to this date-time-value
 	 *
-	 * @param {DurationValue} duration
+	 * @param {DurationValue} duration The duration to ad
 	 */
 	addDuration(duration) {
 		this._innerValue.addDuration(duration.toICALJs())
@@ -257,7 +257,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Subtract another date excluding timezones
 	 *
-	 * @param {DateTimeValue} other
+	 * @param {DateTimeValue} other The date-time value to subtract
 	 * @returns {DurationValue}
 	 */
 	subtractDateWithoutTimezone(other) {
@@ -268,7 +268,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Subtract another date, taking timezones into account
 	 *
-	 * @param {DateTimeValue} other
+	 * @param {DateTimeValue} other The date-time value to subtract
 	 * @returns {DurationValue}
 	 */
 	subtractDateWithTimezone(other) {
@@ -279,7 +279,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Compares this DateTimeValue object with another one
 	 *
-	 * @param {DateTimeValue} other
+	 * @param {DateTimeValue} other The date-time to compare to
 	 * @returns {Number} -1, 0 or 1 for less/equal/greater
 	 */
 	compare(other) {
@@ -289,8 +289,8 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Compares only the date part in a given timezone
 	 *
-	 * @param {DateTimeValue} other
-	 * @param {Timezone} timezone
+	 * @param {DateTimeValue} other The date-time to compare to
+	 * @param {Timezone} timezone The timezone to compare in
 	 * @returns {Number} -1, 0 or 1 for less/equal/greater
 	 */
 	compareDateOnlyInGivenTimezone(other, timezone) {
@@ -300,7 +300,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Returns a clone of this object which was converted to a different timezone
 	 *
-	 * @param {Timezone} timezone
+	 * @param {Timezone} timezone TimezoneId to convert to
 	 * @returns {DateTimeValue}
 	 */
 	getInTimezone(timezone) {
@@ -321,7 +321,8 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Returns a clone of this object which was converted to a different timezone
 	 *
-	 * @param {ICAL.Timezone} timezone
+	 * @param {ICAL.Timezone} timezone TimezoneId to convert to
+	 * @returns {DateTimeValue}
 	 * @package
 	 */
 	getInICALTimezone(timezone) {
@@ -342,7 +343,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * This silently replaces the inner timezone without converting the actual time
 	 *
-	 * @param {ICAL.Timezone} timezone
+	 * @param {ICAL.Timezone} timezone The timezone to replace with
 	 * @package
 	 */
 	silentlyReplaceTimezone(timezone) {
@@ -362,7 +363,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Replaces the inner timezone without converting the actual time
 	 *
-	 * @param {Timezone} timezone
+	 * @param {Timezone} timezone The timezone to replace with
 	 */
 	replaceTimezone(timezone) {
 		this._modifyContent()
@@ -407,7 +408,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Create a new DateTimeValue object from an ICAL.Time object
 	 *
-	 * @param {ICAL.Time} icalValue
+	 * @param {ICAL.Time} icalValue The ical.js Date value to initialise from
 	 * @returns {DateTimeValue}
 	 */
 	static fromICALJs(icalValue) {
@@ -417,8 +418,8 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Creates a new DateTimeValue object based on a vanilla javascript object
 	 *
-	 * @param {Date} jsDate
-	 * @param {Boolean=} useUTC
+	 * @param {Date} jsDate The JavaScript date to initialise from
+	 * @param {Boolean=} useUTC Whether or not to treat it as UTC
 	 * @returns {DateTimeValue}
 	 */
 	static fromJSDate(jsDate, useUTC = false) {
@@ -429,15 +430,15 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Creates a new DateTimeValue object based on simple parameters
 	 *
-	 * @param {Object} data
-	 * @param {Number=} data.year
-	 * @param {Number=} data.month
-	 * @param {Number=} data.day
-	 * @param {Number=} data.hour
-	 * @param {Number=} data.minute
-	 * @param {Number=} data.second
-	 * @param {Boolean=} data.isDate
-	 * @param {Timezone=} timezone
+	 * @param {Object} data The destructuring object
+	 * @param {Number=} data.year Amount of years to set
+	 * @param {Number=} data.month Amount of month to set (1-based)
+	 * @param {Number=} data.day Amount of days to set
+	 * @param {Number=} data.hour Amount of hours to set
+	 * @param {Number=} data.minute Amount of minutes to set
+	 * @param {Number=} data.second Amount of seconds to set
+	 * @param {Boolean=} data.isDate Whether this is a date or date-time
+	 * @param {Timezone=} timezone The timezone of the DateTimeValue
 	 * @returns {DateTimeValue}
 	 */
 	static fromData(data, timezone) {

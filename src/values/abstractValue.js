@@ -21,7 +21,6 @@
  */
 import lockableTrait from '../traits/lockable.js'
 import observerTrait from '../traits/observer.js'
-import ICAL from 'ical.js'
 
 /**
  * @class AbstractValue
