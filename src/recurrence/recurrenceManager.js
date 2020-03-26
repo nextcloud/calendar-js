@@ -20,7 +20,7 @@
  *
  */
 import Property from '../properties/property.js'
-import { uc } from '../helpers/stringHelper.js'
+import { uc } from '../helpers/stringHelper.js';
 import DateTimeValue from '../values/dateTimeValue.js'
 import ModificationNotAllowedError from '../errors/modificationNotAllowedError.js'
 import PeriodValue from '../values/periodValue.js'
@@ -597,14 +597,19 @@ export default class RecurrenceManager {
 			}
 		}
 
-		const dateTimeValue = DateTimeValue.fromICALJs(previous)
-		return this._getOccurrenceAtRecurrenceId(dateTimeValue)
+		return null
 	}
 
 	/**
 	 * Gets the closest occurrence to the given recurrenceId.
 	 * That's either the closest in the future, or in case the
 	 * recurrence-set ends before recurrenceId, the last one
+	 *
+	 * This function works solely on the basis of recurrence-ids.
+	 * It ignores the actual date of recurrence-exceptions.
+	 * Ideally we should fix it and provide a similar implementation
+	 * like getAllOccurrencesBetweenIterator, but for now it's the
+	 * accepted behavior.
 	 *
 	 * @param {DateTimeValue} recurrenceId
 	 */
@@ -622,7 +627,6 @@ export default class RecurrenceManager {
 			if (next.compare(recurrenceId) === -1) {
 				previous = next
 			} else {
-
 				// This is the case when it's either equal or in the future
 				const dateTimeValue = DateTimeValue.fromICALJs(next)
 				return this._getOccurrenceAtRecurrenceId(dateTimeValue)
@@ -637,15 +641,15 @@ export default class RecurrenceManager {
 	 * Get all occurrences between start and end
 	 * Start and End are inclusive
 	 *
-	 * @param {DateTimeValue} start
-	 * @param {DateTimeValue} end
+	 * @param {DateTimeValue} queriedTimeRangeStart
+	 * @param {DateTimeValue} queriedTimeRangeEnd
 	 */
-	* getAllOccurrencesBetweenIterator(start, end) {
+	* getAllOccurrencesBetweenIterator(queriedTimeRangeStart, queriedTimeRangeEnd) {
 		if (!this.masterItem.isRecurring()) {
 			if (typeof this.masterItem.isInTimeFrame !== 'function') {
 				yield this.masterItem
 			}
-			if (this.masterItem.isInTimeFrame(start, end)) {
+			if (this.masterItem.isInTimeFrame(queriedTimeRangeStart, queriedTimeRangeEnd)) {
 				yield this.masterItem
 			}
 
@@ -653,20 +657,72 @@ export default class RecurrenceManager {
 		}
 
 		const iterator = this._getRecurExpansionObject()
-		start = start.toICALJs()
-		end = end.toICALJs()
+		const queriedICALJsTimeRangeStart = queriedTimeRangeStart.toICALJs()
+		const queriedICALJsTimeRangeEnd = queriedTimeRangeEnd.toICALJs()
+
+		const recurrenceIdKeys = Array.from(this._recurrenceExceptionItems.keys())
+		const maximumRecurrenceId = Math.max.apply(Math, recurrenceIdKeys);
 
 		let next
 		while ((next = iterator.next())) {
-			if (next.compare(start) === -1) {
-				continue
-			}
-			if (next.compare(end) === 1) {
+			// We have to get the real occurrence to resolve RECURRENCE-IDs
+			const dateTimeValue = DateTimeValue.fromICALJs(next)
+			const occurrence = this._getOccurrenceAtRecurrenceId(dateTimeValue)
+
+			// Check what type of recurrence object we are dealing with
+			// Depending on that, the time to compare to changes
+			// If we are dealing events, we have to compare to the end-date
+			// If we are dealing with tasks, we will have to compare to the due-date
+			// etc.
+			// For now we are only implementing events, other components will come later
+			let compareDate = null
+			switch(uc(occurrence.name)) {
+			case 'VEVENT':
+				compareDate = occurrence.endDate.toICALJs()
+				break
+
+			case 'VTODO':
+			case 'VJOURNAL':
+			default:
+				compareDate = next
 				break
 			}
 
-			const dateTimeValue = DateTimeValue.fromICALJs(next)
-			yield this._getOccurrenceAtRecurrenceId(dateTimeValue)
+			// If the date we are comparing to is before our time-range,
+			// we don't want to yield this event
+			if (compareDate.compare(queriedICALJsTimeRangeStart) === -1) {
+				continue
+			}
+
+			// If we have an object that is:
+			// 1. either
+			// 1.1 - no recurrence exception
+			//     or
+			// 1.2 - a recurrence-exception that modifies the future
+			// and
+			// 2. starts after the queried time-range ends, then we stop expanding
+			const startDate = occurrence.startDate.toICALJs()
+			if ((!occurrence.isRecurrenceException() || occurrence.modifiesFuture()) && startDate.compare(queriedICALJsTimeRangeEnd) === 1) {
+				// Just break if there are no recurrence-exceptions
+				if (this._recurrenceExceptionItems.size === 0) {
+					break;
+				}
+
+				// Keep iterating until our currently checked recurrenceId
+				// is bigger than the maximum recurrence-id that we have.
+				if (next.toUnixTime() > maximumRecurrenceId) {
+					break;
+				} else {
+					continue;
+				}
+			}
+
+			if (typeof occurrence.isInTimeFrame !== 'function') {
+				yield occurrence
+			}
+			if (occurrence.isInTimeFrame(queriedTimeRangeStart, queriedTimeRangeEnd)) {
+				yield occurrence
+			}
 		}
 	}
 
