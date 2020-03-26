@@ -628,7 +628,7 @@ export function advertiseSingleOccurrenceProperty(prototype, options, advertiseV
 				throw new TypeError('Illegal value')
 			}
 			this.updatePropertyWithValue(options.iCalendarName, value)
-		}
+		},
 	})
 }
 
@@ -762,7 +762,7 @@ export function advertiseComponent(prototype, options) {
 function getDefaultOncePropConfig(options) {
 	if (typeof options === 'string') {
 		options = {
-			name: options
+			name: options,
 		}
 	}
 
@@ -771,7 +771,7 @@ function getDefaultOncePropConfig(options) {
 		pluralName: options.name + 's',
 		allowedValues: null,
 		defaultValue: null,
-		unknownValue: null
+		unknownValue: null,
 	}, options)
 }
 
@@ -787,13 +787,13 @@ function getDefaultOncePropConfig(options) {
 function getDefaultMultiplePropConfig(options) {
 	if (typeof options === 'string') {
 		options = {
-			name: options
+			name: options,
 		}
 	}
 
 	return Object.assign({}, {
 		iCalendarName: uc(options.name),
-		pluralName: options.name + 's'
+		pluralName: options.name + 's',
 	}, options)
 }
 
@@ -809,12 +809,12 @@ function getDefaultMultiplePropConfig(options) {
 function getDefaultMultipleCompConfig(options) {
 	if (typeof options === 'string') {
 		options = {
-			name: options
+			name: options,
 		}
 	}
 
 	return Object.assign({}, {
 		iCalendarName: 'V' + uc(options.name),
-		pluralName: options.name + 's'
+		pluralName: options.name + 's',
 	}, options)
 }

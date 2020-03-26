@@ -22,13 +22,13 @@
 import Property from './property.js'
 import ICAL from 'ical.js'
 
-ICAL.design.icalendar.property['conference'] = {
-	defaultType: 'uri'
+ICAL.design.icalendar.property.conference = {
+	defaultType: 'uri',
 }
 
-ICAL.design.icalendar.param['feature'] = {
+ICAL.design.icalendar.param.feature = {
 	valueType: 'cal-address',
-	multiValue: ','
+	multiValue: ',',
 }
 
 /**

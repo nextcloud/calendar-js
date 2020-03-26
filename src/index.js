@@ -22,16 +22,16 @@
 import { getParserManager } from './parsers/parserManager.js'
 import TimezoneAdapter from './timezones/timezoneAdapter.js'
 import { getTimezoneManager } from './timezones/timezoneManager.js'
+import { v4 as uuid } from 'uuid'
+import DateTimeValue from './values/dateTimeValue.js'
+import { dateFactory } from './factories/dateFactory.js'
+import CalendarComponent from './components/calendarComponent.js'
+import EventComponent from './components/root/eventComponent.js'
+import RecurrenceManager from './recurrence/recurrenceManager.js'
+import FreeBusyComponent from './components/root/freeBusyComponent.js'
 export { setConfig } from './config.js'
 export { getParserManager }
 export { getTimezoneManager, isOlsonTimezone } from './timezones/timezoneManager.js'
-import { v4 as uuid } from 'uuid'
-import DateTimeValue from './values/dateTimeValue.js';
-import { dateFactory } from './factories/dateFactory.js';
-import CalendarComponent from './components/calendarComponent.js';
-import EventComponent from './components/root/eventComponent.js';
-import RecurrenceManager from './recurrence/recurrenceManager.js';
-import FreeBusyComponent from './components/root/freeBusyComponent.js';
 
 if (!(ICAL.TimezoneService instanceof TimezoneAdapter)) {
 	ICAL.TimezoneService = new TimezoneAdapter(getTimezoneManager())

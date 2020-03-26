@@ -355,7 +355,7 @@ export default class DateTimeValue extends AbstractValue {
 			minute: this.minute,
 			second: this.second,
 			isDate: this.isDate,
-			timezone
+			timezone,
 		})
 	}
 

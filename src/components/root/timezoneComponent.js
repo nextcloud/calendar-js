@@ -20,7 +20,7 @@
  *
  */
 import AbstractComponent, {
-	advertiseSingleOccurrenceProperty
+	advertiseSingleOccurrenceProperty,
 } from '../abstractComponent.js'
 import Timezone from '../../timezones/timezone.js'
 
@@ -56,5 +56,5 @@ export default class TimezoneComponent extends AbstractComponent {
  */
 advertiseSingleOccurrenceProperty(TimezoneComponent.prototype, {
 	name: 'timezoneId',
-	iCalendarName: 'tzid'
+	iCalendarName: 'tzid',
 })

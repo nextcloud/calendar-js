@@ -366,7 +366,7 @@ export default class ICalendarParser extends AbstractParser {
 					const forgedMaster = new constructor(recurrenceException.name, [
 						['UID', recurrenceException.uid],
 						['DTSTAMP', recurrenceException.stampTime.clone()],
-						['DTSTART', recurrenceException.recurrenceId.clone()]
+						['DTSTART', recurrenceException.recurrenceId.clone()],
 					])
 
 					forgedMaster.recurrenceManager = new RecurrenceManager(forgedMaster)

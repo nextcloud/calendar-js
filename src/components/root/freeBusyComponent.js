@@ -21,7 +21,7 @@
  */
 import AbstractComponent, {
 	advertiseMultipleOccurrenceProperty,
-	advertiseSingleOccurrenceProperty
+	advertiseSingleOccurrenceProperty,
 } from '../abstractComponent.js'
 import Timezone from '../../timezones/timezone.js'
 import AttendeeProperty from '../../properties/attendeeProperty.js'

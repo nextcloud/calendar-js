@@ -20,7 +20,7 @@
  *
  */
 import AbstractComponent, {
-	advertiseSingleOccurrenceProperty
+	advertiseSingleOccurrenceProperty,
 } from './abstractComponent.js'
 import { getConstructorForComponentName } from './root'
 import { getConfig } from '../config.js'
@@ -173,7 +173,7 @@ export default class CalendarComponent extends AbstractComponent {
  */
 advertiseSingleOccurrenceProperty(CalendarComponent.prototype, {
 	name: 'productId',
-	iCalendarName: 'PRODID'
+	iCalendarName: 'PRODID',
 })
 
 /**
@@ -188,7 +188,7 @@ advertiseSingleOccurrenceProperty(CalendarComponent.prototype, {
  */
 
 advertiseSingleOccurrenceProperty(CalendarComponent.prototype, {
-	name: 'version'
+	name: 'version',
 })
 
 /**
@@ -207,7 +207,7 @@ advertiseSingleOccurrenceProperty(CalendarComponent.prototype, {
 advertiseSingleOccurrenceProperty(CalendarComponent.prototype, {
 	name: 'calendarScale',
 	iCalendarName: 'CALSCALE',
-	defaultValue: 'GREGORIAN'
+	defaultValue: 'GREGORIAN',
 })
 
 /**
@@ -220,5 +220,5 @@ advertiseSingleOccurrenceProperty(CalendarComponent.prototype, {
  * @type {String}
  */
 advertiseSingleOccurrenceProperty(CalendarComponent.prototype, {
-	name: 'method'
+	name: 'method',
 })

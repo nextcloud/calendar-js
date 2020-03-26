@@ -23,12 +23,12 @@ import AbstractRecurringComponent from './abstractRecurringComponent.js'
 import {
 	advertiseMultipleOccurrenceProperty,
 	advertiseMultiValueStringPropertySeparatedByLang,
-	advertiseSingleOccurrenceProperty
+	advertiseSingleOccurrenceProperty,
 } from '../abstractComponent.js'
 import {
 	getAgeOfBirthday,
 	getIconForBirthday,
-	getTypeOfBirthdayEvent
+	getTypeOfBirthdayEvent,
 } from '../../helpers/birthdayHelper.js'
 import DurationValue from '../../values/durationValue.js'
 import GeoProperty from '../../properties/geoProperty.js'
@@ -303,7 +303,7 @@ advertiseSingleOccurrenceProperty(EventComponent.prototype, {
 	name: 'timeTransparency',
 	iCalendarName: 'TRANSP',
 	allowedValues: ['OPAQUE', 'TRANSPARENT'],
-	defaultValue: 'OPAQUE'
+	defaultValue: 'OPAQUE',
 })
 
 /**
@@ -326,7 +326,7 @@ advertiseSingleOccurrenceProperty(EventComponent.prototype, 'description')
  */
 advertiseSingleOccurrenceProperty(EventComponent.prototype, {
 	name: 'geographicalPosition',
-	iCalendarName: 'GEO'
+	iCalendarName: 'GEO',
 })
 
 /**
@@ -351,7 +351,7 @@ advertiseSingleOccurrenceProperty(EventComponent.prototype, {
 	name: 'priority',
 	allowedValues: Array(9).keys(),
 	defaultValue: 0,
-	unknownValue: 0
+	unknownValue: 0,
 })
 
 /**
@@ -413,7 +413,7 @@ advertiseSingleOccurrenceProperty(EventComponent.prototype, {
  */
 advertiseMultiValueStringPropertySeparatedByLang(EventComponent.prototype, {
 	name: 'resource',
-	iCalendarName: 'RESOURCES'
+	iCalendarName: 'RESOURCES',
 })
 
 /**
