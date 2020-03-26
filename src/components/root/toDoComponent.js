@@ -23,7 +23,7 @@ import AbstractRecurringComponent from './abstractRecurringComponent.js'
 import {
 	advertiseMultipleOccurrenceProperty,
 	advertiseMultiValueStringPropertySeparatedByLang,
-	advertiseSingleOccurrenceProperty
+	advertiseSingleOccurrenceProperty,
 } from '../abstractComponent.js'
 import ConferenceProperty from '../../properties/conferenceProperty.js'
 import GeoProperty from '../../properties/geoProperty.js'
@@ -134,7 +134,7 @@ advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
  */
 advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
 	name: 'percent',
-	iCalendarName: 'PERCENT-COMPLETE'
+	iCalendarName: 'PERCENT-COMPLETE',
 })
 
 /**
@@ -169,7 +169,7 @@ advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
 	name: 'priority',
 	allowedValues: Array.from(Array(10).keys()),
 	defaultValue: 0,
-	unknownValue: 0
+	unknownValue: 0,
 })
 
 /**
@@ -231,7 +231,7 @@ advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
  */
 advertiseMultiValueStringPropertySeparatedByLang(ToDoComponent.prototype, {
 	name: 'resource',
-	iCalendarName: 'RESOURCES'
+	iCalendarName: 'RESOURCES',
 })
 
 /**

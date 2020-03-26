@@ -23,7 +23,7 @@ import AbstractComponent, {
 	advertiseComponent,
 	advertiseMultipleOccurrenceProperty,
 	advertiseMultiValueStringPropertySeparatedByLang,
-	advertiseSingleOccurrenceProperty
+	advertiseSingleOccurrenceProperty,
 } from '../abstractComponent.js'
 import DateTimeValue from '../../values/dateTimeValue.js'
 import DurationValue from '../../values/durationValue.js'
@@ -42,7 +42,7 @@ import TextProperty from '../../properties/textProperty.js'
 import AlarmComponent from '../nested/alarmComponent.js'
 import TriggerProperty from '../../properties/triggerProperty.js'
 import { getConfig } from '../../config.js'
-import { getConstructorForComponentName } from '../nested';
+import { getConstructorForComponentName } from '../nested'
 
 /**
  * @class AbstractRecurringComponent
@@ -238,7 +238,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 
 		this._cachedId = [
 			encodeURIComponent(this.uid),
-			encodeURIComponent(this.getReferenceRecurrenceId().unixTime.toString())
+			encodeURIComponent(this.getReferenceRecurrenceId().unixTime.toString()),
 		].join('###')
 
 		return this.id
@@ -760,7 +760,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	addAbsoluteAlarm(action, alarmTime) {
 		const alarmComp = new AlarmComponent('VALARM', [
 			['action', action],
-			TriggerProperty.fromAbsolute(alarmTime)
+			TriggerProperty.fromAbsolute(alarmTime),
 		])
 
 		this.addComponent(alarmComp)
@@ -778,7 +778,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	addRelativeAlarm(action, alarmOffset, relatedToStart = true) {
 		const alarmComp = new AlarmComponent('VALARM', [
 			['action', action],
-			TriggerProperty.fromRelativeAndRelated(alarmOffset, relatedToStart)
+			TriggerProperty.fromRelativeAndRelated(alarmOffset, relatedToStart),
 		])
 
 		this.addComponent(alarmComp)
@@ -803,7 +803,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 			'RDATE',
 			'EXDATE',
 			'STATUS',
-			...getConfig('property-list-significant-change', [])
+			...getConfig('property-list-significant-change', []),
 		]
 
 		if (props.includes(uc(propertyName))) {
@@ -1060,7 +1060,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  */
 advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
 	name: 'modificationTime',
-	iCalendarName: 'LAST-MODIFIED'
+	iCalendarName: 'LAST-MODIFIED',
 })
 
 /**
@@ -1115,7 +1115,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, 'url')
  */
 advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
 	name: 'title',
-	iCalendarName: 'SUMMARY'
+	iCalendarName: 'SUMMARY',
 })
 
 /**
@@ -1132,7 +1132,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
 	iCalendarName: 'class',
 	allowedValues: ['PUBLIC', 'PRIVATE', 'CONFIDENTIAL'],
 	defaultValue: 'PUBLIC',
-	unknownValue: 'PRIVATE'
+	unknownValue: 'PRIVATE',
 })
 
 /**
@@ -1184,7 +1184,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
 advertiseMultiValueStringPropertySeparatedByLang(AbstractRecurringComponent.prototype, {
 	name: 'category',
 	pluralName: 'categories',
-	iCalendarName: 'CATEGORIES'
+	iCalendarName: 'CATEGORIES',
 })
 
 /**
@@ -1218,7 +1218,7 @@ advertiseMultiValueStringPropertySeparatedByLang(AbstractRecurringComponent.prot
  * @function
  */
 advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, {
-	name: 'attendee'
+	name: 'attendee',
 })
 
 /**
@@ -1253,7 +1253,7 @@ advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  */
 advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, {
 	name: 'attachment',
-	iCalendarName: 'ATTACH'
+	iCalendarName: 'ATTACH',
 })
 
 /**
@@ -1420,7 +1420,7 @@ advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, 'image
 advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, {
 	name: 'requestStatus',
 	pluralName: 'requestStatus',
-	iCalendarName: 'REQUEST-STATUS'
+	iCalendarName: 'REQUEST-STATUS',
 })
 
 /**

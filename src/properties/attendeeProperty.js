@@ -144,9 +144,9 @@ export default class AttendeeProperty extends Property {
 		}
 
 		const allowed = {
-			'VEVENT': ['NEEDS-ACTION', 'ACCEPTED', 'DECLINED', 'TENTATIVE', 'DELEGATED'],
-			'VJOURNAL': ['NEEDS-ACTION', 'ACCEPTED', 'DECLINED'],
-			'VTODO': ['NEEDS-ACTION', 'ACCEPTED', 'DECLINED', 'TENTATIVE', 'DELEGATED', 'COMPLETED', 'IN-PROCESS']
+			VEVENT: ['NEEDS-ACTION', 'ACCEPTED', 'DECLINED', 'TENTATIVE', 'DELEGATED'],
+			VJOURNAL: ['NEEDS-ACTION', 'ACCEPTED', 'DECLINED'],
+			VTODO: ['NEEDS-ACTION', 'ACCEPTED', 'DECLINED', 'TENTATIVE', 'DELEGATED', 'COMPLETED', 'IN-PROCESS'],
 		}
 
 		if (!this.hasParameter('PARTSTAT')) {
@@ -254,7 +254,7 @@ export default class AttendeeProperty extends Property {
 			['CN', name],
 			['ROLE', role],
 			['CUTYPE', userType],
-			['RSVP', rsvp ? 'TRUE' : 'FALSE']
+			['RSVP', rsvp ? 'TRUE' : 'FALSE'],
 		])
 	}
 

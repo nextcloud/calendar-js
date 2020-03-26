@@ -221,7 +221,7 @@ export default class PeriodValue extends AbstractValue {
 	static fromDataWithEnd(data) {
 		const icalPeriod = ICAL.Period.fromData({
 			start: data.start.toICALJs(),
-			end: data.end.toICALJs()
+			end: data.end.toICALJs(),
 		})
 		return PeriodValue.fromICALJs(icalPeriod)
 	}
@@ -237,7 +237,7 @@ export default class PeriodValue extends AbstractValue {
 	static fromDataWithDuration(data) {
 		const icalPeriod = ICAL.Period.fromData({
 			start: data.start.toICALJs(),
-			duration: data.duration.toICALJs()
+			duration: data.duration.toICALJs(),
 		})
 		return PeriodValue.fromICALJs(icalPeriod)
 	}

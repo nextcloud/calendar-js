@@ -21,7 +21,7 @@
  */
 import AbstractComponent, {
 	advertiseMultipleOccurrenceProperty,
-	advertiseSingleOccurrenceProperty
+	advertiseSingleOccurrenceProperty,
 } from '../abstractComponent.js'
 import AttendeeProperty from '../../properties/attendeeProperty.js'
 import TriggerProperty from '../../properties/triggerProperty.js'
@@ -152,7 +152,7 @@ advertiseSingleOccurrenceProperty(AlarmComponent.prototype, 'repeat')
  */
 advertiseSingleOccurrenceProperty(AlarmComponent.prototype, {
 	name: 'attachment',
-	iCalendarName: 'ATTACH'
+	iCalendarName: 'ATTACH',
 })
 
 /**

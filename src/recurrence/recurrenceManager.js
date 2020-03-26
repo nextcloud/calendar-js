@@ -20,7 +20,7 @@
  *
  */
 import Property from '../properties/property.js'
-import { uc } from '../helpers/stringHelper.js';
+import { uc } from '../helpers/stringHelper.js'
 import DateTimeValue from '../values/dateTimeValue.js'
 import ModificationNotAllowedError from '../errors/modificationNotAllowedError.js'
 import PeriodValue from '../values/periodValue.js'
@@ -436,7 +436,7 @@ export default class RecurrenceManager {
 	 * @returns {null|DateTimeValue|PeriodValue}
 	 */
 	getRecurrenceDate(isNegative = false, recurrenceId) {
-		for (let value of this.getRecurrenceDateIterator(isNegative)) {
+		for (const value of this.getRecurrenceDateIterator(isNegative)) {
 			let valueToCheck = value
 			if (valueToCheck instanceof PeriodValue) {
 				valueToCheck = valueToCheck.start
@@ -661,7 +661,7 @@ export default class RecurrenceManager {
 		const queriedICALJsTimeRangeEnd = queriedTimeRangeEnd.toICALJs()
 
 		const recurrenceIdKeys = Array.from(this._recurrenceExceptionItems.keys())
-		const maximumRecurrenceId = Math.max.apply(Math, recurrenceIdKeys);
+		const maximumRecurrenceId = Math.max.apply(Math, recurrenceIdKeys)
 
 		let next
 		while ((next = iterator.next())) {
@@ -676,7 +676,7 @@ export default class RecurrenceManager {
 			// etc.
 			// For now we are only implementing events, other components will come later
 			let compareDate = null
-			switch(uc(occurrence.name)) {
+			switch (uc(occurrence.name)) {
 			case 'VEVENT':
 				compareDate = occurrence.endDate.toICALJs()
 				break
@@ -705,15 +705,15 @@ export default class RecurrenceManager {
 			if ((!occurrence.isRecurrenceException() || occurrence.modifiesFuture()) && startDate.compare(queriedICALJsTimeRangeEnd) === 1) {
 				// Just break if there are no recurrence-exceptions
 				if (this._recurrenceExceptionItems.size === 0) {
-					break;
+					break
 				}
 
 				// Keep iterating until our currently checked recurrenceId
 				// is bigger than the maximum recurrence-id that we have.
 				if (next.toUnixTime() > maximumRecurrenceId) {
-					break;
+					break
 				} else {
-					continue;
+					continue
 				}
 			}
 
@@ -920,7 +920,7 @@ export default class RecurrenceManager {
 			ruleDate,
 			exDates,
 			exDate,
-			complete
+			complete,
 		})
 	}
 

@@ -113,7 +113,7 @@ export default class Timezone {
 			hour,
 			minute,
 			second,
-			isDate: false
+			isDate: false,
 		})
 		return this._innerValue.utcOffset(time)
 	}
@@ -134,7 +134,7 @@ export default class Timezone {
 			day: 1,
 			hour: 0,
 			minute: 0,
-			second: 0
+			second: 0,
 		})
 		time.fromUnixTime(Math.floor(ms / 1000))
 
