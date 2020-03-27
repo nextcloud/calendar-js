@@ -29,9 +29,7 @@ import CalendarComponent from './components/calendarComponent.js'
 import EventComponent from './components/root/eventComponent.js'
 import RecurrenceManager from './recurrence/recurrenceManager.js'
 import FreeBusyComponent from './components/root/freeBusyComponent.js'
-export { setConfig } from './config.js'
-export { getParserManager }
-export { getTimezoneManager, isOlsonTimezone } from './timezones/timezoneManager.js'
+import ICAL from 'ical.js'
 
 if (!(ICAL.TimezoneService instanceof TimezoneAdapter)) {
 	ICAL.TimezoneService = new TimezoneAdapter(getTimezoneManager())
@@ -41,10 +39,9 @@ if (!(ICAL.TimezoneService instanceof TimezoneAdapter)) {
  * parses a single ICS and returns an iterator over all occurrences
  * in a given timeframe
  *
- * @param {String} ics
- * @param {DateTimeValue} start
- * @param {DateTimeValue} end
- * @returns {IterableIterator<AbstractRecurringComponent>}
+ * @param {String} ics The calendar-data to parse
+ * @param {DateTimeValue} start The start of the queried time-range
+ * @param {DateTimeValue} end The end of the queried time-range
  */
 export function * parseICSAndGetAllOccurrencesBetween(ics, start, end) {
 	const parserManager = getParserManager()
@@ -69,8 +66,8 @@ export function * parseICSAndGetAllOccurrencesBetween(ics, start, end) {
 /**
  * Creates a new event
  *
- * @param {DateTimeValue} start
- * @param {DateTimeValue} end
+ * @param {DateTimeValue} start Start-time of the new event
+ * @param {DateTimeValue} end End-time of the new event
  * @returns {CalendarComponent}
  */
 export function createEvent(start, end) {
@@ -94,10 +91,10 @@ export function createEvent(start, end) {
 /**
  * Creates a FreeBusy Request to be used on the scheduling outbox
  *
- * @param {DateTimeValue} start
- * @param {DateTimeValue} end
- * @param {AttendeeProperty} organizer
- * @param {AttendeeProperty[]}attendees
+ * @param {DateTimeValue} start The start of the queried time-range
+ * @param {DateTimeValue} end The end of the queried time-range
+ * @param {AttendeeProperty} organizer The organizer querying information
+ * @param {AttendeeProperty[]}attendees The list of attendees to query information for
  * @returns {CalendarComponent}
  */
 export function createFreeBusyRequest(start, end, organizer, attendees) {
@@ -125,3 +122,7 @@ export function createFreeBusyRequest(start, end, organizer, attendees) {
 	calendar.addComponent(freeBusyComponent)
 	return calendar
 }
+
+export { setConfig } from './config.js'
+export { getParserManager }
+export { getTimezoneManager, isOlsonTimezone } from './timezones/timezoneManager.js'

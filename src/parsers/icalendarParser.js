@@ -146,7 +146,7 @@ export default class ICalendarParser extends AbstractParser {
 	/**
 	 * Parses the actual calendar-data
 	 *
-	 * @param {String} ics
+	 * @param {String} ics The icalendar data to parse
 	 */
 	parse(ics) {
 		this._rawData = ics
@@ -228,8 +228,8 @@ export default class ICalendarParser extends AbstractParser {
 	 * @private
 	 */
 	_applyRepairSteps() {
-		for (const repairStep of getRepairSteps()) {
-			const step = new repairStep()
+		for (const RepairStep of getRepairSteps()) {
+			const step = new RepairStep()
 			this._rawData = step.repair(this._rawData)
 		}
 	}
@@ -263,8 +263,8 @@ export default class ICalendarParser extends AbstractParser {
 	 * names must be an array, it will use the value of the fist
 	 * propertyname it can find
 	 *
-	 * @param {String[]} names
-	 * @param {String} variableName
+	 * @param {String[]} names The names of the properties to check
+	 * @param {String} variableName The variable name to save it under
 	 * @private
 	 */
 	_extractPropertyAndPutResultIntoVariable(names, variableName) {
@@ -400,7 +400,7 @@ export default class ICalendarParser extends AbstractParser {
 
 	/**
 	 *
-	 * @param {AbstractRecurringComponent} item
+	 * @param {AbstractRecurringComponent} item The recurrence-item to register
 	 * @private
 	 */
 	_addRecurrenceException(item) {
@@ -414,7 +414,7 @@ export default class ICalendarParser extends AbstractParser {
 
 	/**
 	 *
-	 * @param {AbstractRecurringComponent} item
+	 * @param {AbstractRecurringComponent} item The item to register
 	 * @private
 	 */
 	_addItem(item) {
@@ -428,8 +428,8 @@ export default class ICalendarParser extends AbstractParser {
 
 	/**
 	 *
-	 * @param {String} uid
-	 * @param {String} timezoneId
+	 * @param {String} uid The uid of the calendar-object
+	 * @param {String} timezoneId The timezoneId required by the object
 	 * @private
 	 */
 	_addRequiredTimezone(uid, timezoneId) {
@@ -447,8 +447,8 @@ export default class ICalendarParser extends AbstractParser {
 
 	/**
 	 *
-	 * @param {CalendarComponent} calendarComp
-	 * @param {String} uid
+	 * @param {CalendarComponent} calendarComp The calendar-component to add timezones to
+	 * @param {String} uid The UID of the calendar-object
 	 * @private
 	 */
 	_addRequiredTimezonesToCalendarComp(calendarComp, uid) {
@@ -475,9 +475,9 @@ export default class ICalendarParser extends AbstractParser {
 	/**
 	 * Replaces all occurrences of searchTimezone with replaceTimezone
 	 *
-	 * @param {CalendarComponent} calendarComponent
-	 * @param {String} searchTimezone
-	 * @param {String} replaceTimezone
+	 * @param {CalendarComponent} calendarComponent The calendar-component to replace a timezone in
+	 * @param {String} searchTimezone The timezone to replace
+	 * @param {String} replaceTimezone The replacement timezone
 	 * @private
 	 */
 	_replaceTimezoneWithAnotherOne(calendarComponent, searchTimezone, replaceTimezone) {
@@ -519,7 +519,7 @@ export default class ICalendarParser extends AbstractParser {
 	 * containsVJournals()
 	 * containsVTodos()
 	 *
-	 * @param compName
+	 * @param {String} compName The name of the visited component
 	 * @private
 	 */
 	_markCompTypeAsSeen(compName) {

@@ -36,9 +36,7 @@ export default class CalendarComponent extends AbstractComponent {
 	/**
 	 * Constructor
 	 *
-	 * @param {String} name
-	 * @param {Property[]} properties
-	 * @param {AbstractComponent[]} components
+	 * @inheritDoc
 	 */
 	constructor(name = 'VCALENDAR', properties = [], components = []) {
 		super(name, properties, components)
@@ -48,8 +46,6 @@ export default class CalendarComponent extends AbstractComponent {
 
 	/**
 	 * Gets an iterator over all VTIMEZONE components
-	 *
-	 * @returns {IterableIterator<TimezoneComponent>}
 	 */
 	* getTimezoneIterator() {
 		yield * this.getComponentIterator('vtimezone')
@@ -57,8 +53,6 @@ export default class CalendarComponent extends AbstractComponent {
 
 	/**
 	 * Gets an iterator over all VObject components
-	 *
-	 * @returns {IterableIterator<EventComponent|JournalComponent|ToDoComponent>}
 	 */
 	* getVObjectIterator() {
 		yield * this.getEventIterator()
@@ -68,8 +62,6 @@ export default class CalendarComponent extends AbstractComponent {
 
 	/**
 	 * Gets an iterator over all VEVENT components
-	 *
-	 * @returns {IterableIterator<EventComponent>}
 	 */
 	* getEventIterator() {
 		yield * this.getComponentIterator('vevent')
@@ -77,8 +69,6 @@ export default class CalendarComponent extends AbstractComponent {
 
 	/**
 	 * Gets an iterator over all VFREEBUSY components
-	 *
-	 * @returns {IterableIterator<FreeBusyComponent>}
 	 */
 	* getFreebusyIterator() {
 		yield * this.getComponentIterator('vfreebusy')
@@ -86,8 +76,6 @@ export default class CalendarComponent extends AbstractComponent {
 
 	/**
 	 * Gets an iterator over all VJOURNAL components
-	 *
-	 * @returns {IterableIterator<JournalComponent>}
 	 */
 	* getJournalIterator() {
 		yield * this.getComponentIterator('vjournal')
@@ -95,8 +83,6 @@ export default class CalendarComponent extends AbstractComponent {
 
 	/**
 	 * Gets an iterator over all VTODO components
-	 *
-	 * @returns {IterableIterator<ToDoComponent>}
 	 */
 	* getTodoIterator() {
 		yield * this.getComponentIterator('vtodo')
@@ -130,7 +116,7 @@ export default class CalendarComponent extends AbstractComponent {
 	/**
 	 * Creates a new empty calendar-component
 	 *
-	 * @param {String[][]=} additionalProps
+	 * @param {[String][]=} additionalProps Additional props to add to empty calendar-document
 	 * @returns {CalendarComponent}
 	 */
 	static fromEmpty(additionalProps = []) {
@@ -144,7 +130,7 @@ export default class CalendarComponent extends AbstractComponent {
 	/**
 	 * Creates a new calendar-component with a method
 	 *
-	 * @param {string} method
+	 * @param {string} method The method for the calendar-document
 	 * @returns {CalendarComponent}
 	 */
 	static fromMethod(method) {

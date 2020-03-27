@@ -46,7 +46,7 @@ export default class FreeBusyComponent extends AbstractComponent {
 	/**
 	 * Sets the start-date of the FreeBusy component
 	 *
-	 * @param {DateTimeValue} startDate
+	 * @param {DateTimeValue} startDate The start of the queried time-range
 	 */
 	set startDate(startDate) {
 		this._modify()
@@ -65,7 +65,7 @@ export default class FreeBusyComponent extends AbstractComponent {
 	/**
 	 * Sets the start-date of the FreeBusy component
 	 *
-	 * @param {DateTimeValue} endDate
+	 * @param {DateTimeValue} endDate The end of the queried time-range
 	 */
 	set endDate(endDate) {
 		this._modify()
@@ -73,20 +73,7 @@ export default class FreeBusyComponent extends AbstractComponent {
 	}
 
 	/**
-	 * Checks whether the calendar-user is available during the entire given time-frame
-	 *
-	 * @param {DateTimeValue} start
-	 * @param {DateTimeValue} end
-	 * @returns {boolean}
-	 */
-	ifFreeBetween(start, end) {
-		// TODO - implement me
-	}
-
-	/**
 	 * Gets an iterator over all FreeBusyProperties
-	 *
-	 * @returns {IterableIterator<FreeBusyProperty>}
 	 */
 	* getFreeBusyIterator() {
 		yield * this.getPropertyIterator('FREEBUSY')
@@ -97,9 +84,8 @@ export default class FreeBusyComponent extends AbstractComponent {
 	 *
 	 * @url https://tools.ietf.org/html/rfc5545#section-3.8.4.1
 	 *
-	 * @param {String} name
-	 * @param {String} email
-	 * @returns {boolean}
+	 * @param {String} name The name of the attendee to add
+	 * @param {String} email The email-address of the attendee to add
 	 */
 	addAttendeeFromNameAndEMail(name, email) {
 		this._modify()
@@ -111,8 +97,8 @@ export default class FreeBusyComponent extends AbstractComponent {
 	 *
 	 * @url https://tools.ietf.org/html/rfc5545#section-3.8.4.3
 	 *
-	 * @param {String} name
-	 * @param {String} email
+	 * @param {String} name The name of the organizer
+	 * @param {String} email The email-address of the organizer
 	 */
 	setOrganizerFromNameAndEMail(name, email) {
 		this._modify()

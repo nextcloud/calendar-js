@@ -20,7 +20,6 @@
  *
  */
 
-import ModificationNotAllowedError from '../errors/modificationNotAllowedError.js'
 import { uc } from '../helpers/stringHelper.js'
 import lockableTrait from '../traits/lockable.js'
 import observerTrait from '../traits/observer.js'
@@ -37,8 +36,8 @@ export default class Parameter extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Constructor
 	 *
-	 * @param {string} name
-	 * @param {string|Array|null} value
+	 * @param {string} name The name of the parameter
+	 * @param {string|Array|null} value The value of the parameter
 	 */
 	constructor(name, value = null) {
 		super()
@@ -83,8 +82,7 @@ export default class Parameter extends observerTrait(lockableTrait(class {})) {
 	 * Set new parameter value
 	 *
 	 * @throws {ModificationNotAllowedError} if parameter is locked for modification
-	 * @param {String|Array} value
-	 * @returns void
+	 * @param {String|Array} value The new value to set
 	 */
 	set value(value) {
 		this._modifyContent()
@@ -109,8 +107,7 @@ export default class Parameter extends observerTrait(lockableTrait(class {})) {
 	}
 
 	/**
-	 *
-	 * @returns {IterableIterator<IterableIterator<string> | *|String|Array>}
+	 * Gets an iterator for all values
 	 */
 	* getValueIterator() {
 		if (this.isMultiValue()) {

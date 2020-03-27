@@ -111,7 +111,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Sets the root of this calendar-document
 	 *
-	 * @param {CalendarComponent} root
+	 * @param {CalendarComponent} root The new root element
 	 */
 	set root(root) {
 		this._modify()
@@ -139,7 +139,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Sets the parent component
 	 *
-	 * @param {AbstractComponent} parent
+	 * @param {AbstractComponent} parent The new parent element
 	 */
 	set parent(parent) {
 		this._modify()
@@ -149,7 +149,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Gets the first property that matches the given propertyName
 	 *
-	 * @param {String} propertyName
+	 * @param {String} propertyName Name of the property to get
 	 * @returns {Property|null}
 	 */
 	getFirstProperty(propertyName) {
@@ -163,7 +163,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Gets the first value of the first property matching that name
 	 *
-	 * @param {String} propertyName
+	 * @param {String} propertyName Name of the property to get first value of
 	 * @returns {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null}
 	 */
 	getFirstPropertyFirstValue(propertyName) {
@@ -179,8 +179,8 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * update a property if it exists,
 	 * create a new one if it doesn't
 	 *
-	 * @param {String} propertyName
-	 * @param {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null} value
+	 * @param {String} propertyName Name of the property to update / create
+	 * @param {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null} value The value to set
 	 */
 	updatePropertyWithValue(propertyName, value) {
 		this._modify()
@@ -198,8 +198,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * Returns iterator for all properties of a given propertyName
 	 * or if no propertyName was given over all available properties
 	 *
-	 * @param {String=}propertyName
-	 * @returns {IterableIterator<*>}
+	 * @param {String=} propertyName Name of the property to get an iterator for
 	 */
 	* getPropertyIterator(propertyName = null) {
 		if (propertyName) {
@@ -220,9 +219,8 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Get all properties by name that match the given LANG parameter
 	 *
-	 * @param {String} propertyName
-	 * @param {String|null} lang
-	 * @returns {IterableIterator<Property>}
+	 * @param {String} propertyName The name of the property
+	 * @param {String|null} lang The lang to query
 	 * @private
 	 */
 	* _getAllOfPropertyByLang(propertyName, lang) {
@@ -237,8 +235,8 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Get the first property by name that matches the given LANG parameter
 	 *
-	 * @param {String} propertyName
-	 * @param {String|null} lang
+	 * @param {String} propertyName The name of the property
+	 * @param {String|null} lang The lang to query
 	 * @returns {Property|null}
 	 * @private
 	 */
@@ -250,7 +248,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Adds a property
 	 *
-	 * @param {Property} property
+	 * @param {Property} property The property to add
 	 * @returns {boolean}
 	 */
 	addProperty(property) {
@@ -280,7 +278,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Checks if this component has a property of the given name
 	 *
-	 * @param {String} propertyName
+	 * @param {String} propertyName The name of the property
 	 * @returns {boolean}
 	 */
 	hasProperty(propertyName) {
@@ -290,7 +288,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Removes the given property from this component
 	 *
-	 * @param {Property} property
+	 * @param {Property} property The property to delete
 	 * @returns {boolean}
 	 */
 	deleteProperty(property) {
@@ -320,7 +318,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Removes all properties of a given name
 	 *
-	 * @param {String} propertyName
+	 * @param {String} propertyName The name of the property
 	 * @returns {boolean}
 	 */
 	deleteAllProperties(propertyName) {
@@ -331,7 +329,8 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Gets the first component of a given name
 	 *
-	 * @param {String} componentName
+	 * @param {String} componentName The name of the component
+	 * @returns {AbstractComponent|null}
 	 */
 	getFirstComponent(componentName) {
 		if (!this.hasComponent(componentName)) {
@@ -345,8 +344,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * Returns iterator for all components of a given componentName
 	 * or if no componentName was given over all available components
 	 *
-	 * @param {String=} componentName
-	 * @returns {IterableIterator<AbstractComponent>}
+	 * @param {String=} componentName The name of the component
 	 */
 	* getComponentIterator(componentName) {
 		if (componentName) {
@@ -367,7 +365,8 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Adds a new component to this component
 	 *
-	 * @param {AbstractComponent} component
+	 * @param {AbstractComponent} component The component to add
+	 * @returns {Boolean}
 	 */
 	addComponent(component) {
 		this._modify()
@@ -396,7 +395,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Checks if this component has a component of the given name
 	 *
-	 * @param {String} componentName
+	 * @param {String} componentName The name of the component
 	 * @returns {boolean}
 	 */
 	hasComponent(componentName) {
@@ -406,7 +405,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Removes the given component from this component
 	 *
-	 * @param {AbstractComponent} component
+	 * @param {AbstractComponent} component The component to delete
 	 * @returns {boolean}
 	 */
 	deleteComponent(component) {
@@ -436,7 +435,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Removes all components of a given name
 	 *
-	 * @param {String} componentName
+	 * @param {String} componentName The name of the component
 	 * @returns {boolean}
 	 */
 	deleteAllComponents(componentName) {
@@ -447,8 +446,6 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Marks this parameter is immutable
 	 * locks it against further modification
-	 *
-	 * @returns void
 	 */
 	lock() {
 		super.lock()
@@ -465,8 +462,6 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Marks this parameter as mutable
 	 * allowing further modification
-	 *
-	 * @returns void
 	 */
 	unlock() {
 		super.unlock()
@@ -502,7 +497,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Adds properties from constructor to this._properties
 	 *
-	 * @param {Property[]} properties
+	 * @param {Property[]} properties Array of properties
 	 * @private
 	 */
 	_setPropertiesFromConstructor(properties) {
@@ -519,7 +514,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Adds components from constructor to this._components
 	 *
-	 * @param {AbstractComponent[]} components
+	 * @param {AbstractComponent[]} components Array of components
 	 * @private
 	 */
 	_setComponentsFromConstructor(components) {
@@ -531,9 +526,9 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Creates a new Component based on an ical object
 	 *
-	 * @param {ICAL.Component} icalValue
-	 * @param {CalendarComponent=} root
-	 * @param {AbstractComponent=} parent
+	 * @param {ICAL.Component} icalValue The ical.js component to initialise from
+	 * @param {CalendarComponent=} root The root of the Calendar Document
+	 * @param {AbstractComponent=} parent The parent element of this component
 	 * @returns {AbstractComponent}
 	 */
 	static fromICALJs(icalValue, root = null, parent = null) {
@@ -562,7 +557,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Gets a constructor for a give component name
 	 *
-	 * @param {String} componentName
+	 * @param {String} componentName The name of the component
 	 * @returns {AbstractComponent}
 	 * @protected
 	 */
@@ -595,9 +590,9 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
  *
  * Properties, which may at most occur once, get a simple getter and setter
  *
- * @param {Object} prototype
- * @param {Object} options
- * @param {Boolean} advertiseValueOnly
+ * @param {Object} prototype The object's prototype
+ * @param {Object} options The options for advertising properties
+ * @param {Boolean} advertiseValueOnly Whether to advertise the value only or the entire property
  */
 export function advertiseSingleOccurrenceProperty(prototype, options, advertiseValueOnly = true) {
 	options = getDefaultOncePropConfig(options)
@@ -639,8 +634,8 @@ export function advertiseSingleOccurrenceProperty(prototype, options, advertiseV
  * but rather a more advanced set of get{name}Iterator, get{name}List, add{name},
  * remove{name} and clearAll{name} methods
  *
- * @param {Object} prototype
- * @param {Object} options
+ * @param {Object} prototype The object's prototype
+ * @param {Object} options The options for advertising properties
  */
 export function advertiseMultipleOccurrenceProperty(prototype, options) {
 	options = getDefaultMultiplePropConfig(options)
@@ -668,8 +663,8 @@ export function advertiseMultipleOccurrenceProperty(prototype, options) {
  * - CATEGORIES
  * - RESOURCES
  *
- * @param {Object} prototype
- * @param {Object} options
+ * @param {Object} prototype The object's prototype
+ * @param {Object} options The options for advertising properties
  */
 export function advertiseMultiValueStringPropertySeparatedByLang(prototype, options) {
 	options = getDefaultMultiplePropConfig(options)
@@ -725,8 +720,8 @@ export function advertiseMultiValueStringPropertySeparatedByLang(prototype, opti
 /**
  * advertise a component
  *
- * @param {Object} prototype
- * @param {Object} options
+ * @param {Object} prototype The object's prototype
+ * @param {Object} options The options for advertising components
  */
 export function advertiseComponent(prototype, options) {
 	options = getDefaultMultipleCompConfig(options)
@@ -751,12 +746,12 @@ export function advertiseComponent(prototype, options) {
 /**
  * Fill up the options object for advertiseProperty
  *
- * @param {Object|String} options
- * @param {String} options.name
- * @param {String=} options.iCalendarName
- * @param {String[]=} options.allowedValues
- * @param {String=|Number=} options.defaultValue
- * @param {String=|Number=} options.unknownValue
+ * @param {Object|String} options The options object
+ * @param {String} options.name Advertised name of the property
+ * @param {String=} options.iCalendarName The iCalendar name of the property
+ * @param {String[]=} options.allowedValues A list of allowed values
+ * @param {String|Number=} options.defaultValue The default value if unset
+ * @param {String|Number=} options.unknownValue The fallback value if unknown value
  * @returns {Object}
  */
 function getDefaultOncePropConfig(options) {
@@ -778,10 +773,10 @@ function getDefaultOncePropConfig(options) {
 /**
  * Fill up the options object for advertiseProperty
  *
- * @param {Object|String} options
- * @param {String} options.name
- * @param {String=} options.iCalendarName
- * @param {Boolean=} options.customAddMethod
+ * @param {Object|String} options The options object
+ * @param {String} options.name Advertised name of property
+ * @param {String=} options.iCalendarName The iCalendar name of the property
+ * @param {Boolean=} options.customAddMethod Whether or not to use a custom add method
  * @returns {Object}
  */
 function getDefaultMultiplePropConfig(options) {
@@ -798,12 +793,12 @@ function getDefaultMultiplePropConfig(options) {
 }
 
 /**
- * Fill up the options object for advertiseProperty
+ * Fill up the options object for advertiseComponent
  *
- * @param {Object|String} options
- * @param {String} options.name
- * @param {String=} options.iCalendarName
- * @param {Boolean=} options.customAddMethod
+ * @param {Object|String} options Options destructuring object
+ * @param {String} options.name Advertised name of component
+ * @param {String=} options.iCalendarName The iCalendar name of the component
+ * @param {Boolean=} options.customAddMethod Whether or not to use a custom add method
  * @returns {Object}
  */
 function getDefaultMultipleCompConfig(options) {

@@ -28,8 +28,6 @@ import ICalendarRemoveXNCGroupIdRepairStep from './icalendarRemoveXNCGroupIdRepa
 
 /**
  * Get an iterator over all repair steps for iCalendar documents
- *
- * @returns {IterableIterator<AbstractRepairStep>}
  */
 export function * getRepairSteps() {
 	yield ICalendarAddMissingUIDRepairStep

@@ -36,8 +36,7 @@ export default class AbstractRepairStep {
 	}
 
 	/**
-	 * @param {String} input
-	 * @returns {String}
+	 * @param {String} input String representation of the data to repair
 	 */
 	repair(input) {
 		throw new TypeError('Abstract method not implemented by subclass')

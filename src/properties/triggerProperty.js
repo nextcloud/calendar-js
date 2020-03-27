@@ -47,7 +47,7 @@ export default class TriggerProperty extends Property {
 	/**
 	 * Sets the related parameter
 	 *
-	 * @param {String} related
+	 * @param {String} related Either START or END
 	 */
 	set related(related) {
 		this.updateParameterIfExist('RELATED', related)
@@ -67,7 +67,7 @@ export default class TriggerProperty extends Property {
 	/**
 	 * Set the value of this trigger
 	 *
-	 * @param {DurationValue|DateTimeValue} value
+	 * @param {DurationValue|DateTimeValue} value The time of trigger
 	 */
 	set value(value) {
 		super.value = value
@@ -91,7 +91,7 @@ export default class TriggerProperty extends Property {
 	/**
 	 * Creates a new absolute trigger
 	 *
-	 * @param {DateTimeValue} alarmTime
+	 * @param {DateTimeValue} alarmTime Time to create Trigger from
 	 * @returns {TriggerProperty}
 	 */
 	static fromAbsolute(alarmTime) {
@@ -101,7 +101,7 @@ export default class TriggerProperty extends Property {
 	/**
 	 * Creates a new relative trigger
 	 *
-	 * @param {DurationValue} alarmOffset
+	 * @param {DurationValue} alarmOffset Duration to create Trigger from
 	 * @param {Boolean=} relatedToStart Related to Start or end?
 	 * @returns {TriggerProperty}
 	 */

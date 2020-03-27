@@ -23,44 +23,44 @@
 /**
  * @type {Map<String, *>}
  */
-const global_config = new Map()
+const GLOBAL_CONFIG = new Map()
 
 /**
  * Sets a new config key
  *
- * @param {String} key
- * @param {*} value
+ * @param {String} key The config-key to set
+ * @param {*} value The value to set for given config-key
  */
 export function setConfig(key, value) {
-	global_config.set(key, value)
+	GLOBAL_CONFIG.set(key, value)
 }
 
 /**
  * Checks if a config for a certain key is present
  *
- * @param {String} key
+ * @param {String} key The config-key to check
  * @returns {boolean}
  */
 export function hasConfig(key) {
-	return global_config.has(key)
+	return GLOBAL_CONFIG.has(key)
 }
 
 /**
  * gets value of a config key
  *
- * @param {String} key
- * @param {*} defaultValue
+ * @param {String} key The config-key to get
+ * @param {*} defaultValue Default value of config does not exist
  * @returns {*}
  */
 export function getConfig(key, defaultValue) {
-	return global_config.get(key) || defaultValue
+	return GLOBAL_CONFIG.get(key) || defaultValue
 }
 
 /**
  * deletes a config key
  *
- * @param {String} key
+ * @param {String} key The config-key to delete
  */
 export function deleteConfig(key) {
-	global_config.delete(key)
+	GLOBAL_CONFIG.delete(key)
 }

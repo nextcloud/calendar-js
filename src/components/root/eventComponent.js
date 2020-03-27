@@ -97,7 +97,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 	/**
 	 * Sets the end time of the event
 	 *
-	 * @param {DateTimeValue} end
+	 * @param {DateTimeValue} end The end of the event
 	 */
 	set endDate(end) {
 		this.deleteAllProperties('duration')
@@ -120,7 +120,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 	/**
 	 * Sets the calculated duration of the event
 	 *
-	 * @param {DurationValue} duration
+	 * @param {DurationValue} duration The duration of the event
 	 */
 	set duration(duration) {
 		this.deleteAllProperties('dtend')
@@ -145,9 +145,9 @@ export default class EventComponent extends AbstractRecurringComponent {
 	 *
 	 * @url https://tools.ietf.org/html/rfc7986#section-5.11
 	 *
-	 * @param {String} uri
-	 * @param {String=} label
-	 * @param {String[]=} features
+	 * @param {String} uri The URI of the conference system
+	 * @param {String=} label The label for the conference system
+	 * @param {String[]=} features The features of the conference system
 	 */
 	addConference(uri, label = null, features = null) {
 		this._modify()
@@ -178,11 +178,11 @@ export default class EventComponent extends AbstractRecurringComponent {
 	/**
 	 * Shifts the entire event by the given duration
 	 *
-	 * @param {DurationValue} delta
-	 * @param {Boolean} allDay
-	 * @param {Timezone} defaultTimezone
-	 * @param {DurationValue} defaultAllDayDuration
-	 * @param {DurationValue} defaultTimedDuration
+	 * @param {DurationValue} delta The duration to shift event by
+	 * @param {Boolean} allDay Whether the updated event should be all-day or not
+	 * @param {Timezone} defaultTimezone The default timezone if moving from all-day to timed event
+	 * @param {DurationValue} defaultAllDayDuration The default all-day duration if moving from timed to all-day
+	 * @param {DurationValue} defaultTimedDuration The default timed duration if moving from all-day to timed
 	 */
 	shiftByDuration(delta, allDay, defaultTimezone, defaultAllDayDuration, defaultTimedDuration) {
 		const currentAllDay = this.isAllDay()
@@ -280,8 +280,8 @@ export default class EventComponent extends AbstractRecurringComponent {
 	/**
 	 * Checks if this event is in a given time-frame
 	 *
-	 * @param {DateTimeValue} start
-	 * @param {DateTimeValue} end
+	 * @param {DateTimeValue} start Start of time-range to check
+	 * @param {DateTimeValue} end End of time-range to check
 	 * @returns {boolean}
 	 */
 	isInTimeFrame(start, end) {

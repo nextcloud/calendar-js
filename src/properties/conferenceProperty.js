@@ -41,8 +41,6 @@ export default class ConferenceProperty extends Property {
 	/**
 	 * Iterator that iterates over all supported features
 	 * of the conference system
-	 *
-	 * @returns {IterableIterator<String>}
 	 */
 	* getFeatureIterator() {
 		if (!this.hasParameter('FEATURE')) {
@@ -69,7 +67,7 @@ export default class ConferenceProperty extends Property {
 	/**
 	 * Adds a supported feature to the conference system
 	 *
-	 * @param {String} featureToAdd
+	 * @param {String} featureToAdd Feature to add
 	 */
 	addFeature(featureToAdd) {
 		this._modify()
@@ -88,7 +86,7 @@ export default class ConferenceProperty extends Property {
 	/**
 	 * Removes a supported feature
 	 *
-	 * @param {String} feature
+	 * @param {String} feature The feature to remove
 	 */
 	removeFeature(feature) {
 		this._modify()
@@ -111,7 +109,7 @@ export default class ConferenceProperty extends Property {
 	/**
 	 * Check if this conference system supports a feature
 	 *
-	 * @param {String} feature
+	 * @param {String} feature The feature to check
 	 * @returns {boolean}
 	 */
 	hasFeature(feature) {
@@ -139,7 +137,7 @@ export default class ConferenceProperty extends Property {
 	/**
 	 * Updates the label for the conference system
 	 *
-	 * @param {String} label
+	 * @param {String} label The label to set
 	 */
 	set label(label) {
 		this.updateParameterIfExist('LABEL', label)
@@ -155,7 +153,7 @@ export default class ConferenceProperty extends Property {
 	/**
 	 * Sets the uri for this conference system
 	 *
-	 * @param {String} uri
+	 * @param {String} uri The URI to set
 	 */
 	set uri(uri) {
 		this.value = uri
@@ -174,9 +172,9 @@ export default class ConferenceProperty extends Property {
 	/**
 	 * Creates a new ConferenceProperty based on URI, label and features
 	 *
-	 * @param {String} uri
-	 * @param {String=} label
-	 * @param {String[]=} features
+	 * @param {String} uri URI of the Conference
+	 * @param {String=} label Label of the conference
+	 * @param {String[]=} features Features of the conference
 	 * @returns {ConferenceProperty}
 	 */
 	static fromURILabelAndFeatures(uri, label = null, features = null) {

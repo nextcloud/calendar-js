@@ -51,7 +51,7 @@ export default class FreeBusyProperty extends Property {
 	/**
 	 * Sets the type of this FreeBusyProperty
 	 *
-	 * @param {String} type
+	 * @param {String} type The type of information (e.g. FREE, BUSY, etc.)
 	 */
 	set type(type) {
 		this.updateParameterIfExist('FBTYPE', type)
@@ -60,8 +60,8 @@ export default class FreeBusyProperty extends Property {
 	/**
 	 * Creates a new FreeBusyProperty based on period and type
 	 *
-	 * @param {PeriodValue} period
-	 * @param {String} type
+	 * @param {PeriodValue} period The period for FreeBusy Information
+	 * @param {String} type The type of the period
 	 * @returns {FreeBusyProperty}
 	 */
 	static fromPeriodAndType(period, type) {

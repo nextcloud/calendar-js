@@ -25,7 +25,7 @@
  * returns "BDAY", "DEATHDATE", "ANNIVERSARY"
  * or null if this is not a birthday event
  *
- * @param {EventComponent} eventComponent
+ * @param {EventComponent} eventComponent The eventComponent of the birthday event
  * @returns {null|string}
  */
 export function getTypeOfBirthdayEvent(eventComponent) {
@@ -35,7 +35,7 @@ export function getTypeOfBirthdayEvent(eventComponent) {
 /**
  * Gets icon for the birthday type
  *
- * @param {EventComponent} eventComponent
+ * @param {EventComponent} eventComponent The eventComponent of the birthday event
  * @returns {string|null}
  */
 export function getIconForBirthday(eventComponent) {
@@ -58,8 +58,8 @@ export function getIconForBirthday(eventComponent) {
 /**
  * Returns the age of the birthday person or null of no birth-year given
  *
- * @param {EventComponent} eventComponent
- * @param {number} yearOfOccurrence
+ * @param {EventComponent} eventComponent The eventComponent of the birthday event
+ * @param {number} yearOfOccurrence The year to calculate the age for
  * @returns {null|number}
  */
 export function getAgeOfBirthday(eventComponent, yearOfOccurrence) {
@@ -74,7 +74,7 @@ export function getAgeOfBirthday(eventComponent, yearOfOccurrence) {
 /**
  * Returns the name of the birthday person or null if not set
  *
- * @param eventComponent
+ * @param {EventComponent} eventComponent The eventComponent of the birthday event
  * @returns {null|string}
  */
 export function getNameForBirthday(eventComponent) {

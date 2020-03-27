@@ -1,3 +1,4 @@
+/* eslint-disable */
 // /**
 //  * @copyright Copyright (c) 2019 Georg Ehrke
 //  *
