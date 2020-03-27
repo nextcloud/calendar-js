@@ -59,6 +59,7 @@ export default class ParserManager {
 	 * @param {Boolean=} options.extractGlobalProperties Whether or not to preserve properties from the VCALENDAR component (defaults to false)
 	 * @param {Boolean=} options.removeRSVPForAttendees Whether or not to remove RSVP from attendees (defaults to false)
 	 * @param {Boolean=} options.includeTimezones Whether or not to include timezones (defaults to false)
+	 * @param {Boolean=} options.preserveMethod Whether or not to preserve the iCalendar method (defaults to false)
 	 *
 	 * @returns {AbstractParser}
 	 */

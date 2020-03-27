@@ -186,6 +186,13 @@ export default class ICalendarParser extends AbstractParser {
 				calendarComp.addProperty(this._calendarComponent.getFirstProperty('PRODID').clone())
 			}
 
+			if (this._getOption('preserveMethod', false)) {
+				if (this._calendarComponent.hasProperty('METHOD')) {
+					calendarComp.deleteAllProperties('METHOD')
+					calendarComp.addProperty(this._calendarComponent.getFirstProperty('METHOD').clone())
+				}
+			}
+
 			for (const item of itemList) {
 				calendarComp.addComponent(item)
 			}
