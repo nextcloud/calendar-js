@@ -13,32 +13,24 @@ This library is __in development, expect breaking changes!__
 
 ## Developing
 
-Please take note that this library is developed solely for the purpose of the Nextcloud calendar app.
+Please take note that this library has been developed solely for the purpose of using it in the Nextcloud calendar app.
+Feel free to use it in your project, but don't expect any support / bugfixes / features.
 
 ### Setup
-
 ```bash
-npm install
+make
 ```
 
 ### Tests
 
 ```bash
-npm run test
+make test
 ```
-
-#### Unit 
-
-
-#### Integration
-
-
-#### Code coverage
 
 ### Linting
 
 ```bash
-npm run lint
+make lint
 ```
 
 ## License
