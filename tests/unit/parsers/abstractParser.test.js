@@ -148,6 +148,13 @@ it('AbstractParser should implement a method to indicate whether parsed data con
 	expect(parser.containsVTodos()).toEqual(false)
 })
 
+it('AbstractParser should implement a method to indicate whether parsed data contains freebusy', () => {
+	class Foo extends AbstractParser {}
+	const parser = new Foo()
+
+	expect(parser.containsVFreeBusy()).toEqual(false)
+})
+
 it('AbstractParser should provide a method to check if errors occurred', () => {
 	class Foo extends AbstractParser {
 		incErrorCount() {
