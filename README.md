@@ -5,8 +5,6 @@
 This library is a wrapper for [ICAL.js](https://github.com/mozilla-comm/ical.js/) that provides more convenient ways for editing.
 Together with [cdav-library](https://github.com/nextcloud/cdav-library), it's the heart of the Nextcloud calendar app.
 
-This library is __in development, expect breaking changes!__
-
 ## Documentation
 
 `npm run build-doc`
