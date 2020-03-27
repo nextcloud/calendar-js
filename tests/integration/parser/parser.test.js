@@ -3999,3 +3999,30 @@ it('getOccurrenceAtExactly recurring not matching date', () => {
 
 	expect(event).toEqual(null)
 })
+
+it('The parser should not preserve method unless set - not set', () => {
+	const ics = getAsset('itip-cancel')
+	const parserManager = getParserManager()
+	const icsParser = parserManager.getParserForFileType('text/calendar')
+	icsParser.parse(ics)
+
+	const objectIterator = icsParser.getItemIterator()
+	const calendarComp = objectIterator.next().value
+
+	expect(calendarComp.method).toEqual(null)
+})
+
+
+it('The parser should not preserve method unless set - set', () => {
+	const ics = getAsset('itip-cancel')
+	const parserManager = getParserManager()
+	const icsParser = parserManager.getParserForFileType('text/calendar', {
+		preserveMethod: true,
+	})
+	icsParser.parse(ics)
+
+	const objectIterator = icsParser.getItemIterator()
+	const calendarComp = objectIterator.next().value
+
+	expect(calendarComp.method).toEqual('CANCEL')
+})
