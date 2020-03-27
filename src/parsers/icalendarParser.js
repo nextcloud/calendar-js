@@ -83,6 +83,14 @@ export default class ICalendarParser extends AbstractParser {
 		this._containsVTodos = false
 
 		/**
+		 * A flag whether this calendar-data contains vfreebusy
+		 *
+		 * @type {boolean}
+		 * @private
+		 */
+		this._containsVFreeBusy = false
+
+		/**
 		 * A map containing all VObjects.
 		 * The key of this map is the UID
 		 * The value an array of all VObjects with that particular UID
@@ -167,6 +175,10 @@ export default class ICalendarParser extends AbstractParser {
 		}
 
 		this._processVObjects()
+
+		if (this._getOption('processFreeBusy', false)) {
+			this._processVFreeBusy()
+		}
 	}
 
 	/**
@@ -220,6 +232,13 @@ export default class ICalendarParser extends AbstractParser {
 	 */
 	containsVTodos() {
 		return this._containsVTodos
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	containsVFreeBusy() {
+		return this._containsVFreeBusy
 	}
 
 	/**
@@ -406,6 +425,26 @@ export default class ICalendarParser extends AbstractParser {
 	}
 
 	/**
+	 * Process FreeBusy components
+	 *
+	 * @private
+	 */
+	_processVFreeBusy() {
+		for (const vObject of this._calendarComponent.getFreebusyIterator()) {
+			this._addItem(vObject)
+			this._markCompTypeAsSeen(vObject.name)
+
+			for (const propertyToCheck of vObject.getPropertyIterator()) {
+				for (const value of propertyToCheck.getValueIterator()) {
+					if (value instanceof DateTimeValue && value.timezoneId) {
+						this._addRequiredTimezone(vObject.uid, value.timezoneId)
+					}
+				}
+			}
+		}
+	}
+
+	/**
 	 *
 	 * @param {AbstractRecurringComponent} item The recurrence-item to register
 	 * @private
@@ -541,6 +580,10 @@ export default class ICalendarParser extends AbstractParser {
 
 		case 'VTODO':
 			this._containsVTodos = true
+			break
+
+		case 'VFREEBUSY':
+			this._containsVFreeBusy = true
 			break
 		}
 	}

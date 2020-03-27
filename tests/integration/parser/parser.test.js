@@ -4026,3 +4026,32 @@ it('The parser should not preserve method unless set - set', () => {
 
 	expect(calendarComp.method).toEqual('CANCEL')
 })
+
+it('should not return FreeBusy unless set - not set', () => {
+	const ics = getAsset('freebusy')
+	const parserManager = getParserManager()
+	const icsParser = parserManager.getParserForFileType('text/calendar')
+	icsParser.parse(ics)
+
+	const objectIterator = icsParser.getItemIterator()
+	expect(objectIterator.next().value).toEqual(undefined)
+
+	expect(icsParser.containsVFreeBusy()).toEqual(false)
+})
+
+it('should not return FreeBusy unless set - set', () => {
+	const ics = getAsset('freebusy')
+	const parserManager = getParserManager()
+	const icsParser = parserManager.getParserForFileType('text/calendar', {
+		processFreeBusy: true,
+	})
+	icsParser.parse(ics)
+
+	const objectIterator = icsParser.getItemIterator()
+	const calendarComp = objectIterator.next().value
+
+	const freeBusyComps = Array.from(calendarComp.getFreebusyIterator())
+	expect(freeBusyComps.length).toEqual(1)
+
+	expect(icsParser.containsVFreeBusy()).toEqual(true)
+})
