@@ -583,7 +583,7 @@ export default class RecurrenceManager {
 		while ((next = iterator.next())) {
 			if (next.compare(icalRecurrenceId) === 0) {
 				// It's a match 🔥
-				return this._getOccurrenceAtRecurrenceId(recurrenceId)
+				return this._getOccurrenceAtRecurrenceId(DateTimeValue.fromICALJs(next))
 			}
 
 			if (next.compare(icalRecurrenceId) === 1) {
