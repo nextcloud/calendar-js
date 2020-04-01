@@ -4055,3 +4055,45 @@ it('should not return FreeBusy unless set - set', () => {
 
 	expect(icsParser.containsVFreeBusy()).toEqual(true)
 })
+
+it('should properly expand a recurring all-day event', () => {
+	const ics = getAsset('recurring-allday')
+	const start = DateTimeValue.fromJSDate(new Date(Date.UTC(2020, 2, 1, 0, 0, 0)))
+	const end = DateTimeValue.fromJSDate(new Date(Date.UTC(2020, 3, 30, 23, 59, 59)))
+
+	const iterator = parseICSAndGetAllOccurrencesBetween(ics, start, end)
+
+	const event1 = iterator.next().value
+	expect(event1.isAllDay()).toEqual(true)
+
+	const event2 = iterator.next().value
+	expect(event2.isAllDay()).toEqual(true)
+
+	const event3 = iterator.next().value
+	expect(event3.isAllDay()).toEqual(true)
+
+	const event4 = iterator.next().value
+	expect(event4.isAllDay()).toEqual(true)
+
+	const event5 = iterator.next().value
+	expect(event5.isAllDay()).toEqual(true)
+
+	expect(iterator.next().value).toEqual(undefined)
+})
+
+it('should properly get an occurrence of a recurring all-day event', () => {
+	const ics = getAsset('recurring-allday')
+	const parserManager = getParserManager()
+	const icsParser = parserManager.getParserForFileType('text/calendar')
+	icsParser.parse(ics)
+
+	const objectIterator = icsParser.getItemIterator()
+	const calendarComp = objectIterator.next().value
+	const vObjectIterator = calendarComp.getVObjectIterator()
+	const firstVObject = vObjectIterator.next().value
+
+	const recurrenceId = DateTimeValue.fromJSDate(new Date(Date.UTC(2020, 3, 15, 0, 0, 0)), true)
+	const occurrence = firstVObject.recurrenceManager.getOccurrenceAtExactly(recurrenceId)
+
+	expect(occurrence.isAllDay()).toEqual(true)
+})
