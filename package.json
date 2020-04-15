@@ -7,8 +7,8 @@
     "build-doc": "./node_modules/.bin/esdoc",
     "lint": "eslint --ext .js src",
     "lint:fix": "eslint --ext .js src --fix",
-    "test": "jest",
-    "test:coverage": "jest --coverage"
+    "test": "TZ=UTC jest",
+    "test:coverage": "TZ=UTC jest --coverage"
   },
   "repository": {
     "type": "git",

@@ -37,6 +37,126 @@ import GeoProperty from '../../properties/geoProperty.js'
 export default class ToDoComponent extends AbstractRecurringComponent {
 
 	/**
+	 * Returns whether this event is an all-day event
+	 *
+	 * @returns {boolean}
+	 */
+	isAllDay() {
+		const propertiesToCheck = ['DTSTART', 'DUE']
+		for (const propertyToCheck of propertiesToCheck) {
+			if (this.hasProperty(propertyToCheck)) {
+				return this.getFirstPropertyFirstValue(propertyToCheck).isDate
+			}
+		}
+
+		// If a task is not associated with any date, it is defined to
+		// occur on any successive date until it is completed.
+		// We are treating it as all-day in that case.
+		return true
+	}
+
+	/**
+	 * Checks whether it's possible to switch from date-time to date or vise-versa
+	 *
+	 * @returns {boolean}
+	 */
+	canModifyAllDay() {
+		if (!this.hasProperty('dtstart') && !this.hasProperty('due')) {
+			return false
+		}
+
+		return !this.recurrenceManager.masterItem.isRecurring()
+	}
+
+	/**
+	 * Gets the calculated end-date of the task
+	 *
+	 * If there is a due-date, we will just return that.
+	 * If there is a start-date and a duration, we will
+	 * calculate the end-date based on that.
+	 *
+	 * If there is neither a due-date nor a combination
+	 * of start-date and duration, we just return null
+	 *
+	 * @returns {DateTimeValue|null}
+	 */
+	get endDate() {
+		if (this.hasProperty('due')) {
+			return this.getFirstPropertyFirstValue('due')
+		}
+
+		if (!this.hasProperty('dtstart') || !this.hasProperty('duration')) {
+			return null
+		}
+
+		const endDate = this.startDate.clone()
+		endDate.addDuration(this.getFirstPropertyFirstValue('duration'))
+		return endDate
+	}
+
+	/**
+	 * Shifts the entire task by the given duration
+	 *
+	 * @param {DurationValue} delta The duration to shift event by
+	 * @param {Boolean} allDay Whether the updated event should be all-day or not
+	 * @param {Timezone} defaultTimezone The default timezone if moving from all-day to timed event
+	 * @param {DurationValue} defaultAllDayDuration The default all-day duration if moving from timed to all-day
+	 * @param {DurationValue} defaultTimedDuration The default timed duration if moving from all-day to timed
+	 */
+	shiftByDuration(delta, allDay, defaultTimezone, defaultAllDayDuration, defaultTimedDuration) {
+		const currentAllDay = this.isAllDay()
+
+		if (!this.hasProperty('dtstart') && !this.hasProperty('due')) {
+			throw new TypeError('This task does not have a start-date nor due-date')
+		}
+
+		if (currentAllDay !== allDay && !this.canModifyAllDay()) {
+			throw new TypeError('Can\'t modify all-day of this todo')
+		}
+
+		// If this task has a start-date, update it
+		// This is especially important, if you shift
+		// the task by a negative duration, because
+		// dtstart always has to be prior to the due date
+		if (this.hasProperty('dtstart')) {
+			this.startDate.isDate = allDay
+			this.startDate.addDuration(delta)
+
+			if (currentAllDay && !allDay) {
+				this.startDate.replaceTimezone(defaultTimezone)
+			}
+		}
+
+		if (this.hasProperty('due')) {
+			this.dueTime.isDate = allDay
+			this.dueTime.addDuration(delta)
+
+			if (currentAllDay && !allDay) {
+				this.dueTime.replaceTimezone(defaultTimezone)
+			}
+		}
+	}
+
+	/**
+	 * Checks if this event is in a given time-frame
+	 *
+	 * @param {DateTimeValue} start Start of time-range to check
+	 * @param {DateTimeValue} end End of time-range to check
+	 * @returns {boolean}
+	 */
+	isInTimeFrame(start, end) {
+		if (!this.hasProperty('dtstart') && !this.hasProperty('due')) {
+			return true
+		}
+
+		if (!this.hasProperty('dtstart') && this.hasProperty('due')) {
+			return start.compare(this.endDate) <= 0
+		}
+
+		return start.compare(this.endDate) <= 0 && end.compare(this.startDate) >= 0
+	}
+
+	/**
 	 * Gets the geographical position property
 	 *
 	 * @returns {GeoProperty}
@@ -97,19 +217,6 @@ advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
 advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
 	name: 'dueTime',
 	iCalendarName: 'DUE',
-})
-
-/**
- * The time when a task was completed
- *
- * @url https://tools.ietf.org/html/rfc5545#section-3.8.2.2
- *
- * @name ToDoComponent#endTime
- * @type {DateTimeValue}
- */
-advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
-	name: 'endTime',
-	iCalendarName: 'DTEND',
 })
 
 /**
