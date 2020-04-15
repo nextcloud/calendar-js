@@ -92,31 +92,6 @@ it('ToDoComponent should expose easy getter/setter for DUE', () => {
 	expect(component.dueTime.jsDate.toISOString()).toEqual('2019-09-01T00:00:00.000Z')
 })
 
-it('ToDoComponent should expose easy getter/setter for DTEND', () => {
-	const value1 = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 1, 0, 0, 0)))
-	const value2 = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 2, 0, 0, 0)))
-	const value3 = DateTimeValue.fromJSDate(new Date(Date.UTC(2019, 8, 3, 0, 0, 0)))
-	const component = new ToDoComponent('VTODO', [['DTEND', value1]])
-
-	expect(component.endTime.jsDate.toISOString()).toEqual('2019-09-01T00:00:00.000Z')
-
-	component.endTime = value2
-	expect(component.endTime.jsDate.toISOString()).toEqual('2019-09-02T00:00:00.000Z')
-
-	component.lock()
-	expect(component.isLocked()).toEqual(true)
-
-	expect(() => {
-		component.endTime = value3
-	}).toThrow(ModificationNotAllowedError);
-	expect(component.endTime.jsDate.toISOString()).toEqual('2019-09-02T00:00:00.000Z')
-
-	component.unlock()
-
-	component.endTime = value1
-	expect(component.endTime.jsDate.toISOString()).toEqual('2019-09-01T00:00:00.000Z')
-})
-
 it('ToDoComponent should expose easy getter/setter for DURATION', () => {
 	const value1 = DurationValue.fromSeconds(60)
 	const value2 = DurationValue.fromSeconds(60 * 60)

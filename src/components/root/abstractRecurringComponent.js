@@ -236,12 +236,17 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 			return this._cachedId
 		}
 
+		if (this.startDate === null) {
+			this._cachedId = encodeURIComponent(this.uid)
+			return this._cachedId
+		}
+
 		this._cachedId = [
 			encodeURIComponent(this.uid),
 			encodeURIComponent(this.getReferenceRecurrenceId().unixTime.toString()),
 		].join('###')
 
-		return this.id
+		return this._cachedId
 	}
 
 	/**
@@ -374,7 +379,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 			const dtEndValue = occurrence.getFirstPropertyFirstValue('DTEND')
 			duration = dtEndValue.subtractDateWithTimezone(dtStartValue)
 		} else if (occurrence.hasProperty('DUE')) {
-			const dueValue = occurrence.getFirstPropetrtyFirstValue('DUE')
+			const dueValue = occurrence.getFirstPropertyFirstValue('DUE')
 			duration = dueValue.subtractDateWithTimezone(dtStartValue)
 		}
 

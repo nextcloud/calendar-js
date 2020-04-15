@@ -23,6 +23,7 @@ import Property from '../properties/property.js'
 import { uc } from '../helpers/stringHelper.js'
 import DateTimeValue from '../values/dateTimeValue.js'
 import ModificationNotAllowedError from '../errors/modificationNotAllowedError.js'
+import RecurringWithoutDtStartError from '../errors/recurringWithoutDtStartError.js'
 import PeriodValue from '../values/periodValue.js'
 import ICAL from 'ical.js'
 
@@ -674,10 +675,10 @@ export default class RecurrenceManager {
 			let compareDate = null
 			switch (uc(occurrence.name)) {
 			case 'VEVENT':
+			case 'VTODO':
 				compareDate = occurrence.endDate.toICALJs()
 				break
 
-			case 'VTODO':
 			case 'VJOURNAL':
 			default:
 				compareDate = next
@@ -845,6 +846,10 @@ export default class RecurrenceManager {
 	 * @private
 	 */
 	_getRecurExpansionObject() {
+		if (this._masterItem.startDate === null) {
+			throw new RecurringWithoutDtStartError()
+		}
+
 		const dtstart = this._masterItem.startDate.toICALJs()
 		let last = dtstart.clone()
 		const ruleIterators = []
