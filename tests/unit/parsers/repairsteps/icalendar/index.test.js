@@ -28,6 +28,8 @@ import ICalendarAddMissingValueDateRepairStep
 	from '../../../../../src/parsers/repairsteps/icalendar/icalendarAddMissingValueDateRepairStep.js';
 import ICalendarEmptyTriggerRepairStep
 	from '../../../../../src/parsers/repairsteps/icalendar/icalendarEmptyTriggerRepairStep.js';
+import ICalendarIllegalCreatedRepairStep
+	from '../../../../../src/parsers/repairsteps/icalendar/icalendarIllegalCreatedRepairStep.js';
 import ICalendarMultipleVCalendarBlocksRepairStep
 	from '../../../../../src/parsers/repairsteps/icalendar/icalendarMultipleVCalendarBlocksRepairStep.js';
 import ICalendarRemoveXNCGroupIdRepairStep
@@ -40,6 +42,7 @@ it('should provide an iterator over all parsers', () => {
 	expect(iterator.next().value).toEqual(ICalendarAddMissingValueDateDoubleColonRepairStep)
 	expect(iterator.next().value).toEqual(ICalendarAddMissingValueDateRepairStep)
 	expect(iterator.next().value).toEqual(ICalendarEmptyTriggerRepairStep)
+	expect(iterator.next().value).toEqual(ICalendarIllegalCreatedRepairStep)
 	expect(iterator.next().value).toEqual(ICalendarMultipleVCalendarBlocksRepairStep)
 	expect(iterator.next().value).toEqual(ICalendarRemoveXNCGroupIdRepairStep)
 	expect(iterator.next().value).toEqual(undefined)

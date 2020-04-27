@@ -23,6 +23,7 @@ import ICalendarAddMissingUIDRepairStep from './icalendarAddMissingUIDRepairStep
 import ICalendarAddMissingValueDateDoubleColonRepairStep from './icalendarAddMissingValueDateDoubleColonRepairStep.js'
 import ICalendarAddMissingValueDateRepairStep from './icalendarAddMissingValueDateRepairStep.js'
 import ICalendarEmptyTriggerRepairStep from './icalendarEmptyTriggerRepairStep.js'
+import ICalendarIllegalCreatedRepairStep from './icalendarIllegalCreatedRepairStep.js'
 import ICalendarMultipleVCalendarBlocksRepairStep from './icalendarMultipleVCalendarBlocksRepairStep.js'
 import ICalendarRemoveXNCGroupIdRepairStep from './icalendarRemoveXNCGroupIdRepairStep.js'
 
@@ -34,6 +35,7 @@ export function * getRepairSteps() {
 	yield ICalendarAddMissingValueDateDoubleColonRepairStep
 	yield ICalendarAddMissingValueDateRepairStep
 	yield ICalendarEmptyTriggerRepairStep
+	yield ICalendarIllegalCreatedRepairStep
 	yield ICalendarMultipleVCalendarBlocksRepairStep
 	yield ICalendarRemoveXNCGroupIdRepairStep
 }
