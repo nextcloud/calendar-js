@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "ical.js": "^1.4.0",
-    "uuid": "^7.0.3"
+    "uuid": "^8.0.0"
   },
   "babel": {
     "presets": [
