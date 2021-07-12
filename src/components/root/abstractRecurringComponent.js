@@ -420,7 +420,8 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * @returns {boolean}
 	 */
 	canCreateRecurrenceExceptions() {
-		return this.isRecurring() || this.modifiesFuture()
+		const primaryIsRecurring = this.primaryItem?.isRecurring() ?? false
+		return this.isRecurring() || this.modifiesFuture() || (!this.isRecurring() && primaryIsRecurring)
 	}
 
 	/**
