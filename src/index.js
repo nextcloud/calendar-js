@@ -3,6 +3,8 @@
  *
  * @author Georg Ehrke <georg-nextcloud@ehrke.email>
  *
+ * @author Richard Steinmetz <richard@steinmetz.cloud>
+ *
  * @license GNU AGPL version 3 or any later version
  *
  * This program is free software: you can redistribute it and/or modify
@@ -126,3 +128,11 @@ export function createFreeBusyRequest(start, end, organizer, attendees) {
 export { setConfig } from './config.js'
 export { getParserManager }
 export { getTimezoneManager, isOlsonTimezone } from './timezones/timezoneManager.js'
+export * from './components'
+export * from './errors'
+export * from './parameters'
+export * from './parsers'
+export * from './properties'
+export * from './recurrence'
+export * from './timezones'
+export * from './values'

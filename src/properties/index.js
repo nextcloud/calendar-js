@@ -3,6 +3,8 @@
  *
  * @author Georg Ehrke <georg-nextcloud@ehrke.email>
  *
+ * @author Richard Steinmetz <richard@steinmetz.cloud>
+ *
  * @license GNU AGPL version 3 or any later version
  *
  * This program is free software: you can redistribute it and/or modify
@@ -77,4 +79,18 @@ export function getConstructorForPropertyName(propName) {
 	default:
 		return Property
 	}
+}
+
+export {
+	AttachmentProperty,
+	AttendeeProperty,
+	ConferenceProperty,
+	FreeBusyProperty,
+	GeoProperty,
+	ImageProperty,
+	Property,
+	RelationProperty,
+	RequestStatusProperty,
+	TextProperty,
+	TriggerProperty,
 }

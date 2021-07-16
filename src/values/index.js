@@ -3,6 +3,8 @@
  *
  * @author Georg Ehrke <georg-nextcloud@ehrke.email>
  *
+ * @author Richard Steinmetz <richard@steinmetz.cloud>
+ *
  * @license GNU AGPL version 3 or any later version
  *
  * This program is free software: you can redistribute it and/or modify
@@ -19,6 +21,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
+import AbstractValue from './abstractValue'
 import BinaryValue from './binaryValue.js'
 import DurationValue from './durationValue.js'
 import PeriodValue from './periodValue.js'
@@ -57,4 +60,14 @@ export function getConstructorForICALType(icaltype) {
 	default:
 		throw new UnknownICALTypeError()
 	}
+}
+
+export {
+	AbstractValue,
+	BinaryValue,
+	DateTimeValue,
+	DurationValue,
+	PeriodValue,
+	RecurValue,
+	UTCOffsetValue,
 }
