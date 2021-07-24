@@ -58,6 +58,27 @@ it('TimezoneManager should provide a method to get a timezone by id - by alias',
 	expect(timezoneManager.getTimezoneForId('foobar/Berlin')).toEqual(tzBerlin)
 })
 
+it('TimezoneManager should provide a method to get a timezone by id - by recursive alias', () => {
+	const timezoneManager = new TimezoneManager()
+
+	const tzKolkata = new Timezone('Asia/Kolkata', getAsset('timezone-asia-kolkata'))
+
+	timezoneManager.registerTimezone(tzKolkata)
+	timezoneManager.registerAlias('Asia/Calcutta', 'Asia/Kolkata')
+	timezoneManager.registerAlias('India Standard Time', 'Asia/Calcutta')
+
+	expect(timezoneManager.getTimezoneForId('India Standard Time')).toEqual(tzKolkata)
+})
+
+it('TimezoneManager should provide a method to get a timezone by id - by recursive alias, recursion limit', () => {
+	const timezoneManager = new TimezoneManager()
+
+	timezoneManager.registerAlias('alias-one', 'alias-two')
+	timezoneManager.registerAlias('alias-two', 'alias-one')
+
+	expect(timezoneManager.getTimezoneForId('alias-one')).toEqual(null)
+})
+
 it('TimezoneManager should provide a method to get a timezone by id - by alias non-existant', () => {
 	const timezoneManager = new TimezoneManager()
 
