@@ -1,5 +1,5 @@
 {
-  "name": "calendar-js",
+  "name": "@nextcloud/calendar-js",
   "version": "1.0.0",
   "description": "Small library that wraps ICAL.js and provide more convenient means for editing",
   "main": "src/index.js",
@@ -12,19 +12,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/georgehrke/calendar-js.git"
+    "url": "git+https://github.com/nextcloud/calendar-js.git"
   },
   "keywords": [
     "ical.js",
     "rfc5545",
     "rfc7986"
   ],
-  "author": "Georg Ehrke",
+  "author": "Christoph Wurst",
   "license": "AGPLv3+",
   "bugs": {
-    "url": "https://github.com/georgehrke/calendar-js/issues"
+    "url": "https://github.com/nextcloud/calendar-js/issues"
   },
-  "homepage": "https://github.com/georgehrke/calendar-js#readme",
+  "homepage": "https://github.com/nextcloud/calendar-js#readme",
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.8",

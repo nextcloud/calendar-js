@@ -1,4 +1,4 @@
-# :date: calendar-js - Heart of the [Nextcloud calendar app](https://github.com/nextcloud/calendar)
+# :date: @nextcloud/calendar-js - Heart of the [Nextcloud calendar app](https://github.com/nextcloud/calendar)
 
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fgeorgehrke%2Fcalendar-js%2Fbadge%3Fref%3Dmaster&style=flat)](https://actions-badge.atrox.dev/georgehrke/calendar-js/goto?ref=master) [![codecov](https://codecov.io/gh/georgehrke/calendar-js/branch/master/graph/badge.svg)](https://codecov.io/gh/georgehrke/calendar-js)
 
@@ -16,19 +16,19 @@ Feel free to use it in your project, but don't expect any support / bugfixes / f
 
 ### Setup
 ```bash
-make
+npm ci
 ```
 
 ### Tests
 
 ```bash
-make test
+npm run test
 ```
 
 ### Linting
 
 ```bash
-make lint
+npm run lint
 ```
 
 ## License
