@@ -42,6 +42,14 @@ it('TimezoneManager should provide a method to get a timezone by id - existing t
 	expect(timezoneManager.getTimezoneForId('Europe/Berlin')).toEqual(tzBerlin)
 })
 
+it('TimezoneManager should be able to self-register a default set of timezones', () => {
+	const timezoneManager = new TimezoneManager()
+
+	timezoneManager.registerDefaultTimezones()
+
+	expect(timezoneManager.listAllTimezones().length).toBeGreaterThan(400)
+})
+
 it('TimezoneManager should provide a method to get a timezone by id - by alias', () => {
 	const timezoneManager = new TimezoneManager()
 

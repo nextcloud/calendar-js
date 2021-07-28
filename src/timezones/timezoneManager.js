@@ -20,6 +20,7 @@
  *
  */
 import Timezone from './timezone.js'
+import tzData from '../../resources/timezones/zones.json'
 
 /**
  * @class TimezoneManager
@@ -112,6 +113,28 @@ export class TimezoneManager {
 	 */
 	registerTimezone(timezone) {
 		this._timezones.set(timezone.timezoneId, timezone)
+	}
+
+	registerDefaultTimezones() {
+		console.debug(`@nextcloud/calendar-js app is using version ${tzData.version} of the timezone database`)
+
+		for (const tzid in tzData.zones) {
+			if (Object.prototype.hasOwnProperty.call(tzData.zones, [tzid])) {
+				const ics = [
+					'BEGIN:VTIMEZONE',
+					'TZID:' + tzid,
+					...tzData.zones[tzid].ics,
+					'END:VTIMEZONE',
+				].join('\r\n')
+				this.registerTimezoneFromICS(tzid, ics)
+			}
+		}
+
+		for (const tzid in tzData.aliases) {
+			if (Object.prototype.hasOwnProperty.call(tzData.aliases, [tzid])) {
+				this.registerAlias(tzid, tzData.aliases[tzid].aliasTo)
+			}
+		}
 	}
 
 	/**
