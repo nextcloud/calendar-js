@@ -56,15 +56,24 @@ export class TimezoneManager {
 	 * @returns {Timezone|null}
 	 */
 	getTimezoneForId(timezoneId) {
+		return this._getTimezoneForIdRec(timezoneId, 0)
+	}
+
+	_getTimezoneForIdRec(timezoneId, level) {
 		if (this._timezones.has(timezoneId)) {
 			return this._timezones.get(timezoneId)
 		}
 
+		if (level >= 20) {
+			// too much recursion
+			console.error('TimezoneManager.getTimezoneForIdRec() exceeds recursion limits')
+			return null
+		}
+
 		if (this._aliases.has(timezoneId)) {
-			const realTimezoneId = this._aliases.get(timezoneId)
-			if (this._timezones.has(realTimezoneId)) {
-				return this._timezones.get(realTimezoneId)
-			}
+			const resolvedTimezoneId = this._aliases.get(timezoneId)
+			// can be a recursive alias:
+			return this._getTimezoneForIdRec(resolvedTimezoneId, level + 1)
 		}
 
 		return null
