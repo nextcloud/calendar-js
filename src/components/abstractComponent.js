@@ -598,7 +598,7 @@ export function advertiseSingleOccurrenceProperty(prototype, options, advertiseV
 	options = getDefaultOncePropConfig(options)
 
 	Object.defineProperty(prototype, options.name, {
-		get: function() {
+		get() {
 			const value = this.getFirstPropertyFirstValue(options.iCalendarName)
 
 			if (!value) {
@@ -611,7 +611,7 @@ export function advertiseSingleOccurrenceProperty(prototype, options, advertiseV
 				return value
 			}
 		},
-		set: function(value) {
+		set(value) {
 			this._modify()
 
 			if (value === null) {

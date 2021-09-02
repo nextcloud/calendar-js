@@ -1,9 +1,19 @@
 {
   "name": "@nextcloud/calendar-js",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "Small library that wraps ICAL.js and provide more convenient means for editing",
-  "main": "src/index.js",
+  "main": "dist/index.umd.js",
+  "module": "dist/index.esm.js",
+  "files": [
+      "README.md",
+      "LICENSE",
+      "dist",
+      "resources/timezones/zones.json"
+  ],
   "scripts": {
+    "dev": "rollup --config rollup.config.js",
+    "watch": "rollup --config rollup.config.js --watch",
+    "build": "NODE_ENV=production rollup --config rollup.config.js",
     "build-doc": "./node_modules/.bin/esdoc",
     "lint": "eslint --ext .js src",
     "lint:fix": "eslint --ext .js src --fix",
@@ -20,7 +30,7 @@
     "rfc7986"
   ],
   "author": "Christoph Wurst",
-  "license": "AGPLv3+",
+  "license": "AGPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/nextcloud/calendar-js/issues"
   },
@@ -31,22 +41,20 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
-    "@babel/preset-env": "^7.14.8",
-    "@nextcloud/eslint-config": "^2.0.0",
+    "@nextcloud/babel-config": "^1.0.0",
+    "@nextcloud/browserslist-config": "^2.1.0",
+    "@nextcloud/eslint-config": "^6.0.0",
     "@nextcloud/eslint-plugin": "^2.0.0",
-    "babel-eslint": "^10.1.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^19.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.2",
     "babel-jest": "^27.0.6",
     "esdoc": "^1.1.0",
     "esdoc-standard-plugin": "^1.0.0",
-    "eslint": "^7.31.0",
-    "eslint-config-standard": "^16.0.3",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-standard": "^5.0.0",
-    "eslint-plugin-vue": "^7.14.0",
-    "jest": "^27.0.6"
+    "jest": "^27.0.6",
+    "rollup": "^2.53.2",
+    "rollup-plugin-terser": "^7.0.2"
   },
   "dependencies": {
     "ical.js": "^1.4.0",
@@ -85,5 +93,8 @@
         "name": "esdoc-standard-plugin"
       }
     ]
-  }
+  },
+  "browserslist": [
+    "extends @nextcloud/browserslist-config"
+  ]
 }
