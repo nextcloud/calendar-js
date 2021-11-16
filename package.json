@@ -5,15 +5,14 @@
   "main": "dist/index.umd.js",
   "module": "dist/index.esm.js",
   "files": [
-      "README.md",
-      "LICENSE",
-      "dist",
-      "resources/timezones/zones.json"
+    "README.md",
+    "LICENSE",
+    "dist",
+    "resources/timezones/zones.json"
   ],
   "scripts": {
-    "dev": "rollup --config rollup.config.js",
     "watch": "rollup --config rollup.config.js --watch",
-    "build": "NODE_ENV=production rollup --config rollup.config.js",
+    "build": "rollup --config rollup.config.js",
     "build-doc": "./node_modules/.bin/esdoc",
     "lint": "eslint --ext .js src",
     "lint:fix": "eslint --ext .js src --fix",
@@ -54,9 +53,9 @@
     "esdoc-standard-plugin": "^1.0.0",
     "jest": "^27.0.6",
     "rollup": "^2.53.2",
-    "rollup-plugin-terser": "^7.0.2"
+    "rollup-plugin-peer-deps-external": "^2.2.4"
   },
-  "dependencies": {
+  "peerDependencies": {
     "ical.js": "^1.4.0",
     "uuid": "^8.3.2"
   },
