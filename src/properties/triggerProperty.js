@@ -95,7 +95,7 @@ export default class TriggerProperty extends Property {
 	 * @returns {TriggerProperty}
 	 */
 	static fromAbsolute(alarmTime) {
-		return new TriggerProperty('TRIGGER', alarmTime.getInUTC())
+		return new TriggerProperty('TRIGGER', alarmTime)
 	}
 
 	/**
