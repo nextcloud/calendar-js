@@ -74,7 +74,7 @@ export default class ICalendarMultipleVCalendarBlocksRepairStep extends Abstract
 					return ''
 				}
 
-				const tzid = uc(tzidMatcher[0].substr(5))
+				const tzid = uc(tzidMatcher[0].slice(5))
 				if (includedTimezones.has(tzid)) {
 					// If we already included this timezone, just skip
 					return ''

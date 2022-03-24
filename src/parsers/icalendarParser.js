@@ -320,7 +320,7 @@ export default class ICalendarParser extends AbstractParser {
 				continue
 			}
 
-			const tzid = tzidMatcher[0].substr(5)
+			const tzid = tzidMatcher[0].slice(5)
 			const timezone = new Timezone(tzid, match)
 			this._timezones.set(tzid, timezone)
 		}
