@@ -80,7 +80,7 @@
     "coverageDirectory": "./coverage",
     "clearMocks": true,
     "setupFiles": [
-      "./node_modules/ical.js/build/ical.js",
+      "./tests/setup-global-ical.js",
       "./tests/assets/loader.js"
     ]
   },
