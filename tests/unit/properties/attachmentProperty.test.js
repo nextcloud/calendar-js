@@ -230,3 +230,8 @@ it('AttachmentProperty should provide a constructor from link - with formattype'
 	expect(property.toICALJs().toICALString()).toEqual('ATTACH;FMTTYPE=text/calendar:http://nextcloud.com')
 })
 
+it("AttachmentProperty should add ENCODING=BASE64 when VALUE=BINARY, unless it's already present", () => {
+	const icalProperty = ICAL.Property.fromString('ATTACH;VALUE=BINARY;ENCODING=BASE64;FMTTYPE=text/plain;X-LABEL=log.txt:aGVsbG8=')
+	const property = AttachmentProperty.fromICALJs(icalProperty)
+	expect(property.toICALJs().toICALString()).toEqual('ATTACH;ENCODING=BASE64;FMTTYPE=text/plain;X-LABEL=log.txt;VALUE=BINARY:aGVsbG8=')
+})
