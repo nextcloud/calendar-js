@@ -114,7 +114,7 @@ export default class AttachmentProperty extends Property {
 	 */
 	toICALJs() {
 		const icalProperty = super.toICALJs()
-		if (this._value instanceof BinaryValue) {
+		if (this._value instanceof BinaryValue && this.getParameterFirstValue('ENCODING') !== 'BASE64') {
 			icalProperty.setParameter('ENCODING', 'BASE64')
 		}
 
