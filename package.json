@@ -47,7 +47,7 @@
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-commonjs": "^22.0.1",
     "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.0.2",
+    "@rollup/plugin-node-resolve": "^14.1.0",
     "babel-jest": "^27.0.6",
     "esdoc": "^1.1.0",
     "esdoc-standard-plugin": "^1.0.0",
