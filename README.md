@@ -1,6 +1,6 @@
 # :date: @nextcloud/calendar-js - Heart of the [Nextcloud calendar app](https://github.com/nextcloud/calendar)
 
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fgeorgehrke%2Fcalendar-js%2Fbadge%3Fref%3Dmaster&style=flat)](https://actions-badge.atrox.dev/nextcloud/calendar-js/goto?ref=main) [![codecov](https://codecov.io/gh/georgehrke/calendar-js/branch/master/graph/badge.svg)](https://codecov.io/gh/nextcloud/calendar-js)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fnextcloud%2Fcalendar-js%2Fbadge%3Fref%3Dmain&style=flat)](https://actions-badge.atrox.dev/nextcloud/calendar-js/goto?ref=main) [![codecov](https://codecov.io/gh/nextcloud/calendar-js/branch/main/graph/badge.svg)](https://codecov.io/gh/nextcloud/calendar-js)
 
 This library is a wrapper for [ICAL.js](https://github.com/mozilla-comm/ical.js/) that provides more convenient ways for editing.
 Together with [cdav-library](https://github.com/nextcloud/cdav-library), it's the heart of the Nextcloud calendar app.
