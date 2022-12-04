@@ -34,6 +34,8 @@ import ICalendarMultipleVCalendarBlocksRepairStep
 	from '../../../../../src/parsers/repairsteps/icalendar/icalendarMultipleVCalendarBlocksRepairStep.js';
 import ICalendarRemoveXNCGroupIdRepairStep
 	from '../../../../../src/parsers/repairsteps/icalendar/icalendarRemoveXNCGroupIdRepairStep.js';
+import ICalendarRemoveEmptyRDate
+	from '../../../../../src/parsers/repairsteps/icalendar/icalendarRemoveEmptyRDate';
 
 it('should provide an iterator over all parsers', () => {
 	const iterator = getRepairSteps()
@@ -45,5 +47,6 @@ it('should provide an iterator over all parsers', () => {
 	expect(iterator.next().value).toEqual(ICalendarIllegalCreatedRepairStep)
 	expect(iterator.next().value).toEqual(ICalendarMultipleVCalendarBlocksRepairStep)
 	expect(iterator.next().value).toEqual(ICalendarRemoveXNCGroupIdRepairStep)
+	expect(iterator.next().value).toEqual(ICalendarRemoveEmptyRDate)
 	expect(iterator.next().value).toEqual(undefined)
 })
