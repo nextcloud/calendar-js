@@ -5,6 +5,12 @@
 This library is a wrapper for [ICAL.js](https://github.com/mozilla-comm/ical.js/) that provides more convenient ways for editing.
 Together with [cdav-library](https://github.com/nextcloud/cdav-library), it's the heart of the Nextcloud calendar app.
 
+## Maintainers
+
+* [@ChristophWurst](https://github.com/ChristophWurst)
+* [@GretaD](https://github.com/GretaD)
+* [@st3iny](https://github.com/st3iny)
+
 ## Developing
 
 Please take note that this library has been developed solely for the purpose of using it in the Nextcloud calendar app.
@@ -26,6 +32,17 @@ npm run test
 ```bash
 npm run lint
 ```
+
+## Releases
+
+This repository follows the concept of [conventional commits](https://www.conventionalcommits.org/en/v1.0.0). A github action workflow automates the release. However, an authorized [maintainer](#maintainers) has to approve the workflow before it can run.
+
+1) Go to https://github.com/nextcloud/calendar-js/actions/workflows/release.yml
+2) Click *Run workflow*
+   1) Leave *Branch: main*
+   2) Click *Run workflow*
+3) Go to https://github.com/nextcloud/calendar-js/actions
+4) Click on the pending *Npm registry* workflow and approve it if you have permission or ask one of the [maintainers](#maintainers)
 
 ## License
 

@@ -1,0 +1,60 @@
+name: Npm registry
+on: workflow_dispatch
+
+jobs:
+  npm-registry:
+    permissions:
+      contents: write
+    environment: npm registry
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+      - name: Conventional Changelog Action
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          skip-git-pull: "true"
+          release-count: 0
+          version-file: "package.json, package-lock.json"
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token }}
+        with:
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          release_name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
+
+      - name: Read package.json node and npm engines version
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        uses: skjnldsv/read-package-engines-version-actions@v1.1
+        id: versions
+        with:
+          fallbackNode: '^16'
+          fallbackNpm: '^8'
+      - name: Set up node ${{ steps.versions.outputs.nodeVersion }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ steps.versions.outputs.nodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+      - name: Set up npm ${{ steps.versions.outputs.npmVersion }}
+        run: npm i -g npm@"${{ steps.versions.outputs.npmVersion }}"
+
+      - name: Install dependencies
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        run: npm ci
+      - name: Build package
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        run: npm run build
+      - name: Public package
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
