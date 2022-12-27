@@ -42,7 +42,7 @@
     "@babel/core": "^7.14.6",
     "@nextcloud/babel-config": "^1.0.0",
     "@nextcloud/browserslist-config": "^2.1.0",
-    "@nextcloud/eslint-config": "^7.0.1",
+    "@nextcloud/eslint-config": "^8.1.4",
     "@nextcloud/eslint-plugin": "^2.0.0",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^24.0.0",
