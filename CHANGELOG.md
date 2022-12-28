@@ -1,3 +1,20 @@
+# [5.0.0](https://github.com/nextcloud/calendar-js/compare/v4.0.0...v5.0.0) (2022-12-28)
+
+
+* fix!: Avoid circular dependencies between timezone and timezoneComponent ([8838a8d](https://github.com/nextcloud/calendar-js/commit/8838a8d1a3da8ecb47e7f9b689cc5ce21d3b17b8))
+
+
+### BREAKING CHANGES
+
+* Removes the Timezone.toTimezoneComponent() method, which is being used in the Calendar App
+
+Instead of ``timezone.toTimezoneComponent()`` you should use
+``TimezoneComponent.fromICALJs(timezone.toICALJs())``.
+
+Signed-off-by: Thomas Citharel <tcit@tcit.fr>
+
+
+
 # [4.0.0](https://github.com/nextcloud/calendar-js/compare/v3.1.0...v4.0.0) (2022-12-27)
 
 
