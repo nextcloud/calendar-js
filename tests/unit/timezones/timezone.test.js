@@ -121,7 +121,7 @@ it('Timezone should provide a calendar-js TimezoneComponent', () => {
 
 	const timezone = new Timezone(name, ics)
 
-	expect(timezone.toTimezoneComponent() instanceof TimezoneComponent).toEqual(true)
+	expect(TimezoneComponent.fromICALJs(timezone.toICALJs()) instanceof TimezoneComponent).toEqual(true)
 })
 
 it('Timezone should provide a default timezone for UTC', () => {

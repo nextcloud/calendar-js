@@ -29,6 +29,7 @@ import Timezone from '../timezones/timezone.js'
 import RecurrenceManager from '../recurrence/recurrenceManager.js'
 import DateTimeValue from '../values/dateTimeValue.js'
 import ICAL from 'ical.js'
+import TimezoneComponent from '../components/root/timezoneComponent'
 
 /**
  * @class ICalendarParser
@@ -513,7 +514,7 @@ export default class ICalendarParser extends AbstractParser {
 				this._replaceTimezoneWithAnotherOne(calendarComp, requiredTimezone, timezone.timezoneId)
 			}
 
-			const timezoneComponent = timezone.toTimezoneComponent()
+			const timezoneComponent = TimezoneComponent.fromICALJs(timezone.toICALJs())
 			calendarComp.addComponent(timezoneComponent)
 		}
 	}

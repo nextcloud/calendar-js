@@ -20,7 +20,6 @@
  *
  */
 
-import TimezoneComponent from '../components/root/timezoneComponent.js'
 import ICAL from 'ical.js'
 
 /**
@@ -147,14 +146,6 @@ export default class Timezone {
 			local.minute,
 			local.second,
 		]
-	}
-
-	/**
-	 *
-	 * @returns {TimezoneComponent}
-	 */
-	toTimezoneComponent() {
-		return TimezoneComponent.fromICALJs(this.toICALJs())
 	}
 
 	/**
