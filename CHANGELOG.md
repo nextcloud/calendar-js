@@ -1,3 +1,12 @@
+## [5.0.3](https://github.com/nextcloud/calendar-js/compare/v5.0.2...v5.0.3) (2022-12-28)
+
+
+### Bug Fixes
+
+* **eslint:** Lower case string type ([e3c8de1](https://github.com/nextcloud/calendar-js/commit/e3c8de1c20a679fc27d3e1d84f316216fad27aa0))
+
+
+
 ## [5.0.2](https://github.com/nextcloud/calendar-js/compare/v5.0.1...v5.0.2) (2022-12-28)
 
 
