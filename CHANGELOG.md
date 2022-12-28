@@ -1,3 +1,12 @@
+## [5.0.2](https://github.com/nextcloud/calendar-js/compare/v5.0.1...v5.0.2) (2022-12-28)
+
+
+### Bug Fixes
+
+* **jsdoc:** Fix casing of boolean types ([ac1a9b6](https://github.com/nextcloud/calendar-js/commit/ac1a9b6e29785e0f1559a12080154e1dfd506a86))
+
+
+
 ## [5.0.1](https://github.com/nextcloud/calendar-js/compare/v5.0.0...v5.0.1) (2022-12-28)
 
 
