@@ -37,8 +37,8 @@ export default class AlarmComponent extends AbstractComponent {
 	/**
 	 * Adds a new attendee based on their name and email-address
 	 *
-	 * @param {String} name - Name of the attendee
-	 * @param {String} email - E-Mail address of the attendee
+	 * @param {string} name - Name of the attendee
+	 * @param {string} email - E-Mail address of the attendee
 	 * @return {boolean}
 	 */
 	addAttendeeFromNameAndEMail(name, email) {
@@ -92,7 +92,7 @@ export default class AlarmComponent extends AbstractComponent {
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.6.1
  *
  * @name AlarmComponent#action
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(AlarmComponent.prototype, 'action')
 
@@ -103,7 +103,7 @@ advertiseSingleOccurrenceProperty(AlarmComponent.prototype, 'action')
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.1.5
  *
  * @name AlarmComponent#description
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(AlarmComponent.prototype, 'description')
 
@@ -115,7 +115,7 @@ advertiseSingleOccurrenceProperty(AlarmComponent.prototype, 'description')
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.1.12
  *
  * @name AlarmComponent#summary
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(AlarmComponent.prototype, 'summary')
 
@@ -126,7 +126,7 @@ advertiseSingleOccurrenceProperty(AlarmComponent.prototype, 'summary')
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.2.5
  *
  * @name AlarmComponent#duration
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(AlarmComponent.prototype, 'duration')
 

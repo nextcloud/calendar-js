@@ -183,7 +183,7 @@ export default class ToDoComponent extends AbstractRecurringComponent {
 	 *
 	 * @url https://tools.ietf.org/html/rfc7986#section-5.11
 	 *
-	 * @param {String} uri The URI of the conference
+	 * @param {string} uri The URI of the conference
 	 * @param {String=} label The label of the conference
 	 * @param {String[]=} features Supported features of conference-system
 	 */
@@ -250,7 +250,7 @@ advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.1.5
  *
  * @name ToDoComponent#description
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(ToDoComponent.prototype, 'description')
 
@@ -260,7 +260,7 @@ advertiseSingleOccurrenceProperty(ToDoComponent.prototype, 'description')
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.1.7
  *
  * @name ToDoComponent#location
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(ToDoComponent.prototype, 'location')
 
@@ -270,7 +270,7 @@ advertiseSingleOccurrenceProperty(ToDoComponent.prototype, 'location')
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.1.9
  *
  * @name ToDoComponent#priority
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
 	name: 'priority',
@@ -312,7 +312,7 @@ advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
  *
  * @name ToDoComponent#addResource
  * @function
- * @param {String} resource
+ * @param {string} resource
  * @param {String=} lang
  */
 
@@ -323,7 +323,7 @@ advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
  *
  * @name ToDoComponent#removeResource
  * @function
- * @param {String} resource
+ * @param {string} resource
  * @param {String=} lang
  */
 

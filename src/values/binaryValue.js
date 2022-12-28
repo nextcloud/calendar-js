@@ -34,7 +34,7 @@ export default class BinaryValue extends AbstractValue {
 	/**
 	 * Sets the raw b64 encoded value
 	 *
-	 * @return {String}
+	 * @return {string}
 	 */
 	get rawValue() {
 		return this._innerValue.value
@@ -44,7 +44,7 @@ export default class BinaryValue extends AbstractValue {
 	 * Gets the raw b64 encoded value
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {String} value - The new raw value
+	 * @param {string} value - The new raw value
 	 */
 	set rawValue(value) {
 		this._modifyContent()
@@ -54,7 +54,7 @@ export default class BinaryValue extends AbstractValue {
 	/**
 	 * Gets the decoded value
 	 *
-	 * @return {String}
+	 * @return {string}
 	 */
 	get value() {
 		return this._innerValue.decodeValue()
@@ -64,7 +64,7 @@ export default class BinaryValue extends AbstractValue {
 	 * Sets the decoded Value
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param  {String} decodedValue - The new encoded value
+	 * @param  {string} decodedValue - The new encoded value
 	 */
 	set value(decodedValue) {
 		this._modifyContent()
@@ -93,7 +93,7 @@ export default class BinaryValue extends AbstractValue {
 	/**
 	 * Create a new BinaryValue object from a raw b64 encoded value
 	 *
-	 * @param {String} rawValue - The raw value
+	 * @param {string} rawValue - The raw value
 	 * @return {BinaryValue}
 	 */
 	static fromRawValue(rawValue) {
@@ -104,7 +104,7 @@ export default class BinaryValue extends AbstractValue {
 	/**
 	 * Create a new BinaryValue object from decoded value
 	 *
-	 * @param {String} decodedValue - The encoded value
+	 * @param {string} decodedValue - The encoded value
 	 * @return {BinaryValue}
 	 */
 	static fromDecodedValue(decodedValue) {

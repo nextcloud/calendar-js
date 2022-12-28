@@ -354,7 +354,7 @@ export default class RecurrenceManager {
 	 * Gets an iterator over all recurrence
 	 *
 	 * @param {boolean} isNegative Whether or not to get EXDATES
-	 * @param {String} valueType Limit type of EXDATES
+	 * @param {string} valueType Limit type of EXDATES
 	 */
 	* getRecurrenceDateIterator(isNegative = false, valueType = null) {
 		for (const property of this._getPropertiesForRecurrenceDate(isNegative, valueType)) {
@@ -365,7 +365,7 @@ export default class RecurrenceManager {
 	/**
 	 *
 	 * @param {boolean} isNegative Whether or not to get EXDATES
-	 * @param {String} valueType Limit type of EXDATES
+	 * @param {string} valueType Limit type of EXDATES
 	 * @return {(DateTimeValue|PeriodValue)[]}
 	 */
 	listAllRecurrenceDates(isNegative = false, valueType = null) {
@@ -480,7 +480,7 @@ export default class RecurrenceManager {
 	 * Clears all recurrence-date information
 	 *
 	 * @param {boolean} isNegative Whether we are dealing with an EXDATE or RDATE
-	 * @param {String} valueType The type of RDATEs/EXDATEs to remove
+	 * @param {string} valueType The type of RDATEs/EXDATEs to remove
 	 */
 	clearAllRecurrenceDates(isNegative = false, valueType = null) {
 		this._modify()
@@ -737,7 +737,7 @@ export default class RecurrenceManager {
 	/**
 	 * Update the UID of all components in the recurrence set
 	 *
-	 * @param {String} newUID The new UID of the calendar-document
+	 * @param {string} newUID The new UID of the calendar-document
 	 */
 	updateUID(newUID) {
 		this._masterItem.updatePropertyWithValue('UID', newUID)

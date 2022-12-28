@@ -145,7 +145,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 	 *
 	 * @url https://tools.ietf.org/html/rfc7986#section-5.11
 	 *
-	 * @param {String} uri The URI of the conference system
+	 * @param {string} uri The URI of the conference system
 	 * @param {String=} label The label for the conference system
 	 * @param {String[]=} features The features of the conference system
 	 */
@@ -297,7 +297,7 @@ export default class EventComponent extends AbstractRecurringComponent {
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.2.7
  *
  * @name EventComponent#timeTransparency
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(EventComponent.prototype, {
 	name: 'timeTransparency',
@@ -312,7 +312,7 @@ advertiseSingleOccurrenceProperty(EventComponent.prototype, {
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.1.5
  *
  * @name EventComponent#description
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(EventComponent.prototype, 'description')
 
@@ -322,7 +322,7 @@ advertiseSingleOccurrenceProperty(EventComponent.prototype, 'description')
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.1.6
  *
  * @name EventComponent#geographicalPosition
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(EventComponent.prototype, {
 	name: 'geographicalPosition',
@@ -335,7 +335,7 @@ advertiseSingleOccurrenceProperty(EventComponent.prototype, {
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.1.7
  *
  * @name EventComponent#location
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(EventComponent.prototype, 'location')
 
@@ -387,7 +387,7 @@ advertiseSingleOccurrenceProperty(EventComponent.prototype, {
  *
  * @name EventComponent#addResource
  * @function
- * @param {String} resource
+ * @param {string} resource
  * @param {String=} lang
  */
 
@@ -398,7 +398,7 @@ advertiseSingleOccurrenceProperty(EventComponent.prototype, {
  *
  * @name EventComponent#removeResource
  * @function
- * @param {String} resource
+ * @param {string} resource
  * @param {String=} lang
  */
 

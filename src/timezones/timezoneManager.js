@@ -52,7 +52,7 @@ export class TimezoneManager {
 	/**
 	 * Gets a timezone for the given id
 	 *
-	 * @param {String} timezoneId The id of the timezone
+	 * @param {string} timezoneId The id of the timezone
 	 * @return {Timezone|null}
 	 */
 	getTimezoneForId(timezoneId) {
@@ -82,7 +82,7 @@ export class TimezoneManager {
 	/**
 	 * Checks if there is a timezone for the given id stored in this manager
 	 *
-	 * @param {String} timezoneId The id of the timezone
+	 * @param {string} timezoneId The id of the timezone
 	 * @return {boolean}
 	 */
 	hasTimezoneForId(timezoneId) {
@@ -92,7 +92,7 @@ export class TimezoneManager {
 	/**
 	 * Checks if the given timezone id is an alias
 	 *
-	 * @param {String} timezoneId The id of the timezone
+	 * @param {string} timezoneId The id of the timezone
 	 * @return {boolean}
 	 */
 	isAlias(timezoneId) {
@@ -149,8 +149,8 @@ export class TimezoneManager {
 	/**
 	 * Registers a timezone based on ics data
 	 *
-	 * @param {String} timezoneId The id of the timezone
-	 * @param {String} ics The iCalendar timezone definition
+	 * @param {string} timezoneId The id of the timezone
+	 * @param {string} ics The iCalendar timezone definition
 	 */
 	registerTimezoneFromICS(timezoneId, ics) {
 		const timezone = new Timezone(timezoneId, ics)
@@ -160,8 +160,8 @@ export class TimezoneManager {
 	/**
 	 * Registers a new timezone-alias
 	 *
-	 * @param {String} aliasName The timezone-id of the alias
-	 * @param {String} timezoneId The timezone-id to resolve the alias to
+	 * @param {string} aliasName The timezone-id of the alias
+	 * @param {string} timezoneId The timezone-id to resolve the alias to
 	 */
 	registerAlias(aliasName, timezoneId) {
 		this._aliases.set(aliasName, timezoneId)
@@ -170,7 +170,7 @@ export class TimezoneManager {
 	/**
 	 * Unregisters a timezone
 	 *
-	 * @param {String} timezoneId Unregisters a timezone by Id
+	 * @param {string} timezoneId Unregisters a timezone by Id
 	 */
 	unregisterTimezones(timezoneId) {
 		this._timezones.delete(timezoneId)
@@ -179,7 +179,7 @@ export class TimezoneManager {
 	/**
 	 * Unregisters a timezone-alias
 	 *
-	 * @param {String} aliasName The alias to unregister
+	 * @param {string} aliasName The alias to unregister
 	 */
 	unregisterAlias(aliasName) {
 		this._aliases.delete(aliasName)
@@ -214,7 +214,7 @@ export function getTimezoneManager() {
 
 /**
  *
- * @param {String} tzName Name of the timezone to check
+ * @param {string} tzName Name of the timezone to check
  * @return {boolean}
  */
 export function isOlsonTimezone(tzName) {

@@ -36,7 +36,7 @@ export default class JournalComponent extends AbstractRecurringComponent {
 	 *
 	 * @url https://tools.ietf.org/html/rfc5545#section-3.8.1.5
 	 *
-	 * @param {String} description The description text
+	 * @param {string} description The description text
 	 */
 	addDescription(description) {
 		this.addProperty(new TextProperty('DESCRIPTION', description))

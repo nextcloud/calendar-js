@@ -68,7 +68,7 @@ export default class AbstractParser {
 		/**
 		 * Gets the url that this icalendar file can be updated from
 		 *
-		 * @type {String}
+		 * @type {string}
 		 * @protected
 		 */
 		this._sourceURL = null
@@ -76,7 +76,7 @@ export default class AbstractParser {
 		/**
 		 * Gets the update interval if this icalendar file can be updated from a source
 		 *
-		 * @type {String}
+		 * @type {string}
 		 * @protected
 		 */
 		this._refreshInterval = null
@@ -84,7 +84,7 @@ export default class AbstractParser {
 		/**
 		 * Gets the default timezone of this calendar
 		 *
-		 * @type {String}
+		 * @type {string}
 		 * @protected
 		 */
 		this._calendarTimezone = null
@@ -146,7 +146,7 @@ export default class AbstractParser {
 	/**
 	 * Gets the default timezone of this calendar
 	 *
-	 * @return {String}
+	 * @return {string}
 	 */
 	getCalendarTimezone() {
 		return this._calendarTimezone
@@ -244,7 +244,7 @@ export default class AbstractParser {
 	/**
 	 * Gets an option provided
 	 *
-	 * @param {String} name The name of the option to get
+	 * @param {string} name The name of the option to get
 	 * @param {*} defaultValue The default value to return if option not provided
 	 * @return {any}
 	 * @protected

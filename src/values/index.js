@@ -33,7 +33,7 @@ import { lc } from '../helpers/stringHelper.js'
 
 /**
  *
- * @param {String} icaltype The icaltype to get a Value constructor for
+ * @param {string} icaltype The icaltype to get a Value constructor for
  * @return {RecurValue|PeriodValue|BinaryValue|DurationValue|UTCOffsetValue|DateTimeValue}
  */
 export function getConstructorForICALType(icaltype) {

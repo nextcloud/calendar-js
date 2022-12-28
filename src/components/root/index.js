@@ -32,7 +32,7 @@ import { uc } from '../../helpers/stringHelper.js'
  * This will only return a constructor for components,
  * that can be used in the root of a calendar-document
  *
- * @param {String} compName Name of the component to get constructor for
+ * @param {string} compName Name of the component to get constructor for
  * @return {AbstractComponent|ToDoComponent|JournalComponent|FreeBusyComponent|TimezoneComponent|EventComponent}
  */
 export function getConstructorForComponentName(compName) {

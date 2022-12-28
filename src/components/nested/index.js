@@ -28,7 +28,7 @@ import { uc } from '../../helpers/stringHelper.js'
  * This will only return a constructor for components,
  * that can be nested inside other ones
  *
- * @param {String} compName - Component name to get default constructor for
+ * @param {string} compName - Component name to get default constructor for
  * @return {AlarmComponent|AbstractComponent}
  */
 export function getConstructorForComponentName(compName) {

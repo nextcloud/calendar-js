@@ -28,7 +28,7 @@ const GLOBAL_CONFIG = new Map()
 /**
  * Sets a new config key
  *
- * @param {String} key The config-key to set
+ * @param {string} key The config-key to set
  * @param {*} value The value to set for given config-key
  */
 export function setConfig(key, value) {
@@ -38,7 +38,7 @@ export function setConfig(key, value) {
 /**
  * Checks if a config for a certain key is present
  *
- * @param {String} key The config-key to check
+ * @param {string} key The config-key to check
  * @return {boolean}
  */
 export function hasConfig(key) {
@@ -48,7 +48,7 @@ export function hasConfig(key) {
 /**
  * gets value of a config key
  *
- * @param {String} key The config-key to get
+ * @param {string} key The config-key to get
  * @param {*} defaultValue Default value of config does not exist
  * @return {*}
  */
@@ -59,7 +59,7 @@ export function getConfig(key, defaultValue) {
 /**
  * deletes a config key
  *
- * @param {String} key The config-key to delete
+ * @param {string} key The config-key to delete
  */
 export function deleteConfig(key) {
 	GLOBAL_CONFIG.delete(key)
