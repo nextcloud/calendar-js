@@ -43,7 +43,7 @@ export default class ParserManager {
 	/**
 	 * Get a list of all supported file-types
 	 *
-	 * @returns {String[]}
+	 * @return {String[]}
 	 */
 	getAllSupportedFileTypes() {
 		return this._parsers.reduce(
@@ -62,7 +62,7 @@ export default class ParserManager {
 	 * @param {Boolean=} options.preserveMethod Whether or not to preserve the iCalendar method (defaults to false)
 	 * @param {Boolean=} options.processFreeBusy Whether or not to process VFreeBusy components (defaults to false)
 	 *
-	 * @returns {AbstractParser}
+	 * @return {AbstractParser}
 	 */
 	getParserForFileType(fileType, options) {
 		const Parser = this._parsers.find(
@@ -89,7 +89,7 @@ export default class ParserManager {
 /**
  * Gets an instance of the ParserManager with all default parsers
  *
- * @returns {ParserManager}
+ * @return {ParserManager}
  */
 export function getParserManager() {
 	const parserManager = new ParserManager()

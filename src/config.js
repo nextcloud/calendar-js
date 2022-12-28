@@ -39,7 +39,7 @@ export function setConfig(key, value) {
  * Checks if a config for a certain key is present
  *
  * @param {String} key The config-key to check
- * @returns {boolean}
+ * @return {boolean}
  */
 export function hasConfig(key) {
 	return GLOBAL_CONFIG.has(key)
@@ -50,7 +50,7 @@ export function hasConfig(key) {
  *
  * @param {String} key The config-key to get
  * @param {*} defaultValue Default value of config does not exist
- * @returns {*}
+ * @return {*}
  */
 export function getConfig(key, defaultValue) {
 	return GLOBAL_CONFIG.get(key) || defaultValue

@@ -37,7 +37,7 @@ export default class FreeBusyComponent extends AbstractComponent {
 	/**
 	 * Gets the start-date of the FreeBusy component
 	 *
-	 * @returns {DateTimeValue}
+	 * @return {DateTimeValue}
 	 */
 	get startDate() {
 		return this.getFirstPropertyFirstValue('DTSTART')
@@ -56,7 +56,7 @@ export default class FreeBusyComponent extends AbstractComponent {
 	/**
 	 * Gets the end-date of the FreeBusy component
 	 *
-	 * @returns {DateTimeValue}
+	 * @return {DateTimeValue}
 	 */
 	get endDate() {
 		return this.getFirstPropertyFirstValue('DTEND')
@@ -135,7 +135,7 @@ advertiseSingleOccurrenceProperty(FreeBusyComponent.prototype, 'uid')
  *
  * @name FreeBusyComponent#getAttendeeIterator
  * @function
- * @returns {IterableIterator<AttendeeProperty>}
+ * @return {IterableIterator<AttendeeProperty>}
  */
 
 /**
@@ -145,7 +145,7 @@ advertiseSingleOccurrenceProperty(FreeBusyComponent.prototype, 'uid')
  *
  * @name FreeBusyComponent#getAttendeeList
  * @function
- * @returns {AttendeeProperty[]}
+ * @return {AttendeeProperty[]}
  */
 
 /**

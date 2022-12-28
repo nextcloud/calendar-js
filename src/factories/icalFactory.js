@@ -28,7 +28,7 @@ import ICAL from 'ical.js'
  * creates a new ICAL.Component object
  *
  * @param {string} componentName The name of the component to create
- * @returns {ICAL.Component}
+ * @return {ICAL.Component}
  */
 export function createComponent(componentName) {
 	return new ICAL.Component(lc(componentName))
@@ -38,7 +38,7 @@ export function createComponent(componentName) {
  * creates a new ICAL.Property object
  *
  * @param {string} propertyName The name of the property to create
- * @returns {ICAL.Property}
+ * @return {ICAL.Property}
  */
 export function createProperty(propertyName) {
 	return new ICAL.Property(lc(propertyName))
@@ -48,7 +48,7 @@ export function createProperty(propertyName) {
  * creates a new calendar component
  *
  * @param {String=} method Name of the method to include in VCALENDAR component
- * @returns {ICAL.Component}
+ * @return {ICAL.Component}
  */
 export function createCalendarComponent(method = null) {
 	const calendarComp = createComponent('VCALENDAR')

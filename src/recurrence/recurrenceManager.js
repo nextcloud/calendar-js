@@ -88,7 +88,7 @@ export default class RecurrenceManager {
 
 	/**
 	 *
-	 * @returns {AbstractRecurringComponent}
+	 * @return {AbstractRecurringComponent}
 	 */
 	get masterItem() {
 		return this._masterItem
@@ -112,7 +112,7 @@ export default class RecurrenceManager {
 	/**
 	 * Gets a list of all registered recurrence-exceptions of this calendar-document
 	 *
-	 * @returns {AbstractRecurringComponent[]}
+	 * @return {AbstractRecurringComponent[]}
 	 */
 	getRecurrenceExceptionList() {
 		return Array.from(this.getRecurrenceExceptionIterator())
@@ -122,7 +122,7 @@ export default class RecurrenceManager {
 	 * Checks if there is a recurrence Exception for a given recurrenceId
 	 *
 	 * @param {DateTimeValue|Number} recurrenceId The recurrenceId to check
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	hasRecurrenceExceptionForId(recurrenceId) {
 		if (recurrenceId instanceof DateTimeValue) {
@@ -138,7 +138,7 @@ export default class RecurrenceManager {
 	 * Gets the recurrence exception for a given recurrence Id
 	 *
 	 * @param {DateTimeValue|Number} recurrenceId The recurrenceId to get
-	 * @returns {AbstractRecurringComponent|null}
+	 * @return {AbstractRecurringComponent|null}
 	 */
 	getRecurrenceException(recurrenceId) {
 		if (recurrenceId instanceof DateTimeValue) {
@@ -154,7 +154,7 @@ export default class RecurrenceManager {
 	 * Check if there is a recurrence-exception with a range for a given recurrence-id
 	 *
 	 * @param {DateTimeValue|Number} recurrenceId The recurrenceId to check
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	hasRangeRecurrenceExceptionForId(recurrenceId) {
 		if (recurrenceId instanceof DateTimeValue) {
@@ -174,7 +174,7 @@ export default class RecurrenceManager {
 	 * Get recurrence-exception with range that's affecting the given recurrence-id
 	 *
 	 * @param {DateTimeValue|Number} recurrenceId The recurrenceId to get
-	 * @returns {AbstractRecurringComponent|null}
+	 * @return {AbstractRecurringComponent|null}
 	 */
 	getRangeRecurrenceExceptionForId(recurrenceId) {
 		if (recurrenceId instanceof DateTimeValue) {
@@ -202,7 +202,7 @@ export default class RecurrenceManager {
 	 * Mostly needed to handle recurrence-exceptions with range
 	 *
 	 * @param {DateTimeValue|Number} recurrenceId The recurrenceId to get
-	 * @returns {DurationValue|null}
+	 * @return {DurationValue|null}
 	 */
 	getRangeRecurrenceExceptionDiff(recurrenceId) {
 		if (recurrenceId instanceof DateTimeValue) {
@@ -284,7 +284,7 @@ export default class RecurrenceManager {
 	/**
 	 *
 	 * @param {AbstractRecurringComponent} recurrenceExceptionItem Object to get key from
-	 * @returns {Number}
+	 * @return {Number}
 	 * @private
 	 */
 	_getRecurrenceIdKey(recurrenceExceptionItem) {
@@ -305,7 +305,7 @@ export default class RecurrenceManager {
 	/**
 	 * Gets a list of all recurrence rules
 	 *
-	 * @returns {RecurValue[]}
+	 * @return {RecurValue[]}
 	 */
 	getRecurrenceRuleList() {
 		return Array.from(this.getRecurrenceRuleIterator())
@@ -366,7 +366,7 @@ export default class RecurrenceManager {
 	 *
 	 * @param {boolean} isNegative Whether or not to get EXDATES
 	 * @param {String} valueType Limit type of EXDATES
-	 * @returns {(DateTimeValue|PeriodValue)[]}
+	 * @return {(DateTimeValue|PeriodValue)[]}
 	 */
 	listAllRecurrenceDates(isNegative = false, valueType = null) {
 		return Array.from(this.getRecurrenceDateIterator(isNegative, valueType))
@@ -410,7 +410,7 @@ export default class RecurrenceManager {
 	 *
 	 * @param {Boolean} isNegative Whether we are dealing with an EXDATE or RDATE
 	 * @param {DateTimeValue} recurrenceId Recurrence-Id to check
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	hasRecurrenceDate(isNegative = false, recurrenceId) {
 		for (let value of this.getRecurrenceDateIterator(isNegative)) {
@@ -430,7 +430,7 @@ export default class RecurrenceManager {
 	 *
 	 * @param {Boolean} isNegative Whether we are dealing with an EXDATE or RDATE
 	 * @param {DateTimeValue} recurrenceId Recurrence-Id to get
-	 * @returns {null|DateTimeValue|PeriodValue}
+	 * @return {null|DateTimeValue|PeriodValue}
 	 */
 	getRecurrenceDate(isNegative = false, recurrenceId) {
 		for (const value of this.getRecurrenceDateIterator(isNegative)) {
@@ -495,7 +495,7 @@ export default class RecurrenceManager {
 	 * Gets the property name for recurrence dates based on the isNegative boolean
 	 *
 	 * @param {boolean} isNegative Whether we are dealing with an EXDATE or RDATE
-	 * @returns {string}
+	 * @return {string}
 	 * @private
 	 */
 	_getPropertyNameByIsNegative(isNegative) {
@@ -508,7 +508,7 @@ export default class RecurrenceManager {
 	 * Gets the value type based on the provided value
 	 *
 	 * @param {PeriodValue|DateTimeValue} value The value to get type of property from
-	 * @returns {string}
+	 * @return {string}
 	 * @private
 	 */
 	_getValueTypeByValue(value) {
@@ -549,14 +549,14 @@ export default class RecurrenceManager {
 	/**
 	 * Checks if the entire set of recurrence rules is finite
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isFinite() {
 		return this.getRecurrenceRuleList().every((rule) => rule.isFinite())
 	}
 
 	/**
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isEmptyRecurrenceSet() {
 		return this._getRecurExpansionObject().next() === undefined
@@ -566,7 +566,7 @@ export default class RecurrenceManager {
 	 * Gets the occurrence at the exact given recurrenceId
 	 *
 	 * @param {DateTimeValue} recurrenceId RecurrenceId to get
-	 * @returns {AbstractRecurringComponent|null}
+	 * @return {AbstractRecurringComponent|null}
 	 */
 	getOccurrenceAtExactly(recurrenceId) {
 		if (!this.masterItem.isRecurring()) {
@@ -608,7 +608,7 @@ export default class RecurrenceManager {
 	 * accepted behavior.
 	 *
 	 * @param {DateTimeValue} recurrenceId RecurrenceId to get
-	 * @returns {AbstractRecurringComponent}
+	 * @return {AbstractRecurringComponent}
 	 */
 	getClosestOccurrence(recurrenceId) {
 		if (!this.masterItem.isRecurring()) {
@@ -728,7 +728,7 @@ export default class RecurrenceManager {
 	 *
 	 * @param {DateTimeValue} start Start of time-range
 	 * @param {DateTimeValue} end End of time-range
-	 * @returns {(*|null)[]}
+	 * @return {(*|null)[]}
 	 */
 	getAllOccurrencesBetween(start, end) {
 		return Array.from(this.getAllOccurrencesBetweenIterator(start, end))
@@ -795,7 +795,7 @@ export default class RecurrenceManager {
 	 * is actually a valid recurrence of this calendar-document
 	 *
 	 * @param {DateTimeValue} recurrenceId Recurrence-Id to get
-	 * @returns {AbstractRecurringComponent}
+	 * @return {AbstractRecurringComponent}
 	 * @private
 	 */
 	_getOccurrenceAtRecurrenceId(recurrenceId) {
@@ -842,7 +842,7 @@ export default class RecurrenceManager {
 	 * Inspired by how ICAL.JS RecurExpansion
 	 * serialises and unserialises its state
 	 *
-	 * @returns {ICAL.RecurExpansion}
+	 * @return {ICAL.RecurExpansion}
 	 * @private
 	 */
 	_getRecurExpansionObject() {

@@ -99,7 +99,7 @@ export default class CalendarComponent extends AbstractComponent {
 	 * Converts this calendar component into text/calendar
 	 *
 	 * @param {boolean} cleanUpTimezones Whether or not to clean up timezone data
-	 * @returns {string}
+	 * @return {string}
 	 */
 	toICS(cleanUpTimezones = true) {
 		for (const vObject of this.getVObjectIterator()) {
@@ -117,7 +117,7 @@ export default class CalendarComponent extends AbstractComponent {
 	 * Creates a new empty calendar-component
 	 *
 	 * @param {[String][]=} additionalProps Additional props to add to empty calendar-document
-	 * @returns {CalendarComponent}
+	 * @return {CalendarComponent}
 	 */
 	static fromEmpty(additionalProps = []) {
 		return new this('VCALENDAR', [
@@ -131,7 +131,7 @@ export default class CalendarComponent extends AbstractComponent {
 	 * Creates a new calendar-component with a method
 	 *
 	 * @param {string} method The method for the calendar-document
-	 * @returns {CalendarComponent}
+	 * @return {CalendarComponent}
 	 */
 	static fromMethod(method) {
 		return this.fromEmpty([['method', method]])

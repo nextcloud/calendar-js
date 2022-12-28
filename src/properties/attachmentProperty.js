@@ -33,7 +33,7 @@ export default class AttachmentProperty extends Property {
 	/**
 	 * Gets the format-type of this attachment
 	 *
-	 * @returns {String}
+	 * @return {String}
 	 */
 	get formatType() {
 		return this.getParameterFirstValue('FMTTYPE')
@@ -51,7 +51,7 @@ export default class AttachmentProperty extends Property {
 	/**
 	 * Gets the uri of this attachment
 	 *
-	 * @returns {String|null}
+	 * @return {String|null}
 	 */
 	get uri() {
 		if (this._value instanceof BinaryValue) {
@@ -73,7 +73,7 @@ export default class AttachmentProperty extends Property {
 	/**
 	 * Gets the encoding of this attachment
 	 *
-	 * @returns {string|null}
+	 * @return {string|null}
 	 */
 	get encoding() {
 		if (this._value instanceof BinaryValue) {
@@ -86,7 +86,7 @@ export default class AttachmentProperty extends Property {
 	/**
 	 * Gets the data stored in this attachment
 	 *
-	 * @returns {String|null}
+	 * @return {String|null}
 	 */
 	get data() {
 		if (this._value instanceof BinaryValue) {
@@ -126,7 +126,7 @@ export default class AttachmentProperty extends Property {
 	 *
 	 * @param {String} data The data of the attachment
 	 * @param {String=} formatType The mime-type of the data
-	 * @returns {AttachmentProperty}
+	 * @return {AttachmentProperty}
 	 */
 	static fromData(data, formatType = null) {
 		const binaryValue = BinaryValue.fromDecodedValue(data)
@@ -144,7 +144,7 @@ export default class AttachmentProperty extends Property {
 	 *
 	 * @param {String} uri The URI for the attachment
 	 * @param {String=} formatType The mime-type of the uri
-	 * @returns {AttachmentProperty}
+	 * @return {AttachmentProperty}
 	 */
 	static fromLink(uri, formatType = null) {
 		const property = new AttachmentProperty('ATTACH', uri)

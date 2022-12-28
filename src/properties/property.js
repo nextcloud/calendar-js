@@ -100,7 +100,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	 * Get property name
 	 *
 	 * @readonly
-	 * @returns {String}
+	 * @return {String}
 	 */
 	get name() {
 		return this._name
@@ -109,7 +109,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Get parameter value
 	 *
-	 * @returns {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null}
+	 * @return {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null}
 	 */
 	get value() {
 		return this._value
@@ -133,7 +133,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Gets the root of this property
 	 *
-	 * @returns {CalendarComponent|null}
+	 * @return {CalendarComponent|null}
 	 */
 	get root() {
 		return this._root
@@ -153,7 +153,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Gets the direct parent element of this property
 	 *
-	 * @returns {AbstractComponent}
+	 * @return {AbstractComponent}
 	 */
 	get parent() {
 		return this._parent
@@ -173,7 +173,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Gets the first value of this property
 	 *
-	 * @returns {null|String|Number|AbstractValue}
+	 * @return {null|String|Number|AbstractValue}
 	 */
 	getFirstValue() {
 		if (!this.isMultiValue()) {
@@ -216,7 +216,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	 * Checks if a value is inside this multi-value property
 	 *
 	 * @param {String|AbstractValue} value Value to check for
-	 * @returns {Boolean}
+	 * @return {Boolean}
 	 */
 	hasValue(value) {
 		if (!this.isMultiValue()) {
@@ -257,7 +257,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	 * Gets a parameter on this property by its name
 	 *
 	 * @param {String} parameterName Name of the parameter to get
-	 * @returns {Parameter}
+	 * @return {Parameter}
 	 */
 	getParameter(parameterName) {
 		return this._parameters.get(uc(parameterName))
@@ -274,7 +274,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	 * Get first value of a parameter
 	 *
 	 * @param {String} parameterName Name of the parameter
-	 * @returns {null|String}
+	 * @return {null|String}
 	 */
 	getParameterFirstValue(parameterName) {
 		const parameter = this.getParameter(parameterName)
@@ -293,7 +293,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	 * Returns whether a parameter exists on this property
 	 *
 	 * @param {String} parameterName Name of the parameter
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	hasParameter(parameterName) {
 		return this._parameters.has(uc(parameterName))
@@ -332,7 +332,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Returns whether or not the value is a multivalue
 	 *
-	 * @returns {Boolean}
+	 * @return {Boolean}
 	 */
 	isMultiValue() {
 		return Array.isArray(this._value)
@@ -341,7 +341,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Returns whether or not this valus is decorated
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isDecoratedValue() {
 		if (this.isMultiValue()) {
@@ -390,7 +390,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Creates a copy of this parameter
 	 *
-	 * @returns {Property}
+	 * @return {Property}
 	 */
 	clone() {
 		const parameters = []
@@ -404,7 +404,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Copies the values of this property
 	 *
-	 * @returns {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null}
+	 * @return {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null}
 	 * @protected
 	 */
 	_cloneValue() {
@@ -446,7 +446,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	 * @param {ICAL.Property} icalProperty The ical.js property to initialise from
 	 * @param {CalendarComponent=} root The root of the calendar-document
 	 * @param {AbstractComponent=} parent The parent element of this property
-	 * @returns {Property}
+	 * @return {Property}
 	 */
 	static fromICALJs(icalProperty, root = null, parent = null) {
 		if (!(icalProperty instanceof ICAL.Property)) {
@@ -486,7 +486,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Returns an ICAL.js property based on this Property
 	 *
-	 * @returns {ICAL.Property}
+	 * @return {ICAL.Property}
 	 */
 	toICALJs() {
 		const icalProperty = createProperty(lc(this.name))

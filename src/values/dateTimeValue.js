@@ -37,7 +37,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Gets the year of the stored date-time-value
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get year() {
 		return this._innerValue.year
@@ -57,7 +57,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Gets the month of the stored date-time-value
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get month() {
 		return this._innerValue.month
@@ -81,7 +81,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Gets the day of the stored date-time-value
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get day() {
 		return this._innerValue.day
@@ -106,7 +106,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Gets the hour of the stored date-time-value
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get hour() {
 		return this._innerValue.hour
@@ -131,7 +131,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Gets the minute of the stored date-time-value
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get minute() {
 		return this._innerValue.minute
@@ -156,7 +156,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Gets the second of the stored date-time-value
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get second() {
 		return this._innerValue.second
@@ -181,7 +181,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Gets the timezone of this date-time-value
 	 *
-	 * @returns {String|null}
+	 * @return {String|null}
 	 */
 	get timezoneId() {
 		// If zone.tzid is set and it's not 'floating' nor 'UTC', then it's a proper
@@ -204,7 +204,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Gets whether this date-time-value is a date or date-time
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	get isDate() {
 		return this._innerValue.isDate
@@ -230,7 +230,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Gets the unix-time
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get unixTime() {
 		return this._innerValue.toUnixTime()
@@ -239,7 +239,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * returns vanilla javascript date object
 	 *
-	 * @returns {Date}
+	 * @return {Date}
 	 */
 	get jsDate() {
 		return this._innerValue.toJSDate()
@@ -258,7 +258,7 @@ export default class DateTimeValue extends AbstractValue {
 	 * Subtract another date excluding timezones
 	 *
 	 * @param {DateTimeValue} other The date-time value to subtract
-	 * @returns {DurationValue}
+	 * @return {DurationValue}
 	 */
 	subtractDateWithoutTimezone(other) {
 		const icalDuration = this._innerValue.subtractDate(other.toICALJs())
@@ -269,7 +269,7 @@ export default class DateTimeValue extends AbstractValue {
 	 * Subtract another date, taking timezones into account
 	 *
 	 * @param {DateTimeValue} other The date-time value to subtract
-	 * @returns {DurationValue}
+	 * @return {DurationValue}
 	 */
 	subtractDateWithTimezone(other) {
 		const icalDuration = this._innerValue.subtractDateTz(other.toICALJs())
@@ -280,7 +280,7 @@ export default class DateTimeValue extends AbstractValue {
 	 * Compares this DateTimeValue object with another one
 	 *
 	 * @param {DateTimeValue} other The date-time to compare to
-	 * @returns {Number} -1, 0 or 1 for less/equal/greater
+	 * @return {Number} -1, 0 or 1 for less/equal/greater
 	 */
 	compare(other) {
 		return this._innerValue.compare(other.toICALJs())
@@ -291,7 +291,7 @@ export default class DateTimeValue extends AbstractValue {
 	 *
 	 * @param {DateTimeValue} other The date-time to compare to
 	 * @param {Timezone} timezone The timezone to compare in
-	 * @returns {Number} -1, 0 or 1 for less/equal/greater
+	 * @return {Number} -1, 0 or 1 for less/equal/greater
 	 */
 	compareDateOnlyInGivenTimezone(other, timezone) {
 		return this._innerValue.compareDateOnlyTz(other.toICALJs(), timezone.toICALTimezone())
@@ -301,7 +301,7 @@ export default class DateTimeValue extends AbstractValue {
 	 * Returns a clone of this object which was converted to a different timezone
 	 *
 	 * @param {Timezone} timezone TimezoneId to convert to
-	 * @returns {DateTimeValue}
+	 * @return {DateTimeValue}
 	 */
 	getInTimezone(timezone) {
 		const clonedICALTime = this._innerValue.convertToZone(timezone.toICALTimezone())
@@ -311,7 +311,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Get the inner ICAL.Timezone
 	 *
-	 * @returns {ICAL.Timezone}
+	 * @return {ICAL.Timezone}
 	 * @package
 	 */
 	getICALTimezone() {
@@ -322,7 +322,7 @@ export default class DateTimeValue extends AbstractValue {
 	 * Returns a clone of this object which was converted to a different timezone
 	 *
 	 * @param {ICAL.Timezone} timezone TimezoneId to convert to
-	 * @returns {DateTimeValue}
+	 * @return {DateTimeValue}
 	 * @package
 	 */
 	getInICALTimezone(timezone) {
@@ -333,7 +333,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Returns a clone of this object which was converted to UTC
 	 *
-	 * @returns {DateTimeValue}
+	 * @return {DateTimeValue}
 	 */
 	getInUTC() {
 		const clonedICALTime = this._innerValue.convertToZone(ICAL.Timezone.utcTimezone)
@@ -381,7 +381,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Calculates the UTC offset of the date-time-value in its timezone
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	utcOffset() {
 		return this._innerValue.utcOffset()
@@ -390,7 +390,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Check if this is an event with floating time
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isFloatingTime() {
 		return this._innerValue.zone.tzid === 'floating'
@@ -399,7 +399,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * clones this value
 	 *
-	 * @returns {DateTimeValue}
+	 * @return {DateTimeValue}
 	 */
 	clone() {
 		return DateTimeValue.fromICALJs(this._innerValue.clone())
@@ -409,7 +409,7 @@ export default class DateTimeValue extends AbstractValue {
 	 * Create a new DateTimeValue object from an ICAL.Time object
 	 *
 	 * @param {ICAL.Time} icalValue The ical.js Date value to initialise from
-	 * @returns {DateTimeValue}
+	 * @return {DateTimeValue}
 	 */
 	static fromICALJs(icalValue) {
 		return new DateTimeValue(icalValue)
@@ -420,7 +420,7 @@ export default class DateTimeValue extends AbstractValue {
 	 *
 	 * @param {Date} jsDate The JavaScript date to initialise from
 	 * @param {Boolean=} useUTC Whether or not to treat it as UTC
-	 * @returns {DateTimeValue}
+	 * @return {DateTimeValue}
 	 */
 	static fromJSDate(jsDate, useUTC = false) {
 		const icalValue = ICAL.Time.fromJSDate(jsDate, useUTC)
@@ -439,7 +439,7 @@ export default class DateTimeValue extends AbstractValue {
 	 * @param {Number=} data.second Amount of seconds to set
 	 * @param {Boolean=} data.isDate Whether this is a date or date-time
 	 * @param {Timezone=} timezone The timezone of the DateTimeValue
-	 * @returns {DateTimeValue}
+	 * @return {DateTimeValue}
 	 */
 	static fromData(data, timezone) {
 		const icalValue = ICAL.Time.fromData(data, timezone

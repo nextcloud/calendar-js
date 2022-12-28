@@ -67,7 +67,7 @@ export default class PeriodValue extends AbstractValue {
 	/**
 	 * Gets the start of the period-value
 	 *
-	 * @returns {DateTimeValue}
+	 * @return {DateTimeValue}
 	 */
 	get start() {
 		return this._start
@@ -88,7 +88,7 @@ export default class PeriodValue extends AbstractValue {
 	/**
 	 * Gets the end of the period-value
 	 *
-	 * @returns {DateTimeValue}
+	 * @return {DateTimeValue}
 	 */
 	get end() {
 		if (!this._end) {
@@ -127,7 +127,7 @@ export default class PeriodValue extends AbstractValue {
 	 * The value is automatically locked.
 	 * If you want to edit the value, clone it and it as new duration
 	 *
-	 * @returns {DurationValue}
+	 * @return {DurationValue}
 	 */
 	get duration() {
 		if (!this._duration) {
@@ -194,7 +194,7 @@ export default class PeriodValue extends AbstractValue {
 	/**
 	 * clones this value
 	 *
-	 * @returns {PeriodValue}
+	 * @return {PeriodValue}
 	 */
 	clone() {
 		return PeriodValue.fromICALJs(this._innerValue.clone())
@@ -204,7 +204,7 @@ export default class PeriodValue extends AbstractValue {
 	 * Create a new PeriodValue object from a ICAL.Period object
 	 *
 	 * @param {ICAL.Period} icalValue The ical.js period value to initialise from
-	 * @returns {PeriodValue}
+	 * @return {PeriodValue}
 	 */
 	static fromICALJs(icalValue) {
 		return new PeriodValue(icalValue)
@@ -216,7 +216,7 @@ export default class PeriodValue extends AbstractValue {
 	 * @param {Object} data The destructuring object
 	 * @param {DateTimeValue} data.start The start of the period
 	 * @param {DateTimeValue} data.end The end of the period
-	 * @returns {PeriodValue}
+	 * @return {PeriodValue}
 	 */
 	static fromDataWithEnd(data) {
 		const icalPeriod = ICAL.Period.fromData({
@@ -232,7 +232,7 @@ export default class PeriodValue extends AbstractValue {
 	 * @param {Object} data The destructuring object
 	 * @param {DateTimeValue} data.start The start of the period
 	 * @param {DurationValue} data.duration The duration of the period
-	 * @returns {PeriodValue}
+	 * @return {PeriodValue}
 	 */
 	static fromDataWithDuration(data) {
 		const icalPeriod = ICAL.Period.fromData({

@@ -39,7 +39,7 @@ export default class ToDoComponent extends AbstractRecurringComponent {
 	/**
 	 * Returns whether this event is an all-day event
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isAllDay() {
 		const propertiesToCheck = ['DTSTART', 'DUE']
@@ -58,7 +58,7 @@ export default class ToDoComponent extends AbstractRecurringComponent {
 	/**
 	 * Checks whether it's possible to switch from date-time to date or vise-versa
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	canModifyAllDay() {
 		if (!this.hasProperty('dtstart') && !this.hasProperty('due')) {
@@ -78,7 +78,7 @@ export default class ToDoComponent extends AbstractRecurringComponent {
 	 * If there is neither a due-date nor a combination
 	 * of start-date and duration, we just return null
 	 *
-	 * @returns {DateTimeValue|null}
+	 * @return {DateTimeValue|null}
 	 */
 	get endDate() {
 		if (this.hasProperty('due')) {
@@ -142,7 +142,7 @@ export default class ToDoComponent extends AbstractRecurringComponent {
 	 *
 	 * @param {DateTimeValue} start Start of time-range to check
 	 * @param {DateTimeValue} end End of time-range to check
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isInTimeFrame(start, end) {
 		if (!this.hasProperty('dtstart') && !this.hasProperty('due')) {
@@ -159,7 +159,7 @@ export default class ToDoComponent extends AbstractRecurringComponent {
 	/**
 	 * Gets the geographical position property
 	 *
-	 * @returns {GeoProperty}
+	 * @return {GeoProperty}
 	 */
 	get geographicalPosition() {
 		return this.getFirstProperty('GEO')
@@ -289,7 +289,7 @@ advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
  * @name ToDoComponent#getResourceIterator
  * @function
  * @param {String=} lang
- * @returns {IterableIterator<String>}
+ * @return {IterableIterator<String>}
  */
 
 /**
@@ -302,7 +302,7 @@ advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
  * @name ToDoComponent#getResourceList
  * @function
  * @param {String=} lang
- * @returns {String[]}
+ * @return {String[]}
  */
 
 /**
@@ -348,7 +348,7 @@ advertiseMultiValueStringPropertySeparatedByLang(ToDoComponent.prototype, {
  *
  * @name ToDoComponent#getConferenceIterator
  * @function
- * @returns {IterableIterator<ConferenceProperty>}
+ * @return {IterableIterator<ConferenceProperty>}
  */
 
 /**
@@ -358,7 +358,7 @@ advertiseMultiValueStringPropertySeparatedByLang(ToDoComponent.prototype, {
  *
  * @name ToDoComponent#getConferenceList
  * @function
- * @returns {ConferenceProperty[]}
+ * @return {ConferenceProperty[]}
  */
 
 /**

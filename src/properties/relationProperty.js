@@ -32,7 +32,7 @@ export default class RelationProperty extends Property {
 	/**
 	 * Get's the relation-type of this related-to property
 	 *
-	 * @returns {String}
+	 * @return {String}
 	 */
 	get relationType() {
 		const allowed = ['PARENT', 'CHILD', 'SIBLING']
@@ -62,7 +62,7 @@ export default class RelationProperty extends Property {
 	/**
 	 * Gets Id of related object
 	 *
-	 * @returns {String}
+	 * @return {String}
 	 */
 	get relatedId() {
 		return this.value
@@ -82,7 +82,7 @@ export default class RelationProperty extends Property {
 	 *
 	 * @param {String} relType The type of the relation (e.g. SIBLING, CHILD)
 	 * @param {String} relId The Id of the related document
-	 * @returns {RelationProperty}
+	 * @return {RelationProperty}
 	 */
 	static fromRelTypeAndId(relType, relId) {
 		return new RelationProperty('RELATED-TO', relId, [['RELTYPE', relType]])

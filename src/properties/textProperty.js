@@ -30,7 +30,7 @@ export default class TextProperty extends Property {
 	/**
 	 * Gets the alternate text
 	 *
-	 * @returns {String}
+	 * @return {String}
 	 */
 	get alternateText() {
 		return this.getParameterFirstValue('ALTREP')
@@ -48,7 +48,7 @@ export default class TextProperty extends Property {
 	/**
 	 * Gets language of this property
 	 *
-	 * @returns {String}
+	 * @return {String}
 	 */
 	get language() {
 		return this.getParameterFirstValue('LANGUAGE')

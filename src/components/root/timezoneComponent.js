@@ -40,7 +40,7 @@ export default class TimezoneComponent extends AbstractComponent {
 	/**
 	 * Returns a calendar-js Timezone object
 	 *
-	 * @returns {Timezone}
+	 * @return {Timezone}
 	 */
 	toTimezone() {
 		return new Timezone(this.toICALJs())

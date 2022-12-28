@@ -93,7 +93,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Get the component's name
 	 *
-	 * @returns {String}
+	 * @return {String}
 	 */
 	get name() {
 		return this._name
@@ -102,7 +102,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Gets the root of this calendar-document
 	 *
-	 * @returns {CalendarComponent}
+	 * @return {CalendarComponent}
 	 */
 	get root() {
 		return this._root
@@ -130,7 +130,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Gets the parent component
 	 *
-	 * @returns {AbstractComponent}
+	 * @return {AbstractComponent}
 	 */
 	get parent() {
 		return this._parent
@@ -150,7 +150,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * Gets the first property that matches the given propertyName
 	 *
 	 * @param {String} propertyName Name of the property to get
-	 * @returns {Property|null}
+	 * @return {Property|null}
 	 */
 	getFirstProperty(propertyName) {
 		if (!this._properties.has(uc(propertyName))) {
@@ -164,7 +164,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * Gets the first value of the first property matching that name
 	 *
 	 * @param {String} propertyName Name of the property to get first value of
-	 * @returns {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null}
+	 * @return {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null}
 	 */
 	getFirstPropertyFirstValue(propertyName) {
 		const property = this.getFirstProperty(propertyName)
@@ -237,7 +237,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 *
 	 * @param {String} propertyName The name of the property
 	 * @param {String|null} lang The lang to query
-	 * @returns {Property|null}
+	 * @return {Property|null}
 	 * @private
 	 */
 	_getFirstOfPropertyByLang(propertyName, lang) {
@@ -249,7 +249,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * Adds a property
 	 *
 	 * @param {Property} property The property to add
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	addProperty(property) {
 		this._modify()
@@ -279,7 +279,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * Checks if this component has a property of the given name
 	 *
 	 * @param {String} propertyName The name of the property
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	hasProperty(propertyName) {
 		return this._properties.has(uc(propertyName))
@@ -289,7 +289,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * Removes the given property from this component
 	 *
 	 * @param {Property} property The property to delete
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	deleteProperty(property) {
 		this._modify()
@@ -319,7 +319,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * Removes all properties of a given name
 	 *
 	 * @param {String} propertyName The name of the property
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	deleteAllProperties(propertyName) {
 		this._modify()
@@ -330,7 +330,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * Gets the first component of a given name
 	 *
 	 * @param {String} componentName The name of the component
-	 * @returns {AbstractComponent|null}
+	 * @return {AbstractComponent|null}
 	 */
 	getFirstComponent(componentName) {
 		if (!this.hasComponent(componentName)) {
@@ -366,7 +366,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * Adds a new component to this component
 	 *
 	 * @param {AbstractComponent} component The component to add
-	 * @returns {Boolean}
+	 * @return {Boolean}
 	 */
 	addComponent(component) {
 		this._modify()
@@ -396,7 +396,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * Checks if this component has a component of the given name
 	 *
 	 * @param {String} componentName The name of the component
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	hasComponent(componentName) {
 		return this._components.has(uc(componentName))
@@ -406,7 +406,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * Removes the given component from this component
 	 *
 	 * @param {AbstractComponent} component The component to delete
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	deleteComponent(component) {
 		this._modify()
@@ -436,7 +436,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * Removes all components of a given name
 	 *
 	 * @param {String} componentName The name of the component
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	deleteAllComponents(componentName) {
 		this._modify()
@@ -478,7 +478,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * Creates a copy of this parameter
 	 *
-	 * @returns {AbstractComponent}
+	 * @return {AbstractComponent}
 	 */
 	clone() {
 		const properties = []
@@ -529,7 +529,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * @param {ICAL.Component} icalValue The ical.js component to initialise from
 	 * @param {CalendarComponent=} root The root of the Calendar Document
 	 * @param {AbstractComponent=} parent The parent element of this component
-	 * @returns {AbstractComponent}
+	 * @return {AbstractComponent}
 	 */
 	static fromICALJs(icalValue, root = null, parent = null) {
 		if (!(icalValue instanceof ICAL.Component)) {
@@ -558,7 +558,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * Gets a constructor for a give component name
 	 *
 	 * @param {String} componentName The name of the component
-	 * @returns {AbstractComponent}
+	 * @return {AbstractComponent}
 	 * @protected
 	 */
 	static _getConstructorForComponentName(componentName) {
@@ -568,7 +568,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	/**
 	 * turns this Component into an ICAL.js component
 	 *
-	 * @returns {ICAL.Component}
+	 * @return {ICAL.Component}
 	 */
 	toICALJs() {
 		const component = createComponent(lc(this.name))
@@ -752,7 +752,7 @@ export function advertiseComponent(prototype, options) {
  * @param {String[]=} options.allowedValues A list of allowed values
  * @param {String|Number=} options.defaultValue The default value if unset
  * @param {String|Number=} options.unknownValue The fallback value if unknown value
- * @returns {Object}
+ * @return {Object}
  */
 function getDefaultOncePropConfig(options) {
 	if (typeof options === 'string') {
@@ -777,7 +777,7 @@ function getDefaultOncePropConfig(options) {
  * @param {String} options.name Advertised name of property
  * @param {String=} options.iCalendarName The iCalendar name of the property
  * @param {Boolean=} options.customAddMethod Whether or not to use a custom add method
- * @returns {Object}
+ * @return {Object}
  */
 function getDefaultMultiplePropConfig(options) {
 	if (typeof options === 'string') {
@@ -799,7 +799,7 @@ function getDefaultMultiplePropConfig(options) {
  * @param {String} options.name Advertised name of component
  * @param {String=} options.iCalendarName The iCalendar name of the component
  * @param {Boolean=} options.customAddMethod Whether or not to use a custom add method
- * @returns {Object}
+ * @return {Object}
  */
 function getDefaultMultipleCompConfig(options) {
 	if (typeof options === 'string') {

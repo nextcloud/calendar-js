@@ -81,7 +81,7 @@ export default class Timezone {
 	/**
 	 * Gets the timezone id
 	 *
-	 * @returns {String}
+	 * @return {String}
 	 */
 	get timezoneId() {
 		if (this._initialized) {
@@ -100,7 +100,7 @@ export default class Timezone {
 	 * @param {Number} hour Hour of the date
 	 * @param {Number} minute Minute of the date
 	 * @param {Number} second Second of the date
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	offsetForArray(year, month, day, hour, minute, second) {
 		this._initialize()
@@ -121,7 +121,7 @@ export default class Timezone {
 	 * Converts a timestamp to an array of year, month, day, hour, minute, second.
 	 *
 	 * @param {Number} ms Timestamp in milliseconds
-	 * @returns {Number[]}
+	 * @return {Number[]}
 	 */
 	timestampToArray(ms) {
 		this._initialize()
@@ -151,7 +151,7 @@ export default class Timezone {
 	/**
 	 * Returns
 	 *
-	 * @returns {ICAL.Timezone}
+	 * @return {ICAL.Timezone}
 	 */
 	toICALTimezone() {
 		this._initialize()
@@ -161,7 +161,7 @@ export default class Timezone {
 	/**
 	 * Returns the corresponding ICAL.
 	 *
-	 * @returns {ICAL.Component}
+	 * @return {ICAL.Component}
 	 */
 	toICALJs() {
 		this._initialize()

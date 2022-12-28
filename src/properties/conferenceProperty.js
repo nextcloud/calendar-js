@@ -54,7 +54,7 @@ export default class ConferenceProperty extends Property {
 	/**
 	 * Lists all supported features of the conference system
 	 *
-	 * @returns {String[]}
+	 * @return {String[]}
 	 */
 	listAllFeatures() {
 		if (!this.hasParameter('FEATURE')) {
@@ -110,7 +110,7 @@ export default class ConferenceProperty extends Property {
 	 * Check if this conference system supports a feature
 	 *
 	 * @param {String} feature The feature to check
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	hasFeature(feature) {
 		if (!this.hasParameter('FEATURE')) {
@@ -128,7 +128,7 @@ export default class ConferenceProperty extends Property {
 	/**
 	 * Gets label for the conference system
 	 *
-	 * @returns {String}
+	 * @return {String}
 	 */
 	get label() {
 		return this.getParameterFirstValue('LABEL')
@@ -175,7 +175,7 @@ export default class ConferenceProperty extends Property {
 	 * @param {String} uri URI of the Conference
 	 * @param {String=} label Label of the conference
 	 * @param {String[]=} features Features of the conference
-	 * @returns {ConferenceProperty}
+	 * @return {ConferenceProperty}
 	 */
 	static fromURILabelAndFeatures(uri, label = null, features = null) {
 		const property = new ConferenceProperty('CONFERENCE', uri)

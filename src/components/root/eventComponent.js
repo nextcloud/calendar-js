@@ -45,7 +45,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 	/**
 	 * Returns whether this event is an all-day event
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isAllDay() {
 		return this.startDate.isDate && this.endDate.isDate
@@ -54,7 +54,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 	/**
 	 * Checks whether it's possible to switch from date-time to date or vise-versa
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	canModifyAllDay() {
 		return !this.recurrenceManager.masterItem.isRecurring()
@@ -76,7 +76,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 	 * "DTEND" property, the event ends on the same calendar date and
 	 * time of day specified by the "DTSTART" property.
 	 *
-	 * @returns {DateTimeValue}
+	 * @return {DateTimeValue}
 	 */
 	get endDate() {
 		if (this.hasProperty('dtend')) {
@@ -107,7 +107,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 	/**
 	 * Gets the calculated duration of the event
 	 *
-	 * @returns {DurationValue}
+	 * @return {DurationValue}
 	 */
 	get duration() {
 		if (this.hasProperty('duration')) {
@@ -222,7 +222,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 	/**
 	 * Checks if this is a birthday event
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isBirthdayEvent() {
 		return getTypeOfBirthdayEvent(this) === 'BDAY'
@@ -231,7 +231,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 	/**
 	 * Gets the icon to the birthday event
 	 *
-	 * @returns {string}
+	 * @return {string}
 	 */
 	getIconForBirthdayEvent() {
 		return getIconForBirthday(this)
@@ -240,7 +240,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 	/**
 	 * Calculates the age of the birthday
 	 *
-	 * @returns {number}
+	 * @return {number}
 	 */
 	getAgeForBirthdayEvent() {
 		return getAgeOfBirthday(this, this.startDate.year)
@@ -249,7 +249,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 	/**
 	 * Serializes the entire series to ICS
 	 *
-	 * @returns {string}
+	 * @return {string}
 	 */
 	toICSEntireSeries() {
 		return this.root.toICS()
@@ -259,7 +259,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 	 * Serializes exactly this recurrence to ICS
 	 * It removes all recurrence information
 	 *
-	 * @returns {string}
+	 * @return {string}
 	 */
 	toICSThisOccurrence() {
 		const clone = this.clone()
@@ -282,7 +282,7 @@ export default class EventComponent extends AbstractRecurringComponent {
 	 *
 	 * @param {DateTimeValue} start Start of time-range to check
 	 * @param {DateTimeValue} end End of time-range to check
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isInTimeFrame(start, end) {
 		return start.compare(this.endDate) <= 0 && end.compare(this.startDate) >= 0
@@ -364,7 +364,7 @@ advertiseSingleOccurrenceProperty(EventComponent.prototype, {
  * @name EventComponent#getResourceIterator
  * @function
  * @param {String=} lang
- * @returns {IterableIterator<String>}
+ * @return {IterableIterator<String>}
  */
 
 /**
@@ -377,7 +377,7 @@ advertiseSingleOccurrenceProperty(EventComponent.prototype, {
  * @name EventComponent#getResourceList
  * @function
  * @param {String=} lang
- * @returns {String[]}
+ * @return {String[]}
  */
 
 /**
@@ -423,7 +423,7 @@ advertiseMultiValueStringPropertySeparatedByLang(EventComponent.prototype, {
  *
  * @name EventComponent#getConferenceIterator
  * @function
- * @returns {IterableIterator<ConferenceProperty>}
+ * @return {IterableIterator<ConferenceProperty>}
  */
 
 /**
@@ -433,7 +433,7 @@ advertiseMultiValueStringPropertySeparatedByLang(EventComponent.prototype, {
  *
  * @name EventComponent#getConferenceList
  * @function
- * @returns {ConferenceProperty[]}
+ * @return {ConferenceProperty[]}
  */
 
 /**

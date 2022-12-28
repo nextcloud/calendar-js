@@ -51,7 +51,7 @@ export default class JournalComponent extends AbstractRecurringComponent {
  *
  * @name JournalComponent#getDescriptionIterator
  * @function
- * @returns {IterableIterator<ConferenceProperty>}
+ * @return {IterableIterator<ConferenceProperty>}
  */
 
 /**
@@ -61,7 +61,7 @@ export default class JournalComponent extends AbstractRecurringComponent {
  *
  * @name JournalComponent#getDescriptionList
  * @function
- * @returns {ConferenceProperty[]}
+ * @return {ConferenceProperty[]}
  */
 
 /**

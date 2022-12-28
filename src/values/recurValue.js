@@ -56,7 +56,7 @@ export default class RecurValue extends AbstractValue {
 	/**
 	 * Gets the stored interval of this recurrence rule
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get interval() {
 		return this._innerValue.interval
@@ -76,7 +76,7 @@ export default class RecurValue extends AbstractValue {
 	/**
 	 * Gets the weekstart used to calculate the recurrence expansion
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get weekStart() {
 		return this._innerValue.wkst
@@ -103,7 +103,7 @@ export default class RecurValue extends AbstractValue {
 	 * The value is automatically locked.
 	 * If you want to edit the value, clone it and it as new until
 	 *
-	 * @returns {null|DateTimeValue}
+	 * @return {null|DateTimeValue}
 	 */
 	get until() {
 		if (!this._until && this._innerValue.until) {
@@ -134,7 +134,7 @@ export default class RecurValue extends AbstractValue {
 	/**
 	 * Gets the count value if set
 	 *
-	 * @returns {null|Number}
+	 * @return {null|Number}
 	 */
 	get count() {
 		return this._innerValue.count
@@ -161,7 +161,7 @@ export default class RecurValue extends AbstractValue {
 	/**
 	 * Gets the frequency of the recurrence rule
 	 *
-	 * @returns {String} see
+	 * @return {String} see
 	 */
 	get frequency() {
 		return this._innerValue.freq
@@ -201,7 +201,7 @@ export default class RecurValue extends AbstractValue {
 	/**
 	 * Checks whether the stored rule is finite
 	 *
-	 * @returns {Boolean}
+	 * @return {Boolean}
 	 */
 	isFinite() {
 		return this._innerValue.isFinite()
@@ -210,7 +210,7 @@ export default class RecurValue extends AbstractValue {
 	/**
 	 * Checks whether the recurrence rule is limited by count
 	 *
-	 * @returns {Boolean}
+	 * @return {Boolean}
 	 */
 	isByCount() {
 		return this._innerValue.isByCount()
@@ -259,7 +259,7 @@ export default class RecurValue extends AbstractValue {
 	 * Gets all parts of a component
 	 *
 	 * @param {String} componentName The name of the component to get
-	 * @returns {Array}
+	 * @return {Array}
 	 */
 	getComponent(componentName) {
 		return this._innerValue.getComponent(componentName)
@@ -268,7 +268,7 @@ export default class RecurValue extends AbstractValue {
 	/**
 	 * Checks if this recurrence rule is valid according to RFC 5545
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isRuleValid() {
 		return true
@@ -299,7 +299,7 @@ export default class RecurValue extends AbstractValue {
 	/**
 	 * clones this value
 	 *
-	 * @returns {RecurValue}
+	 * @return {RecurValue}
 	 */
 	clone() {
 		return RecurValue.fromICALJs(this._innerValue.clone())
@@ -310,7 +310,7 @@ export default class RecurValue extends AbstractValue {
 	 *
 	 * @param {ICAL.Recur} icalValue The ICAL.JS Recur value
 	 * @param {DateTimeValue?} until The Until date
-	 * @returns {RecurValue}
+	 * @return {RecurValue}
 	 */
 	static fromICALJs(icalValue, until = null) {
 		return new RecurValue(icalValue, until)
@@ -334,7 +334,7 @@ export default class RecurValue extends AbstractValue {
 	 * @param {Number[]=} data.byweekno BYWEEKNO part of RRULE
 	 * @param {Number[]=} data.bymonth BYMONTH part of RRULE
 	 * @param {Number[]=} data.bysetpos BYSETPOS part of RRULE
-	 * @returns {RecurValue}
+	 * @return {RecurValue}
 	 */
 	static fromData(data) {
 		let until = null

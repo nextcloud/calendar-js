@@ -41,7 +41,7 @@ export default class RequestStatusProperty extends Property {
 	/**
 	 * Gets the status code of the request status
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get statusCode() {
 		return parseFloat(this.value[0])
@@ -66,7 +66,7 @@ export default class RequestStatusProperty extends Property {
 	/**
 	 * Gets the status message of the request status
 	 *
-	 * @returns {string}
+	 * @return {string}
 	 */
 	get statusMessage() {
 		return this.value[1]
@@ -85,7 +85,7 @@ export default class RequestStatusProperty extends Property {
 	/**
 	 * Gets the exception data of the request status if available
 	 *
-	 * @returns {null|String}
+	 * @return {null|String}
 	 */
 	get exceptionData() {
 		if (!this.value[2]) {
@@ -108,7 +108,7 @@ export default class RequestStatusProperty extends Property {
 	/**
 	 * Check if request is pending
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isPending() {
 		return this.statusCode >= 1 && this.statusCode < 2
@@ -117,7 +117,7 @@ export default class RequestStatusProperty extends Property {
 	/**
 	 * Check if request was successful
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isSuccessful() {
 		return this.statusCode >= 2 && this.statusCode < 3
@@ -126,7 +126,7 @@ export default class RequestStatusProperty extends Property {
 	/**
 	 * Check if a client error occurred
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isClientError() {
 		return this.statusCode >= 3 && this.statusCode < 4
@@ -135,7 +135,7 @@ export default class RequestStatusProperty extends Property {
 	/**
 	 * Check if a scheduling error occurred
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isSchedulingError() {
 		return this.statusCode >= 4 && this.statusCode < 5
@@ -167,7 +167,7 @@ export default class RequestStatusProperty extends Property {
 	 *
 	 * @param {Number} code The status-code of the request
 	 * @param {String} message The message of the request
-	 * @returns {RequestStatusProperty}
+	 * @return {RequestStatusProperty}
 	 */
 	static fromCodeAndMessage(code, message) {
 		return new RequestStatusProperty('REQUEST-STATUS', [code.toString(), message])
