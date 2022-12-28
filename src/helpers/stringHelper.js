@@ -23,7 +23,7 @@
 /**
  * Turns the entire string lowercase
  *
- * @param {String} str The string to turn lowercase
+ * @param {string} str The string to turn lowercase
  * @return {string}
  */
 export function lc(str) {
@@ -33,8 +33,8 @@ export function lc(str) {
 /**
  * Compares two strings, It is case-insensitive.
  *
- * @param {String} str1 String 1 to compare
- * @param {String} str2 String 2 to compare
+ * @param {string} str1 String 1 to compare
+ * @param {string} str2 String 2 to compare
  * @return {boolean}
  */
 export function strcasecmp(str1, str2) {
@@ -44,7 +44,7 @@ export function strcasecmp(str1, str2) {
 /**
  * Turns the entire string uppercase
  *
- * @param {String} str The string to turn uppercase
+ * @param {string} str The string to turn uppercase
  * @return {string}
  */
 export function uc(str) {
@@ -54,7 +54,7 @@ export function uc(str) {
 /**
  * Capitalizes the string
  *
- * @param {String} str The string of which the first character will be turned uppercase
+ * @param {string} str The string of which the first character will be turned uppercase
  * @return {string}
  */
 export function ucFirst(str) {
@@ -65,8 +65,8 @@ export function ucFirst(str) {
  * Makes sure that a string starts with a certain other string
  * This is mostly used in the attendeeProperty to assure the uri starts with mailto:
  *
- * @param {String} str The string to check for the prefix and prepend if necessary
- * @param {String} startWith The prefix to be added if necessary
+ * @param {string} str The string to check for the prefix and prepend if necessary
+ * @param {string} startWith The prefix to be added if necessary
  * @return {string}
  */
 export function startStringWith(str, startWith) {

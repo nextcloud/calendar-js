@@ -229,7 +229,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * this id will not be unique. Software using this library will have to
 	 * manually mix in the calendar id into this id
 	 *
-	 * @return {String}
+	 * @return {string}
 	 */
 	get id() {
 		if (this._cachedId) {
@@ -261,7 +261,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Sets the UID property and the UID property of all related exceptions
 	 *
-	 * @param {String} uid The new UID
+	 * @param {string} uid The new UID
 	 */
 	set uid(uid) {
 		this._recurrenceManager.updateUID(uid)
@@ -637,8 +637,8 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Adds a new attendee based on their name and email-address
 	 *
-	 * @param {String} name The name of the attendee to add
-	 * @param {String} email The email-address of the attendee to add
+	 * @param {string} name The name of the attendee to add
+	 * @param {string} email The email-address of the attendee to add
 	 * @return {boolean}
 	 */
 	addAttendeeFromNameAndEMail(name, email) {
@@ -649,10 +649,10 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Adds a new attendee based on their properties
 	 *
-	 * @param {String} name The name of the attendee to add
-	 * @param {String} email The email-address of the attendee to add
-	 * @param {String} role The role of the attendee to add
-	 * @param {String} userType The type of attendee to add
+	 * @param {string} name The name of the attendee to add
+	 * @param {string} email The email-address of the attendee to add
+	 * @param {string} role The role of the attendee to add
+	 * @param {string} userType The type of attendee to add
 	 * @param {boolean} rsvp Whether or not to request a response from the attendee
 	 * @return {boolean}
 	 */
@@ -664,8 +664,8 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Sets the organiser property from common-name and email address
 	 *
-	 * @param {String} name The name of the organizer
-	 * @param {String} email The email-address of the organizer
+	 * @param {string} name The name of the organizer
+	 * @param {string} email The email-address of the organizer
 	 */
 	setOrganizerFromNameAndEMail(name, email) {
 		this.deleteAllProperties('ORGANIZER')
@@ -675,8 +675,8 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Adds a new attachment from raw data
 	 *
-	 * @param {String} data The data of the attachment
-	 * @param {String} formatType The mime-type of the attachment
+	 * @param {string} data The data of the attachment
+	 * @param {string} formatType The mime-type of the attachment
 	 */
 	addAttachmentFromData(data, formatType = null) {
 		this.addProperty(AttachmentProperty.fromData(data, formatType))
@@ -685,8 +685,8 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Adds a new attachment from a link
 	 *
-	 * @param {String} uri The URI of the attachment
-	 * @param {String} formatType The mime-type of the attachment
+	 * @param {string} uri The URI of the attachment
+	 * @param {string} formatType The mime-type of the attachment
 	 */
 	addAttachmentFromLink(uri, formatType = null) {
 		this.addProperty(AttachmentProperty.fromLink(uri, formatType))
@@ -697,7 +697,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 *
 	 * @url https://tools.ietf.org/html/rfc5545#section-3.8.4.2
 	 *
-	 * @param {String} contact The textual contact description to add
+	 * @param {string} contact The textual contact description to add
 	 */
 	addContact(contact) {
 		this.addProperty(new TextProperty('CONTACT', contact))
@@ -708,7 +708,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 *
 	 * @url https://tools.ietf.org/html/rfc5545#section-3.8.1.4
 	 *
-	 * @param {String} comment The comment to add
+	 * @param {string} comment The comment to add
 	 */
 	addComment(comment) {
 		this.addProperty(new TextProperty('COMMENT', comment))
@@ -717,7 +717,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Adds a new image from raw data
 	 *
-	 * @param {String} data Data of the image to add
+	 * @param {string} data Data of the image to add
 	 * @param {String=} display What display-type the image is optimized for
 	 * @param {String=} formatType The mime-type of the image
 	 */
@@ -728,7 +728,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Adds a new image from a link
 	 *
-	 * @param {String} uri The URI of the image to add
+	 * @param {string} uri The URI of the image to add
 	 * @param {String=} display What display-type the image is optimized for
 	 * @param {String=} formatType The mime-type of the image
 	 */
@@ -740,8 +740,8 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * Creates a new RELATED-TO property based on a relation-type and id
 	 * and adds it to this object
 	 *
-	 * @param {String} relType The type of relation to add
-	 * @param {String} relId The id of the related calendar-document
+	 * @param {string} relType The type of relation to add
+	 * @param {string} relId The id of the related calendar-document
 	 */
 	addRelation(relType, relId) {
 		this.addProperty(RelationProperty.fromRelTypeAndId(relType, relId))
@@ -752,7 +752,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * and adds it to this object
 	 *
 	 * @param {Number} code The status-code of the request status
-	 * @param {String} message The message of the request status
+	 * @param {string} message The message of the request status
 	 */
 	addRequestStatus(code, message) {
 		this.addProperty(RequestStatusProperty.fromCodeAndMessage(code, message))
@@ -761,7 +761,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Adds a new absolute alarm based on action and trigger time
 	 *
-	 * @param {String} action The type of alarm Action
+	 * @param {string} action The type of alarm Action
 	 * @param {DateTimeValue} alarmTime The trigger time of the alarm
 	 * @return {AlarmComponent}
 	 */
@@ -778,7 +778,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Adds a new relative alarm based on action, trigger time and relativeTo parameter
 	 *
-	 * @param {String} action The type of alarm Action
+	 * @param {string} action The type of alarm Action
 	 * @param {DurationValue} alarmOffset The trigger time of the alarm
 	 * @param {boolean=} relatedToStart Whether or not the alarm is related to the event's start
 	 * @return {AlarmComponent}
@@ -796,7 +796,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Marks a certain property as edited
 	 *
-	 * @param {String} propertyName The name of the property
+	 * @param {string} propertyName The name of the property
 	 */
 	markPropertyAsDirty(propertyName) {
 		this.markDirty()
@@ -822,7 +822,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Marks a certain component as edited
 	 *
-	 * @param {String} componentName The name of the component
+	 * @param {string} componentName The name of the component
 	 */
 	markSubComponentAsDirty(componentName) {
 		this.markDirty()
@@ -1015,7 +1015,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.7.2
  *
  * @name EventComponent#stampTime
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
 	name: 'stampTime',
@@ -1028,7 +1028,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.4.4
  *
  * @name EventComponent#recurrenceId
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
 	name: 'recurrenceId',
@@ -1041,7 +1041,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  * @url https://tools.ietf.org/html/rfc7986#section-5.9
  *
  * @name EventComponent#color
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, 'color')
 
@@ -1051,7 +1051,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, 'color')
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.7.1
  *
  * @name EventComponent#creationTime
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
 	name: 'creationTime',
@@ -1064,7 +1064,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.7.3
  *
  * @name EventComponent#modificationTime
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
 	name: 'modificationTime',
@@ -1077,7 +1077,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.4.3
  *
  * @name EventComponent#organizer
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, 'organizer')
 
@@ -1087,7 +1087,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, 'organiz
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.7.4
  *
  * @name EventComponent#sequence
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, 'sequence')
 
@@ -1098,7 +1098,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, 'sequenc
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.1.11
  *
  * @name EventComponent#status
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, 'status')
 
@@ -1109,7 +1109,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, 'status'
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.4.6
  *
  * @name EventComponent#url
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, 'url')
 
@@ -1119,7 +1119,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, 'url')
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.1.12
  *
  * @name EventComponent#title
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
 	name: 'title',
@@ -1133,7 +1133,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.1.3
  *
  * @name EventComponent#accessClass
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
 	name: 'accessClass',
@@ -1170,7 +1170,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  *
  * @name AbstractRecurringComponent#addCategory
  * @function
- * @param {String} category
+ * @param {string} category
  * @param {String=} lang
  */
 
@@ -1179,7 +1179,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  *
  * @name AbstractRecurringComponent#removeCategory
  * @function
- * @param {String} category
+ * @param {string} category
  * @param {String=} lang
  */
 

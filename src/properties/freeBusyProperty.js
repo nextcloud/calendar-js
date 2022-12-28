@@ -32,7 +32,7 @@ export default class FreeBusyProperty extends Property {
 	/**
 	 * Gets the type of this FreeBusyProperty
 	 *
-	 * @return {String}
+	 * @return {string}
 	 */
 	get type() {
 		const allowed = ['FREE', 'BUSY', 'BUSY-UNAVAILABLE', 'BUSY-TENTATIVE']
@@ -51,7 +51,7 @@ export default class FreeBusyProperty extends Property {
 	/**
 	 * Sets the type of this FreeBusyProperty
 	 *
-	 * @param {String} type The type of information (e.g. FREE, BUSY, etc.)
+	 * @param {string} type The type of information (e.g. FREE, BUSY, etc.)
 	 */
 	set type(type) {
 		this.updateParameterIfExist('FBTYPE', type)
@@ -61,7 +61,7 @@ export default class FreeBusyProperty extends Property {
 	 * Creates a new FreeBusyProperty based on period and type
 	 *
 	 * @param {PeriodValue} period The period for FreeBusy Information
-	 * @param {String} type The type of the period
+	 * @param {string} type The type of the period
 	 * @return {FreeBusyProperty}
 	 */
 	static fromPeriodAndType(period, type) {

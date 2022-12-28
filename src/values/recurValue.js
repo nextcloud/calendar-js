@@ -161,7 +161,7 @@ export default class RecurValue extends AbstractValue {
 	/**
 	 * Gets the frequency of the recurrence rule
 	 *
-	 * @return {String} see
+	 * @return {string} see
 	 */
 	get frequency() {
 		return this._innerValue.freq
@@ -172,7 +172,7 @@ export default class RecurValue extends AbstractValue {
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
 	 * @throws {TypeError} if frequency is unknown
-	 * @param {String} freq New frequency to set
+	 * @param {string} freq New frequency to set
 	 */
 	set frequency(freq) {
 		this._modifyContent()
@@ -220,7 +220,7 @@ export default class RecurValue extends AbstractValue {
 	 * Adds a part to a component to the recurrence-rule
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {String} componentName The name of the recurrence-component to add
+	 * @param {string} componentName The name of the recurrence-component to add
 	 * @param {String|Number} value The value to add
 	 */
 	addComponent(componentName, value) {
@@ -232,7 +232,7 @@ export default class RecurValue extends AbstractValue {
 	 * Sets / overwrites a component to the recurrence-rule
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {String} componentName The name of the component to set
+	 * @param {string} componentName The name of the component to set
 	 * @param {Number[]|String[]} value The value to set
 	 */
 	setComponent(componentName, value) {
@@ -249,7 +249,7 @@ export default class RecurValue extends AbstractValue {
 	 * Removes all parts of a component
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {String} componentName The name of the component to remove
+	 * @param {string} componentName The name of the component to remove
 	 */
 	removeComponent(componentName) {
 		delete this._innerValue.parts[uc(componentName)]
@@ -258,7 +258,7 @@ export default class RecurValue extends AbstractValue {
 	/**
 	 * Gets all parts of a component
 	 *
-	 * @param {String} componentName The name of the component to get
+	 * @param {string} componentName The name of the component to get
 	 * @return {Array}
 	 */
 	getComponent(componentName) {

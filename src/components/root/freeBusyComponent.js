@@ -84,8 +84,8 @@ export default class FreeBusyComponent extends AbstractComponent {
 	 *
 	 * @url https://tools.ietf.org/html/rfc5545#section-3.8.4.1
 	 *
-	 * @param {String} name The name of the attendee to add
-	 * @param {String} email The email-address of the attendee to add
+	 * @param {string} name The name of the attendee to add
+	 * @param {string} email The email-address of the attendee to add
 	 */
 	addAttendeeFromNameAndEMail(name, email) {
 		this._modify()
@@ -97,8 +97,8 @@ export default class FreeBusyComponent extends AbstractComponent {
 	 *
 	 * @url https://tools.ietf.org/html/rfc5545#section-3.8.4.3
 	 *
-	 * @param {String} name The name of the organizer
-	 * @param {String} email The email-address of the organizer
+	 * @param {string} name The name of the organizer
+	 * @param {string} email The email-address of the organizer
 	 */
 	setOrganizerFromNameAndEMail(name, email) {
 		this._modify()

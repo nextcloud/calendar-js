@@ -51,7 +51,7 @@ export default class TimezoneAdapter {
 	}
 
 	/**
-	 * @param {String} timezoneId The id of the timezone
+	 * @param {string} timezoneId The id of the timezone
 	 * @return {ICAL.Timezone|undefined}
 	 */
 	get(timezoneId) {

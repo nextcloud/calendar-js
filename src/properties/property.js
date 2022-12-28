@@ -42,7 +42,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Constructor
 	 *
-	 * @param {String} name The name of the property
+	 * @param {string} name The name of the property
 	 * @param {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null} value The value of the property
 	 * @param {Parameter[]|[String][]} parameters Array of parameters
 	 * @param {CalendarComponent|null} root The root of the calendar-document
@@ -54,7 +54,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 		/**
 		 * Name of the property
 		 *
-		 * @type {String}
+		 * @type {string}
 		 * @protected
 		 */
 		this._name = uc(name)
@@ -100,7 +100,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	 * Get property name
 	 *
 	 * @readonly
-	 * @return {String}
+	 * @return {string}
 	 */
 	get name() {
 		return this._name
@@ -256,7 +256,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Gets a parameter on this property by its name
 	 *
-	 * @param {String} parameterName Name of the parameter to get
+	 * @param {string} parameterName Name of the parameter to get
 	 * @return {Parameter}
 	 */
 	getParameter(parameterName) {
@@ -273,7 +273,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Get first value of a parameter
 	 *
-	 * @param {String} parameterName Name of the parameter
+	 * @param {string} parameterName Name of the parameter
 	 * @return {null|String}
 	 */
 	getParameterFirstValue(parameterName) {
@@ -292,7 +292,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Returns whether a parameter exists on this property
 	 *
-	 * @param {String} parameterName Name of the parameter
+	 * @param {string} parameterName Name of the parameter
 	 * @return {boolean}
 	 */
 	hasParameter(parameterName) {
@@ -302,7 +302,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Deletes a parameter on this property
 	 *
-	 * @param {String} parameterName Name of the parameter
+	 * @param {string} parameterName Name of the parameter
 	 * @throws {ModificationNotAllowedError} if property is locked for modification
 	 */
 	deleteParameter(parameterName) {
@@ -314,7 +314,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	 * update a parameter if it exists,
 	 * create a new one if it doesn't
 	 *
-	 * @param {String} parameterName Name of the parameter
+	 * @param {string} parameterName Name of the parameter
 	 * @param {string|Array|null} value Value to set
 	 * @throws {ModificationNotAllowedError} if property is locked for modification
 	 */

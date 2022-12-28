@@ -33,7 +33,7 @@ export default class AttachmentProperty extends Property {
 	/**
 	 * Gets the format-type of this attachment
 	 *
-	 * @return {String}
+	 * @return {string}
 	 */
 	get formatType() {
 		return this.getParameterFirstValue('FMTTYPE')
@@ -42,7 +42,7 @@ export default class AttachmentProperty extends Property {
 	/**
 	 * Sets the format-type of this attachment
 	 *
-	 * @param {String} fmtType Mime-type of attachment
+	 * @param {string} fmtType Mime-type of attachment
 	 */
 	set formatType(fmtType) {
 		this.updateParameterIfExist('FMTTYPE', fmtType)
@@ -64,7 +64,7 @@ export default class AttachmentProperty extends Property {
 	/**
 	 * Sets the uri of this attachment
 	 *
-	 * @param {String} uri Link to attachment if applicable
+	 * @param {string} uri Link to attachment if applicable
 	 */
 	set uri(uri) {
 		this.value = uri
@@ -99,7 +99,7 @@ export default class AttachmentProperty extends Property {
 	/**
 	 * Sets the data stored in this attachment
 	 *
-	 * @param {String} data The data of the attachment
+	 * @param {string} data The data of the attachment
 	 */
 	set data(data) {
 		if (this.value instanceof BinaryValue) {
@@ -124,7 +124,7 @@ export default class AttachmentProperty extends Property {
 	/**
 	 * Creates a new AttachmentProperty based on data
 	 *
-	 * @param {String} data The data of the attachment
+	 * @param {string} data The data of the attachment
 	 * @param {String=} formatType The mime-type of the data
 	 * @return {AttachmentProperty}
 	 */
@@ -142,7 +142,7 @@ export default class AttachmentProperty extends Property {
 	/**
 	 * Creates a new AttachmentProperty based on a link
 	 *
-	 * @param {String} uri The URI for the attachment
+	 * @param {string} uri The URI for the attachment
 	 * @param {String=} formatType The mime-type of the uri
 	 * @return {AttachmentProperty}
 	 */

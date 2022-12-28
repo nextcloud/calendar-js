@@ -34,7 +34,7 @@ export default class TriggerProperty extends Property {
 	/**
 	 * Gets the related parameter
 	 *
-	 * @return {String}
+	 * @return {string}
 	 */
 	get related() {
 		if (!this.hasParameter('RELATED')) {
@@ -47,7 +47,7 @@ export default class TriggerProperty extends Property {
 	/**
 	 * Sets the related parameter
 	 *
-	 * @param {String} related Either START or END
+	 * @param {string} related Either START or END
 	 */
 	set related(related) {
 		this.updateParameterIfExist('RELATED', related)

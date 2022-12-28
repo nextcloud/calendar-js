@@ -41,7 +41,7 @@ if (!(ICAL.TimezoneService instanceof TimezoneAdapter)) {
  * parses a single ICS and returns an iterator over all occurrences
  * in a given timeframe
  *
- * @param {String} ics The calendar-data to parse
+ * @param {string} ics The calendar-data to parse
  * @param {DateTimeValue} start The start of the queried time-range
  * @param {DateTimeValue} end The end of the queried time-range
  */

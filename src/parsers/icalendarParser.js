@@ -46,7 +46,7 @@ export default class ICalendarParser extends AbstractParser {
 		/**
 		 * The raw text/calendar data
 		 *
-		 * @type {String}
+		 * @type {string}
 		 * @protected
 		 */
 		this._rawData = null
@@ -155,7 +155,7 @@ export default class ICalendarParser extends AbstractParser {
 	/**
 	 * Parses the actual calendar-data
 	 *
-	 * @param {String} ics The icalendar data to parse
+	 * @param {string} ics The icalendar data to parse
 	 */
 	parse(ics) {
 		this._rawData = ics
@@ -291,7 +291,7 @@ export default class ICalendarParser extends AbstractParser {
 	 * propertyname it can find
 	 *
 	 * @param {String[]} names The names of the properties to check
-	 * @param {String} variableName The variable name to save it under
+	 * @param {string} variableName The variable name to save it under
 	 * @private
 	 */
 	_extractPropertyAndPutResultIntoVariable(names, variableName) {
@@ -475,8 +475,8 @@ export default class ICalendarParser extends AbstractParser {
 
 	/**
 	 *
-	 * @param {String} uid The uid of the calendar-object
-	 * @param {String} timezoneId The timezoneId required by the object
+	 * @param {string} uid The uid of the calendar-object
+	 * @param {string} timezoneId The timezoneId required by the object
 	 * @private
 	 */
 	_addRequiredTimezone(uid, timezoneId) {
@@ -495,7 +495,7 @@ export default class ICalendarParser extends AbstractParser {
 	/**
 	 *
 	 * @param {CalendarComponent} calendarComp The calendar-component to add timezones to
-	 * @param {String} uid The UID of the calendar-object
+	 * @param {string} uid The UID of the calendar-object
 	 * @private
 	 */
 	_addRequiredTimezonesToCalendarComp(calendarComp, uid) {
@@ -523,8 +523,8 @@ export default class ICalendarParser extends AbstractParser {
 	 * Replaces all occurrences of searchTimezone with replaceTimezone
 	 *
 	 * @param {CalendarComponent} calendarComponent The calendar-component to replace a timezone in
-	 * @param {String} searchTimezone The timezone to replace
-	 * @param {String} replaceTimezone The replacement timezone
+	 * @param {string} searchTimezone The timezone to replace
+	 * @param {string} replaceTimezone The replacement timezone
 	 * @private
 	 */
 	_replaceTimezoneWithAnotherOne(calendarComponent, searchTimezone, replaceTimezone) {
@@ -566,7 +566,7 @@ export default class ICalendarParser extends AbstractParser {
 	 * containsVJournals()
 	 * containsVTodos()
 	 *
-	 * @param {String} compName The name of the visited component
+	 * @param {string} compName The name of the visited component
 	 * @private
 	 */
 	_markCompTypeAsSeen(compName) {

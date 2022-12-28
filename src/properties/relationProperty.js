@@ -32,7 +32,7 @@ export default class RelationProperty extends Property {
 	/**
 	 * Get's the relation-type of this related-to property
 	 *
-	 * @return {String}
+	 * @return {string}
 	 */
 	get relationType() {
 		const allowed = ['PARENT', 'CHILD', 'SIBLING']
@@ -53,7 +53,7 @@ export default class RelationProperty extends Property {
 	/**
 	 * Sets a new relation type
 	 *
-	 * @param {String} relationType The type of relation (e.g. SIBLING, PARENT, etc.)
+	 * @param {string} relationType The type of relation (e.g. SIBLING, PARENT, etc.)
 	 */
 	set relationType(relationType) {
 		this.updateParameterIfExist('RELTYPE', relationType)
@@ -62,7 +62,7 @@ export default class RelationProperty extends Property {
 	/**
 	 * Gets Id of related object
 	 *
-	 * @return {String}
+	 * @return {string}
 	 */
 	get relatedId() {
 		return this.value
@@ -71,7 +71,7 @@ export default class RelationProperty extends Property {
 	/**
 	 * Sets a new related id
 	 *
-	 * @param {String} relatedId The Id of the related document
+	 * @param {string} relatedId The Id of the related document
 	 */
 	set relatedId(relatedId) {
 		this.value = relatedId
@@ -80,8 +80,8 @@ export default class RelationProperty extends Property {
 	/**
 	 * Creates a new RELATED-TO property based on a relation-type and id
 	 *
-	 * @param {String} relType The type of the relation (e.g. SIBLING, CHILD)
-	 * @param {String} relId The Id of the related document
+	 * @param {string} relType The type of the relation (e.g. SIBLING, CHILD)
+	 * @param {string} relId The Id of the related document
 	 * @return {RelationProperty}
 	 */
 	static fromRelTypeAndId(relType, relId) {

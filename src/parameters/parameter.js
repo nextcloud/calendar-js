@@ -63,7 +63,7 @@ export default class Parameter extends observerTrait(lockableTrait(class {})) {
 	 * Get parameter name
 	 *
 	 * @readonly
-	 * @return {String}
+	 * @return {string}
 	 */
 	get name() {
 		return this._name

@@ -52,7 +52,7 @@ export default class TimezoneComponent extends AbstractComponent {
  * The timezoneId of this timezone-component
  *
  * @name TimezoneComponent#timezoneId
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(TimezoneComponent.prototype, {
 	name: 'timezoneId',

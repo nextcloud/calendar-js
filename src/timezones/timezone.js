@@ -38,7 +38,7 @@ export default class Timezone {
 		/**
 		 * Id of the timezone, used before initialising
 		 *
-		 * @type {String}
+		 * @type {string}
 		 * @private
 		 */
 		this._timezoneId = null
@@ -46,7 +46,7 @@ export default class Timezone {
 		/**
 		 * ICS representation of the timezone, used before initialising
 		 *
-		 * @type {String}
+		 * @type {string}
 		 * @private
 		 */
 		this._ics = null
@@ -81,7 +81,7 @@ export default class Timezone {
 	/**
 	 * Gets the timezone id
 	 *
-	 * @return {String}
+	 * @return {string}
 	 */
 	get timezoneId() {
 		if (this._initialized) {

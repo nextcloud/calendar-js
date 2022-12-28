@@ -155,7 +155,7 @@ export default class CalendarComponent extends AbstractComponent {
  * @url https://tools.ietf.org/html/rfc5545#section-3.7.3
  *
  * @name CalendarComponent#productId
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(CalendarComponent.prototype, {
 	name: 'productId',
@@ -170,7 +170,7 @@ advertiseSingleOccurrenceProperty(CalendarComponent.prototype, {
  * @url https://tools.ietf.org/html/rfc5545#section-3.7.4
  *
  * @name CalendarComponent#version
- * @type {String}
+ * @type {string}
  */
 
 advertiseSingleOccurrenceProperty(CalendarComponent.prototype, {
@@ -187,7 +187,7 @@ advertiseSingleOccurrenceProperty(CalendarComponent.prototype, {
  * @url https://tools.ietf.org/html/rfc5545#section-3.7.1
  *
  * @name CalendarComponent#calendarScale
- * @type {String}
+ * @type {string}
  * @default "GREGORIAN"
  */
 advertiseSingleOccurrenceProperty(CalendarComponent.prototype, {
@@ -203,7 +203,7 @@ advertiseSingleOccurrenceProperty(CalendarComponent.prototype, {
  * @url https://tools.ietf.org/html/rfc5545#section-3.7.2
  *
  * @name CalendarComponent#method
- * @type {String}
+ * @type {string}
  */
 advertiseSingleOccurrenceProperty(CalendarComponent.prototype, {
 	name: 'method',

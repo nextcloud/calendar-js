@@ -67,7 +67,7 @@ export default class ConferenceProperty extends Property {
 	/**
 	 * Adds a supported feature to the conference system
 	 *
-	 * @param {String} featureToAdd Feature to add
+	 * @param {string} featureToAdd Feature to add
 	 */
 	addFeature(featureToAdd) {
 		this._modify()
@@ -86,7 +86,7 @@ export default class ConferenceProperty extends Property {
 	/**
 	 * Removes a supported feature
 	 *
-	 * @param {String} feature The feature to remove
+	 * @param {string} feature The feature to remove
 	 */
 	removeFeature(feature) {
 		this._modify()
@@ -109,7 +109,7 @@ export default class ConferenceProperty extends Property {
 	/**
 	 * Check if this conference system supports a feature
 	 *
-	 * @param {String} feature The feature to check
+	 * @param {string} feature The feature to check
 	 * @return {boolean}
 	 */
 	hasFeature(feature) {
@@ -128,7 +128,7 @@ export default class ConferenceProperty extends Property {
 	/**
 	 * Gets label for the conference system
 	 *
-	 * @return {String}
+	 * @return {string}
 	 */
 	get label() {
 		return this.getParameterFirstValue('LABEL')
@@ -137,7 +137,7 @@ export default class ConferenceProperty extends Property {
 	/**
 	 * Updates the label for the conference system
 	 *
-	 * @param {String} label The label to set
+	 * @param {string} label The label to set
 	 */
 	set label(label) {
 		this.updateParameterIfExist('LABEL', label)
@@ -153,7 +153,7 @@ export default class ConferenceProperty extends Property {
 	/**
 	 * Sets the uri for this conference system
 	 *
-	 * @param {String} uri The URI to set
+	 * @param {string} uri The URI to set
 	 */
 	set uri(uri) {
 		this.value = uri
@@ -172,7 +172,7 @@ export default class ConferenceProperty extends Property {
 	/**
 	 * Creates a new ConferenceProperty based on URI, label and features
 	 *
-	 * @param {String} uri URI of the Conference
+	 * @param {string} uri URI of the Conference
 	 * @param {String=} label Label of the conference
 	 * @param {String[]=} features Features of the conference
 	 * @return {ConferenceProperty}
