@@ -120,7 +120,7 @@ export default class Parameter extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Returns whether or not the value is a multivalue
 	 *
-	 * @return {Boolean}
+	 * @return {boolean}
 	 */
 	isMultiValue() {
 		return Array.isArray(this._value)

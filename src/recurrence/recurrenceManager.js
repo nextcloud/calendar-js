@@ -408,7 +408,7 @@ export default class RecurrenceManager {
 	/**
 	 * Checks if a recurrenceID is an RDATE or EXDATE
 	 *
-	 * @param {Boolean} isNegative Whether we are dealing with an EXDATE or RDATE
+	 * @param {boolean} isNegative Whether we are dealing with an EXDATE or RDATE
 	 * @param {DateTimeValue} recurrenceId Recurrence-Id to check
 	 * @return {boolean}
 	 */
@@ -428,7 +428,7 @@ export default class RecurrenceManager {
 
 	/**
 	 *
-	 * @param {Boolean} isNegative Whether we are dealing with an EXDATE or RDATE
+	 * @param {boolean} isNegative Whether we are dealing with an EXDATE or RDATE
 	 * @param {DateTimeValue} recurrenceId Recurrence-Id to get
 	 * @return {null|DateTimeValue|PeriodValue}
 	 */

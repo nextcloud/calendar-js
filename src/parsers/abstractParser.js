@@ -30,11 +30,11 @@ export default class AbstractParser {
 	 * @constructor
 	 *
 	 * @param {Object=} options Object of options
-	 * @param {Boolean=} options.extractGlobalProperties Whether or not to preserve properties from the VCALENDAR component (defaults to false)
-	 * @param {Boolean=} options.removeRSVPForAttendees Whether or not to remove RSVP from attendees (defaults to false)
-	 * @param {Boolean=} options.includeTimezones Whether or not to include timezones (defaults to false)
-	 * @param {Boolean=} options.preserveMethod Whether or not to preserve the iCalendar method (defaults to false)
-	 * @param {Boolean=} options.processFreeBusy Whether or not to process VFreeBusy components (defaults to false)
+	 * @param {boolean=} options.extractGlobalProperties Whether or not to preserve properties from the VCALENDAR component (defaults to false)
+	 * @param {boolean=} options.removeRSVPForAttendees Whether or not to remove RSVP from attendees (defaults to false)
+	 * @param {boolean=} options.includeTimezones Whether or not to include timezones (defaults to false)
+	 * @param {boolean=} options.preserveMethod Whether or not to preserve the iCalendar method (defaults to false)
+	 * @param {boolean=} options.processFreeBusy Whether or not to process VFreeBusy components (defaults to false)
 	 */
 	constructor(options = {}) {
 		if (new.target === AbstractParser) {
@@ -44,7 +44,7 @@ export default class AbstractParser {
 		/**
 		 * Options for the parser
 		 *
-		 * @type {{removeRSVPForAttendees: Boolean}}
+		 * @type {{removeRSVPForAttendees: boolean}}
 		 * @private
 		 */
 		this._options = Object.assign({}, options)

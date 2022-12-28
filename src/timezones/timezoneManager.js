@@ -102,7 +102,7 @@ export class TimezoneManager {
 	/**
 	 * Lists all timezones
 	 *
-	 * @param {Boolean=} includeAliases Whether or not to include aliases
+	 * @param {boolean=} includeAliases Whether or not to include aliases
 	 * @return {String[]}
 	 */
 	listAllTimezones(includeAliases = false) {

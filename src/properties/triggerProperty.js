@@ -102,7 +102,7 @@ export default class TriggerProperty extends Property {
 	 * Creates a new relative trigger
 	 *
 	 * @param {DurationValue} alarmOffset Duration to create Trigger from
-	 * @param {Boolean=} relatedToStart Related to Start or end?
+	 * @param {boolean=} relatedToStart Related to Start or end?
 	 * @return {TriggerProperty}
 	 */
 	static fromRelativeAndRelated(alarmOffset, relatedToStart = true) {

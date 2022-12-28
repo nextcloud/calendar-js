@@ -72,7 +72,7 @@ export default class AlarmComponent extends AbstractComponent {
 	 * Sets a relative trigger
 	 *
 	 * @param {DurationValue} alarmOffset - Relative time of the trigger, either related to start or end
-	 * @param {Boolean=} relatedToStart - Related to Start or end?
+	 * @param {boolean=} relatedToStart - Related to Start or end?
 	 */
 	setTriggerFromRelative(alarmOffset, relatedToStart = true) {
 		const triggerProperty = TriggerProperty.fromRelativeAndRelated(alarmOffset, relatedToStart)

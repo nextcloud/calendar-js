@@ -221,7 +221,7 @@ export default class AttendeeProperty extends Property {
 	 *
 	 * @param {String} name The display name
 	 * @param {String} email The email address
-	 * @param {Boolean=} isOrganizer Whether this is the organizer or an attendee
+	 * @param {boolean=} isOrganizer Whether this is the organizer or an attendee
 	 * @return {AttendeeProperty}
 	 */
 	static fromNameAndEMail(name, email, isOrganizer = false) {
@@ -240,8 +240,8 @@ export default class AttendeeProperty extends Property {
 	 * @param {String} email The email address
 	 * @param {String} role The role
 	 * @param {String} userType The type of user
-	 * @param {Boolean} rsvp Whether to send out an invitation
-	 * @param {Boolean=} isOrganizer Whether this is the organizer or an attendee
+	 * @param {boolean} rsvp Whether to send out an invitation
+	 * @param {boolean=} isOrganizer Whether this is the organizer or an attendee
 	 * @return {AttendeeProperty}
 	 */
 	static fromNameEMailRoleUserTypeAndRSVP(name, email, role, userType, rsvp, isOrganizer = false) {
