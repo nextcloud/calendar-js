@@ -216,7 +216,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	 * Checks if a value is inside this multi-value property
 	 *
 	 * @param {String|AbstractValue} value Value to check for
-	 * @return {Boolean}
+	 * @return {boolean}
 	 */
 	hasValue(value) {
 		if (!this.isMultiValue()) {
@@ -332,7 +332,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Returns whether or not the value is a multivalue
 	 *
-	 * @return {Boolean}
+	 * @return {boolean}
 	 */
 	isMultiValue() {
 		return Array.isArray(this._value)

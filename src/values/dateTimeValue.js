@@ -419,7 +419,7 @@ export default class DateTimeValue extends AbstractValue {
 	 * Creates a new DateTimeValue object based on a vanilla javascript object
 	 *
 	 * @param {Date} jsDate The JavaScript date to initialise from
-	 * @param {Boolean=} useUTC Whether or not to treat it as UTC
+	 * @param {boolean=} useUTC Whether or not to treat it as UTC
 	 * @return {DateTimeValue}
 	 */
 	static fromJSDate(jsDate, useUTC = false) {
@@ -437,7 +437,7 @@ export default class DateTimeValue extends AbstractValue {
 	 * @param {Number=} data.hour Amount of hours to set
 	 * @param {Number=} data.minute Amount of minutes to set
 	 * @param {Number=} data.second Amount of seconds to set
-	 * @param {Boolean=} data.isDate Whether this is a date or date-time
+	 * @param {boolean=} data.isDate Whether this is a date or date-time
 	 * @param {Timezone=} timezone The timezone of the DateTimeValue
 	 * @return {DateTimeValue}
 	 */

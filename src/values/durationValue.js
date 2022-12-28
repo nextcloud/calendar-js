@@ -159,7 +159,7 @@ export default class DurationValue extends AbstractValue {
 	/**
 	 * Gets the negative-indicator of the stored duration-value
 	 *
-	 * @return {Boolean}
+	 * @return {boolean}
 	 */
 	get isNegative() {
 		return this._innerValue.isNegative
@@ -169,7 +169,7 @@ export default class DurationValue extends AbstractValue {
 	 * Gets the negative-indicator of the stored duration-value
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {Boolean} isNegative Whether or not the duration is negative
+	 * @param {boolean} isNegative Whether or not the duration is negative
 	 */
 	set isNegative(isNegative) {
 		this._modifyContent()
@@ -270,7 +270,7 @@ export default class DurationValue extends AbstractValue {
 	 * @param {Number=} data.hours Number of hours to set
 	 * @param {Number=} data.minutes Number of minutes to set
 	 * @param {Number=} data.seconds Number of seconds to set
-	 * @param {Boolean=} data.isNegative Whether or not duration is negative
+	 * @param {boolean=} data.isNegative Whether or not duration is negative
 	 * @return {DurationValue}
 	 */
 	static fromData(data) {

@@ -35,7 +35,7 @@ export function lc(str) {
  *
  * @param {String} str1 String 1 to compare
  * @param {String} str2 String 2 to compare
- * @return {Boolean}
+ * @return {boolean}
  */
 export function strcasecmp(str1, str2) {
 	return uc(str1) === uc(str2)

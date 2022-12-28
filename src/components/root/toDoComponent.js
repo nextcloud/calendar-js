@@ -98,7 +98,7 @@ export default class ToDoComponent extends AbstractRecurringComponent {
 	 * Shifts the entire task by the given duration
 	 *
 	 * @param {DurationValue} delta The duration to shift event by
-	 * @param {Boolean} allDay Whether the updated event should be all-day or not
+	 * @param {boolean} allDay Whether the updated event should be all-day or not
 	 * @param {Timezone} defaultTimezone The default timezone if moving from all-day to timed event
 	 * @param {DurationValue} defaultAllDayDuration The default all-day duration if moving from timed to all-day
 	 * @param {DurationValue} defaultTimedDuration The default timed duration if moving from all-day to timed

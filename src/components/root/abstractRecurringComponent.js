@@ -538,9 +538,9 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * If the parameter thisAndAllFuture is set to true,
 	 * it will remove this and all future occurrences
 	 *
-	 * @param {Boolean} thisAndAllFuture Whether to create an exception for this and all future
+	 * @param {boolean} thisAndAllFuture Whether to create an exception for this and all future
 	 * @throws EmptyRecurrenceSetError Thrown, when deleting an occurrence results in no more events
-	 * @return {Boolean} true if this deleted the last occurrence in set, false if there are occurrences left
+	 * @return {boolean} true if this deleted the last occurrence in set, false if there are occurrences left
 	 */
 	removeThisOccurrence(thisAndAllFuture = false) {
 		if (!this.isPartOfRecurrenceSet()) {
@@ -653,7 +653,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * @param {String} email The email-address of the attendee to add
 	 * @param {String} role The role of the attendee to add
 	 * @param {String} userType The type of attendee to add
-	 * @param {Boolean} rsvp Whether or not to request a response from the attendee
+	 * @param {boolean} rsvp Whether or not to request a response from the attendee
 	 * @return {boolean}
 	 */
 	addAttendeeFromNameEMailRoleUserTypeAndRSVP(name, email, role, userType, rsvp) {
@@ -780,7 +780,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 *
 	 * @param {String} action The type of alarm Action
 	 * @param {DurationValue} alarmOffset The trigger time of the alarm
-	 * @param {Boolean=} relatedToStart Whether or not the alarm is related to the event's start
+	 * @param {boolean=} relatedToStart Whether or not the alarm is related to the event's start
 	 * @return {AlarmComponent}
 	 */
 	addRelativeAlarm(action, alarmOffset, relatedToStart = true) {

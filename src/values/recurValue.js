@@ -201,7 +201,7 @@ export default class RecurValue extends AbstractValue {
 	/**
 	 * Checks whether the stored rule is finite
 	 *
-	 * @return {Boolean}
+	 * @return {boolean}
 	 */
 	isFinite() {
 		return this._innerValue.isFinite()
@@ -210,7 +210,7 @@ export default class RecurValue extends AbstractValue {
 	/**
 	 * Checks whether the recurrence rule is limited by count
 	 *
-	 * @return {Boolean}
+	 * @return {boolean}
 	 */
 	isByCount() {
 		return this._innerValue.isByCount()

@@ -366,7 +366,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
 	 * Adds a new component to this component
 	 *
 	 * @param {AbstractComponent} component The component to add
-	 * @return {Boolean}
+	 * @return {boolean}
 	 */
 	addComponent(component) {
 		this._modify()
@@ -592,7 +592,7 @@ export default class AbstractComponent extends observerTrait(lockableTrait(class
  *
  * @param {Object} prototype The object's prototype
  * @param {Object} options The options for advertising properties
- * @param {Boolean} advertiseValueOnly Whether to advertise the value only or the entire property
+ * @param {boolean} advertiseValueOnly Whether to advertise the value only or the entire property
  */
 export function advertiseSingleOccurrenceProperty(prototype, options, advertiseValueOnly = true) {
 	options = getDefaultOncePropConfig(options)
@@ -776,7 +776,7 @@ function getDefaultOncePropConfig(options) {
  * @param {Object|String} options The options object
  * @param {String} options.name Advertised name of property
  * @param {String=} options.iCalendarName The iCalendar name of the property
- * @param {Boolean=} options.customAddMethod Whether or not to use a custom add method
+ * @param {boolean=} options.customAddMethod Whether or not to use a custom add method
  * @return {Object}
  */
 function getDefaultMultiplePropConfig(options) {
@@ -798,7 +798,7 @@ function getDefaultMultiplePropConfig(options) {
  * @param {Object|String} options Options destructuring object
  * @param {String} options.name Advertised name of component
  * @param {String=} options.iCalendarName The iCalendar name of the component
- * @param {Boolean=} options.customAddMethod Whether or not to use a custom add method
+ * @param {boolean=} options.customAddMethod Whether or not to use a custom add method
  * @return {Object}
  */
 function getDefaultMultipleCompConfig(options) {
