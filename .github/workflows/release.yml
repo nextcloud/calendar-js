@@ -58,3 +58,14 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create stable branch for major and minor bumps
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        run: |
+          if [[ "${{ steps.changelog.outputs.version }}" =~ ^[0-9]+.[0-9]+.0$ ]]; then
+            BRANCH_NAME=stable$(echo "${{ steps.changelog.outputs.version }}" | grep -Eo '[0-9]+.[0-9]+')
+            git branch $BRANCH_NAME ${{ steps.changelog.outputs.tag }}
+            git push origin $BRANCH_NAME
+          else
+            echo "Skipping stable branch for patch release"
+          fi
