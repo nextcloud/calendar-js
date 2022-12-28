@@ -42,7 +42,7 @@ This repository follows the concept of [conventional commits](https://www.conven
    1) Select *Branch: main*
    2) Click *Run workflow*
 3) Reload the page
-4) Click on the waiting *Npm registry* workflow (yellow clock icon) and approve it if you have permission or ask one of the [maintainers](#maintainers)
+4) Click on the waiting *Release* workflow (yellow clock icon) and approve it if you have permission or ask one of the [maintainers](#maintainers)
 
 ## License
 
