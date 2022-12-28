@@ -133,7 +133,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Gets the primary-item of this recurring item
 	 *
-	 * @returns {AbstractRecurringComponent}
+	 * @return {AbstractRecurringComponent}
 	 */
 	get primaryItem() {
 		return this._primaryItem
@@ -153,7 +153,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * Gets whether or not this is a fork of the primary item
 	 * for the same recurrence-id
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	get isExactForkOfPrimary() {
 		return this._isExactForkOfPrimary
@@ -171,7 +171,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Gets the original recurrence-id
 	 *
-	 * @returns {DateTimeValue}
+	 * @return {DateTimeValue}
 	 */
 	get originalRecurrenceId() {
 		return this._originalRecurrenceId
@@ -189,7 +189,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Gets the recurrence-manager of this recurrence-set
 	 *
-	 * @returns {RecurrenceManager}
+	 * @return {RecurrenceManager}
 	 */
 	get recurrenceManager() {
 		return this._recurrenceManager
@@ -207,7 +207,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Gets the master-item of this recurring item
 	 *
-	 * @returns {AbstractRecurringComponent}
+	 * @return {AbstractRecurringComponent}
 	 */
 	get masterItem() {
 		return this.recurrenceManager.masterItem
@@ -216,7 +216,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Returns whether this item is the master item
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isMasterItem() {
 		return this.masterItem === this
@@ -229,7 +229,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * this id will not be unique. Software using this library will have to
 	 * manually mix in the calendar id into this id
 	 *
-	 * @returns {String}
+	 * @return {String}
 	 */
 	get id() {
 		if (this._cachedId) {
@@ -252,7 +252,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Gets the UID property
 	 *
-	 * @returns {String|null}
+	 * @return {String|null}
 	 */
 	get uid() {
 		return this.getFirstPropertyFirstValue('UID')
@@ -270,7 +270,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Gets the start date of the event
 	 *
-	 * @returns {DateTimeValue}
+	 * @return {DateTimeValue}
 	 */
 	get startDate() {
 		return this.getFirstPropertyFirstValue('dtstart')
@@ -293,7 +293,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Checks whether this item is part of a recurring set
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isPartOfRecurrenceSet() {
 		return this.masterItem.isRecurring()
@@ -302,7 +302,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Checks whether this component is recurring
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isRecurring() {
 		return this.hasProperty('RRULE') || this.hasProperty('RDATE')
@@ -311,7 +311,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Checks whether this component is a recurrence-exception
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isRecurrenceException() {
 		return this.hasProperty('RECURRENCE-ID')
@@ -321,7 +321,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * Checks wether this component is a recurrence-exception
 	 * and whether it's modifying the future
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	modifiesFuture() {
 		if (!this.isRecurrenceException()) {
@@ -340,7 +340,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 *
 	 * @param {DateTimeValue} recurrenceId The recurrence-Id of the forked item
 	 * @param {DurationValue=} startDiff to be used when The start-diff (used for RECURRENCE-ID;RANGE=THISANDFUTURE)
-	 * @returns {AbstractRecurringComponent}
+	 * @return {AbstractRecurringComponent}
 	 */
 	forkItem(recurrenceId, startDiff = null) {
 		const occurrence = this.clone()
@@ -417,7 +417,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * Checks whether it's possible to create a recurrence exception for this event
 	 * It is possible
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	canCreateRecurrenceExceptions() {
 		let primaryIsRecurring = false
@@ -433,7 +433,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * it will apply changes to this and all future occurrences
 	 *
 	 * @param {boolean} thisAndAllFuture Whether to create an exception for this and all future
-	 * @returns {AbstractRecurringComponent[]} the AbstractRecurringComponent of the future events.
+	 * @return {AbstractRecurringComponent[]} the AbstractRecurringComponent of the future events.
 	 * In case you set `thisAndAllFuture` to true, this will be an
 	 * AbstractRecurringComponent inside a entirely new calendar component
 	 */
@@ -540,7 +540,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 *
 	 * @param {Boolean} thisAndAllFuture Whether to create an exception for this and all future
 	 * @throws EmptyRecurrenceSetError Thrown, when deleting an occurrence results in no more events
-	 * @returns {Boolean} true if this deleted the last occurrence in set, false if there are occurrences left
+	 * @return {Boolean} true if this deleted the last occurrence in set, false if there are occurrences left
 	 */
 	removeThisOccurrence(thisAndAllFuture = false) {
 		if (!this.isPartOfRecurrenceSet()) {
@@ -620,7 +620,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 *
 	 * @param {AttendeeProperty} attendee The attendee property to add
 	 * @private
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	_addAttendee(attendee) {
 		// Check for different Attendee objects with the same uri
@@ -639,7 +639,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 *
 	 * @param {String} name The name of the attendee to add
 	 * @param {String} email The email-address of the attendee to add
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	addAttendeeFromNameAndEMail(name, email) {
 		const attendeeProperty = AttendeeProperty.fromNameAndEMail(name, email)
@@ -654,7 +654,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * @param {String} role The role of the attendee to add
 	 * @param {String} userType The type of attendee to add
 	 * @param {Boolean} rsvp Whether or not to request a response from the attendee
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	addAttendeeFromNameEMailRoleUserTypeAndRSVP(name, email, role, userType, rsvp) {
 		const attendeeProperty = AttendeeProperty.fromNameEMailRoleUserTypeAndRSVP(name, email, role, userType, rsvp, false)
@@ -763,7 +763,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 *
 	 * @param {String} action The type of alarm Action
 	 * @param {DateTimeValue} alarmTime The trigger time of the alarm
-	 * @returns {AlarmComponent}
+	 * @return {AlarmComponent}
 	 */
 	addAbsoluteAlarm(action, alarmTime) {
 		const alarmComp = new AlarmComponent('VALARM', [
@@ -781,7 +781,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * @param {String} action The type of alarm Action
 	 * @param {DurationValue} alarmOffset The trigger time of the alarm
 	 * @param {Boolean=} relatedToStart Whether or not the alarm is related to the event's start
-	 * @returns {AlarmComponent}
+	 * @return {AlarmComponent}
 	 */
 	addRelativeAlarm(action, alarmOffset, relatedToStart = true) {
 		const alarmComp = new AlarmComponent('VALARM', [
@@ -835,7 +835,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Returns whether or not this component is dirty
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isDirty() {
 		return this._dirty || this._significantChange
@@ -858,7 +858,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Updates the event after modifications.
 	 *
-	 * @returns {boolean} true if last-modified was updated
+	 * @return {boolean} true if last-modified was updated
 	 */
 	undirtify() {
 		if (!this.isDirty()) {
@@ -955,7 +955,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * Gets a recurrence-id that has to be used to refer to this event.
 	 * This is used for recurrence-management
 	 *
-	 * @returns {DateTimeValue}
+	 * @return {DateTimeValue}
 	 */
 	getReferenceRecurrenceId() {
 		if (this.originalRecurrenceId) {
@@ -1151,7 +1151,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  * @name AbstractRecurringComponent#getCategoryIterator
  * @function
  * @param {String=} lang
- * @returns {IterableIterator<String>}
+ * @return {IterableIterator<String>}
  */
 
 /**
@@ -1162,7 +1162,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  * @name AbstractRecurringComponent#getCategoryList
  * @function
  * @param {String=} lang
- * @returns {String[]}
+ * @return {String[]}
  */
 
 /**
@@ -1200,7 +1200,7 @@ advertiseMultiValueStringPropertySeparatedByLang(AbstractRecurringComponent.prot
  *
  * @name AbstractRecurringComponent#getAttendeeIterator
  * @function
- * @returns {IterableIterator<AttendeeProperty>}
+ * @return {IterableIterator<AttendeeProperty>}
  */
 
 /**
@@ -1208,7 +1208,7 @@ advertiseMultiValueStringPropertySeparatedByLang(AbstractRecurringComponent.prot
  *
  * @name AbstractRecurringComponent#getAttendeeList
  * @function
- * @returns {AttachmentProperty[]}
+ * @return {AttachmentProperty[]}
  */
 
 /**
@@ -1234,7 +1234,7 @@ advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  *
  * @name AbstractRecurringComponent#getAttachmentIterator
  * @function
- * @returns {IterableIterator<AttachmentProperty>}
+ * @return {IterableIterator<AttachmentProperty>}
  */
 
 /**
@@ -1242,7 +1242,7 @@ advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  *
  * @name AbstractRecurringComponent#getAttachmentList
  * @function
- * @returns {AttachmentProperty[]}
+ * @return {AttachmentProperty[]}
  */
 
 /**
@@ -1269,7 +1269,7 @@ advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  *
  * @name AbstractRecurringComponent#getRelationIterator
  * @function
- * @returns {IterableIterator<RelationProperty>}
+ * @return {IterableIterator<RelationProperty>}
  */
 
 /**
@@ -1277,7 +1277,7 @@ advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  *
  * @name AbstractRecurringComponent#getRelationList
  * @function
- * @returns {RelationProperty[]}
+ * @return {RelationProperty[]}
  */
 
 /**
@@ -1304,7 +1304,7 @@ advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  *
  * @name AbstractRecurringComponent#getCommentIterator
  * @function
- * @returns {IterableIterator<TextProperty>}
+ * @return {IterableIterator<TextProperty>}
  */
 
 /**
@@ -1312,7 +1312,7 @@ advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  *
  * @name AbstractRecurringComponent#getCommentList
  * @function
- * @returns {TextProperty[]}
+ * @return {TextProperty[]}
  */
 
 /**
@@ -1336,7 +1336,7 @@ advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, 'comme
  *
  * @name AbstractRecurringComponent#getContactIterator
  * @function
- * @returns {IterableIterator<TextProperty>}
+ * @return {IterableIterator<TextProperty>}
  */
 
 /**
@@ -1344,7 +1344,7 @@ advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, 'comme
  *
  * @name AbstractRecurringComponent#getContactList
  * @function
- * @returns {TextProperty[]}
+ * @return {TextProperty[]}
  */
 
 /**
@@ -1368,7 +1368,7 @@ advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, 'conta
  *
  * @name AbstractRecurringComponent#getImageIterator
  * @function
- * @returns {IterableIterator<ImageProperty>}
+ * @return {IterableIterator<ImageProperty>}
  */
 
 /**
@@ -1376,7 +1376,7 @@ advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, 'conta
  *
  * @name AbstractRecurringComponent#getImageList
  * @function
- * @returns {ImageProperty[]}
+ * @return {ImageProperty[]}
  */
 
 /**
@@ -1400,7 +1400,7 @@ advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, 'image
  *
  * @name AbstractRecurringComponent#getRequestStatusIterator
  * @function
- * @returns {IterableIterator<RequestStatusProperty>}
+ * @return {IterableIterator<RequestStatusProperty>}
  */
 
 /**
@@ -1408,7 +1408,7 @@ advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, 'image
  *
  * @name AbstractRecurringComponent#getRequestStatusList
  * @function
- * @returns {RequestStatusProperty[]}
+ * @return {RequestStatusProperty[]}
  */
 
 /**
@@ -1436,7 +1436,7 @@ advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  *
  * @name AbstractRecurringComponent#getAlarmIterator
  * @function
- * @returns {IterableIterator<AlarmComponent>}
+ * @return {IterableIterator<AlarmComponent>}
  */
 
 /**
@@ -1444,7 +1444,7 @@ advertiseMultipleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  *
  * @name AbstractRecurringComponent#getAlarmList
  * @function
- * @returns {AlarmComponent[]}
+ * @return {AlarmComponent[]}
  */
 
 /**

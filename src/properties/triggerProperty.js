@@ -34,7 +34,7 @@ export default class TriggerProperty extends Property {
 	/**
 	 * Gets the related parameter
 	 *
-	 * @returns {String}
+	 * @return {String}
 	 */
 	get related() {
 		if (!this.hasParameter('RELATED')) {
@@ -58,7 +58,7 @@ export default class TriggerProperty extends Property {
 	 * (If you override the setter, you also have to override the getter or
 	 *  it will simply be undefined)
 	 *
-	 * @returns {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]}
+	 * @return {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]}
 	 */
 	get value() {
 		return super.value
@@ -82,7 +82,7 @@ export default class TriggerProperty extends Property {
 	/**
 	 * Gets whether this alarm trigger is relative
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isRelative() {
 		return this.getFirstValue() instanceof DurationValue
@@ -92,7 +92,7 @@ export default class TriggerProperty extends Property {
 	 * Creates a new absolute trigger
 	 *
 	 * @param {DateTimeValue} alarmTime Time to create Trigger from
-	 * @returns {TriggerProperty}
+	 * @return {TriggerProperty}
 	 */
 	static fromAbsolute(alarmTime) {
 		return new TriggerProperty('TRIGGER', alarmTime)
@@ -103,7 +103,7 @@ export default class TriggerProperty extends Property {
 	 *
 	 * @param {DurationValue} alarmOffset Duration to create Trigger from
 	 * @param {Boolean=} relatedToStart Related to Start or end?
-	 * @returns {TriggerProperty}
+	 * @return {TriggerProperty}
 	 */
 	static fromRelativeAndRelated(alarmOffset, relatedToStart = true) {
 		return new TriggerProperty('TRIGGER', alarmOffset, [['RELATED', relatedToStart ? 'START' : 'END']])

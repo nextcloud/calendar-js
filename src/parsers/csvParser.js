@@ -112,7 +112,7 @@
 // 	/**
 // 	 *
 // 	 * @param row
-// 	 * @returns {boolean}
+// 	 * @return {boolean}
 // 	 * @private
 // 	 */
 // 	_verifyRowContainsNecessaryColumns(row) {

@@ -24,7 +24,7 @@
  * Turns the entire string lowercase
  *
  * @param {String} str The string to turn lowercase
- * @returns {string}
+ * @return {string}
  */
 export function lc(str) {
 	return str.toLowerCase()
@@ -35,7 +35,7 @@ export function lc(str) {
  *
  * @param {String} str1 String 1 to compare
  * @param {String} str2 String 2 to compare
- * @returns {Boolean}
+ * @return {Boolean}
  */
 export function strcasecmp(str1, str2) {
 	return uc(str1) === uc(str2)
@@ -45,7 +45,7 @@ export function strcasecmp(str1, str2) {
  * Turns the entire string uppercase
  *
  * @param {String} str The string to turn uppercase
- * @returns {string}
+ * @return {string}
  */
 export function uc(str) {
 	return str.toUpperCase()
@@ -55,7 +55,7 @@ export function uc(str) {
  * Capitalizes the string
  *
  * @param {String} str The string of which the first character will be turned uppercase
- * @returns {string}
+ * @return {string}
  */
 export function ucFirst(str) {
 	return str.charAt(0).toUpperCase() + str.slice(1)
@@ -67,7 +67,7 @@ export function ucFirst(str) {
  *
  * @param {String} str The string to check for the prefix and prepend if necessary
  * @param {String} startWith The prefix to be added if necessary
- * @returns {string}
+ * @return {string}
  */
 export function startStringWith(str, startWith) {
 	if (!str.startsWith(startWith)) {

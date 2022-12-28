@@ -34,7 +34,7 @@ export default class BinaryValue extends AbstractValue {
 	/**
 	 * Sets the raw b64 encoded value
 	 *
-	 * @returns {String}
+	 * @return {String}
 	 */
 	get rawValue() {
 		return this._innerValue.value
@@ -54,7 +54,7 @@ export default class BinaryValue extends AbstractValue {
 	/**
 	 * Gets the decoded value
 	 *
-	 * @returns {String}
+	 * @return {String}
 	 */
 	get value() {
 		return this._innerValue.decodeValue()
@@ -74,7 +74,7 @@ export default class BinaryValue extends AbstractValue {
 	/**
 	 * clones this value
 	 *
-	 * @returns {BinaryValue}
+	 * @return {BinaryValue}
 	 */
 	clone() {
 		return BinaryValue.fromRawValue(this._innerValue.value)
@@ -84,7 +84,7 @@ export default class BinaryValue extends AbstractValue {
 	 * Create a new BinaryValue object from an ICAL.Binary object
 	 *
 	 * @param {ICAL.Binary} icalValue - The ICAL.Binary object
-	 * @returns {BinaryValue}
+	 * @return {BinaryValue}
 	 */
 	static fromICALJs(icalValue) {
 		return new BinaryValue(icalValue)
@@ -94,7 +94,7 @@ export default class BinaryValue extends AbstractValue {
 	 * Create a new BinaryValue object from a raw b64 encoded value
 	 *
 	 * @param {String} rawValue - The raw value
-	 * @returns {BinaryValue}
+	 * @return {BinaryValue}
 	 */
 	static fromRawValue(rawValue) {
 		const icalBinary = new ICAL.Binary(rawValue)
@@ -105,7 +105,7 @@ export default class BinaryValue extends AbstractValue {
 	 * Create a new BinaryValue object from decoded value
 	 *
 	 * @param {String} decodedValue - The encoded value
-	 * @returns {BinaryValue}
+	 * @return {BinaryValue}
 	 */
 	static fromDecodedValue(decodedValue) {
 		const icalBinary = new ICAL.Binary()

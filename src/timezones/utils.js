@@ -25,7 +25,7 @@
  * @param {string[]} timezoneList List of Olsen timezones
  * @param {Array} additionalTimezones List of additional timezones
  * @param {String} globalTimezoneName The localized name of the "Global" timezones
- * @returns {[]}
+ * @return {[]}
  */
 export function getSortedTimezoneList(timezoneList = [], additionalTimezones = [], globalTimezoneName = 'Global') {
 	const sortedByContinent = {}
@@ -97,7 +97,7 @@ export function getSortedTimezoneList(timezoneList = [], additionalTimezones = [
  * Get human-readable name for timezoneId
  *
  * @param {string} timezoneId TimezoneId to turn human-readable
- * @returns {string}
+ * @return {string}
  */
 export function getReadableTimezoneName(timezoneId) {
 	return timezoneId

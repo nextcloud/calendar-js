@@ -33,7 +33,7 @@ export default class AttendeeProperty extends Property {
 	/**
 	 * Returns the role of the attendee.
 	 *
-	 * @returns {string}
+	 * @return {string}
 	 */
 	get role() {
 		const allowed = ['CHAIR', 'REQ-PARTICIPANT', 'OPT-PARTICIPANT', 'NON-PARTICIPANT']
@@ -61,7 +61,7 @@ export default class AttendeeProperty extends Property {
 	/**
 	 * Returns the calendar-user-type of an attendee
 	 *
-	 * @returns {string}
+	 * @return {string}
 	 */
 	get userType() {
 		const allowed = ['INDIVIDUAL', 'GROUP', 'RESOURCE', 'ROOM', 'UNKNOWN']
@@ -90,7 +90,7 @@ export default class AttendeeProperty extends Property {
 	/**
 	 * Returns the "Répondez s'il vous plaît" value for attendee
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	get rsvp() {
 		if (!this.hasParameter('RSVP')) {
@@ -113,7 +113,7 @@ export default class AttendeeProperty extends Property {
 	/**
 	 * Returns the common-name of the attendee
 	 *
-	 * @returns {string|null}
+	 * @return {string|null}
 	 */
 	get commonName() {
 		return this.getParameterFirstValue('CN')
@@ -131,7 +131,7 @@ export default class AttendeeProperty extends Property {
 	/**
 	 * Returns the participation-status of the attendee
 	 *
-	 * @returns {string}
+	 * @return {string}
 	 */
 	get participationStatus() {
 		let vobjectType
@@ -173,7 +173,7 @@ export default class AttendeeProperty extends Property {
 	/**
 	 * Gets this attendee's language
 	 *
-	 * @returns {String}
+	 * @return {String}
 	 */
 	get language() {
 		return this.getParameterFirstValue('LANGUAGE')
@@ -192,7 +192,7 @@ export default class AttendeeProperty extends Property {
 	/**
 	 * Gets the email of the attendee
 	 *
-	 * @returns {String}
+	 * @return {String}
 	 */
 	get email() {
 		return this.value
@@ -210,7 +210,7 @@ export default class AttendeeProperty extends Property {
 	/**
 	 * Is this attendee the organizer?
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isOrganizer() {
 		return this._name === 'ORGANIZER'
@@ -222,7 +222,7 @@ export default class AttendeeProperty extends Property {
 	 * @param {String} name The display name
 	 * @param {String} email The email address
 	 * @param {Boolean=} isOrganizer Whether this is the organizer or an attendee
-	 * @returns {AttendeeProperty}
+	 * @return {AttendeeProperty}
 	 */
 	static fromNameAndEMail(name, email, isOrganizer = false) {
 		const propertyName = isOrganizer
@@ -242,7 +242,7 @@ export default class AttendeeProperty extends Property {
 	 * @param {String} userType The type of user
 	 * @param {Boolean} rsvp Whether to send out an invitation
 	 * @param {Boolean=} isOrganizer Whether this is the organizer or an attendee
-	 * @returns {AttendeeProperty}
+	 * @return {AttendeeProperty}
 	 */
 	static fromNameEMailRoleUserTypeAndRSVP(name, email, role, userType, rsvp, isOrganizer = false) {
 		const propertyName = isOrganizer

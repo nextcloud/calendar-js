@@ -44,7 +44,7 @@ export default class TimezoneAdapter {
 
 	/**
 	 * @param {string} timezoneId The id of the timezone
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	has(timezoneId) {
 		return this._timezoneManager.hasTimezoneForId(timezoneId)
@@ -52,7 +52,7 @@ export default class TimezoneAdapter {
 
 	/**
 	 * @param {String} timezoneId The id of the timezone
-	 * @returns {ICAL.Timezone|undefined}
+	 * @return {ICAL.Timezone|undefined}
 	 */
 	get(timezoneId) {
 		const timezone = this._timezoneManager.getTimezoneForId(timezoneId)

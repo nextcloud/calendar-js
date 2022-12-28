@@ -34,7 +34,7 @@ export default class DurationValue extends AbstractValue {
 	/**
 	 * Gets the weeks of the stored duration-value
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get weeks() {
 		return this._innerValue.weeks
@@ -59,7 +59,7 @@ export default class DurationValue extends AbstractValue {
 	/**
 	 * Gets the days of the stored duration-value
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get days() {
 		return this._innerValue.days
@@ -84,7 +84,7 @@ export default class DurationValue extends AbstractValue {
 	/**
 	 * Gets the hours of the stored duration-value
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get hours() {
 		return this._innerValue.hours
@@ -109,7 +109,7 @@ export default class DurationValue extends AbstractValue {
 	/**
 	 * Gets the minutes of the stored duration-value
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get minutes() {
 		return this._innerValue.minutes
@@ -134,7 +134,7 @@ export default class DurationValue extends AbstractValue {
 	/**
 	 * Gets the seconds of the stored duration-value
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get seconds() {
 		return this._innerValue.seconds
@@ -159,7 +159,7 @@ export default class DurationValue extends AbstractValue {
 	/**
 	 * Gets the negative-indicator of the stored duration-value
 	 *
-	 * @returns {Boolean}
+	 * @return {Boolean}
 	 */
 	get isNegative() {
 		return this._innerValue.isNegative
@@ -179,7 +179,7 @@ export default class DurationValue extends AbstractValue {
 	/**
 	 * Gets the amount of total seconds of the stored duration-value
 	 *
-	 * @returns {*|Number}
+	 * @return {*|Number}
 	 */
 	get totalSeconds() {
 		return this._innerValue.toSeconds()
@@ -200,7 +200,7 @@ export default class DurationValue extends AbstractValue {
 	 * Compares this duration to another one
 	 *
 	 * @param {DurationValue} otherDuration The duration to compare to
-	 * @returns {Number} -1, 0 or 1 for less/equal/greater
+	 * @return {Number} -1, 0 or 1 for less/equal/greater
 	 */
 	compare(otherDuration) {
 		return this._innerValue.compare(otherDuration.toICALJs())
@@ -233,7 +233,7 @@ export default class DurationValue extends AbstractValue {
 	/**
 	 * clones this value
 	 *
-	 * @returns {DurationValue}
+	 * @return {DurationValue}
 	 */
 	clone() {
 		return DurationValue.fromICALJs(this._innerValue.clone())
@@ -243,7 +243,7 @@ export default class DurationValue extends AbstractValue {
 	 * Create a new DurationValue object from an ICAL.Duration object
 	 *
 	 * @param {ICAL.Duration} icalValue The ical.js duration value
-	 * @returns {DurationValue}
+	 * @return {DurationValue}
 	 */
 	static fromICALJs(icalValue) {
 		return new DurationValue(icalValue)
@@ -253,7 +253,7 @@ export default class DurationValue extends AbstractValue {
 	 * Create a new DurationValue object from a number of seconds
 	 *
 	 * @param {Number} seconds Total amount of seconds
-	 * @returns {DurationValue}
+	 * @return {DurationValue}
 	 */
 	static fromSeconds(seconds) {
 		const icalDuration = ICAL.Duration.fromSeconds(seconds)
@@ -271,7 +271,7 @@ export default class DurationValue extends AbstractValue {
 	 * @param {Number=} data.minutes Number of minutes to set
 	 * @param {Number=} data.seconds Number of seconds to set
 	 * @param {Boolean=} data.isNegative Whether or not duration is negative
-	 * @returns {DurationValue}
+	 * @return {DurationValue}
 	 */
 	static fromData(data) {
 		const icalDuration = ICAL.Duration.fromData(data)

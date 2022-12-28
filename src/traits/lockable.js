@@ -46,7 +46,7 @@ export default function lockableTrait(baseClass) {
 		/**
 		 * Returns whether or not this object is locked
 		 *
-		 * @returns {boolean}
+		 * @return {boolean}
 		 */
 		isLocked() {
 			return !this._mutable

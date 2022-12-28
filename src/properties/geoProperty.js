@@ -41,7 +41,7 @@ export default class GeoProperty extends Property {
 	/**
 	 * Gets the latitude stored in this property
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get latitude() {
 		return this._value[0]
@@ -108,7 +108,7 @@ export default class GeoProperty extends Property {
 	 *
 	 * @param {Number} lat Latitude
 	 * @param {Number} long Longitude
-	 * @returns {GeoProperty}
+	 * @return {GeoProperty}
 	 */
 	static fromPosition(lat, long) {
 		return new GeoProperty('GEO', [lat, long])

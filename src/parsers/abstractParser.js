@@ -101,7 +101,7 @@ export default class AbstractParser {
 	/**
 	 * Gets the name extracted from the calendar-data
 	 *
-	 * @returns {String|null}
+	 * @return {String|null}
 	 */
 	getName() {
 		return this._name
@@ -110,7 +110,7 @@ export default class AbstractParser {
 	/**
 	 * Gets the color extracted from the calendar-data
 	 *
-	 * @returns {String|null}
+	 * @return {String|null}
 	 */
 	getColor() {
 		return this._color
@@ -119,7 +119,7 @@ export default class AbstractParser {
 	/**
 	 * Gets whether this import can be converted into a webcal subscription
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	offersWebcalFeed() {
 		return this._sourceURL !== null
@@ -128,7 +128,7 @@ export default class AbstractParser {
 	/**
 	 * Gets the url pointing to the webcal source
 	 *
-	 * @returns {String|null}
+	 * @return {String|null}
 	 */
 	getSourceURL() {
 		return this._sourceURL
@@ -137,7 +137,7 @@ export default class AbstractParser {
 	/**
 	 * Gets the recommended refresh rate to update this subscription
 	 *
-	 * @returns {String|null}
+	 * @return {String|null}
 	 */
 	getRefreshInterval() {
 		return this._refreshInterval
@@ -146,7 +146,7 @@ export default class AbstractParser {
 	/**
 	 * Gets the default timezone of this calendar
 	 *
-	 * @returns {String}
+	 * @return {String}
 	 */
 	getCalendarTimezone() {
 		return this._calendarTimezone
@@ -172,7 +172,7 @@ export default class AbstractParser {
 	/**
 	 * Get an array of all items
 	 *
-	 * @returns {CalendarComponent[]}
+	 * @return {CalendarComponent[]}
 	 */
 	getAllItems() {
 		return Array.from(this.getItemIterator())
@@ -181,7 +181,7 @@ export default class AbstractParser {
 	/**
 	 * Returns a boolean whether or not the parsed data contains vevents
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	containsVEvents() {
 		return false
@@ -190,7 +190,7 @@ export default class AbstractParser {
 	/**
 	 * Returns a boolean whether or not the parsed data contains vjournals
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	containsVJournals() {
 		return false
@@ -199,7 +199,7 @@ export default class AbstractParser {
 	/**
 	 * Returns a boolean whether or not the parsed data contains vtodos
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	containsVTodos() {
 		return false
@@ -208,7 +208,7 @@ export default class AbstractParser {
 	/**
 	 * Returns a boolean whether or not the parsed data contains vfreebusys
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	containsVFreeBusy() {
 		return false
@@ -217,7 +217,7 @@ export default class AbstractParser {
 	/**
 	 * Returns a boolean whether
 	 *
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	hasErrors() {
 		return this._errors.length !== 0
@@ -226,7 +226,7 @@ export default class AbstractParser {
 	/**
 	 * Get a list of all errors that occurred
 	 *
-	 * @returns {*[]}
+	 * @return {*[]}
 	 */
 	getErrorList() {
 		return this._errors.slice()
@@ -235,7 +235,7 @@ export default class AbstractParser {
 	/**
 	 * Returns the number of calendar-objects in parser
 	 *
-	 * @returns {number}
+	 * @return {number}
 	 */
 	getItemCount() {
 		return 0
@@ -246,7 +246,7 @@ export default class AbstractParser {
 	 *
 	 * @param {String} name The name of the option to get
 	 * @param {*} defaultValue The default value to return if option not provided
-	 * @returns {any}
+	 * @return {any}
 	 * @protected
 	 */
 	_getOption(name, defaultValue) {

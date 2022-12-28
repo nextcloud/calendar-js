@@ -70,7 +70,7 @@ export function * parseICSAndGetAllOccurrencesBetween(ics, start, end) {
  *
  * @param {DateTimeValue} start Start-time of the new event
  * @param {DateTimeValue} end End-time of the new event
- * @returns {CalendarComponent}
+ * @return {CalendarComponent}
  */
 export function createEvent(start, end) {
 	const calendar = CalendarComponent.fromEmpty()
@@ -97,7 +97,7 @@ export function createEvent(start, end) {
  * @param {DateTimeValue} end The end of the queried time-range
  * @param {AttendeeProperty} organizer The organizer querying information
  * @param {AttendeeProperty[]}attendees The list of attendees to query information for
- * @returns {CalendarComponent}
+ * @return {CalendarComponent}
  */
 export function createFreeBusyRequest(start, end, organizer, attendees) {
 	const calendar = CalendarComponent.fromMethod('REQUEST')

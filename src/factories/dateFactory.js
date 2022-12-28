@@ -23,7 +23,7 @@
 /**
  * Gets a new DateObject set to now
  *
- * @returns {Date}
+ * @return {Date}
  */
 export function dateFactory() {
 	return new Date()

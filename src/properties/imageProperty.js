@@ -51,7 +51,7 @@ export default class ImageProperty extends AttachmentProperty {
 	 * @param {String} data The data of the image
 	 * @param {String=} display The display-type it's optimized for
 	 * @param {String=} formatType The mime-type of the image
-	 * @returns {ImageProperty}
+	 * @return {ImageProperty}
 	 */
 	static fromData(data, display = null, formatType = null) {
 		const binaryValue = BinaryValue.fromDecodedValue(data)
@@ -74,7 +74,7 @@ export default class ImageProperty extends AttachmentProperty {
 	 * @param {String} uri The uri of the image
 	 * @param {String=} display The display-type it's optimized for
 	 * @param {String=} formatType The mime-type of the image
-	 * @returns {ImageProperty}
+	 * @return {ImageProperty}
 	 */
 	static fromLink(uri, display = null, formatType = null) {
 		const property = new ImageProperty('IMAGE', uri)

@@ -63,7 +63,7 @@ export default class Parameter extends observerTrait(lockableTrait(class {})) {
 	 * Get parameter name
 	 *
 	 * @readonly
-	 * @returns {String}
+	 * @return {String}
 	 */
 	get name() {
 		return this._name
@@ -72,7 +72,7 @@ export default class Parameter extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Get parameter value
 	 *
-	 * @returns {String|Array}
+	 * @return {String|Array}
 	 */
 	get value() {
 		return this._value
@@ -92,7 +92,7 @@ export default class Parameter extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Gets the first value of this parameter
 	 *
-	 * @returns {String|null}
+	 * @return {String|null}
 	 */
 	getFirstValue() {
 		if (!this.isMultiValue()) {
@@ -120,7 +120,7 @@ export default class Parameter extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Returns whether or not the value is a multivalue
 	 *
-	 * @returns {Boolean}
+	 * @return {Boolean}
 	 */
 	isMultiValue() {
 		return Array.isArray(this._value)
@@ -129,7 +129,7 @@ export default class Parameter extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Creates a copy of this parameter
 	 *
-	 * @returns {Parameter}
+	 * @return {Parameter}
 	 */
 	clone() {
 		const parameter = new this.constructor(this._name)

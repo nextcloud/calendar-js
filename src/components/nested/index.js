@@ -29,7 +29,7 @@ import { uc } from '../../helpers/stringHelper.js'
  * that can be nested inside other ones
  *
  * @param {String} compName - Component name to get default constructor for
- * @returns {AlarmComponent|AbstractComponent}
+ * @return {AlarmComponent|AbstractComponent}
  */
 export function getConstructorForComponentName(compName) {
 	switch (uc(compName)) {

@@ -26,7 +26,7 @@
  * or null if this is not a birthday event
  *
  * @param {EventComponent} eventComponent The eventComponent of the birthday event
- * @returns {null|string}
+ * @return {null|string}
  */
 export function getTypeOfBirthdayEvent(eventComponent) {
 	return eventComponent.getFirstPropertyFirstValue('X-NEXTCLOUD-BC-FIELD-TYPE')
@@ -36,7 +36,7 @@ export function getTypeOfBirthdayEvent(eventComponent) {
  * Gets icon for the birthday type
  *
  * @param {EventComponent} eventComponent The eventComponent of the birthday event
- * @returns {string|null}
+ * @return {string|null}
  */
 export function getIconForBirthday(eventComponent) {
 	const birthdayType = getTypeOfBirthdayEvent(eventComponent)
@@ -60,7 +60,7 @@ export function getIconForBirthday(eventComponent) {
  *
  * @param {EventComponent} eventComponent The eventComponent of the birthday event
  * @param {number} yearOfOccurrence The year to calculate the age for
- * @returns {null|number}
+ * @return {null|number}
  */
 export function getAgeOfBirthday(eventComponent, yearOfOccurrence) {
 	if (!eventComponent.hasProperty('X-NEXTCLOUD-BC-YEAR')) {
@@ -75,7 +75,7 @@ export function getAgeOfBirthday(eventComponent, yearOfOccurrence) {
  * Returns the name of the birthday person or null if not set
  *
  * @param {EventComponent} eventComponent The eventComponent of the birthday event
- * @returns {null|string}
+ * @return {null|string}
  */
 export function getNameForBirthday(eventComponent) {
 	return eventComponent.getFirstPropertyFirstValue('X-NEXTCLOUD-BC-NAME')

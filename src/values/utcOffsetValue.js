@@ -34,7 +34,7 @@ export default class UTCOffsetValue extends AbstractValue {
 	/**
 	 * Gets the hour part of the offset-value
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get hours() {
 		return this._innerValue.hours
@@ -54,7 +54,7 @@ export default class UTCOffsetValue extends AbstractValue {
 	/**
 	 * Gets the minute part of the offset-value
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get minutes() {
 		return this._innerValue.minutes
@@ -74,7 +74,7 @@ export default class UTCOffsetValue extends AbstractValue {
 	/**
 	 * Gets the factor
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get factor() {
 		return this._innerValue.factor
@@ -99,7 +99,7 @@ export default class UTCOffsetValue extends AbstractValue {
 	/**
 	 * Gets the total amount of seconds
 	 *
-	 * @returns {Number}
+	 * @return {Number}
 	 */
 	get totalSeconds() {
 		return this._innerValue.toSeconds()
@@ -120,7 +120,7 @@ export default class UTCOffsetValue extends AbstractValue {
 	 * Compares this UTCOffset to another one
 	 *
 	 * @param {UTCOffsetValue} other - The other UTCOffsetValue to compare with
-	 * @returns {Number} -1, 0 or 1 for less/equal/greater
+	 * @return {Number} -1, 0 or 1 for less/equal/greater
 	 */
 	compare(other) {
 		return this._innerValue.compare(other.toICALJs())
@@ -129,7 +129,7 @@ export default class UTCOffsetValue extends AbstractValue {
 	/**
 	 * Clones this value
 	 *
-	 * @returns {UTCOffsetValue}
+	 * @return {UTCOffsetValue}
 	 */
 	clone() {
 		return UTCOffsetValue.fromICALJs(this._innerValue.clone())
@@ -139,7 +139,7 @@ export default class UTCOffsetValue extends AbstractValue {
 	 * Create a new UTCOffsetValue object from a ICAL.UTCOffset object
 	 *
 	 * @param {ICAL.UtcOffset} icalValue - The ICAL.UtcOffset object to initialize this object from
-	 * @returns {UTCOffsetValue}
+	 * @return {UTCOffsetValue}
 	 */
 	static fromICALJs(icalValue) {
 		return new UTCOffsetValue(icalValue)
@@ -152,7 +152,7 @@ export default class UTCOffsetValue extends AbstractValue {
 	 * @param {Number=} data.hours - The number of hours to set
 	 * @param {Number=} data.minutes - The number of minutes to set
 	 * @param {Number=} data.factor - The factor to use, 1 for positive, -1 for negative
-	 * @returns {UTCOffsetValue}
+	 * @return {UTCOffsetValue}
 	 */
 	static fromData(data) {
 		const icalUTCOffset = new ICAL.UtcOffset()
@@ -164,7 +164,7 @@ export default class UTCOffsetValue extends AbstractValue {
 	 * Create a new UTCOffsetValue object from an amount of seconds
 	 *w
 	 * @param {Number} seconds - The total number of seconds to create the UTCOffsetValue object from
-	 * @returns {UTCOffsetValue}
+	 * @return {UTCOffsetValue}
 	 */
 	static fromSeconds(seconds) {
 		const icalUTCOffset = ICAL.UtcOffset.fromSeconds(seconds)

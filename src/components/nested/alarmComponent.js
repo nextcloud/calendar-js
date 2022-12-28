@@ -39,7 +39,7 @@ export default class AlarmComponent extends AbstractComponent {
 	 *
 	 * @param {String} name - Name of the attendee
 	 * @param {String} email - E-Mail address of the attendee
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	addAttendeeFromNameAndEMail(name, email) {
 		const attendeeProperty = AttendeeProperty.fromNameAndEMail(name, email)
@@ -51,7 +51,7 @@ export default class AlarmComponent extends AbstractComponent {
 	 *
 	 * @url https://tools.ietf.org/html/rfc5545#section-3.8.6.3
 	 *
-	 * @returns {TriggerProperty}
+	 * @return {TriggerProperty}
 	 */
 	get trigger() {
 		return this.getFirstProperty('TRIGGER')
@@ -162,7 +162,7 @@ advertiseSingleOccurrenceProperty(AlarmComponent.prototype, {
  *
  * @name AlarmComponent#getAttendeeIterator
  * @function
- * @returns {IterableIterator<AttendeeProperty>}
+ * @return {IterableIterator<AttendeeProperty>}
  */
 
 /**
@@ -172,7 +172,7 @@ advertiseSingleOccurrenceProperty(AlarmComponent.prototype, {
  *
  * @name AlarmComponent#getAttendeeList
  * @function
- * @returns {AttendeeProperty[]}
+ * @return {AttendeeProperty[]}
  */
 
 /**

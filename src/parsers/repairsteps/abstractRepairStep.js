@@ -43,7 +43,7 @@ export default class AbstractRepairStep {
 	}
 
 	/**
-	 * @returns {number}
+	 * @return {number}
 	 */
 	static priority() {
 		return 0

@@ -53,7 +53,7 @@ export class TimezoneManager {
 	 * Gets a timezone for the given id
 	 *
 	 * @param {String} timezoneId The id of the timezone
-	 * @returns {Timezone|null}
+	 * @return {Timezone|null}
 	 */
 	getTimezoneForId(timezoneId) {
 		return this._getTimezoneForIdRec(timezoneId, 0)
@@ -83,7 +83,7 @@ export class TimezoneManager {
 	 * Checks if there is a timezone for the given id stored in this manager
 	 *
 	 * @param {String} timezoneId The id of the timezone
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	hasTimezoneForId(timezoneId) {
 		return this._timezones.has(timezoneId) || this._aliases.has(timezoneId)
@@ -93,7 +93,7 @@ export class TimezoneManager {
 	 * Checks if the given timezone id is an alias
 	 *
 	 * @param {String} timezoneId The id of the timezone
-	 * @returns {boolean}
+	 * @return {boolean}
 	 */
 	isAlias(timezoneId) {
 		return !this._timezones.has(timezoneId) && this._aliases.has(timezoneId)
@@ -103,7 +103,7 @@ export class TimezoneManager {
 	 * Lists all timezones
 	 *
 	 * @param {Boolean=} includeAliases Whether or not to include aliases
-	 * @returns {String[]}
+	 * @return {String[]}
 	 */
 	listAllTimezones(includeAliases = false) {
 		const timezones = Array.from(this._timezones.keys())
@@ -206,7 +206,7 @@ timezoneManager.clearAllTimezones()
 /**
  * Gets the default instance of the timezone manager
  *
- * @returns {TimezoneManager}
+ * @return {TimezoneManager}
  */
 export function getTimezoneManager() {
 	return timezoneManager
@@ -215,7 +215,7 @@ export function getTimezoneManager() {
 /**
  *
  * @param {String} tzName Name of the timezone to check
- * @returns {boolean}
+ * @return {boolean}
  */
 export function isOlsonTimezone(tzName) {
 	const hasSlash = tzName.indexOf('/') !== -1
