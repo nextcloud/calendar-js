@@ -1,3 +1,12 @@
+## [5.0.1](https://github.com/nextcloud/calendar-js/compare/v5.0.0...v5.0.1) (2022-12-28)
+
+
+### Bug Fixes
+
+* **jsdoc:** Replace [@returns](https://github.com/returns) with [@return](https://github.com/return) ([16b7af7](https://github.com/nextcloud/calendar-js/commit/16b7af7497034d58d94505fb099c0cb973532bba))
+
+
+
 # [5.0.0](https://github.com/nextcloud/calendar-js/compare/v4.0.0...v5.0.0) (2022-12-28)
 
 
