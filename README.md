@@ -39,10 +39,10 @@ This repository follows the concept of [conventional commits](https://www.conven
 
 1) Go to https://github.com/nextcloud/calendar-js/actions/workflows/release.yml
 2) Click *Run workflow*
-   1) Leave *Branch: main*
+   1) Select *Branch: main*
    2) Click *Run workflow*
-3) Go to https://github.com/nextcloud/calendar-js/actions
-4) Click on the pending *Npm registry* workflow and approve it if you have permission or ask one of the [maintainers](#maintainers)
+3) Reload the page
+4) Click on the pending *Npm registry* workflow (yellow clock icon) and approve it if you have permission or ask one of the [maintainers](#maintainers)
 
 ## License
 
