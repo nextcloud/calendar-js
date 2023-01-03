@@ -43,7 +43,7 @@ export default class ParserManager {
 	/**
 	 * Get a list of all supported file-types
 	 *
-	 * @return {String[]}
+	 * @return {string[]}
 	 */
 	getAllSupportedFileTypes() {
 		return this._parsers.reduce(
@@ -55,7 +55,7 @@ export default class ParserManager {
 	 * Get an instance of a parser for one specific file-type
 	 *
 	 * @param {string} fileType The mime-type to get a parser for
-	 * @param {Object=} options Options destructuring object
+	 * @param {object=} options Options destructuring object
 	 * @param {boolean=} options.extractGlobalProperties Whether or not to preserve properties from the VCALENDAR component (defaults to false)
 	 * @param {boolean=} options.removeRSVPForAttendees Whether or not to remove RSVP from attendees (defaults to false)
 	 * @param {boolean=} options.includeTimezones Whether or not to include timezones (defaults to false)

@@ -27,9 +27,9 @@
 export default class AbstractParser {
 
 	/**
-	 * @constructor
+	 * @class
 	 *
-	 * @param {Object=} options Object of options
+	 * @param {object=} options Object of options
 	 * @param {boolean=} options.extractGlobalProperties Whether or not to preserve properties from the VCALENDAR component (defaults to false)
 	 * @param {boolean=} options.removeRSVPForAttendees Whether or not to remove RSVP from attendees (defaults to false)
 	 * @param {boolean=} options.includeTimezones Whether or not to include timezones (defaults to false)
@@ -52,7 +52,7 @@ export default class AbstractParser {
 		/**
 		 * A name extracted from the calendar-data
 		 *
-		 * @type {String|null}
+		 * @type {string | null}
 		 * @protected
 		 */
 		this._name = null
@@ -60,7 +60,7 @@ export default class AbstractParser {
 		/**
 		 * A color extracted from the calendar-data
 		 *
-		 * @type {String|null}
+		 * @type {string | null}
 		 * @protected
 		 */
 		this._color = null
@@ -101,7 +101,7 @@ export default class AbstractParser {
 	/**
 	 * Gets the name extracted from the calendar-data
 	 *
-	 * @return {String|null}
+	 * @return {string | null}
 	 */
 	getName() {
 		return this._name
@@ -110,7 +110,7 @@ export default class AbstractParser {
 	/**
 	 * Gets the color extracted from the calendar-data
 	 *
-	 * @return {String|null}
+	 * @return {string | null}
 	 */
 	getColor() {
 		return this._color
@@ -128,7 +128,7 @@ export default class AbstractParser {
 	/**
 	 * Gets the url pointing to the webcal source
 	 *
-	 * @return {String|null}
+	 * @return {string | null}
 	 */
 	getSourceURL() {
 		return this._sourceURL
@@ -137,7 +137,7 @@ export default class AbstractParser {
 	/**
 	 * Gets the recommended refresh rate to update this subscription
 	 *
-	 * @return {String|null}
+	 * @return {string | null}
 	 */
 	getRefreshInterval() {
 		return this._refreshInterval

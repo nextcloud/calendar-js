@@ -116,7 +116,7 @@ export default class CalendarComponent extends AbstractComponent {
 	/**
 	 * Creates a new empty calendar-component
 	 *
-	 * @param {[String][]=} additionalProps Additional props to add to empty calendar-document
+	 * @param {[string][]=} additionalProps Additional props to add to empty calendar-document
 	 * @return {CalendarComponent}
 	 */
 	static fromEmpty(additionalProps = []) {
@@ -182,6 +182,7 @@ advertiseSingleOccurrenceProperty(CalendarComponent.prototype, {
  * The default and only supported calendar-scale is GREGORIAN.
  * There is an iCalendar-extension about non-gregorian RRULES,
  * but that is not supported by calendar-js at the moment
+ *
  * @see https://tools.ietf.org/html/rfc7529
  *
  * @url https://tools.ietf.org/html/rfc5545#section-3.7.1

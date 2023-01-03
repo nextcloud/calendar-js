@@ -96,7 +96,7 @@ export default class ICalendarParser extends AbstractParser {
 		 * The key of this map is the UID
 		 * The value an array of all VObjects with that particular UID
 		 *
-		 * @type {Map<String, AbstractRecurringComponent[]>}
+		 * @type {Map<string, AbstractRecurringComponent[]>}
 		 * @private
 		 */
 		this._items = new Map()
@@ -105,7 +105,7 @@ export default class ICalendarParser extends AbstractParser {
 		 * Items that are no recurrence-exceptions
 		 * The key of this map is the UID
 		 *
-		 * @type {Map<String, AbstractRecurringComponent>}
+		 * @type {Map<string, AbstractRecurringComponent>}
 		 * @private
 		 */
 		this._masterItems = new Map()
@@ -113,7 +113,7 @@ export default class ICalendarParser extends AbstractParser {
 		/**
 		 * Items that are recurrence exceptions
 		 *
-		 * @type {Map<String, AbstractRecurringComponent[]>}
+		 * @type {Map<string, AbstractRecurringComponent[]>}
 		 * @private
 		 */
 		this._recurrenceExceptionItems = new Map()
@@ -122,7 +122,7 @@ export default class ICalendarParser extends AbstractParser {
 		 * Some recurrence-exceptions come without a master item
 		 * In that case we need to forge a master item
 		 *
-		 * @type {Map<String, AbstractRecurringComponent>}
+		 * @type {Map<string, AbstractRecurringComponent>}
 		 * @private
 		 */
 		this._forgedMasterItems = new Map()
@@ -130,7 +130,7 @@ export default class ICalendarParser extends AbstractParser {
 		/**
 		 * A list of timezone-components found in the calendar-data
 		 *
-		 * @type {Map<String, Timezone>}
+		 * @type {Map<string, Timezone>}
 		 * @private
 		 */
 		this._timezones = new Map()
@@ -138,7 +138,7 @@ export default class ICalendarParser extends AbstractParser {
 		/**
 		 * A set of required timezones for each UID
 		 *
-		 * @type {Map<String, Set<String>>}
+		 * @type {Map<string, Set<string>>}
 		 * @private
 		 */
 		this._requiredTimezones = new Map()
@@ -290,7 +290,7 @@ export default class ICalendarParser extends AbstractParser {
 	 * names must be an array, it will use the value of the fist
 	 * propertyname it can find
 	 *
-	 * @param {String[]} names The names of the properties to check
+	 * @param {string[]} names The names of the properties to check
 	 * @param {string} variableName The variable name to save it under
 	 * @private
 	 */

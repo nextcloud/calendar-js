@@ -21,6 +21,10 @@
  */
 import ModificationNotAllowedError from '../errors/modificationNotAllowedError.js'
 
+/**
+ *
+ * @param baseClass
+ */
 export default function lockableTrait(baseClass) {
 
 	/**
@@ -30,6 +34,8 @@ export default function lockableTrait(baseClass) {
 
 		/**
 		 * Constructor
+		 *
+		 * @param {...any} args
 		 */
 		constructor(...args) {
 			super(...args)

@@ -54,7 +54,7 @@ export default class RecurrenceManager {
 		 *
 		 * Number is the unix time representation of the recurrence ID
 		 *
-		 * @type {Map<Number, AbstractRecurringComponent>}
+		 * @type {Map<number, AbstractRecurringComponent>}
 		 * @private
 		 */
 		this._recurrenceExceptionItems = new Map()
@@ -62,7 +62,7 @@ export default class RecurrenceManager {
 		/**
 		 * A sorted index of recurrence ids with range
 		 *
-		 * @type {Number[]}
+		 * @type {number[]}
 		 * @private
 		 */
 		this._rangeRecurrenceExceptionItemsIndex = []
@@ -70,7 +70,7 @@ export default class RecurrenceManager {
 		/**
 		 * Cached difference of dtstart and recurrenceId for recurrence exceptions with range
 		 *
-		 * @type {Map<Number, DurationValue>}
+		 * @type {Map<number, DurationValue>}
 		 * @private
 		 */
 		this._rangeRecurrenceExceptionItemsDiffCache = new Map()
@@ -80,7 +80,7 @@ export default class RecurrenceManager {
 		 *
 		 * Number is the unix time representation of the recurrence ID
 		 *
-		 * @type {Map<Number, AbstractRecurringComponent>}
+		 * @type {Map<number, AbstractRecurringComponent>}
 		 * @private
 		 */
 		this._rangeRecurrenceExceptionItems = new Map()
@@ -121,7 +121,7 @@ export default class RecurrenceManager {
 	/**
 	 * Checks if there is a recurrence Exception for a given recurrenceId
 	 *
-	 * @param {DateTimeValue|Number} recurrenceId The recurrenceId to check
+	 * @param {DateTimeValue | number} recurrenceId The recurrenceId to check
 	 * @return {boolean}
 	 */
 	hasRecurrenceExceptionForId(recurrenceId) {
@@ -137,7 +137,7 @@ export default class RecurrenceManager {
 	/**
 	 * Gets the recurrence exception for a given recurrence Id
 	 *
-	 * @param {DateTimeValue|Number} recurrenceId The recurrenceId to get
+	 * @param {DateTimeValue | number} recurrenceId The recurrenceId to get
 	 * @return {AbstractRecurringComponent|null}
 	 */
 	getRecurrenceException(recurrenceId) {
@@ -153,7 +153,7 @@ export default class RecurrenceManager {
 	/**
 	 * Check if there is a recurrence-exception with a range for a given recurrence-id
 	 *
-	 * @param {DateTimeValue|Number} recurrenceId The recurrenceId to check
+	 * @param {DateTimeValue | number} recurrenceId The recurrenceId to check
 	 * @return {boolean}
 	 */
 	hasRangeRecurrenceExceptionForId(recurrenceId) {
@@ -173,7 +173,7 @@ export default class RecurrenceManager {
 	/**
 	 * Get recurrence-exception with range that's affecting the given recurrence-id
 	 *
-	 * @param {DateTimeValue|Number} recurrenceId The recurrenceId to get
+	 * @param {DateTimeValue | number} recurrenceId The recurrenceId to get
 	 * @return {AbstractRecurringComponent|null}
 	 */
 	getRangeRecurrenceExceptionForId(recurrenceId) {
@@ -201,7 +201,7 @@ export default class RecurrenceManager {
 	 * Gets the difference between recurrence-id and start
 	 * Mostly needed to handle recurrence-exceptions with range
 	 *
-	 * @param {DateTimeValue|Number} recurrenceId The recurrenceId to get
+	 * @param {DateTimeValue | number} recurrenceId The recurrenceId to get
 	 * @return {DurationValue|null}
 	 */
 	getRangeRecurrenceExceptionDiff(recurrenceId) {
@@ -267,7 +267,7 @@ export default class RecurrenceManager {
 	/**
 	 * Removes a recurrence exception by it's unix-time
 	 *
-	 * @param {Number} recurrenceId The recurrence-exception to remove
+	 * @param {number} recurrenceId The recurrence-exception to remove
 	 */
 	removeRecurrenceExceptionByRecurrenceId(recurrenceId) {
 		this._modify()
@@ -284,7 +284,7 @@ export default class RecurrenceManager {
 	/**
 	 *
 	 * @param {AbstractRecurringComponent} recurrenceExceptionItem Object to get key from
-	 * @return {Number}
+	 * @return {number}
 	 * @private
 	 */
 	_getRecurrenceIdKey(recurrenceExceptionItem) {
@@ -524,7 +524,7 @@ export default class RecurrenceManager {
 	/**
 	 *
 	 * @param {boolean} isNegative Whether we are dealing with an EXDATE or RDATE
-	 * @param {String|null} valueType The type of values to get
+	 * @param {string | null} valueType The type of values to get
 	 * @param {ICAL.Timezone=} timezoneId Filter by timezone
 	 * @private
 	 */

@@ -27,7 +27,7 @@
 export default class AbstractRepairStep {
 
 	/**
-	 * @constructor
+	 * @class
 	 */
 	constructor() {
 		if (new.target === AbstractRepairStep) {

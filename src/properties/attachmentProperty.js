@@ -51,7 +51,7 @@ export default class AttachmentProperty extends Property {
 	/**
 	 * Gets the uri of this attachment
 	 *
-	 * @return {String|null}
+	 * @return {string | null}
 	 */
 	get uri() {
 		if (this._value instanceof BinaryValue) {
@@ -86,7 +86,7 @@ export default class AttachmentProperty extends Property {
 	/**
 	 * Gets the data stored in this attachment
 	 *
-	 * @return {String|null}
+	 * @return {string | null}
 	 */
 	get data() {
 		if (this._value instanceof BinaryValue) {
@@ -125,7 +125,7 @@ export default class AttachmentProperty extends Property {
 	 * Creates a new AttachmentProperty based on data
 	 *
 	 * @param {string} data The data of the attachment
-	 * @param {String=} formatType The mime-type of the data
+	 * @param {string=} formatType The mime-type of the data
 	 * @return {AttachmentProperty}
 	 */
 	static fromData(data, formatType = null) {
@@ -143,7 +143,7 @@ export default class AttachmentProperty extends Property {
 	 * Creates a new AttachmentProperty based on a link
 	 *
 	 * @param {string} uri The URI for the attachment
-	 * @param {String=} formatType The mime-type of the uri
+	 * @param {string=} formatType The mime-type of the uri
 	 * @return {AttachmentProperty}
 	 */
 	static fromLink(uri, formatType = null) {

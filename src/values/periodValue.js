@@ -213,7 +213,7 @@ export default class PeriodValue extends AbstractValue {
 	/**
 	 * Create a new PeriodValue object from start and end
 	 *
-	 * @param {Object} data The destructuring object
+	 * @param {object} data The destructuring object
 	 * @param {DateTimeValue} data.start The start of the period
 	 * @param {DateTimeValue} data.end The end of the period
 	 * @return {PeriodValue}
@@ -229,7 +229,7 @@ export default class PeriodValue extends AbstractValue {
 	/**
 	 * Create a new PeriodValue object from start and duration
 	 *
-	 * @param {Object} data The destructuring object
+	 * @param {object} data The destructuring object
 	 * @param {DateTimeValue} data.start The start of the period
 	 * @param {DurationValue} data.duration The duration of the period
 	 * @return {PeriodValue}

@@ -35,7 +35,7 @@ export class TimezoneManager {
 		 * Map of aliases
 		 * Alias name => timezoneId
 		 *
-		 * @type {Map<String, String>}
+		 * @type {Map<string, string>}
 		 */
 		this._aliases = new Map()
 
@@ -43,7 +43,7 @@ export class TimezoneManager {
 		 * Map of Timezones
 		 * timezoneId => Timezone
 		 *
-		 * @type {Map<String, Timezone>}
+		 * @type {Map<string, Timezone>}
 		 * @private
 		 */
 		this._timezones = new Map()
@@ -103,7 +103,7 @@ export class TimezoneManager {
 	 * Lists all timezones
 	 *
 	 * @param {boolean=} includeAliases Whether or not to include aliases
-	 * @return {String[]}
+	 * @return {string[]}
 	 */
 	listAllTimezones(includeAliases = false) {
 		const timezones = Array.from(this._timezones.keys())
@@ -187,7 +187,7 @@ export class TimezoneManager {
 
 	/**
 	 * Clear all timezones
- 	 */
+	 */
 	clearAllTimezones() {
 		this._aliases = new Map()
 		this._timezones = new Map()

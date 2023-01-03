@@ -43,8 +43,8 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	 * Constructor
 	 *
 	 * @param {string} name The name of the property
-	 * @param {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null} value The value of the property
-	 * @param {Parameter[]|[String][]} parameters Array of parameters
+	 * @param {string | number | AbstractValue | string[] | number[] | AbstractValue[] | null} value The value of the property
+	 * @param {Parameter[] | [string][]} parameters Array of parameters
 	 * @param {CalendarComponent|null} root The root of the calendar-document
 	 * @param {AbstractComponent|null} parent The parent-element of this property
 	 */
@@ -62,7 +62,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 		/**
 		 * Value of the property
 		 *
-		 * @type {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null}
+		 * @type {string | number | AbstractValue | string[] | number[] | AbstractValue[] | null}
 		 * @protected
 		 */
 		this._value = value
@@ -70,7 +70,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 		/**
 		 * List of parameters associated with this parameter
 		 *
-		 * @type {Map<String, Parameter>}
+		 * @type {Map<string, Parameter>}
 		 */
 		this._parameters = new Map()
 
@@ -109,7 +109,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Get parameter value
 	 *
-	 * @return {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null}
+	 * @return {string | number | AbstractValue | string[] | number[] | AbstractValue[] | null}
 	 */
 	get value() {
 		return this._value
@@ -118,7 +118,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Set new parameter value
 	 *
-	 * @param {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null} value The value of the property
+	 * @param {string | number | AbstractValue | string[] | number[] | AbstractValue[] | null} value The value of the property
 	 * @throws {ModificationNotAllowedError} if property is locked for modification
 	 */
 	set value(value) {
@@ -173,7 +173,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Gets the first value of this property
 	 *
-	 * @return {null|String|Number|AbstractValue}
+	 * @return {null | string | number | AbstractValue}
 	 */
 	getFirstValue() {
 		if (!this.isMultiValue()) {
@@ -201,7 +201,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Adds a value to the multi-value property
 	 *
-	 * @param {String|AbstractValue} value Value to add
+	 * @param {string | AbstractValue} value Value to add
 	 */
 	addValue(value) {
 		if (!this.isMultiValue()) {
@@ -215,7 +215,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Checks if a value is inside this multi-value property
 	 *
-	 * @param {String|AbstractValue} value Value to check for
+	 * @param {string | AbstractValue} value Value to check for
 	 * @return {boolean}
 	 */
 	hasValue(value) {
@@ -229,7 +229,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Removes a value from this multi-value property
 	 *
-	 * @param {String|AbstractValue} value Value to remove
+	 * @param {string | AbstractValue} value Value to remove
 	 */
 	removeValue(value) {
 		if (!this.hasValue(value)) {
@@ -274,7 +274,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	 * Get first value of a parameter
 	 *
 	 * @param {string} parameterName Name of the parameter
-	 * @return {null|String}
+	 * @return {null | string}
 	 */
 	getParameterFirstValue(parameterName) {
 		const parameter = this.getParameter(parameterName)
@@ -404,7 +404,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Copies the values of this property
 	 *
-	 * @return {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]|null}
+	 * @return {string | number | AbstractValue | string[] | number[] | AbstractValue[] | null}
 	 * @protected
 	 */
 	_cloneValue() {
@@ -427,7 +427,7 @@ export default class Property extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Sets parameters from the constructor
 	 *
-	 * @param {Parameter[]|[String][]} parameters Array of parameters to set
+	 * @param {Parameter[] | [string][]} parameters Array of parameters to set
 	 * @private
 	 */
 	_setParametersFromConstructor(parameters) {

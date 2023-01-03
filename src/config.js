@@ -21,7 +21,7 @@
  */
 
 /**
- * @type {Map<String, *>}
+ * @type {Map<string, *>}
  */
 const GLOBAL_CONFIG = new Map()
 

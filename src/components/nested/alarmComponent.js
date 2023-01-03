@@ -137,7 +137,7 @@ advertiseSingleOccurrenceProperty(AlarmComponent.prototype, 'duration')
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.6.2
  *
  * @name AlarmComponent#repeat
- * @type {Number}
+ * @type {number}
  */
 advertiseSingleOccurrenceProperty(AlarmComponent.prototype, 'repeat')
 

@@ -49,8 +49,8 @@ export default class ImageProperty extends AttachmentProperty {
 	 * Creates a new ImageProperty based on data
 	 *
 	 * @param {string} data The data of the image
-	 * @param {String=} display The display-type it's optimized for
-	 * @param {String=} formatType The mime-type of the image
+	 * @param {string=} display The display-type it's optimized for
+	 * @param {string=} formatType The mime-type of the image
 	 * @return {ImageProperty}
 	 */
 	static fromData(data, display = null, formatType = null) {
@@ -72,8 +72,8 @@ export default class ImageProperty extends AttachmentProperty {
 	 * Creates a new ImageProperty based on a link
 	 *
 	 * @param {string} uri The uri of the image
-	 * @param {String=} display The display-type it's optimized for
-	 * @param {String=} formatType The mime-type of the image
+	 * @param {string=} display The display-type it's optimized for
+	 * @param {string=} formatType The mime-type of the image
 	 * @return {ImageProperty}
 	 */
 	static fromLink(uri, display = null, formatType = null) {
