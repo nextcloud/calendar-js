@@ -21,15 +21,15 @@
  */
 import AbstractParser from './abstractParser.js'
 import CalendarComponent from '../components/calendarComponent.js'
-import { getRepairSteps } from './repairsteps/icalendar'
+import { getRepairSteps } from './repairsteps/icalendar/index.js'
 import { uc } from '../helpers/stringHelper.js'
-import { getConstructorForComponentName } from '../components/root'
+import { getConstructorForComponentName } from '../components/root/index.js'
 import { getTimezoneManager } from '../timezones/timezoneManager.js'
 import Timezone from '../timezones/timezone.js'
 import RecurrenceManager from '../recurrence/recurrenceManager.js'
 import DateTimeValue from '../values/dateTimeValue.js'
 import ICAL from 'ical.js'
-import TimezoneComponent from '../components/root/timezoneComponent'
+import TimezoneComponent from '../components/root/timezoneComponent.js'
 
 /**
  * @class ICalendarParser

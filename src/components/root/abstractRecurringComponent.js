@@ -42,7 +42,7 @@ import TextProperty from '../../properties/textProperty.js'
 import AlarmComponent from '../nested/alarmComponent.js'
 import TriggerProperty from '../../properties/triggerProperty.js'
 import { getConfig } from '../../config.js'
-import { getConstructorForComponentName } from '../nested'
+import { getConstructorForComponentName } from '../nested/index.js'
 
 /**
  * @class AbstractRecurringComponent

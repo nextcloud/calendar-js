@@ -20,9 +20,9 @@
  *
  */
 
-import AbstractParser from './abstractParser'
-import ICalendarParser from './icalendarParser'
-import ParserManager from './parserManager'
+import AbstractParser from './abstractParser.js'
+import ICalendarParser from './icalendarParser.js'
+import ParserManager from './parserManager.js'
 
 export {
 	AbstractParser,

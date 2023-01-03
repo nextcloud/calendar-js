@@ -21,7 +21,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import AbstractValue from './abstractValue'
+import AbstractValue from './abstractValue.js'
 import BinaryValue from './binaryValue.js'
 import DurationValue from './durationValue.js'
 import PeriodValue from './periodValue.js'

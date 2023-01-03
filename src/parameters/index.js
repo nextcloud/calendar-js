@@ -20,7 +20,7 @@
  *
  */
 
-import Parameter from './parameter'
+import Parameter from './parameter.js'
 
 export {
 	Parameter,

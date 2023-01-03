@@ -22,7 +22,7 @@
 import AbstractComponent, {
 	advertiseSingleOccurrenceProperty,
 } from './abstractComponent.js'
-import { getConstructorForComponentName } from './root'
+import { getConstructorForComponentName } from './root/index.js'
 import { getConfig } from '../config.js'
 import ICAL from 'ical.js'
 

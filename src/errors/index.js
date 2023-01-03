@@ -20,11 +20,11 @@
  *
  */
 
-import ExpectedICalJSError from './expectedICalJSError'
-import IllegalValueError from './illegalValueError'
-import ModificationNotAllowedError from './modificationNotAllowedError'
-import RecurringWithoutDtStartError from './recurringWithoutDtStartError'
-import UnknownICALTypeError from './unknownICALTypeError'
+import ExpectedICalJSError from './expectedICalJSError.js'
+import IllegalValueError from './illegalValueError.js'
+import ModificationNotAllowedError from './modificationNotAllowedError.js'
+import RecurringWithoutDtStartError from './recurringWithoutDtStartError.js'
+import UnknownICALTypeError from './unknownICALTypeError.js'
 
 export {
 	ExpectedICalJSError,
