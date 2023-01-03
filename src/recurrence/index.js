@@ -20,7 +20,7 @@
  *
  */
 
-import RecurrenceManager from './recurrenceManager'
+import RecurrenceManager from './recurrenceManager.js'
 
 export {
 	RecurrenceManager,

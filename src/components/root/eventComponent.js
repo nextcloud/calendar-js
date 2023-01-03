@@ -132,8 +132,8 @@ export default class EventComponent extends AbstractRecurringComponent {
 	 *
 	 * @url https://tools.ietf.org/html/rfc5545#section-3.8.1.6
 	 *
-	 * @param {Number} lat - latitude
-	 * @param {Number} long - longitude
+	 * @param {number} lat - latitude
+	 * @param {number} long - longitude
 	 */
 	setGeographicalPositionFromLatitudeAndLongitude(lat, long) {
 		this.deleteAllProperties('GEO')
@@ -146,8 +146,8 @@ export default class EventComponent extends AbstractRecurringComponent {
 	 * @url https://tools.ietf.org/html/rfc7986#section-5.11
 	 *
 	 * @param {string} uri The URI of the conference system
-	 * @param {String=} label The label for the conference system
-	 * @param {String[]=} features The features of the conference system
+	 * @param {string=} label The label for the conference system
+	 * @param {string[]=} features The features of the conference system
 	 */
 	addConference(uri, label = null, features = null) {
 		this._modify()
@@ -363,8 +363,8 @@ advertiseSingleOccurrenceProperty(EventComponent.prototype, {
  *
  * @name EventComponent#getResourceIterator
  * @function
- * @param {String=} lang
- * @return {IterableIterator<String>}
+ * @param {string=} lang
+ * @return {IterableIterator<string>}
  */
 
 /**
@@ -376,8 +376,8 @@ advertiseSingleOccurrenceProperty(EventComponent.prototype, {
  *
  * @name EventComponent#getResourceList
  * @function
- * @param {String=} lang
- * @return {String[]}
+ * @param {string=} lang
+ * @return {string[]}
  */
 
 /**
@@ -388,7 +388,7 @@ advertiseSingleOccurrenceProperty(EventComponent.prototype, {
  * @name EventComponent#addResource
  * @function
  * @param {string} resource
- * @param {String=} lang
+ * @param {string=} lang
  */
 
 /**
@@ -399,7 +399,7 @@ advertiseSingleOccurrenceProperty(EventComponent.prototype, {
  * @name EventComponent#removeResource
  * @function
  * @param {string} resource
- * @param {String=} lang
+ * @param {string=} lang
  */
 
 /**
@@ -409,7 +409,7 @@ advertiseSingleOccurrenceProperty(EventComponent.prototype, {
  *
  * @name EventComponent#clearAllResources
  * @function
- * @param {String=} lang
+ * @param {string=} lang
  */
 advertiseMultiValueStringPropertySeparatedByLang(EventComponent.prototype, {
 	name: 'resource',

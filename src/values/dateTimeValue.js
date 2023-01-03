@@ -37,7 +37,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Gets the year of the stored date-time-value
 	 *
-	 * @return {Number}
+	 * @return {number}
 	 */
 	get year() {
 		return this._innerValue.year
@@ -47,7 +47,7 @@ export default class DateTimeValue extends AbstractValue {
 	 * Sets the year of the stored date-time-value
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {Number} year Number of years to set
+	 * @param {number} year Number of years to set
 	 */
 	set year(year) {
 		this._modifyContent()
@@ -57,7 +57,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Gets the month of the stored date-time-value
 	 *
-	 * @return {Number}
+	 * @return {number}
 	 */
 	get month() {
 		return this._innerValue.month
@@ -67,7 +67,7 @@ export default class DateTimeValue extends AbstractValue {
 	 * Sets the month of the stored date-time-value
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {Number} month Number of months to set
+	 * @param {number} month Number of months to set
 	 */
 	set month(month) {
 		this._modifyContent()
@@ -81,7 +81,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Gets the day of the stored date-time-value
 	 *
-	 * @return {Number}
+	 * @return {number}
 	 */
 	get day() {
 		return this._innerValue.day
@@ -92,7 +92,7 @@ export default class DateTimeValue extends AbstractValue {
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
 	 * @throws {TypeError} if out of range
-	 * @param {Number} day Number of days to set
+	 * @param {number} day Number of days to set
 	 */
 	set day(day) {
 		this._modifyContent()
@@ -106,7 +106,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Gets the hour of the stored date-time-value
 	 *
-	 * @return {Number}
+	 * @return {number}
 	 */
 	get hour() {
 		return this._innerValue.hour
@@ -117,7 +117,7 @@ export default class DateTimeValue extends AbstractValue {
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
 	 * @throws {TypeError} if out of range
-	 * @param {Number} hour Number of hours to set
+	 * @param {number} hour Number of hours to set
 	 */
 	set hour(hour) {
 		this._modifyContent()
@@ -131,7 +131,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Gets the minute of the stored date-time-value
 	 *
-	 * @return {Number}
+	 * @return {number}
 	 */
 	get minute() {
 		return this._innerValue.minute
@@ -142,7 +142,7 @@ export default class DateTimeValue extends AbstractValue {
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
 	 * @throws {TypeError} if out of range
-	 * @param {Number} minute Number of minutes to set
+	 * @param {number} minute Number of minutes to set
 	 */
 	set minute(minute) {
 		this._modifyContent()
@@ -156,7 +156,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Gets the second of the stored date-time-value
 	 *
-	 * @return {Number}
+	 * @return {number}
 	 */
 	get second() {
 		return this._innerValue.second
@@ -167,7 +167,7 @@ export default class DateTimeValue extends AbstractValue {
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
 	 * @throws {TypeError} if out of range
-	 * @param {Number} second Number of seconds to set
+	 * @param {number} second Number of seconds to set
 	 */
 	set second(second) {
 		this._modifyContent()
@@ -181,7 +181,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Gets the timezone of this date-time-value
 	 *
-	 * @return {String|null}
+	 * @return {string | null}
 	 */
 	get timezoneId() {
 		// If zone.tzid is set and it's not 'floating' nor 'UTC', then it's a proper
@@ -230,7 +230,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Gets the unix-time
 	 *
-	 * @return {Number}
+	 * @return {number}
 	 */
 	get unixTime() {
 		return this._innerValue.toUnixTime()
@@ -280,7 +280,7 @@ export default class DateTimeValue extends AbstractValue {
 	 * Compares this DateTimeValue object with another one
 	 *
 	 * @param {DateTimeValue} other The date-time to compare to
-	 * @return {Number} -1, 0 or 1 for less/equal/greater
+	 * @return {number} -1, 0 or 1 for less/equal/greater
 	 */
 	compare(other) {
 		return this._innerValue.compare(other.toICALJs())
@@ -291,7 +291,7 @@ export default class DateTimeValue extends AbstractValue {
 	 *
 	 * @param {DateTimeValue} other The date-time to compare to
 	 * @param {Timezone} timezone The timezone to compare in
-	 * @return {Number} -1, 0 or 1 for less/equal/greater
+	 * @return {number} -1, 0 or 1 for less/equal/greater
 	 */
 	compareDateOnlyInGivenTimezone(other, timezone) {
 		return this._innerValue.compareDateOnlyTz(other.toICALJs(), timezone.toICALTimezone())
@@ -381,7 +381,7 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Calculates the UTC offset of the date-time-value in its timezone
 	 *
-	 * @return {Number}
+	 * @return {number}
 	 */
 	utcOffset() {
 		return this._innerValue.utcOffset()
@@ -430,13 +430,13 @@ export default class DateTimeValue extends AbstractValue {
 	/**
 	 * Creates a new DateTimeValue object based on simple parameters
 	 *
-	 * @param {Object} data The destructuring object
-	 * @param {Number=} data.year Amount of years to set
-	 * @param {Number=} data.month Amount of month to set (1-based)
-	 * @param {Number=} data.day Amount of days to set
-	 * @param {Number=} data.hour Amount of hours to set
-	 * @param {Number=} data.minute Amount of minutes to set
-	 * @param {Number=} data.second Amount of seconds to set
+	 * @param {object} data The destructuring object
+	 * @param {number=} data.year Amount of years to set
+	 * @param {number=} data.month Amount of month to set (1-based)
+	 * @param {number=} data.day Amount of days to set
+	 * @param {number=} data.hour Amount of hours to set
+	 * @param {number=} data.minute Amount of minutes to set
+	 * @param {number=} data.second Amount of seconds to set
 	 * @param {boolean=} data.isDate Whether this is a date or date-time
 	 * @param {Timezone=} timezone The timezone of the DateTimeValue
 	 * @return {DateTimeValue}

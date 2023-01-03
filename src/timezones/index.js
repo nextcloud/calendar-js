@@ -20,11 +20,11 @@
  *
  */
 
-import Timezone from './timezone'
-import TimezoneAdapter from './timezoneAdapter'
-import { TimezoneManager } from './timezoneManager'
+import Timezone from './timezone.js'
+import TimezoneAdapter from './timezoneAdapter.js'
+import { TimezoneManager } from './timezoneManager.js'
 
-export * from './utils'
+export * from './utils.js'
 export {
 	Timezone,
 	TimezoneAdapter,

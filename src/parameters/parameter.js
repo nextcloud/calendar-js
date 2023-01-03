@@ -72,7 +72,7 @@ export default class Parameter extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Get parameter value
 	 *
-	 * @return {String|Array}
+	 * @return {string | Array}
 	 */
 	get value() {
 		return this._value
@@ -82,7 +82,7 @@ export default class Parameter extends observerTrait(lockableTrait(class {})) {
 	 * Set new parameter value
 	 *
 	 * @throws {ModificationNotAllowedError} if parameter is locked for modification
-	 * @param {String|Array} value The new value to set
+	 * @param {string | Array} value The new value to set
 	 */
 	set value(value) {
 		this._modifyContent()
@@ -92,7 +92,7 @@ export default class Parameter extends observerTrait(lockableTrait(class {})) {
 	/**
 	 * Gets the first value of this parameter
 	 *
-	 * @return {String|null}
+	 * @return {string | null}
 	 */
 	getFirstValue() {
 		if (!this.isMultiValue()) {

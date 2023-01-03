@@ -34,7 +34,7 @@ export default class UTCOffsetValue extends AbstractValue {
 	/**
 	 * Gets the hour part of the offset-value
 	 *
-	 * @return {Number}
+	 * @return {number}
 	 */
 	get hours() {
 		return this._innerValue.hours
@@ -44,7 +44,7 @@ export default class UTCOffsetValue extends AbstractValue {
 	 * Sets the hour part of the offset-value
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
- 	 * @param {Number} hours - New hours to set
+	 * @param {number} hours - New hours to set
 	 */
 	set hours(hours) {
 		this._modifyContent()
@@ -54,7 +54,7 @@ export default class UTCOffsetValue extends AbstractValue {
 	/**
 	 * Gets the minute part of the offset-value
 	 *
-	 * @return {Number}
+	 * @return {number}
 	 */
 	get minutes() {
 		return this._innerValue.minutes
@@ -64,7 +64,7 @@ export default class UTCOffsetValue extends AbstractValue {
 	 * Sets the minute part of the offset-value
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {Number} minutes - New minutes to set
+	 * @param {number} minutes - New minutes to set
 	 */
 	set minutes(minutes) {
 		this._modifyContent()
@@ -74,7 +74,7 @@ export default class UTCOffsetValue extends AbstractValue {
 	/**
 	 * Gets the factor
 	 *
-	 * @return {Number}
+	 * @return {number}
 	 */
 	get factor() {
 		return this._innerValue.factor
@@ -85,7 +85,7 @@ export default class UTCOffsetValue extends AbstractValue {
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
 	 * @throws {TypeError} if factor is neither 1 nor -1
-	 * @param {Number} factor - New factor to set, 1 for positive, -1 for negative
+	 * @param {number} factor - New factor to set, 1 for positive, -1 for negative
 	 */
 	set factor(factor) {
 		this._modifyContent()
@@ -99,7 +99,7 @@ export default class UTCOffsetValue extends AbstractValue {
 	/**
 	 * Gets the total amount of seconds
 	 *
-	 * @return {Number}
+	 * @return {number}
 	 */
 	get totalSeconds() {
 		return this._innerValue.toSeconds()
@@ -109,7 +109,7 @@ export default class UTCOffsetValue extends AbstractValue {
 	 * Sets the total amount of seconds
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {Number} totalSeconds - New number of total seconds to set
+	 * @param {number} totalSeconds - New number of total seconds to set
 	 */
 	set totalSeconds(totalSeconds) {
 		this._modifyContent()
@@ -120,7 +120,7 @@ export default class UTCOffsetValue extends AbstractValue {
 	 * Compares this UTCOffset to another one
 	 *
 	 * @param {UTCOffsetValue} other - The other UTCOffsetValue to compare with
-	 * @return {Number} -1, 0 or 1 for less/equal/greater
+	 * @return {number} -1, 0 or 1 for less/equal/greater
 	 */
 	compare(other) {
 		return this._innerValue.compare(other.toICALJs())
@@ -148,10 +148,10 @@ export default class UTCOffsetValue extends AbstractValue {
 	/**
 	 * Create a new UTCOffsetValue object from a data object
 	 *
-	 * @param {Object} data - Object with data to create UTCOffsetValue object from
-	 * @param {Number=} data.hours - The number of hours to set
-	 * @param {Number=} data.minutes - The number of minutes to set
-	 * @param {Number=} data.factor - The factor to use, 1 for positive, -1 for negative
+	 * @param {object} data - Object with data to create UTCOffsetValue object from
+	 * @param {number=} data.hours - The number of hours to set
+	 * @param {number=} data.minutes - The number of minutes to set
+	 * @param {number=} data.factor - The factor to use, 1 for positive, -1 for negative
 	 * @return {UTCOffsetValue}
 	 */
 	static fromData(data) {
@@ -163,7 +163,8 @@ export default class UTCOffsetValue extends AbstractValue {
 	/**
 	 * Create a new UTCOffsetValue object from an amount of seconds
 	 *w
-	 * @param {Number} seconds - The total number of seconds to create the UTCOffsetValue object from
+	 *
+	 * @param {number} seconds - The total number of seconds to create the UTCOffsetValue object from
 	 * @return {UTCOffsetValue}
 	 */
 	static fromSeconds(seconds) {

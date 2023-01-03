@@ -20,15 +20,15 @@
  *
  */
 
-import AbstractComponent from './abstractComponent'
-import CalendarComponent from './calendarComponent'
-import AlarmComponent from './nested/alarmComponent'
-import AbstractRecurringComponent from './root/abstractRecurringComponent'
-import EventComponent from './root/eventComponent'
-import FreeBusyComponent from './root/freeBusyComponent'
-import JournalComponent from './root/journalComponent'
-import TimezoneComponent from './root/timezoneComponent'
-import ToDoComponent from './root/toDoComponent'
+import AbstractComponent from './abstractComponent.js'
+import CalendarComponent from './calendarComponent.js'
+import AlarmComponent from './nested/alarmComponent.js'
+import AbstractRecurringComponent from './root/abstractRecurringComponent.js'
+import EventComponent from './root/eventComponent.js'
+import FreeBusyComponent from './root/freeBusyComponent.js'
+import JournalComponent from './root/journalComponent.js'
+import TimezoneComponent from './root/timezoneComponent.js'
+import ToDoComponent from './root/toDoComponent.js'
 
 export {
 	AbstractComponent,

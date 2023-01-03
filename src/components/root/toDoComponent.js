@@ -170,8 +170,8 @@ export default class ToDoComponent extends AbstractRecurringComponent {
 	 *
 	 * @url https://tools.ietf.org/html/rfc5545#section-3.8.1.6
 	 *
-	 * @param {Number} lat - latitude
-	 * @param {Number} long - longitude
+	 * @param {number} lat - latitude
+	 * @param {number} long - longitude
 	 */
 	setGeographicalPositionFromLatitudeAndLongitude(lat, long) {
 		this.deleteAllProperties('GEO')
@@ -184,8 +184,8 @@ export default class ToDoComponent extends AbstractRecurringComponent {
 	 * @url https://tools.ietf.org/html/rfc7986#section-5.11
 	 *
 	 * @param {string} uri The URI of the conference
-	 * @param {String=} label The label of the conference
-	 * @param {String[]=} features Supported features of conference-system
+	 * @param {string=} label The label of the conference
+	 * @param {string[]=} features Supported features of conference-system
 	 */
 	addConference(uri, label = null, features = null) {
 		this.addProperty(ConferenceProperty.fromURILabelAndFeatures(uri, label, features))
@@ -237,7 +237,7 @@ advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
  * @url https://tools.ietf.org/html/rfc5545#section-3.8.1.8
  *
  * @name ToDoComponent#percent
- * @type {Number}
+ * @type {number}
  */
 advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
 	name: 'percent',
@@ -288,8 +288,8 @@ advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
  *
  * @name ToDoComponent#getResourceIterator
  * @function
- * @param {String=} lang
- * @return {IterableIterator<String>}
+ * @param {string=} lang
+ * @return {IterableIterator<string>}
  */
 
 /**
@@ -301,8 +301,8 @@ advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
  *
  * @name ToDoComponent#getResourceList
  * @function
- * @param {String=} lang
- * @return {String[]}
+ * @param {string=} lang
+ * @return {string[]}
  */
 
 /**
@@ -313,7 +313,7 @@ advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
  * @name ToDoComponent#addResource
  * @function
  * @param {string} resource
- * @param {String=} lang
+ * @param {string=} lang
  */
 
 /**
@@ -324,7 +324,7 @@ advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
  * @name ToDoComponent#removeResource
  * @function
  * @param {string} resource
- * @param {String=} lang
+ * @param {string=} lang
  */
 
 /**
@@ -334,7 +334,7 @@ advertiseSingleOccurrenceProperty(ToDoComponent.prototype, {
  *
  * @name ToDoComponent#clearAllResources
  * @function
- * @param {String=} lang
+ * @param {string=} lang
  */
 advertiseMultiValueStringPropertySeparatedByLang(ToDoComponent.prototype, {
 	name: 'resource',

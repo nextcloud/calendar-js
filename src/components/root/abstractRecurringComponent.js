@@ -42,7 +42,7 @@ import TextProperty from '../../properties/textProperty.js'
 import AlarmComponent from '../nested/alarmComponent.js'
 import TriggerProperty from '../../properties/triggerProperty.js'
 import { getConfig } from '../../config.js'
-import { getConstructorForComponentName } from '../nested'
+import { getConstructorForComponentName } from '../nested/index.js'
 
 /**
  * @class AbstractRecurringComponent
@@ -124,7 +124,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 		/**
 		 * Id of this AbstractRecurringComponent
 		 *
-		 * @type {String|null}
+		 * @type {string | null}
 		 * @private
 		 */
 		this._cachedId = null
@@ -252,7 +252,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	/**
 	 * Gets the UID property
 	 *
-	 * @return {String|null}
+	 * @return {string | null}
 	 */
 	get uid() {
 		return this.getFirstPropertyFirstValue('UID')
@@ -718,8 +718,8 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * Adds a new image from raw data
 	 *
 	 * @param {string} data Data of the image to add
-	 * @param {String=} display What display-type the image is optimized for
-	 * @param {String=} formatType The mime-type of the image
+	 * @param {string=} display What display-type the image is optimized for
+	 * @param {string=} formatType The mime-type of the image
 	 */
 	addImageFromData(data, display = null, formatType = null) {
 		this.addProperty(ImageProperty.fromData(data, display, formatType))
@@ -729,8 +729,8 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * Adds a new image from a link
 	 *
 	 * @param {string} uri The URI of the image to add
-	 * @param {String=} display What display-type the image is optimized for
-	 * @param {String=} formatType The mime-type of the image
+	 * @param {string=} display What display-type the image is optimized for
+	 * @param {string=} formatType The mime-type of the image
 	 */
 	addImageFromLink(uri, display = null, formatType = null) {
 		this.addProperty(ImageProperty.fromLink(uri, display, formatType))
@@ -751,7 +751,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * Creates a new REQUEST-STATUS property based on code and message
 	 * and adds it to this object
 	 *
-	 * @param {Number} code The status-code of the request status
+	 * @param {number} code The status-code of the request status
 	 * @param {string} message The message of the request status
 	 */
 	addRequestStatus(code, message) {
@@ -1150,8 +1150,8 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  *
  * @name AbstractRecurringComponent#getCategoryIterator
  * @function
- * @param {String=} lang
- * @return {IterableIterator<String>}
+ * @param {string=} lang
+ * @return {IterableIterator<string>}
  */
 
 /**
@@ -1161,8 +1161,8 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  *
  * @name AbstractRecurringComponent#getCategoryList
  * @function
- * @param {String=} lang
- * @return {String[]}
+ * @param {string=} lang
+ * @return {string[]}
  */
 
 /**
@@ -1171,7 +1171,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  * @name AbstractRecurringComponent#addCategory
  * @function
  * @param {string} category
- * @param {String=} lang
+ * @param {string=} lang
  */
 
 /**
@@ -1180,7 +1180,7 @@ advertiseSingleOccurrenceProperty(AbstractRecurringComponent.prototype, {
  * @name AbstractRecurringComponent#removeCategory
  * @function
  * @param {string} category
- * @param {String=} lang
+ * @param {string=} lang
  */
 
 /**

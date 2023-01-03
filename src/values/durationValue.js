@@ -34,7 +34,7 @@ export default class DurationValue extends AbstractValue {
 	/**
 	 * Gets the weeks of the stored duration-value
 	 *
-	 * @return {Number}
+	 * @return {number}
 	 */
 	get weeks() {
 		return this._innerValue.weeks
@@ -45,7 +45,7 @@ export default class DurationValue extends AbstractValue {
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
 	 * @throws {TypeError} if value is negative
-	 * @param {Number} weeks Amount of weeks
+	 * @param {number} weeks Amount of weeks
 	 */
 	set weeks(weeks) {
 		this._modifyContent()
@@ -59,7 +59,7 @@ export default class DurationValue extends AbstractValue {
 	/**
 	 * Gets the days of the stored duration-value
 	 *
-	 * @return {Number}
+	 * @return {number}
 	 */
 	get days() {
 		return this._innerValue.days
@@ -70,7 +70,7 @@ export default class DurationValue extends AbstractValue {
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
 	 * @throws {TypeError} if value is negative
-	 * @param {Number} days Amount of days
+	 * @param {number} days Amount of days
 	 */
 	set days(days) {
 		this._modifyContent()
@@ -84,7 +84,7 @@ export default class DurationValue extends AbstractValue {
 	/**
 	 * Gets the hours of the stored duration-value
 	 *
-	 * @return {Number}
+	 * @return {number}
 	 */
 	get hours() {
 		return this._innerValue.hours
@@ -95,7 +95,7 @@ export default class DurationValue extends AbstractValue {
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
 	 * @throws {TypeError} if value is negative
-	 * @param {Number} hours Amount of hours
+	 * @param {number} hours Amount of hours
 	 */
 	set hours(hours) {
 		this._modifyContent()
@@ -109,7 +109,7 @@ export default class DurationValue extends AbstractValue {
 	/**
 	 * Gets the minutes of the stored duration-value
 	 *
-	 * @return {Number}
+	 * @return {number}
 	 */
 	get minutes() {
 		return this._innerValue.minutes
@@ -120,7 +120,7 @@ export default class DurationValue extends AbstractValue {
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
 	 * @throws {TypeError} if value is negative
-	 * @param {Number} minutes Amount of minutes
+	 * @param {number} minutes Amount of minutes
 	 */
 	set minutes(minutes) {
 		this._modifyContent()
@@ -134,7 +134,7 @@ export default class DurationValue extends AbstractValue {
 	/**
 	 * Gets the seconds of the stored duration-value
 	 *
-	 * @return {Number}
+	 * @return {number}
 	 */
 	get seconds() {
 		return this._innerValue.seconds
@@ -145,7 +145,7 @@ export default class DurationValue extends AbstractValue {
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
 	 * @throws {TypeError} if value is negative
-	 * @param {Number} seconds Amount of seconds
+	 * @param {number} seconds Amount of seconds
 	 */
 	set seconds(seconds) {
 		this._modifyContent()
@@ -179,7 +179,7 @@ export default class DurationValue extends AbstractValue {
 	/**
 	 * Gets the amount of total seconds of the stored duration-value
 	 *
-	 * @return {*|Number}
+	 * @return {* | number}
 	 */
 	get totalSeconds() {
 		return this._innerValue.toSeconds()
@@ -189,7 +189,7 @@ export default class DurationValue extends AbstractValue {
 	 * Sets the amount of total seconds of the stored duration-value
 	 *
 	 * @throws {ModificationNotAllowedError} if value is locked for modification
-	 * @param {Number} totalSeconds The total amounts of seconds to set
+	 * @param {number} totalSeconds The total amounts of seconds to set
 	 */
 	set totalSeconds(totalSeconds) {
 		this._modifyContent()
@@ -200,7 +200,7 @@ export default class DurationValue extends AbstractValue {
 	 * Compares this duration to another one
 	 *
 	 * @param {DurationValue} otherDuration The duration to compare to
-	 * @return {Number} -1, 0 or 1 for less/equal/greater
+	 * @return {number} -1, 0 or 1 for less/equal/greater
 	 */
 	compare(otherDuration) {
 		return this._innerValue.compare(otherDuration.toICALJs())
@@ -252,7 +252,7 @@ export default class DurationValue extends AbstractValue {
 	/**
 	 * Create a new DurationValue object from a number of seconds
 	 *
-	 * @param {Number} seconds Total amount of seconds
+	 * @param {number} seconds Total amount of seconds
 	 * @return {DurationValue}
 	 */
 	static fromSeconds(seconds) {
@@ -264,12 +264,12 @@ export default class DurationValue extends AbstractValue {
 	/**
 	 * Create a new DurationValue object from data
 	 *
-	 * @param {Object} data The destructuring object
-	 * @param {Number=} data.weeks Number of weeks to set
-	 * @param {Number=} data.days Number of days to set
-	 * @param {Number=} data.hours Number of hours to set
-	 * @param {Number=} data.minutes Number of minutes to set
-	 * @param {Number=} data.seconds Number of seconds to set
+	 * @param {object} data The destructuring object
+	 * @param {number=} data.weeks Number of weeks to set
+	 * @param {number=} data.days Number of days to set
+	 * @param {number=} data.hours Number of hours to set
+	 * @param {number=} data.minutes Number of minutes to set
+	 * @param {number=} data.seconds Number of seconds to set
 	 * @param {boolean=} data.isNegative Whether or not duration is negative
 	 * @return {DurationValue}
 	 */

@@ -47,7 +47,7 @@ export function createProperty(propertyName) {
 /**
  * creates a new calendar component
  *
- * @param {String=} method Name of the method to include in VCALENDAR component
+ * @param {string=} method Name of the method to include in VCALENDAR component
  * @return {ICAL.Component}
  */
 export function createCalendarComponent(method = null) {

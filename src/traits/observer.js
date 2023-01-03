@@ -20,6 +20,10 @@
  *
  */
 
+/**
+ *
+ * @param baseClass
+ */
 export default function observerTrait(baseClass) {
 
 	/**
@@ -29,6 +33,8 @@ export default function observerTrait(baseClass) {
 
 		/**
 		 * Constructor
+		 *
+		 * @param {...any} args
 		 */
 		constructor(...args) {
 			super(...args)
@@ -68,6 +74,7 @@ export default function observerTrait(baseClass) {
 		/**
 		 * Notify all subscribed handlers
 		 *
+		 * @param {...any} args
 		 * @protected
 		 */
 		_notifySubscribers(...args) {

@@ -30,8 +30,8 @@ export default class Timezone {
 	/**
 	 * Constructor
 	 *
-	 * @param {String|ICAL.Timezone|ICAL.Component} timezoneId Id of the timezone
-	 * @param {String?} ics The iCalendar timezone definition
+	 * @param {string | ICAL.Timezone | ICAL.Component} timezoneId Id of the timezone
+	 * @param {string?} ics The iCalendar timezone definition
 	 */
 	constructor(timezoneId, ics) {
 
@@ -94,13 +94,13 @@ export default class Timezone {
 	/**
 	 * Gets the UTC Offset for a given date in this timezone
 	 *
-	 * @param {Number} year Year of the date
-	 * @param {Number} month Month of the date (1-based)
-	 * @param {Number} day Day of the date
-	 * @param {Number} hour Hour of the date
-	 * @param {Number} minute Minute of the date
-	 * @param {Number} second Second of the date
-	 * @return {Number}
+	 * @param {number} year Year of the date
+	 * @param {number} month Month of the date (1-based)
+	 * @param {number} day Day of the date
+	 * @param {number} hour Hour of the date
+	 * @param {number} minute Minute of the date
+	 * @param {number} second Second of the date
+	 * @return {number}
 	 */
 	offsetForArray(year, month, day, hour, minute, second) {
 		this._initialize()
@@ -120,8 +120,8 @@ export default class Timezone {
 	/**
 	 * Converts a timestamp to an array of year, month, day, hour, minute, second.
 	 *
-	 * @param {Number} ms Timestamp in milliseconds
-	 * @return {Number[]}
+	 * @param {number} ms Timestamp in milliseconds
+	 * @return {number[]}
 	 */
 	timestampToArray(ms) {
 		this._initialize()

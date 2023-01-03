@@ -58,7 +58,7 @@ export default class TriggerProperty extends Property {
 	 * (If you override the setter, you also have to override the getter or
 	 *  it will simply be undefined)
 	 *
-	 * @return {String|Number|AbstractValue|String[]|Number[]|AbstractValue[]}
+	 * @return {string | number | AbstractValue | string[] | number[] | AbstractValue[]}
 	 */
 	get value() {
 		return super.value

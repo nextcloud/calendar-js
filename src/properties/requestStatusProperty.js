@@ -41,7 +41,7 @@ export default class RequestStatusProperty extends Property {
 	/**
 	 * Gets the status code of the request status
 	 *
-	 * @return {Number}
+	 * @return {number}
 	 */
 	get statusCode() {
 		return parseFloat(this.value[0])
@@ -50,7 +50,7 @@ export default class RequestStatusProperty extends Property {
 	/**
 	 * Sets the status code of the request status
 	 *
-	 * @param {Number} statusCode The statusCode of the request
+	 * @param {number} statusCode The statusCode of the request
 	 */
 	set statusCode(statusCode) {
 		this._modifyContent()
@@ -85,7 +85,7 @@ export default class RequestStatusProperty extends Property {
 	/**
 	 * Gets the exception data of the request status if available
 	 *
-	 * @return {null|String}
+	 * @return {null | string}
 	 */
 	get exceptionData() {
 		if (!this.value[2]) {
@@ -165,7 +165,7 @@ export default class RequestStatusProperty extends Property {
 	/**
 	 * Creates a new RequestStatusProperty from a code and a status message
 	 *
-	 * @param {Number} code The status-code of the request
+	 * @param {number} code The status-code of the request
 	 * @param {string} message The message of the request
 	 * @return {RequestStatusProperty}
 	 */
