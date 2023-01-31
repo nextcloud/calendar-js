@@ -87,9 +87,9 @@ it('ICalendarParser should return different objects in different calendar-object
 	const item4 = itemIterator.next().value
 	const item5 = itemIterator.next().value
 
-	expect(item1.root).not.toEqual(item2.root)
-	expect(item2.root).not.toEqual(item3.root)
-	expect(item3.root).not.toEqual(item4.root)
+	expect(item1.root).not.toMatchObject(item2.root)
+	expect(item2.root).not.toMatchObject(item3.root)
+	expect(item3.root).not.toMatchObject(item4.root)
 	expect(item5).toEqual(undefined)
 
 	expect(item1.toICS()).toEqual('BEGIN:VCALENDAR\r\n' +
