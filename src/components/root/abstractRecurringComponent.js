@@ -357,6 +357,21 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 			throw new TypeError('Can\'t fork item without a DTSTART')
 		}
 
+		// Adjust RRULE COUNT if present
+		const rrule = occurrence.getFirstPropertyFirstValue('RRULE')
+		if (rrule?.count) {
+			let index = occurrence.recurrenceManager.countAllOccurrencesBetween(
+				occurrence.getReferenceRecurrenceId(),
+				recurrenceId,
+			)
+
+			index -= 1 // Don't count the forked occurrence
+			rrule.count -= index
+			if (rrule.count < 1) {
+				rrule.count = 1
+			}
+		}
+
 		if (occurrence.getFirstPropertyFirstValue('DTSTART').timezoneId !== recurrenceId.timezoneId) {
 			const originalTimezone = occurrence.getFirstPropertyFirstValue('DTSTART').getICALTimezone()
 			recurrenceId = recurrenceId.getInICALTimezone(originalTimezone)
