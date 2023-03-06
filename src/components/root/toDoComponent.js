@@ -191,6 +191,18 @@ export default class ToDoComponent extends AbstractRecurringComponent {
 		this.addProperty(ConferenceProperty.fromURILabelAndFeatures(uri, label, features))
 	}
 
+	/**
+	 * Gets a recurrence-id that has to be used to refer to this task.
+	 * This is used for recurrence-management.
+	 *
+	 * Gracefully handles the case where a task has no start-date, but a due-date.
+	 *
+	 * @return {DateTimeValue|null}
+	 */
+	getReferenceRecurrenceId() {
+		return super.getReferenceRecurrenceId() ?? this.endDate
+	}
+
 }
 
 /**

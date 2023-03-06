@@ -955,16 +955,18 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 	 * Gets a recurrence-id that has to be used to refer to this event.
 	 * This is used for recurrence-management
 	 *
-	 * @return {DateTimeValue}
+	 * @return {DateTimeValue|null}
 	 */
 	getReferenceRecurrenceId() {
 		if (this.originalRecurrenceId) {
 			return this.originalRecurrenceId
 		} else if (this.recurrenceId) {
 			return this.recurrenceId
-		} else {
+		} else if (this.startDate) {
 			return this.startDate
 		}
+
+		return null
 	}
 
 	/**
