@@ -1,3 +1,13 @@
+## [5.0.4](https://github.com/nextcloud/calendar-js/compare/v5.0.3...v5.0.4) (2023-03-10)
+
+
+### Bug Fixes
+
+* adjust RRULE count when forking occurrences ([348c829](https://github.com/nextcloud/calendar-js/commit/348c829667c77712ab46a27a54ddf85ab05a0a02))
+* tasks may return a nullish reference recurrence id ([5d20f29](https://github.com/nextcloud/calendar-js/commit/5d20f29daed317a74a4338c29d67c9724556563e))
+
+
+
 ## [5.0.3](https://github.com/nextcloud/calendar-js/compare/v5.0.2...v5.0.3) (2022-12-28)
 
 
