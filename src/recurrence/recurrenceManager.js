@@ -635,6 +635,45 @@ export default class RecurrenceManager {
 	}
 
 	/**
+	 * Counts all occurrences in the given time-range.
+	 * This function works solely on the basis of recurrence-ids.
+	 * Start and end are inclusive.
+	 *
+	 * @param {DateTimeValue} queriedTimeRangeStart Start of time-range
+	 * @param {DateTimeValue} queriedTimeRangeEnd End of time-range
+	 * @return {number} Count of occurrences in the given time-range
+	 */
+	countAllOccurrencesBetween(queriedTimeRangeStart, queriedTimeRangeEnd) {
+		if (!this.masterItem.isRecurring()) {
+			if (typeof this.masterItem.isInTimeFrame === 'function'
+				&& !this.masterItem.isInTimeFrame(queriedTimeRangeStart, queriedTimeRangeEnd)) {
+				return 0
+			}
+
+			return 1
+		}
+
+		const iterator = this._getRecurExpansionObject()
+		const queriedICALJsTimeRangeStart = queriedTimeRangeStart.toICALJs()
+		const queriedICALJsTimeRangeEnd = queriedTimeRangeEnd.toICALJs()
+
+		let count = 0
+		let next
+		while ((next = iterator.next())) {
+			if (next.compare(queriedICALJsTimeRangeStart) === -1) {
+				continue
+			}
+
+			if (next.compare(queriedICALJsTimeRangeEnd) === 1) {
+				break
+			}
+
+			count += 1
+		}
+		return count
+	}
+
+	/**
 	 * Get all occurrences between start and end
 	 * Start and End are inclusive
 	 *
