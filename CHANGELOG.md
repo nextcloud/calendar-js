@@ -1,3 +1,12 @@
+## [5.0.5](https://github.com/nextcloud/calendar-js/compare/v5.0.4...v5.0.5) (2023-03-27)
+
+
+### Reverts
+
+* Revert "chore!(deps): Bump uuid from 8.3.2 to 9.0.0" ([2671cda](https://github.com/nextcloud/calendar-js/commit/2671cda40116632555430271f7147330bc64d84c))
+
+
+
 ## [5.0.4](https://github.com/nextcloud/calendar-js/compare/v5.0.3...v5.0.4) (2023-03-10)
 
 
