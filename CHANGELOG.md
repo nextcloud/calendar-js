@@ -1,3 +1,10 @@
+## [6.0.0](https://github.com/nextcloud/calendar-js/compare/v5.0.6...v6.0.0) (2023-03-27)
+
+### BREAKING CHANGES
+
+* Update ``uuid`` from v8 to v9
+
+
 ## [5.0.5](https://github.com/nextcloud/calendar-js/compare/v5.0.4...v5.0.5) (2023-03-27)
 
 
