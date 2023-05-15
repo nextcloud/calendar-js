@@ -1,8 +1,11 @@
-## [6.0.0](https://github.com/nextcloud/calendar-js/compare/v5.0.6...v6.0.0) (2023-03-27)
+## [6.0.1](https://github.com/nextcloud/calendar-js/compare/v5.0.5...v6.0.1) (2023-05-15)
 
-### BREAKING CHANGES
 
-* Update ``uuid`` from v8 to v9
+### Bug Fixes
+
+* **repair:** include EXDATE in missing VALUE=DATE repair step ([813b07e](https://github.com/nextcloud/calendar-js/commit/813b07ea361d20d17c8ad3989da00d8576dcd55e))
+* updated timezone-data ([10064c8](https://github.com/nextcloud/calendar-js/commit/10064c8919065ba6a927d798806197d96b65ec6f))
+
 
 
 ## [5.0.5](https://github.com/nextcloud/calendar-js/compare/v5.0.4...v5.0.5) (2023-03-27)
