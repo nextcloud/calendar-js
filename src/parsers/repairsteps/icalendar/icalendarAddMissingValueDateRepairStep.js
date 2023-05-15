@@ -33,7 +33,7 @@ export default class ICalendarAddMissingValueDateRepairStep extends AbstractRepa
 	 */
 	repair(ics) {
 		return ics
-			.replace(/^(DTSTART|DTEND)(((?!VALUE=DATE).)*):([0-9]{8})$/gm, (match, propName, parameters, _, date) => {
+			.replace(/^(DTSTART|DTEND|EXDATE)(((?!VALUE=DATE).)*):([0-9]{8})$/gm, (match, propName, parameters, _, date) => {
 				return propName + parameters + ';VALUE=DATE:' + date
 			})
 	}
