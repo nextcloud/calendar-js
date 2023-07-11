@@ -3,7 +3,14 @@
   "version": "6.0.1",
   "description": "Small library that wraps ICAL.js and provide more convenient means for editing",
   "main": "dist/index.umd.js",
-  "module": "dist/index.esm.js",
+  "module": "dist/index.es.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.mjs",
+      "require": "./dist/index.umd.js"
+    },
+    "./resources/timezones/zones.json": "./resources/timezones/zones.json"
+  },
   "files": [
     "README.md",
     "LICENSE",
