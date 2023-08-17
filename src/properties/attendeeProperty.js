@@ -2,6 +2,7 @@
  * @copyright Copyright (c) 2019 Georg Ehrke
  *
  * @author Georg Ehrke <georg-nextcloud@ehrke.email>
+ * @author Richard Steinmetz <richard@steinmetz.cloud>
  *
  * @license AGPL-3.0-or-later
  *
@@ -205,6 +206,25 @@ export default class AttendeeProperty extends Property {
 	 */
 	set email(email) {
 		this.value = startStringWith(email, 'mailto:')
+	}
+
+	/**
+	 * Gets the email addresses of groups the attendee is a part of
+	 *
+	 * @return {string[]|null} The email addresses of the groups
+	 */
+	get member() {
+		return this.getParameter('MEMBER')?.value ?? null
+	}
+
+	/**
+	 * Sets the email addresses of groups the attendee is a part of
+	 *
+	 * @param {string[]} members The email addresses of the groups
+	 */
+	set member(members) {
+		members = members.map(member => startStringWith(member, 'mailto:'))
+		this.updateParameterIfExist('MEMBER', members)
 	}
 
 	/**
