@@ -2,6 +2,7 @@
  * @copyright Copyright (c) 2019 Georg Ehrke
  *
  * @author Georg Ehrke <georg-nextcloud@ehrke.email>
+ * @author Richard Steinmetz <richard@steinmetz.cloud>
  *
  * @license AGPL-3.0-or-later
  *
@@ -263,6 +264,36 @@ it('AttendeeProperty should provide easy getter/setter for email', () => {
 
 	property.email = 'bar@example.com'
 	expect(property.email).toEqual('mailto:bar@example.com')
+})
+
+it('AttendeeProperty should provide easy getter/setter for member', () => {
+	const icalValue = ICAL.Property.fromString('ATTENDEE;MEMBER="mailto:projectA@example.com","mailto:projectB@example.com";CN=janedoe:mailto:janedoe@example.com')
+	const property = AttendeeProperty.fromICALJs(icalValue)
+
+	expect(property.member).toEqual(['mailto:projectA@example.com', 'mailto:projectB@example.com'])
+
+	property.member = ['foo@bar.com']
+	expect(property.member).toEqual(['mailto:foo@bar.com'])
+
+	property.lock()
+	expect(property.isLocked()).toEqual(true)
+
+	expect(() => {
+		property.member = ['mailto:projc@example.com']
+	}).toThrow(ModificationNotAllowedError)
+	expect(property.member).toEqual(['mailto:foo@bar.com'])
+
+	property.unlock()
+
+	property.member = ['bar@example.com', 'mailto:foo@example.com']
+	expect(property.member).toEqual(['mailto:bar@example.com', 'mailto:foo@example.com'])
+})
+
+it('AttendeeProperty should handle missing member gracefully', () => {
+	const icalValue = ICAL.Property.fromString('ATTENDEE;CN=Foo;PARTSTAT=DECLINED123;LANGUAGE=EN:mailto:mrbig@example.com')
+	const property = AttendeeProperty.fromICALJs(icalValue)
+
+	expect(property.member).toEqual(null)
 })
 
 it('AttendeeProperty should provide easy getter/setter for commonName', () => {
