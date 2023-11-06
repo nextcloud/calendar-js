@@ -10,7 +10,7 @@ jobs:
     environment: npm registry
     steps:
       - name: Conventional nextcloud npm release
-        uses: ChristophWurst/conventional-nextcloud-npm-release@v0.1
+        uses: ChristophWurst/conventional-nextcloud-npm-release@v1
         with:
           github-token: ${{ secrets.RELEASE_PAT }}
           npm-token: ${{ secrets.NPM_TOKEN }}
