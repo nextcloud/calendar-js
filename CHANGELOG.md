@@ -1,3 +1,19 @@
+# [6.1.0](https://github.com/nextcloud/calendar-js/compare/v6.0.1...v6.1.0) (2023-11-06)
+
+
+### Bug Fixes
+
+* Add package exports to allow node16 projects to import module ([90f7043](https://github.com/nextcloud/calendar-js/commit/90f7043e0dec3c1f0ba806e2f1fa77cdcd7f1dab))
+* Adjust badges on README for workflows, fixes [#358](https://github.com/nextcloud/calendar-js/issues/358) ([b44656a](https://github.com/nextcloud/calendar-js/commit/b44656ab4287fc4d492b7939dc34b877461e8acd))
+* **timezone-action:** change commit msg of timezone update action ([ea68297](https://github.com/nextcloud/calendar-js/commit/ea682979440341816f61d5a99e5d7967a47c96e0))
+
+
+### Features
+
+* **attendee:** expose member parameter ([eb9c15b](https://github.com/nextcloud/calendar-js/commit/eb9c15bee5e22d6adf2b4c80ca78c784e33c9ef8))
+
+
+
 ## [6.0.1](https://github.com/nextcloud/calendar-js/compare/v5.0.5...v6.0.1) (2023-05-15)
 
 
