@@ -1,5 +1,5 @@
 {
-  "version": "2.2023d",
+  "version": "2.2024a",
   "aliases": {
     "AUS Central Standard Time": {
       "aliasTo": "Australia/Darwin"
@@ -1958,7 +1958,7 @@
     },
     "Asia/Almaty": {
       "ics": [
-        "BEGIN:STANDARD\r\nTZOFFSETFROM:+0600\r\nTZOFFSETTO:+0600\r\nTZNAME:+06\r\nDTSTART:19700101T000000\r\nEND:STANDARD"
+        "BEGIN:STANDARD\r\nTZOFFSETFROM:+0500\r\nTZOFFSETTO:+0500\r\nTZNAME:+05\r\nDTSTART:19700101T000000\r\nEND:STANDARD"
       ],
       "latitude": "+0431500",
       "longitude": "+0765700"
@@ -2401,7 +2401,7 @@
     },
     "Asia/Qostanay": {
       "ics": [
-        "BEGIN:STANDARD\r\nTZOFFSETFROM:+0600\r\nTZOFFSETTO:+0600\r\nTZNAME:+06\r\nDTSTART:19700101T000000\r\nEND:STANDARD"
+        "BEGIN:STANDARD\r\nTZOFFSETFROM:+0500\r\nTZOFFSETTO:+0500\r\nTZNAME:+05\r\nDTSTART:19700101T000000\r\nEND:STANDARD"
       ],
       "latitude": "+0531200",
       "longitude": "+0633700"
