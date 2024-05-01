@@ -19,6 +19,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
+
+import ICAL from 'ical.js'
 import RelationProperty from '../../../src/properties/relationProperty.js';
 import ModificationNotAllowedError from '../../../src/errors/modificationNotAllowedError.js';
 import Property from '../../../src/properties/property.js';

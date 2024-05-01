@@ -19,6 +19,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
+
+import ICAL from 'ical.js'
 import TimezoneComponent from '../../../../src/components/root/timezoneComponent.js';
 import AbstractComponent from '../../../../src/components/abstractComponent.js';
 import ModificationNotAllowedError from '../../../../src/errors/modificationNotAllowedError.js';

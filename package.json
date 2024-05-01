@@ -62,7 +62,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.4"
   },
   "peerDependencies": {
-    "ical.js": "^1.5.0",
+    "ical.js": "^2.0.1",
     "uuid": "^9.0.0"
   },
   "babel": {
@@ -86,7 +86,6 @@
     "coverageDirectory": "./coverage",
     "clearMocks": true,
     "setupFiles": [
-      "./tests/setup-global-ical.js",
       "./tests/assets/loader.js"
     ]
   },

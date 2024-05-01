@@ -19,6 +19,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
+
+import ICAL from 'ical.js'
 import { createCalendarComponent, createComponent, createProperty } from '../../../src/factories/icalFactory.js';
 import { deleteConfig, setConfig } from '../../../src/config.js';
 

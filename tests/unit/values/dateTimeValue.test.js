@@ -19,6 +19,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
+
+import ICAL from 'ical.js'
 import DateTimeValue from '../../../src/values/dateTimeValue.js';
 import Timezone from '../../../src/timezones/timezone.js';
 import ModificationNotAllowedError from '../../../src/errors/modificationNotAllowedError.js';

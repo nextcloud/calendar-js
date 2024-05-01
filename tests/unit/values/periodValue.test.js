@@ -19,6 +19,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
+
+import ICAL from 'ical.js'
 import PeriodValue from '../../../src/values/periodValue.js';
 import DateTimeValue from '../../../src/values/dateTimeValue.js';
 import DurationValue from '../../../src/values/durationValue.js';

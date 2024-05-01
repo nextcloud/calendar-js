@@ -21,12 +21,11 @@
  */
 
 import Timezone from './timezone.js'
-import TimezoneAdapter from './timezoneAdapter.js'
-import { TimezoneManager } from './timezoneManager.js'
+import { getTimezoneManager, isOlsonTimezone } from './timezoneManager.js'
 
 export * from './utils.js'
 export {
 	Timezone,
-	TimezoneAdapter,
-	TimezoneManager,
+	getTimezoneManager,
+	isOlsonTimezone,
 }
