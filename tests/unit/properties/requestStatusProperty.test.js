@@ -19,6 +19,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
+
+import ICAL from 'ical.js'
 import RequestStatusProperty from '../../../src/properties/requestStatusProperty.js';
 import Property from '../../../src/properties/property.js';
 import ModificationNotAllowedError from '../../../src/errors/modificationNotAllowedError.js';

@@ -19,7 +19,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-// load dependencies
+
+import ICAL from 'ical.js'
 import ExpectedICalJSError from "../../../src/errors/expectedICalJSError.js";
 import ModificationNotAllowedError from "../../../src/errors/modificationNotAllowedError.js";
 import Parameter from "../../../src/parameters/parameter.js";

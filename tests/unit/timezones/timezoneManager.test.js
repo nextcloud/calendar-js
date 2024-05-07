@@ -2,6 +2,7 @@
  * @copyright Copyright (c) 2019 Georg Ehrke
  *
  * @author Georg Ehrke <georg-nextcloud@ehrke.email>
+ * @author 2024 Richard Steinmetz <richard@steinmetz.cloud>
  *
  * @license AGPL-3.0-or-later
  *
@@ -19,15 +20,16 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import { getTimezoneManager, isOlsonTimezone, TimezoneManager } from '../../../src/timezones/timezoneManager.js';
+
+import { getTimezoneManager, isOlsonTimezone } from '../../../src/timezones/timezoneManager.js';
 import Timezone from '../../../src/timezones/timezone.js';
 
-it('TimezoneManager should be defined', () => {
-	expect(TimezoneManager).toBeDefined()
+beforeEach(() => {
+	getTimezoneManager().clearAllTimezones()
 })
 
 it('TimezoneManager should provide a method to get a timezone by id - existing timezone', () => {
-	const timezoneManager = new TimezoneManager()
+	const timezoneManager = getTimezoneManager()
 
 	const tzBerlin = new Timezone('Europe/Berlin', getAsset('timezone-europe-berlin'))
 	const tzNYC = new Timezone('America/New_York', getAsset('timezone-america-nyc'))
@@ -43,7 +45,7 @@ it('TimezoneManager should provide a method to get a timezone by id - existing t
 })
 
 it('TimezoneManager should be able to self-register a default set of timezones', () => {
-	const timezoneManager = new TimezoneManager()
+	const timezoneManager = getTimezoneManager()
 
 	timezoneManager.registerDefaultTimezones()
 
@@ -51,7 +53,7 @@ it('TimezoneManager should be able to self-register a default set of timezones',
 })
 
 it('TimezoneManager should provide a method to get a timezone by id - by alias', () => {
-	const timezoneManager = new TimezoneManager()
+	const timezoneManager = getTimezoneManager()
 
 	const tzBerlin = new Timezone('Europe/Berlin', getAsset('timezone-europe-berlin'))
 	const tzNYC = new Timezone('America/New_York', getAsset('timezone-america-nyc'))
@@ -67,7 +69,7 @@ it('TimezoneManager should provide a method to get a timezone by id - by alias',
 })
 
 it('TimezoneManager should provide a method to get a timezone by id - by recursive alias', () => {
-	const timezoneManager = new TimezoneManager()
+	const timezoneManager = getTimezoneManager()
 
 	const tzKolkata = new Timezone('Asia/Kolkata', getAsset('timezone-asia-kolkata'))
 
@@ -79,7 +81,7 @@ it('TimezoneManager should provide a method to get a timezone by id - by recursi
 })
 
 it('TimezoneManager should provide a method to get a timezone by id - by recursive alias, recursion limit', () => {
-	const timezoneManager = new TimezoneManager()
+	const timezoneManager = getTimezoneManager()
 
 	timezoneManager.registerAlias('alias-one', 'alias-two')
 	timezoneManager.registerAlias('alias-two', 'alias-one')
@@ -88,7 +90,7 @@ it('TimezoneManager should provide a method to get a timezone by id - by recursi
 })
 
 it('TimezoneManager should provide a method to get a timezone by id - by alias non-existant', () => {
-	const timezoneManager = new TimezoneManager()
+	const timezoneManager = getTimezoneManager()
 
 	const tzBerlin = new Timezone('Europe/Berlin', getAsset('timezone-europe-berlin'))
 	const tzNYC = new Timezone('America/New_York', getAsset('timezone-america-nyc'))
@@ -104,7 +106,7 @@ it('TimezoneManager should provide a method to get a timezone by id - by alias n
 })
 
 it('TimezoneManager should provide a method to get a timezone by id - unknown', () => {
-	const timezoneManager = new TimezoneManager()
+	const timezoneManager = getTimezoneManager()
 
 	const tzBerlin = new Timezone('Europe/Berlin', getAsset('timezone-europe-berlin'))
 	const tzNYC = new Timezone('America/New_York', getAsset('timezone-america-nyc'))
@@ -120,7 +122,7 @@ it('TimezoneManager should provide a method to get a timezone by id - unknown', 
 })
 
 it('TimezoneManager should provide a method to check if a certain timezone is known', () => {
-	const timezoneManager = new TimezoneManager()
+	const timezoneManager = getTimezoneManager()
 
 	const tzBerlin = new Timezone('Europe/Berlin', getAsset('timezone-europe-berlin'))
 	const tzNYC = new Timezone('America/New_York', getAsset('timezone-america-nyc'))
@@ -137,8 +139,20 @@ it('TimezoneManager should provide a method to check if a certain timezone is kn
 	expect(timezoneManager.hasTimezoneForId('foobar/Berlin')).toEqual(true)
 })
 
+it('TimezoneManager should provide a list of built-in timezones', () => {
+	const timezoneManager = getTimezoneManager()
+
+	expect(timezoneManager.listAllTimezones()).toEqual(["UTC", "floating"])
+})
+
+it('TimezoneManager should provide a list of built-in timezones and aliases', () => {
+	const timezoneManager = getTimezoneManager()
+
+	expect(timezoneManager.listAllTimezones(true)).toEqual(["UTC", "floating", "GMT", "Z"])
+})
+
 it('TimezoneManager should provide a list of all timezones', () => {
-	const timezoneManager = new TimezoneManager()
+	const timezoneManager = getTimezoneManager()
 
 	const tzBerlin = new Timezone('Europe/Berlin', getAsset('timezone-europe-berlin'))
 	const tzNYC = new Timezone('America/New_York', getAsset('timezone-america-nyc'))
@@ -149,11 +163,11 @@ it('TimezoneManager should provide a list of all timezones', () => {
 	timezoneManager.registerTimezone(tzLA)
 	timezoneManager.registerAlias('foobar/Berlin', 'Europe/Berlin')
 
-	expect(timezoneManager.listAllTimezones()).toEqual(["Europe/Berlin", "America/New_York", "America/Los_Angeles"])
+	expect(timezoneManager.listAllTimezones()).toEqual(["UTC", "floating", "Europe/Berlin", "America/New_York", "America/Los_Angeles"])
 })
 
 it('TimezoneManager should provide a list of all timezones to include all aliases', () => {
-	const timezoneManager = new TimezoneManager()
+	const timezoneManager = getTimezoneManager()
 
 	const tzBerlin = new Timezone('Europe/Berlin', getAsset('timezone-europe-berlin'))
 	const tzNYC = new Timezone('America/New_York', getAsset('timezone-america-nyc'))
@@ -164,12 +178,12 @@ it('TimezoneManager should provide a list of all timezones to include all aliase
 	timezoneManager.registerTimezone(tzLA)
 	timezoneManager.registerAlias('foobar/Berlin', 'Europe/Berlin')
 
-	expect(timezoneManager.listAllTimezones(true)).toEqual(["Europe/Berlin", "America/New_York", "America/Los_Angeles", 'foobar/Berlin'])
+	expect(timezoneManager.listAllTimezones(true)).toEqual(["UTC", "floating", "Europe/Berlin", "America/New_York", "America/Los_Angeles", "GMT", "Z", 'foobar/Berlin'])
 
 })
 
 it('TimezoneManager should provide a method to unregister timezones', () => {
-	const timezoneManager = new TimezoneManager()
+	const timezoneManager = getTimezoneManager()
 
 	const tzBerlin = new Timezone('Europe/Berlin', getAsset('timezone-europe-berlin'))
 	const tzNYC = new Timezone('America/New_York', getAsset('timezone-america-nyc'))
@@ -188,7 +202,7 @@ it('TimezoneManager should provide a method to unregister timezones', () => {
 })
 
 it('TimezoneManager should provide a method to unregister an alias', () => {
-	const timezoneManager = new TimezoneManager()
+	const timezoneManager = getTimezoneManager()
 
 	const tzBerlin = new Timezone('Europe/Berlin', getAsset('timezone-europe-berlin'))
 	const tzNYC = new Timezone('America/New_York', getAsset('timezone-america-nyc'))
@@ -207,7 +221,7 @@ it('TimezoneManager should provide a method to unregister an alias', () => {
 })
 
 it('TimezoneManager should provide a method to register timezone from is', () => {
-	const timezoneManager = new TimezoneManager()
+	const timezoneManager = getTimezoneManager()
 
 	timezoneManager.registerTimezoneFromICS('Europe/Berlin', getAsset('timezone-europe-berlin'))
 	timezoneManager.registerTimezoneFromICS('America/New_York', getAsset('timezone-america-nyc'))
@@ -217,7 +231,7 @@ it('TimezoneManager should provide a method to register timezone from is', () =>
 })
 
 it('TimezoneManager should provide a method to clear all timezones', () => {
-	const timezoneManager = new TimezoneManager()
+	const timezoneManager = getTimezoneManager()
 
 	const tzBerlin = new Timezone('Europe/Berlin', getAsset('timezone-europe-berlin'))
 	const tzNYC = new Timezone('America/New_York', getAsset('timezone-america-nyc'))
@@ -258,7 +272,7 @@ it('TimezoneManager should provide a default instance', () => {
 })
 
 it('TimezoneManager should provide a method to check if a name is an alias', () => {
-	const timezoneManager = new TimezoneManager()
+	const timezoneManager = getTimezoneManager()
 
 	const tzBerlin = new Timezone('Europe/Berlin', getAsset('timezone-europe-berlin'))
 	const tzNYC = new Timezone('America/New_York', getAsset('timezone-america-nyc'))

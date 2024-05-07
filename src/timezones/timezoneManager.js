@@ -2,6 +2,7 @@
  * @copyright Copyright (c) 2019 Georg Ehrke
  *
  * @author Georg Ehrke <georg-nextcloud@ehrke.email>
+ * @author 2024 Richard Steinmetz <richard@steinmetz.cloud>
  *
  * @license AGPL-3.0-or-later
  *
@@ -19,13 +20,15 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
+
+import ICAL from 'ical.js'
 import Timezone from './timezone.js'
 import tzData from '../../resources/timezones/zones.json'
 
 /**
  * @class TimezoneManager
  */
-export class TimezoneManager {
+class TimezoneManager {
 
 	/**
 	 * Constructor
@@ -38,6 +41,14 @@ export class TimezoneManager {
 		 * @type {Map<string, string>}
 		 */
 		this._aliases = new Map()
+
+		/**
+		 * List of aliases that were registered while their targets were missing
+		 * [[aliasName, timezoneId], ...]
+		 *
+		 * @type {string[][]}
+		 */
+		this._pendingAliases = []
 
 		/**
 		 * Map of Timezones
@@ -122,6 +133,17 @@ export class TimezoneManager {
 	 */
 	registerTimezone(timezone) {
 		this._timezones.set(timezone.timezoneId, timezone)
+		ICAL.TimezoneService.register(timezone.timezoneId, timezone.toICALTimezone())
+
+		// Try to resolve pending aliases and remove them from the list
+		this._pendingAliases = this._pendingAliases.filter(([aliasName, timezoneId]) => {
+			if (timezoneId !== timezone.timezoneId) {
+				return true
+			}
+
+			ICAL.TimezoneService.register(aliasName, timezone.toICALTimezone())
+			return false
+		})
 	}
 
 	registerDefaultTimezones() {
@@ -165,6 +187,13 @@ export class TimezoneManager {
 	 */
 	registerAlias(aliasName, timezoneId) {
 		this._aliases.set(aliasName, timezoneId)
+
+		const resolvedTimezone = this.getTimezoneForId(timezoneId)
+		if (!resolvedTimezone) {
+			this._pendingAliases.push([aliasName, timezoneId])
+			return
+		}
+		ICAL.TimezoneService.register(aliasName, resolvedTimezone.toICALTimezone())
 	}
 
 	/**
@@ -174,6 +203,7 @@ export class TimezoneManager {
 	 */
 	unregisterTimezones(timezoneId) {
 		this._timezones.delete(timezoneId)
+		ICAL.TimezoneService.remove(timezoneId)
 	}
 
 	/**
@@ -183,6 +213,9 @@ export class TimezoneManager {
 	 */
 	unregisterAlias(aliasName) {
 		this._aliases.delete(aliasName)
+		this._pendingAliases = this._pendingAliases
+			.filter(([pendingAliasName]) => pendingAliasName !== aliasName)
+		ICAL.TimezoneService.remove(aliasName)
 	}
 
 	/**
@@ -190,7 +223,10 @@ export class TimezoneManager {
 	 */
 	clearAllTimezones() {
 		this._aliases = new Map()
+		this._pendingAliases = []
 		this._timezones = new Map()
+
+		ICAL.TimezoneService.reset()
 
 		timezoneManager.registerTimezone(Timezone.utc)
 		timezoneManager.registerTimezone(Timezone.floating)
