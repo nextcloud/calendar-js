@@ -1,3 +1,17 @@
+# [7.0.0](https://github.com/nextcloud/calendar-js/compare/v6.1.0...v7.0.0) (2024-05-08)
+
+
+### Breaking Changes
+
+* TimezoneManager class is not exported any longer. Please use getTimezoneManager() to get an instance.
+* TimezoneAdapter has been removed. TimezoneManager propagates time zones to ICAL.TimezoneService on its own by default.
+
+### Features
+
+* Bump ical.js to 2.0.1
+
+
+
 # [6.1.0](https://github.com/nextcloud/calendar-js/compare/v6.0.1...v6.1.0) (2023-11-06)
 
 
