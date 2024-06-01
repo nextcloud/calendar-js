@@ -11,7 +11,7 @@ jobs:
     name: update-timezones
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
 
       - name: Download vzic
         run: git clone https://github.com/libical/vzic.git
@@ -22,7 +22,7 @@ jobs:
           make -B
 
       - name: Get python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # v5
         with:
           python-version: '3.10'
 
@@ -33,7 +33,7 @@ jobs:
         run: rm -r vzic
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@6d6857d36972b65feb161a90e484f2984215f83e # v6
         with:
           token: ${{ secrets.COMMAND_BOT_PAT }}
           commit-message: "fix: update timezones data"
