@@ -24,7 +24,7 @@ import ICAL from 'ical.js'
 import TimezoneComponent from '../../../../src/components/root/timezoneComponent.js';
 import AbstractComponent from '../../../../src/components/abstractComponent.js';
 import ModificationNotAllowedError from '../../../../src/errors/modificationNotAllowedError.js';
-import Timezone from '../../../../src/timezones/timezone.js';
+import { Timezone } from '@nextcloud/timezones';
 
 it('TimezoneComponent should be defined', () => {
 	expect(TimezoneComponent).toBeDefined()
@@ -57,7 +57,7 @@ it('TimezoneComponent should expose easy getter/setter for timezoneId', () => {
 	expect(component.timezoneId).toEqual('America/Los_Angeles')
 })
 
-it('TimezoneComponent should ...', () => {
+it('TimezoneComponent should be creatable from an ical.js timezone', () => {
 	const ics = getAsset('timezone-europe-berlin')
 	const icalValue = new ICAL.Component(ICAL.parse(ics))
 

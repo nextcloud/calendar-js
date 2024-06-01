@@ -22,7 +22,7 @@
 
 import DateTimeValue from '../../../src/values/dateTimeValue.js'
 import { createEvent } from '../../../src';
-import Timezone from '../../../src/timezones/timezone.js';
+import { Timezone } from '@nextcloud/timezones';
 
 jest.mock('../../../src/factories/dateFactory.js')
 

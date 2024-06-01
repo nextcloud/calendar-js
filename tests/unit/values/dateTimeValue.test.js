@@ -22,7 +22,7 @@
 
 import ICAL from 'ical.js'
 import DateTimeValue from '../../../src/values/dateTimeValue.js';
-import Timezone from '../../../src/timezones/timezone.js';
+import { Timezone } from '@nextcloud/timezones';
 import ModificationNotAllowedError from '../../../src/errors/modificationNotAllowedError.js';
 import DurationValue from '../../../src/values/durationValue.js';
 

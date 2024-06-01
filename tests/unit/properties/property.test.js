@@ -26,7 +26,7 @@ import ModificationNotAllowedError from "../../../src/errors/modificationNotAllo
 import Parameter from "../../../src/parameters/parameter.js";
 import Property from "../../../src/properties/property.js"
 import DateTimeValue from '../../../src/values/dateTimeValue.js';
-import Timezone from '../../../src/timezones/timezone.js';
+import { Timezone } from '@nextcloud/timezones';
 
 
 it('Property should be defined', () => {

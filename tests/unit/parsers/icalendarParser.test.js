@@ -21,8 +21,7 @@
  */
 import ICalendarParser from '../../../src/parsers/icalendarParser.js';
 import AbstractParser from '../../../src/parsers/abstractParser.js';
-import { getTimezoneManager } from '../../../src';
-import Timezone from '../../../src/timezones/timezone.js';
+import { Timezone, getTimezoneManager } from '@nextcloud/timezones';
 
 jest.mock('../../../src/factories/dateFactory')
 
