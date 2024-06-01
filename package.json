@@ -20,7 +20,6 @@
   "scripts": {
     "watch": "rollup --config rollup.config.js --watch",
     "build": "rollup --config rollup.config.js",
-    "build-doc": "./node_modules/.bin/esdoc",
     "lint": "eslint --ext .js src",
     "lint:fix": "eslint --ext .js src --fix",
     "test": "TZ=UTC jest",
