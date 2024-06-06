@@ -8,14 +8,12 @@
     ".": {
       "import": "./dist/index.es.mjs",
       "require": "./dist/index.umd.js"
-    },
-    "./resources/timezones/zones.json": "./resources/timezones/zones.json"
+    }
   },
   "files": [
     "README.md",
     "LICENSE",
-    "dist",
-    "resources/timezones/zones.json"
+    "dist"
   ],
   "scripts": {
     "watch": "rollup --config rollup.config.js --watch",
@@ -61,6 +59,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.4"
   },
   "peerDependencies": {
+    "@nextcloud/timezones": "^0.1.1",
     "ical.js": "^2.0.1",
     "uuid": "^9.0.1"
   },

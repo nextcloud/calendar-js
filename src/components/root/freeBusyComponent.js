@@ -23,7 +23,7 @@ import AbstractComponent, {
 	advertiseMultipleOccurrenceProperty,
 	advertiseSingleOccurrenceProperty,
 } from '../abstractComponent.js'
-import Timezone from '../../timezones/timezone.js'
+import { Timezone } from '@nextcloud/timezones'
 import AttendeeProperty from '../../properties/attendeeProperty.js'
 
 /**
