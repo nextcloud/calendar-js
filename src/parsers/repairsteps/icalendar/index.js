@@ -26,6 +26,7 @@ import ICalendarEmptyTriggerRepairStep from './icalendarEmptyTriggerRepairStep.j
 import ICalendarIllegalCreatedRepairStep from './icalendarIllegalCreatedRepairStep.js'
 import ICalendarMultipleVCalendarBlocksRepairStep from './icalendarMultipleVCalendarBlocksRepairStep.js'
 import ICalendarRemoveXNCGroupIdRepairStep from './icalendarRemoveXNCGroupIdRepairStep.js'
+import ICalendarRemoveEmptyRDate from './icalendarRemoveEmptyRDate.js'
 
 /**
  * Get an iterator over all repair steps for iCalendar documents
@@ -38,4 +39,5 @@ export function * getRepairSteps() {
 	yield ICalendarIllegalCreatedRepairStep
 	yield ICalendarMultipleVCalendarBlocksRepairStep
 	yield ICalendarRemoveXNCGroupIdRepairStep
+	yield ICalendarRemoveEmptyRDate
 }
