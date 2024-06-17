@@ -1,3 +1,23 @@
+# [8.0.0](https://github.com/nextcloud/calendar-js/compare/v7.0.0...v8.0.0) (2024-06-17)
+
+
+### Breaking Changes
+
+* Bundle with vite and ship cjs instead of umd bundle
+* Move time zone logic and data to @nextcloud/timezones
+
+
+### Features
+
+* **repair:** added unicode non-character repair step ([dc5cc22](https://github.com/nextcloud/calendar-js/commit/dc5cc22299e7288f9cfe1a398043c515c18af14c))
+
+
+### Bug Fixes
+
+* Update vulnerable dependencies
+
+
+
 # [7.0.0](https://github.com/nextcloud/calendar-js/compare/v6.1.0...v7.0.0) (2024-05-08)
 
 
