@@ -1,10 +1,20 @@
+## [8.0.1](https://github.com/nextcloud/calendar-js/compare/v8.0.0...v8.0.1) (2024-08-22)
+
+
+### Bug Fixes
+
+* **deps:** fix npm audit ([91b62e5](https://github.com/nextcloud/calendar-js/commit/91b62e545bae64ab97b2d559bd07cb800befbd8c))
+* **deps:** Fix npm audit ([152778c](https://github.com/nextcloud/calendar-js/commit/152778cc4d0b96ee866b8b281dae6637cd1f9a62))
+* **deps:** Fix npm audit ([1a04209](https://github.com/nextcloud/calendar-js/commit/1a04209a76deba87129ccea6e2c67c65e314264c))
+
+
+
 # [8.0.0](https://github.com/nextcloud/calendar-js/compare/v7.0.0...v8.0.0) (2024-06-17)
 
 
-### Breaking Changes
+### Bug Fixes
 
-* Bundle with vite and ship cjs instead of umd bundle
-* Move time zone logic and data to @nextcloud/timezones
+* **deps:** fix npm audit ([06a7c7f](https://github.com/nextcloud/calendar-js/commit/06a7c7f7e744bb083ba250fa1159161109037bb5))
 
 
 ### Features
@@ -12,23 +22,14 @@
 * **repair:** added unicode non-character repair step ([dc5cc22](https://github.com/nextcloud/calendar-js/commit/dc5cc22299e7288f9cfe1a398043c515c18af14c))
 
 
-### Bug Fixes
-
-* Update vulnerable dependencies
-
-
 
 # [7.0.0](https://github.com/nextcloud/calendar-js/compare/v6.1.0...v7.0.0) (2024-05-08)
 
 
-### Breaking Changes
+### Bug Fixes
 
-* TimezoneManager class is not exported any longer. Please use getTimezoneManager() to get an instance.
-* TimezoneAdapter has been removed. TimezoneManager propagates time zones to ICAL.TimezoneService on its own by default.
-
-### Features
-
-* Bump ical.js to 2.0.1
+* update timezones data ([e1a68d4](https://github.com/nextcloud/calendar-js/commit/e1a68d4e608f92b7405e13ca0ffc23b54682636d))
+* update timezones data ([41daddb](https://github.com/nextcloud/calendar-js/commit/41daddb3ab4ccad8c58a2ccb818aeaa46b363778))
 
 
 
