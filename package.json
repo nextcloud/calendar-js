@@ -57,7 +57,7 @@
   },
   "peerDependencies": {
     "@nextcloud/timezones": "^0.1.1",
-    "ical.js": "^2.0.1",
+    "ical.js": "^2.1.0",
     "uuid": "^10.0.0"
   },
   "babel": {
