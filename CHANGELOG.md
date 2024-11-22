@@ -1,3 +1,13 @@
+## [8.0.3](https://github.com/nextcloud/calendar-js/compare/v8.0.2...v8.0.3) (2024-11-22)
+
+
+### Bug Fixes
+
+* **deps:** Fix npm audit ([ab7b9e7](https://github.com/nextcloud/calendar-js/commit/ab7b9e71754effb6e8d8e24707975e13178e5f79))
+* **deps:** Fix npm audit ([dc77d9c](https://github.com/nextcloud/calendar-js/commit/dc77d9c6a7222149bd0503eabb0eeab17733a034))
+
+
+
 ## [8.0.2](https://github.com/nextcloud/calendar-js/compare/v8.0.0...v8.0.2) (2024-08-22)
 
 
