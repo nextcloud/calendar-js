@@ -26,6 +26,7 @@ import DateTimeValue from '../../../src/values/dateTimeValue.js'
 import DurationValue from '../../../src/values/durationValue.js';
 
 jest.mock('../../../src/factories/dateFactory.js')
+jest.mock('../../../src/helpers/cryptoHelper.js')
 
 it('ParserManager should provide a list of supported file-types', () => {
 	const parserManager = getParserManager()
