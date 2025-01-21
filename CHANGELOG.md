@@ -1,3 +1,17 @@
+# [8.1.0](https://github.com/nextcloud/calendar-js/compare/v8.0.3...v8.1.0) (2025-01-21)
+
+
+### Bug Fixes
+
+* **deps:** Fix npm audit ([9b652bf](https://github.com/nextcloud/calendar-js/commit/9b652bfcb35d31b944d03a013e40d959c9f9c3b6))
+
+
+### Features
+
+* use browser native UUID function ([8cfcf7f](https://github.com/nextcloud/calendar-js/commit/8cfcf7f667bd77a44a28b35359b29784a331304e))
+
+
+
 ## [8.0.3](https://github.com/nextcloud/calendar-js/compare/v8.0.2...v8.0.3) (2024-11-22)
 
 
