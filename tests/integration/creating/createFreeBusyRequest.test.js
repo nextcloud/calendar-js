@@ -23,7 +23,9 @@
 import { createFreeBusyRequest } from '../../../src';
 import DateTimeValue from '../../../src/values/dateTimeValue.js';
 import AttendeeProperty from '../../../src/properties/attendeeProperty.js';
+
 jest.mock('../../../src/factories/dateFactory.js')
+jest.mock('../../../src/helpers/cryptoHelper.js')
 
 it('should create a freeBusy request', () => {
 	const start = DateTimeValue.fromData({

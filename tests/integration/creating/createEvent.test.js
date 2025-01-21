@@ -25,6 +25,7 @@ import { createEvent } from '../../../src';
 import { Timezone } from '@nextcloud/timezones';
 
 jest.mock('../../../src/factories/dateFactory.js')
+jest.mock('../../../src/helpers/cryptoHelper.js')
 
 it('should create events based on parameters - allday', () => {
 	const start = DateTimeValue.fromData({

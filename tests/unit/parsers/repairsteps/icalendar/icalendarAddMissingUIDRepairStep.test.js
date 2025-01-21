@@ -23,6 +23,8 @@ import ICalendarAddMissingUIDRepairStep
 	from '../../../../../src/parsers/repairsteps/icalendar/icalendarAddMissingUIDRepairStep.js';
 import AbstractRepairStep from '../../../../../src/parsers/repairsteps/abstractRepairStep.js';
 
+jest.mock('../../../../../src/helpers/cryptoHelper.js')
+
 it('The repair step should inherit from AbstractRepairStep', () => {
 	expect((new ICalendarAddMissingUIDRepairStep() instanceof AbstractRepairStep)).toEqual(true)
 })

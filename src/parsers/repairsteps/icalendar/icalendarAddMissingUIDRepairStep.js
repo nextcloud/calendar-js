@@ -20,7 +20,7 @@
  *
  */
 import AbstractRepairStep from '../abstractRepairStep.js'
-import { v4 as uuid } from 'uuid'
+import { randomUUID } from '../../../helpers/cryptoHelper.js'
 
 /**
  * @class ICalendarAddMissingUIDRepairStep
@@ -36,7 +36,7 @@ export default class ICalendarAddMissingUIDRepairStep extends AbstractRepairStep
 		return ics
 			.replace(/^BEGIN:(VEVENT|VTODO|VJOURNAL)$(((?!^END:(VEVENT|VTODO|VJOURNAL)$)(?!^UID.*$)(.|\n))*)^END:(VEVENT|VTODO|VJOURNAL)$\n/gm, (match, vobjectName, vObjectBlock) => {
 				return 'BEGIN:' + vobjectName + '\r\n'
-					+ 'UID:' + uuid()
+					+ 'UID:' + randomUUID()
 					+ vObjectBlock
 					+ 'END:' + vobjectName + '\r\n'
 			})

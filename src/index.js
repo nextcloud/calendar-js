@@ -22,7 +22,7 @@
  *
  */
 import { getParserManager } from './parsers/parserManager.js'
-import { v4 as uuid } from 'uuid'
+import { randomUUID } from './helpers/cryptoHelper.js'
 import DateTimeValue from './values/dateTimeValue.js'
 import { dateFactory } from './factories/dateFactory.js'
 import CalendarComponent from './components/calendarComponent.js'
@@ -73,7 +73,7 @@ export function createEvent(start, end) {
 	eventComponent.updatePropertyWithValue('DTSTAMP', DateTimeValue.fromJSDate(dateFactory(), true))
 	eventComponent.updatePropertyWithValue('LAST-MODIFIED', DateTimeValue.fromJSDate(dateFactory(), true))
 	eventComponent.updatePropertyWithValue('SEQUENCE', 0)
-	eventComponent.updatePropertyWithValue('UID', uuid())
+	eventComponent.updatePropertyWithValue('UID', randomUUID())
 	eventComponent.updatePropertyWithValue('DTSTART', start)
 	eventComponent.updatePropertyWithValue('DTEND', end)
 
@@ -97,7 +97,7 @@ export function createFreeBusyRequest(start, end, organizer, attendees) {
 	const freeBusyComponent = new FreeBusyComponent('VFREEBUSY')
 
 	freeBusyComponent.updatePropertyWithValue('DTSTAMP', DateTimeValue.fromJSDate(dateFactory(), true))
-	freeBusyComponent.updatePropertyWithValue('UID', uuid())
+	freeBusyComponent.updatePropertyWithValue('UID', randomUUID())
 	freeBusyComponent.updatePropertyWithValue('DTSTART', start.clone().getInUTC())
 	freeBusyComponent.updatePropertyWithValue('DTEND', end.clone().getInUTC())
 	freeBusyComponent.addProperty(organizer.clone())

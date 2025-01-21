@@ -31,7 +31,7 @@ import PeriodValue from '../../values/periodValue.js'
 import { dateFactory } from '../../factories/dateFactory.js'
 import { uc } from '../../helpers/stringHelper.js'
 import RecurrenceManager from '../../recurrence/recurrenceManager.js'
-import { v4 as uuid } from 'uuid'
+import { randomUUID } from '../../helpers/cryptoHelper.js'
 import RelationProperty from '../../properties/relationProperty.js'
 import AttendeeProperty from '../../properties/attendeeProperty.js'
 import { Timezone } from '@nextcloud/timezones'
@@ -491,7 +491,7 @@ export default class AbstractRecurringComponent extends AbstractComponent {
 			this._originalRecurrenceId = null
 
 			this.primaryItem = this
-			this.updatePropertyWithValue('UID', uuid())
+			this.updatePropertyWithValue('UID', randomUUID())
 			this._cachedId = null
 
 			this.addRelation('SIBLING', previousPrimaryItem.uid)
