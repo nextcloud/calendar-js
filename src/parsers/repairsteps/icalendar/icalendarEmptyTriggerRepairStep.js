@@ -34,8 +34,8 @@ export default class ICalendarEmptyTriggerRepairStep extends AbstractRepairStep 
 	 */
 	repair(ics) {
 		return ics
-			.replace(/^TRIGGER:P$/gm, 'TRIGGER:P0D')
-			.replace(/^TRIGGER:-P$/gm, 'TRIGGER:P0D')
+			.replace(/^TRIGGER(:|;.*)-P$/gm, 'TRIGGER$1P0D')
+			.replace(/^TRIGGER(:|;.*)P$/gm, 'TRIGGER$1P0D')
 	}
 
 }

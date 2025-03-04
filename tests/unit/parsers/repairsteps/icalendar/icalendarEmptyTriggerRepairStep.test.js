@@ -39,6 +39,14 @@ it('The repair step should repair broken calendar data', () => {
 	expect(repairStep.repair(brokenICS)).toEqual(fixedICS)
 })
 
+it('The repair step should repair broken calendar data with trigger parameters', () => {
+	const repairStep = new ICalendarEmptyTriggerRepairStep()
+	const brokenICS = getAsset('empty-trigger-with-parameters')
+	const fixedICS = getAsset('empty-trigger-with-parameters-sanitized')
+
+	expect(repairStep.repair(brokenICS)).toEqual(fixedICS)
+})
+
 it('The repair step should not change valid calendar data', () => {
 	const repairStep = new ICalendarEmptyTriggerRepairStep()
 	const ics = getAsset('simple-date-time-europe-berlin-dtstart-dtend')
