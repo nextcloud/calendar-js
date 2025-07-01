@@ -30,6 +30,8 @@ import DateTimeValue from '../values/dateTimeValue.js'
 import ICAL from 'ical.js'
 import TimezoneComponent from '../components/root/timezoneComponent.js'
 
+ICAL.design.strict = false
+
 /**
  * @class ICalendarParser
  * @classdesc

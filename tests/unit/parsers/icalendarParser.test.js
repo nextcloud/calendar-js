@@ -598,3 +598,14 @@ it('ICalendarParser should remove RSVP - removeRSVPForAttendees', () => {
 it('ICalendarParser should provide correct set of mime-types', () => {
 	expect(ICalendarParser.getMimeTypes()).toEqual(['text/calendar'])
 })
+
+it('ICalendarParser should operate in lenient mode', () => {
+	const asset = getAsset('malformed-created')
+
+	const parser = new ICalendarParser()
+	parser.parse(asset)
+
+	expect(parser.containsVEvents()).toEqual(true)
+	expect(parser.containsVJournals()).toEqual(false)
+	expect(parser.containsVTodos()).toEqual(false)
+})
