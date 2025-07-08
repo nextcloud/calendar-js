@@ -438,7 +438,7 @@ it('DurationValue should be able to return the inner ICAL.JS object', () => {
 		isNegative: true
 	})
 
-	expect(value.toICALJs().toString()).toEqual('-P8W5DT2H15M4S')
+	expect(value.toICALJs().toString()).toEqual('-P61DT2H15M4S')
 })
 
 it('DurationValue should allow to clone the value', () => {
