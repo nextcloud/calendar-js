@@ -1,3 +1,15 @@
+## [8.1.3](https://github.com/nextcloud/calendar-js/compare/v8.1.2...v8.1.3) (2025-07-11)
+
+
+### Bug Fixes
+
+* add repair step to fix invalid created date time values ([9ff668b](https://github.com/nextcloud/calendar-js/commit/9ff668b3c0ca7f7ba96fee483ee56256b31a7e4f))
+* **deps:** Fix npm audit ([a071573](https://github.com/nextcloud/calendar-js/commit/a0715737c11e7bd3d0297340cf5bba4565e902ad))
+* Disable iCal.js strict mode ([f322c79](https://github.com/nextcloud/calendar-js/commit/f322c79bcad2d1e87b5a4326c3815309a0f88661))
+* revert "Disable iCal.js strict mode" ([40127f1](https://github.com/nextcloud/calendar-js/commit/40127f1f0aa211d2288841ff272f5b9a79f01c27))
+
+
+
 ## [8.1.2](https://github.com/nextcloud/calendar-js/compare/v8.1.1...v8.1.2) (2025-04-26)
 
 
