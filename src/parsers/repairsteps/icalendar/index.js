@@ -27,6 +27,7 @@ import ICalendarIllegalCreatedRepairStep from './icalendarIllegalCreatedRepairSt
 import ICalendarMultipleVCalendarBlocksRepairStep from './icalendarMultipleVCalendarBlocksRepairStep.js'
 import ICalendarRemoveXNCGroupIdRepairStep from './icalendarRemoveXNCGroupIdRepairStep.js'
 import ICalendarRemoveUnicodeSpecialNoncharactersRepairStep from './icalendarRemoveUnicodeSpecialNoncharactersRepairStep.js'
+import ICalendarConvertCreatedDateTimeRepairStep from './icalendarConvertCreatedDateTimeRepairStep.js'
 
 /**
  * Get an iterator over all repair steps for iCalendar documents
@@ -40,4 +41,5 @@ export function * getRepairSteps() {
 	yield ICalendarMultipleVCalendarBlocksRepairStep
 	yield ICalendarRemoveXNCGroupIdRepairStep
 	yield ICalendarRemoveUnicodeSpecialNoncharactersRepairStep
+	yield ICalendarConvertCreatedDateTimeRepairStep
 }
