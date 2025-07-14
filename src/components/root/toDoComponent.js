@@ -145,12 +145,16 @@ export default class ToDoComponent extends AbstractRecurringComponent {
 	 * @return {boolean}
 	 */
 	isInTimeFrame(start, end) {
-		if (!this.hasProperty('due')) {
+		if (!this.hasProperty('dtstart') && !this.hasProperty('due')) {
 			return true
 		}
 
 		if (!this.hasProperty('dtstart') && this.hasProperty('due')) {
 			return start.compare(this.getFirstProperty('due').value) <= 0
+		}
+
+		if (this.hasProperty('dtstart') && !this.hasProperty('due')) {
+			return end.compare(this.startDate) >= 0
 		}
 
 		return start.compare(this.getFirstProperty('due').value) <= 0 && end.compare(this.startDate) >= 0
