@@ -150,10 +150,10 @@ export default class ToDoComponent extends AbstractRecurringComponent {
 		}
 
 		if (!this.hasProperty('dtstart') && this.hasProperty('due')) {
-			return start.compare(this.getFirstProperty('due').value) <= 0
+			return start.compare(this.endDate) <= 0
 		}
 
-		return start.compare(this.getFirstProperty('due').value) <= 0 && end.compare(this.startDate) >= 0
+		return start.compare(this.endDate) <= 0 && end.compare(this.startDate) >= 0
 	}
 
 	/**
