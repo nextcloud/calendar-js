@@ -1,3 +1,12 @@
+## [8.1.4](https://github.com/nextcloud/calendar-js/compare/v8.1.3...v8.1.4) (2025-07-17)
+
+
+### Bug Fixes
+
+* repair more broken date time values ([2bf55bf](https://github.com/nextcloud/calendar-js/commit/2bf55bfb8f5ef888cf09459a34ef78112be8902e))
+
+
+
 ## [8.1.3](https://github.com/nextcloud/calendar-js/compare/v8.1.2...v8.1.3) (2025-07-11)
 
 
