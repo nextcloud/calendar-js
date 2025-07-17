@@ -36,8 +36,8 @@ import ICalendarRemoveXNCGroupIdRepairStep
 	from '../../../../../src/parsers/repairsteps/icalendar/icalendarRemoveXNCGroupIdRepairStep.js';
 import ICalendarRemoveUnicodeSpecialNoncharactersRepairStep
 	from '../../../../../src/parsers/repairsteps/icalendar/icalendarRemoveUnicodeSpecialNoncharactersRepairStep.js';
-import ICalendarConvertCreatedDateTimeRepairStep
-	from '../../../../../src/parsers/repairsteps/icalendar/icalendarConvertCreatedDateTimeRepairStep.js';
+import ICalendarConvertInvalidDateTimeValuesRepairStep
+	from '../../../../../src/parsers/repairsteps/icalendar/icalendarConvertInvalidDateTimeValuesRepairStep.js';
 
 it('should provide an iterator over all parsers', () => {
 	const iterator = getRepairSteps()
@@ -50,6 +50,6 @@ it('should provide an iterator over all parsers', () => {
 	expect(iterator.next().value).toEqual(ICalendarMultipleVCalendarBlocksRepairStep)
 	expect(iterator.next().value).toEqual(ICalendarRemoveXNCGroupIdRepairStep)
 	expect(iterator.next().value).toEqual(ICalendarRemoveUnicodeSpecialNoncharactersRepairStep)
-	expect(iterator.next().value).toEqual(ICalendarConvertCreatedDateTimeRepairStep)
+	expect(iterator.next().value).toEqual(ICalendarConvertInvalidDateTimeValuesRepairStep)
 	expect(iterator.next().value).toEqual(undefined)
 })

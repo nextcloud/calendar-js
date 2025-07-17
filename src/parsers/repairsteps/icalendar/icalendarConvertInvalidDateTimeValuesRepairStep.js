@@ -5,7 +5,7 @@
 
 import AbstractRepairStep from '../abstractRepairStep.js'
 
-export default class ICalendarConvertCreatedDateTimeRepairStep extends AbstractRepairStep {
+export default class ICalendarConvertInvalidDateTimeValuesRepairStep extends AbstractRepairStep {
 
 	/**
 	 * Please see the corresponding test files for an example of broken calendar-data
@@ -14,7 +14,7 @@ export default class ICalendarConvertCreatedDateTimeRepairStep extends AbstractR
 	 */
 	repair(ics) {
 		return ics
-			.replace(/^CREATED:([0-9]+)$/gm, 'CREATED:$1T000000Z')
+			.replace(/^(CREATED|LAST-MODIFIED|DTSTAMP):([0-9]+)$/gm, '$1:$2T000000Z')
 	}
 
 }
