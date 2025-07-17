@@ -145,7 +145,7 @@ export default class ToDoComponent extends AbstractRecurringComponent {
 	 * @return {boolean}
 	 */
 	isInTimeFrame(start, end) {
-		if (!this.hasProperty('dtstart') && !this.hasProperty('due')) {
+		if (!this.hasProperty('due')) {
 			return true
 		}
 
