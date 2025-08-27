@@ -1,3 +1,12 @@
+## [8.1.6](https://github.com/nextcloud/calendar-js/compare/v8.1.5...v8.1.6) (2025-08-27)
+
+
+### Bug Fixes
+
+* time frame check of vtodos ([8f900ce](https://github.com/nextcloud/calendar-js/commit/8f900cec45283604495e6d4f3513722f0ae0a1da))
+
+
+
 ## [8.1.5](https://github.com/nextcloud/calendar-js/compare/v8.1.4...v8.1.5) (2025-08-24)
 
 
