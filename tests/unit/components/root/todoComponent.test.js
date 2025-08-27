@@ -364,3 +364,94 @@ it('ToDoComponent should provide access methods for CONFERENCE', () => {
 	expect(component.getConferenceList().length).toEqual(0)
 	expect(component.getConferenceList()).toEqual([])
 })
+
+it.each([
+	[
+		'none',
+		undefined,
+		undefined,
+		undefined,
+		true,
+		true,
+		true,
+		true,
+	],
+	[
+		'DTSTART only',
+		DateTimeValue.fromJSDate(new Date('2025-01-01T10:30:00Z')),
+		undefined,
+		undefined,
+		false,
+		true,
+		true,
+		true,
+	],
+	[
+		'DTSTART and DUE',
+		DateTimeValue.fromJSDate(new Date('2025-01-01T10:30:00Z')),
+		undefined,
+		DateTimeValue.fromJSDate(new Date('2025-01-01T10:50:00Z')),
+		false,
+		true,
+		false,
+		false,
+	],
+	[
+		'DTSTART and DUE (overlapping)',
+		DateTimeValue.fromJSDate(new Date('2025-01-01T10:30:00Z')),
+		undefined,
+		DateTimeValue.fromJSDate(new Date('2025-01-01T11:50:00Z')),
+		false,
+		true,
+		true,
+		false,
+	],
+	[
+		'DTSTART and DURATION',
+		DateTimeValue.fromJSDate(new Date('2025-01-01T10:30:00Z')),
+		DurationValue.fromSeconds(900),
+		undefined,
+		false,
+		true,
+		false,
+		false,
+	],
+	[
+		'DTSTART and DURATION (overlapping)',
+		DateTimeValue.fromJSDate(new Date('2025-01-01T10:30:00Z')),
+		DurationValue.fromSeconds(3600),
+		undefined,
+		false,
+		true,
+		true,
+		false,
+	],
+])('ToDoComponent should report being inside a time frame - %s', (name, dtstart, duration, due, expectInTimeFrame1, expectInTimeFrame2, expectInTimeFrame3, expectInTimeFrame4) => {
+	const component = new ToDoComponent('VTODO')
+
+	if (dtstart) {
+		component.addProperty(new Property('dtstart', dtstart))
+	}
+	if (duration) {
+		component.addProperty(new Property('duration', duration))
+	}
+	if (due) {
+		component.addProperty(new Property('due', due))
+	}
+
+	const date1 = DateTimeValue.fromJSDate(new Date('2025-01-01T09:00:00Z'))
+	const date2 = DateTimeValue.fromJSDate(new Date('2025-01-01T09:59:59Z'))
+	expect(component.isInTimeFrame(date1, date2)).toEqual(expectInTimeFrame1)
+
+	const date3 = DateTimeValue.fromJSDate(new Date('2025-01-01T10:00:00Z'))
+	const date4 = DateTimeValue.fromJSDate(new Date('2025-01-01T10:59:59Z'))
+	expect(component.isInTimeFrame(date3, date4)).toEqual(expectInTimeFrame2)
+
+	const date5 = DateTimeValue.fromJSDate(new Date('2025-01-01T11:00:00Z'))
+	const date6 = DateTimeValue.fromJSDate(new Date('2025-01-01T11:59:59Z'))
+	expect(component.isInTimeFrame(date5, date6)).toEqual(expectInTimeFrame3)
+
+	const date7 = DateTimeValue.fromJSDate(new Date('2025-01-01T12:00:00Z'))
+	const date8 = DateTimeValue.fromJSDate(new Date('2025-01-01T13:00:00Z'))
+	expect(component.isInTimeFrame(date7, date8)).toEqual(expectInTimeFrame4)
+})
