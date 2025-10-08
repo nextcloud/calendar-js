@@ -7,10 +7,8 @@ Together with [cdav-library](https://github.com/nextcloud/cdav-library), it's th
 
 ## Maintainers
 
-* [@ChristophWurst](https://github.com/ChristophWurst)
-* [@GretaD](https://github.com/GretaD)
-* [@st3iny](https://github.com/st3iny)
 * [@GVodyanov](https://github.com/GVodyanov)
+* [@SebastianKrupinski](https://github.com/SebastianKrupinski)
 
 ## Developing
 
