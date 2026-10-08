@@ -54,7 +54,7 @@
     "babel-jest": "^30.5.2",
     "eslint": "^10.12.0",
     "jest": "^30.5.2",
-    "vite": "^7.3.7"
+    "vite": "^8.3.4"
   },
   "peerDependencies": {
     "@nextcloud/timezones": "^1.0.2",
